@@ -1,0 +1,39 @@
+
+
+.li
+{
+margin-left: 10px;
+}
+
+.items
+{
+color:white;
+font-size:22px;
+}
+
+.divTab
+{
+width:90%;
+margin-left:5%;
+display:none;
+}
+
+
+
+/* Datos Principales */
+
+
+.horizontalDP
+{
+display:block;
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  .horizontalDP{
+    display:none;
+  }
+}
