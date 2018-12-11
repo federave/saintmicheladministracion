@@ -1,8 +1,8 @@
 <?php
 
 
-include_once('conector.php');
-include_once('otros.php');
+include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/otros.php');
 
 
 abstract class Generico extends Conector
