@@ -10,7 +10,7 @@ class BaseDeDatos
     {
     $this->servidor  = "localhost";
     $this->usuario = "u291888960_root";
-    $this->contraseña  = "u291888960_mpkfa26";
+    $this->contraseña  = "mpkfa26";
     $this->nombreBD = "u291888960_smadm";
     $this->puerto = 3306;
     }
