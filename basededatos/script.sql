@@ -35,10 +35,24 @@ select * from TipoUsuarios;
 truncate TipoUsuarios;
 
 drop table TipoUsuarios;
+drop table usuarios;
 
 select * from usuarios;
 
 
 insert into usuarios(usuario,password,idTipoUsuario)values("admin","admin",1);
+
+
+CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'usuario1351';
+
+
+
+
+
+
+
+
+
+
 
 

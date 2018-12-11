@@ -111,6 +111,40 @@ class BaseDeDatos
     }
 
 
+    public function crearUsuarioMYSQL()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      // Tabla TipoUsuarios
+
+      $sql = "CREATE USER if not exists 'usuario'@'localhost' IDENTIFIED BY 'usuario1351';";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "GRANT SELECT ON *.* TO 'usuario'@'localhost';";
+      $aux &= $this->conexion->query($sql);
+      $sql = "GRANT INSERT ON *.* TO 'usuario'@'localhost';";
+      $aux &= $this->conexion->query($sql);
+      $sql = "GRANT UPDATE ON *.* TO 'usuario'@'localhost';";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+    }
+
+
+
+
+
 
     public function abrirConexion()
     {
