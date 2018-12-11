@@ -9,36 +9,11 @@ class Conector
 
     function __construct()
     {
-
-    if(isset($_SESSION["conexion"]))
-      {
-      if($_SESSION["conexion"])
-          {
-          $this->servidor  = $_SESSION["servidor"];
-          $this->usuario = $_SESSION["usuario"];
-          $this->contraseña  = $_SESSION["contraseña"];
-          $this->nombreBD = "saintmichelweb";
-          $this->puerto = 3306;
-          }
-      else
-          {
-          $this->servidor  = "127.0.0.1";
-          $this->usuario = "root";
-          $this->contraseña  = "mpkfa26";
-          $this->nombreBD = "saintmichelweb";
-          $this->puerto = 3306;
-          }
-        }
-    else
-      {
-        $this->servidor  = "127.0.0.1";
-        $this->usuario = "root";
-        $this->contraseña  = "mpkfa26";
-        $this->nombreBD = "saintmichelweb";
-        $this->puerto = 3306;
-      }
-
-
+    $this->servidor  = "localhost";
+    $this->usuario = "root";
+    $this->contraseña  = "mpkfa26";
+    $this->nombreBD = "u291888960_smadm";
+    $this->puerto = 3306;
     }
 
 

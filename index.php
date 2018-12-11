@@ -1,4 +1,13 @@
 <?php
+
+include_once('modelo/basededatos.php');
+$bd = new BaseDeDatos();
+if(!$bd->existe())
+  {
+  $bd->crear();
+  }
+
+
 session_start();
 $_SESSION["carpeta"] = '/saintmicheladministracion';
 $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
@@ -33,11 +42,8 @@ else
   }
 }
 else
-{
-redirect('vistas/login/login.php');
-}
-
-
-
+  {
+  redirect('vistas/login/login.php');
+  }
 
 ?>

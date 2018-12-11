@@ -1,8 +1,8 @@
 
 
-create database saintmichelweb;
+create database	u291888960_smadm;
 
-use saintmichelweb;
+use u291888960_smadm;
 
 
 
@@ -29,6 +29,14 @@ foreign key(idTipoUsuario) REFERENCES TipoUsuarios(id)
 insert into tipousuarios(tipo)values("administrador");
 insert into tipousuarios(tipo)values("vendedor");
 insert into tipousuarios(tipo)values("oficina");
+
+select * from TipoUsuarios;
+
+truncate TipoUsuarios;
+
+drop table TipoUsuarios;
+
+select * from usuarios;
 
 
 insert into usuarios(usuario,password,idTipoUsuario)values("admin","admin",1);
