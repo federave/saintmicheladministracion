@@ -1,8 +1,9 @@
 <?php
+session_start();
+
 include_once('../../modelo/otros.php');
 include_once('../../modelo/usuarios/usuario.php');
 
-session_start();
 
 if(isset($_POST["usuario"]) && isset($_POST["password"]))
 {

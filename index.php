@@ -7,7 +7,6 @@ if(!$bd->existe())
   $bd->crear();
   }
 
-$bd->crearUsuarioMYSQL();
 
 
 session_start();

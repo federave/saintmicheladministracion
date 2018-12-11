@@ -10,7 +10,7 @@ class Conector
     function __construct()
     {
     $this->servidor  = "localhost";
-    $this->usuario = "root";
+    $this->usuario = "u291888960_root";
     $this->contraseña  = "mpkfa26";
     $this->nombreBD = "u291888960_smadm";
     $this->puerto = 3306;
