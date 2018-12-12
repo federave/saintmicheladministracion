@@ -50,8 +50,7 @@ class Usuario extends Generico
       {
         if(parent::abrirConexion())
             {
-            $sql = "SELECT * FROM Usuarios WHERE usuario = '$usuario' AND password = '$password'";
-
+            $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND password = '$password'";
             $tabla = $this->conexion->query($sql);
 
             if($tabla->num_rows>0)
