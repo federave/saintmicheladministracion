@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 
 <html lang="es">
 
@@ -6,6 +11,7 @@
         <title>Login</title>
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../general.css">
+
         <link rel="stylesheet" href="cliente.css">
         <script src="cliente.js"></script>
 

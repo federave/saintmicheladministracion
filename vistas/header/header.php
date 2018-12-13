@@ -1,11 +1,12 @@
 
 
+<link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/header/header.css">
 
 <div class="header">
   <a href="<?php echo $_SESSION["carpeta"] ?>/index.php" class="logo">Menu Inicial</a>
   <div class="header-right">
     <p>Oficina</p>
-    <a class="active" href="#contact">Cerrar Seción</a>
+    <a class="active" href="<?php echo $_SESSION["carpeta"] ?>/controladores/login/salir.php">Cerrar Seción</a>
   </div>
 </div>
 

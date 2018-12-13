@@ -14,9 +14,11 @@
     </head>
 
     <body>
-
-
-      <?php require '../header/header.php' ?>
+      <br>
+      <br>
+      <div style="padding:40px;margin-bottom:25px" class="text-center ">
+        <h1 class="titulo" style="font-family:Helvetica;color: white;"> Saint Michel </h1>
+      </div>
 
 
       <div class="login">
