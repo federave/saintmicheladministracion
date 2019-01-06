@@ -46,13 +46,4 @@ insert into usuarios(usuario,password,idTipoUsuario)values("admin","admin",1);
 CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'usuario1351';
 
 
-
-
-
-
-
-
-
-
-
-
+GRANT select on *.* TO 'usuario'@'localhost';

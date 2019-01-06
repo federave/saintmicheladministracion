@@ -5,9 +5,19 @@
 include_once($_SESSION["raiz"] . '/modelo/generico.php');
 
 
-
-
-
+function verificarUsuario($usuario,$nombre)
+{
+$usuario = new Usuario($usuario,$nombre);
+if($usuario->esValido())
+  {
+  return true;
+  }
+else
+  {
+  return false;
+  }
+}
+/*
 function verificarUsuario()
 {
 
@@ -34,7 +44,7 @@ function verificarUsuario()
 
 
 }
-
+*/
 
 
 class Usuario extends Generico

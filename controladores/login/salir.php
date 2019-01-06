@@ -3,7 +3,7 @@ session_start();
 include_once('../../modelo/otros.php');
 include_once('../../modelo/usuarios/usuario.php');
 
-if(verificarUsuario())
+if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]))
   {
   $_SESSION["usuario"] = null;
   $_SESSION["password"] = null;

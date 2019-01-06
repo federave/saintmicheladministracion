@@ -17,6 +17,10 @@ function boolToString($valor)
 
 
 
+
+
+
+
 class Xml
 {
 
