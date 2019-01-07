@@ -49,3 +49,55 @@ class RequerimientoGet {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+class XML {
+
+
+  constructor() {
+
+    this.xml="";
+
+
+
+  }
+
+
+    startTag(nombreTag)
+    {
+    this.xml += "<" + nombreTag + ">";
+    }
+
+    closeTag(nombreTag)
+    {
+    this.xml +="</" + nombreTag + ">";
+    }
+
+    addValue(valor)
+    {
+    this.xml += valor;
+    }
+
+    addTag(nombreTag,valor)
+    {
+    this.startTag(nombreTag);
+    this.addValue(valor);
+    this.closeTag(nombreTag);
+    }
+
+    getXML(){return this.xml;}
+
+    toString(){return this.xml;}
+
+
+
+}

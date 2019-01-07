@@ -77,16 +77,28 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 /* Clear floats after the columns */
-.rowdp:after {
+.row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.contenedordp {
+.contenedorA {
   width: 80%;
   margin:auto;
 }
+
+
+.rowAsignacion {
+  width: 50%;
+  margin:auto;
+  background-color: white;
+  padding: 5%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
@@ -96,25 +108,64 @@ input[type=submit]:hover {
     margin-top:20px;
     margin-left: 10%;
   }
-  .contenedordp {
-    width: 90%;
+  .contenedorA {
+    width: 100%;
   }
+  .rowAsignacion {
+    width: 100%;
+    padding: 1%;
+
+  }
+
+
 }
 
+
+@media screen and (max-width: 800px) {
+  .contenedorA {
+    width: 100%;
+  }
+  .rowAsignacion {
+    width: 100%;
+    padding: 1%;
+  }
+
+
+}
+
+
+
 @media screen and (max-width: 1000px) {
-  .dpcontainer {
+  .contenedorA {
     width: 80%;
   }
+
+
+    .rowAsignacion {
+      width: 75%;
+      padding: 2%;
+
+    }
+
 }
 
 @media screen and (max-width: 1300px) {
-  .dpcontainer {
+  .contenedorA {
     width: 70%;
   }
+
+
+    .rowAsignacion {
+      width: 50%;
+    }
 }
 
 @media screen and (max-width: 1500px) {
-  .dpcontainer {
+  .contenedorA {
     width: 60%;
+  }
+
+  .rowAsignacion {
+    width: 50%;
   }
 }

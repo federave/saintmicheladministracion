@@ -101,8 +101,6 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
                    <option>Emanuel</option>
                  </select>
                </div>
-
-
            </div>
            <div class="funkyradio-info" >
                <input type="radio" name="radio" id="radio3" value="3" onclick="mostrarDiv(radio3.value)"/>

@@ -8,7 +8,7 @@ session_start();
 
 
     <head>
-        <title>Login</title>
+        <title>Cliente ...</title>
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../general.css">
 
@@ -20,7 +20,7 @@ session_start();
 
     <body>
 
-      
+
       <?php require '../../header/header.php' ?>
       <!-- Tabs -->
 
@@ -39,8 +39,9 @@ session_start();
         <ul class="nav nav-tabs">
           <li class="active"><a class="items" href="#" onclick="seleccionarTab(0)">Datos Principales</a></li>
           <li class="li"><a class="items" href="#" onclick="seleccionarTab(1)">Dirección</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(2)">Acuerdos</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(3)">Seguimiento</a></li>
+          <li class="li"><a class="items" href="#" onclick="seleccionarTab(2)">Asignación</a></li>
+          <li class="li"><a class="items" href="#" onclick="seleccionarTab(3)">Acuerdos</a></li>
+          <li class="li"><a class="items" href="#" onclick="seleccionarTab(4)">Seguimiento</a></li>
         </ul>
       </div>
 
@@ -55,9 +56,13 @@ session_start();
 
 
       <div class="row divTab">
-        <p><strong>Note:</strong>Direccion</p>
+        <?php require('direccion/direccion.php'); ?>
       </div>
 
+
+      <div  class="row divTab">
+        <?php require('asignacion/asignacion.php'); ?>
+      </div>
       <div  class="row divTab">
         <p><strong>Note:</strong>Acuerdos</p>
       </div>

@@ -49,7 +49,7 @@
 </div>
 
 
-<script src="/saintmichelweb/vistas/mapas/buscador/buscador.js"></script>
+<script src="/saintmicheladministracion/vistas/mapas/buscador/buscador.js"></script>
 
 
 <script async defer
