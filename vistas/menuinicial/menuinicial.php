@@ -54,6 +54,8 @@ session_start();
     </div>
   </div>
   <a href="../mapas/mapa/mapa.php">Mapas</a>
+  <a href="../productos/productos.php">Productos</a>
+
   <a href="../pruebas/prueba.php">Pruebas</a>
   <a href="#about">About</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">☰</a>

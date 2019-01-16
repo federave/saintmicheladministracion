@@ -9,8 +9,10 @@ class Conector
 
     function __construct()
     {
-    $this->servidor  = "localhost";
+    $this->servidor  = "127.0.0.1";
     $this->usuario = "u291888960_root";
+    //$this->usuario = "root";
+
     $this->contraseña  = "mpkfa26";
     $this->nombreBD = "u291888960_smadm";
     $this->puerto = 3306;
@@ -46,7 +48,7 @@ class Conector
     {
 
     $this->conexion = new mysqli($this->servidor, $this->usuario, $this->contraseña,$this->nombreBD,$this->puerto);
-
+    echo    $this->conexion->connect_error;
     if($this->conexion->connect_error == false )
       {return true;}
     else

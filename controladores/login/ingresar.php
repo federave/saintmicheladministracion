@@ -1,8 +1,12 @@
 <?php
 session_start();
 
-include_once('../../modelo/otros.php');
-include_once('../../modelo/usuarios/usuario.php');
+
+
+include_once($_SESSION["raiz"] . '/modelo/otros.php');
+include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
+
+
 
 
 if(isset($_POST["usuario"]) && isset($_POST["password"]))
@@ -16,7 +20,7 @@ if($usuario->esValido())
   }
 else
   {
-    echo "EL USUARIO NO EXISTE";
+  echo "EL USUARIO NO EXISTE";
   }
 }
 else

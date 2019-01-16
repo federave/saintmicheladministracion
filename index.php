@@ -11,7 +11,7 @@ if(!$bd->existe())
 
 session_start();
 $_SESSION["carpeta"] = '';
-//$_SESSION["carpeta"] = '/saintmicheladministracion';
+$_SESSION["carpeta"] = '/saintmicheladministracion';
 $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
 
 include_once('modelo/otros.php');

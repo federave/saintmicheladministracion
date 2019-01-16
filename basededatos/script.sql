@@ -9,14 +9,14 @@ use u291888960_smadm;
 
 
 
-create table TipoUsuarios(
+create table tipousuarios(
 id int auto_increment,
 tipo varchar(50),
 constraint pk primary key(id)
 );
 
 
-create table Usuarios(
+create table usuarios(
 id int auto_increment,
 usuario varchar(50),
 password varchar(50),
@@ -35,7 +35,7 @@ select * from TipoUsuarios;
 truncate TipoUsuarios;
 
 drop table TipoUsuarios;
-drop table usuarios;
+drop table Usuarios;
 
 select * from usuarios;
 
