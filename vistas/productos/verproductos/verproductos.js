@@ -1,4 +1,55 @@
 
+
+///////////////////////////////////////////////////////////////
+//////////////Ver Producto
+
+
+function verProducto(id)
+{
+
+if(document.getElementById("divProducto"+id).style.display=="block")
+  {
+  document.getElementById("divProducto"+id).style.display="none";
+  document.getElementById("buttonVerProducto"+id).innerHTML="Ver";
+  }
+else
+  {
+  document.getElementById("divProducto"+id).style.display="block";
+  document.getElementById("buttonVerProducto"+id).innerHTML="Ocultar";
+  }
+
+}
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Go to Modificar Producto
+
+
+function modificarProducto(id)
+{
+  alert(id);
+}
+
+
+///////////////////////////////////////////////////////////////
+//////////////Eliminar Producto
+
+function eliminarProducto(id)
+{
+//  alert(id);
+  var nombre = document.getElementById("productoNombre"+id).innerHTML;
+  var r = confirm("Está seguro que desea eliminar el producto: "+nombre+" ?");
+  if (r == true) {
+// ELIMINAR
+}
+ else {
+  }
+}
+
+
+
 ///////////////////////////////////////////////////////////////
 //////////////Nueva Asignacion
 

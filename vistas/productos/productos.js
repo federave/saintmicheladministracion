@@ -1,8 +1,8 @@
 
 function seleccionarTab(n)
 {
-  var x = document.getElementsByTagName("li");
-  var y = document.getElementsByClassName("divTab");
+  var x = document.getElementsByName("liProductos");
+  var y = document.getElementsByName("tabProductos");
 
 
   for (i = 0; i < x.length; i++) {

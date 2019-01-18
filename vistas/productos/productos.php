@@ -41,15 +41,15 @@ session_start();
 
       <div class="row" style="width:90%;margin-left:5%" >
         <ul class="nav nav-tabs">
-          <li class="active"><a class="items" href="#" onclick="seleccionarTab(0)">Ver Productos</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(1)">Nuevo Producto</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(2)">Modificar Producto</a></li>
+          <li name="liProductos" class="active"><a class="items" href="#" onclick="seleccionarTab(0)">Ver Productos</a></li>
+          <li name="liProductos" class="li"><a class="items" href="#" onclick="seleccionarTab(1)">Nuevo Producto</a></li>
+          <li name="liProductos" class="li"><a class="items" href="#" onclick="seleccionarTab(2)">Modificar Producto</a></li>
         </ul>
       </div>
 
       <br>
 
-      <div class="row divTab " style="display:block">
+      <div name="tabProductos" class="row divTab" style="display:block">
 
         <?php require('verproductos/verproductos.php'); ?>
 
@@ -57,13 +57,13 @@ session_start();
 
 
 
-      <div class="row divTab">
-        <?php // require('nuevoproducto/nuevoproducto.php'); ?>
+      <div name="tabProductos"class="row divTabProductos">
+        <?php  require('nuevoproducto/nuevoproducto.php'); ?>
       </div>
 
 
 
-      <div class="row divTab">
+      <div name="tabProductos" class="row divTabProductos">
         <?php  // require('modificarproducto/modificarproducto.php'); ?>
       </div>
 

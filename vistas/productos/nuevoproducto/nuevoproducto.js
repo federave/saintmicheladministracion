@@ -3,380 +3,135 @@
 
 
 
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo nombre
-
-
-function nuevoNombre()
-{
-var id = document.getElementById("idcliente").value;
-var nombreNuevo = document.getElementById("nombreNuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoNombre.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("nombre",nombreNuevo);
-requerimiento.addListener(respuestaNuevoNombre);
-requerimiento.ejecutar();
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
 }
 
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
 
-function respuestaNuevoNombre(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
   }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoNombre = document.getElementById("nombreNuevo").value;
-  document.getElementById("nombre").innerHTML = "Nombre: " + nuevoNombre;
-  document.getElementById("nombreNuevo").value = "";
 
-  }
-else
-  {
-  alert("Error al modificar el Nombre");
-  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
 }
 
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
 
 
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Apellido
+  // Validacion del Tab 1 (Nombre, Apellido, Telefono)
+
+  if(currentTab == 0)
+  {
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
 
 
-function nuevoApellido()
-{
-var id = document.getElementById("idcliente").value;
-var apellidoNuevo = document.getElementById("apellidoNuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoApellido.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("apellido",apellidoNuevo);
-requerimiento.addListener(respuestaNuevoApellido);
-requerimiento.ejecutar();
+        if (y[i].value == "" && y[i].name == "nombre") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false
+          valid = false;
+        }
+
+    }
+
+  }
+
+  // Validacion del Tab 2 (Localizacion)
+
+
+  if(currentTab == 1)
+  {
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
+
+        if (y[i].value == "0" && y[i].name == "estadodireccion") {
+          // and set the current valid status to false
+          valid = false;
+
+          document.getElementById("direccion").className += " invalid";
+
+        }
+
+    }
+
+  }
+
+
+
+    // Validacion del Tab 5 (Recorrido)
+
+
+
+      if(currentTab == 4)
+      {
+
+        valid = false;
+
+        for (i = 0; i < y.length; i++) {
+          // If a field is empty...
+
+            if (y[i].name == "checkbox" && y[i].checked) {
+              // and set the current valid status to false
+              valid = true;
+
+
+            }
+
+        }
+
+      }
+
+
+
+
+
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
 }
 
-
-function respuestaNuevoApellido(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
   }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoApellido = document.getElementById("apellidoNuevo").value;
-  document.getElementById("apellido").innerHTML = "Apellido: " + nuevoApellido;
-  document.getElementById("apellidoNuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Apellido");
-  }
-}
-
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Email
-
-
-function nuevoEmail()
-{
-var id = document.getElementById("idcliente").value;
-var emailNuevo = document.getElementById("emailNuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoEmail.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("email",emailNuevo);
-requerimiento.addListener(respuestaNuevoEmail);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoEmail(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoEmail = document.getElementById("emailNuevo").value;
-  document.getElementById("email").innerHTML = "Email: " + nuevoEmail;
-  document.getElementById("emailNuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Email");
-  }
-}
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Telefono 1
-
-
-function nuevoTelefono1()
-{
-var id = document.getElementById("idcliente").value;
-var telefono1Nuevo = document.getElementById("telefono1Nuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoTelefono1.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("telefono1",telefono1Nuevo);
-requerimiento.addListener(respuestaNuevoTelefono1);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoTelefono1(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoTelefono1 = document.getElementById("telefono1Nuevo").value;
-  document.getElementById("telefono1").innerHTML = "Telefono 1: " + nuevoTelefono1;
-  document.getElementById("telefono1Nuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Telefono 1");
-  }
-}
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Telefono 2
-
-
-function nuevoTelefono2()
-{
-var id = document.getElementById("idcliente").value;
-var telefono2Nuevo = document.getElementById("telefono2Nuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoTelefono2.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("telefono2",telefono2Nuevo);
-requerimiento.addListener(respuestaNuevoTelefono2);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoTelefono2(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoTelefono2 = document.getElementById("telefono2Nuevo").value;
-  document.getElementById("telefono2").innerHTML = "Telefono 2: " + nuevoTelefono2;
-  document.getElementById("telefono2Nuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Telefono 2");
-  }
-}
-
-
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nueva Razon Social
-
-
-
-function nuevaRazonSocial()
-{
-var id = document.getElementById("idcliente").value;
-var razonsocialNueva = document.getElementById("razonsocialNueva").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevaRazonSocial.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("razonsocial",razonsocialNueva);
-requerimiento.addListener(respuestaNuevaRazonSocial);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevaRazonSocial(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevaRazonSocial = document.getElementById("razonsocialNueva").value;
-  document.getElementById("razonsocial").innerHTML = "Razon Social: " + nuevaRazonSocial;
-  document.getElementById("razonsocialNueva").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar la Razon Social");
-  }
-}
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo CUIT
-
-
-function nuevoCUIT()
-{
-var id = document.getElementById("idcliente").value;
-var cuitNuevo = document.getElementById("cuitNuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoCUIT.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("cuit",cuitNuevo);
-requerimiento.addListener(respuestaNuevoCUIT);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoCUIT(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoCUIT = document.getElementById("cuitNuevo").value;
-  document.getElementById("cuit").innerHTML = "CUIT: " + nuevoCUIT;
-  document.getElementById("cuitNuevo").value = "";
-  }
-else
-  {
-  alert("Error al modificar el Telefono 2");
-  }
-}
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nueva Condicion
-
-
-
-function nuevaCondicion()
-{
-var id = document.getElementById("idcliente").value;
-var condicionNueva = document.getElementById("condicionNueva").value;
-
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevaCondicion.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("condicion",condicionNueva);
-requerimiento.addListener(respuestaNuevaCondicion);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevaCondicion(respuesta)
-{
-
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-
-
-if(estado)
-  {
-  var nuevaCondicion = document.getElementById("condicionNueva").value;
-  document.getElementById("condicion").innerHTML = "Condicion: " + nuevaCondicion;
-  }
-else
-  {
-  alert("Error al modificar la Condicion");
-  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
 }
