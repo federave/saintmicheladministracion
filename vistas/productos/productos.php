@@ -64,7 +64,7 @@ session_start();
 
 
       <div name="tabProductos" class="row divTabProductos">
-        <?php  // require('modificarproducto/modificarproducto.php'); ?>
+        <?php   require('modificarproducto/modificarproducto.php'); ?>
       </div>
 
 

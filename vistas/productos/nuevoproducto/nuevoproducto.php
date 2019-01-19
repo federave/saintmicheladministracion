@@ -16,9 +16,24 @@
   $tipoProductosNombre[0] = "Retornable";
   $tipoProductosNombre[1] = "Descartable";
 
+  $insumosId = array();
+  $insumosId[0] = 1;
+  $insumosId[1] = 2;
+  $insumosId[2] = 3;
+  $insumosId[3] = 4;
+  $insumosId[4] = 5;
+  $insumosId[5] = 6;
+
+  $insumosNombre = array();
+  $insumosNombre[0] = "Tapa";
+  $insumosNombre[1] = "Etiqueta";
+  $insumosNombre[2] = "Precinto";
+  $insumosNombre[3] = "Manija";
+  $insumosNombre[4] = "sss";
+  $insumosNombre[5] = "sss";
 
 
-   ?>
+  ?>
 
 
 
@@ -62,25 +77,25 @@
           </div>
 
 
-          <div class="funkyradio">
+            <div class="funkyradio">
 
-            <?php
-            $k=0;
-            while($k<count($tipoProductosId))
-                {
-                ?>
+              <?php
+              $k=0;
+              while($k<count($tipoProductosId))
+                  {
+                  ?>
 
-               <div class="funkyradio-info text-center">
-                   <input <?php if($k==0) echo "checked"; ?> type="radio" name="radio" id="radio<?php echo $k; ?>" value="<?php echo $tipoProductosId[$k]; ?>"/>
-                   <label for="radio<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $tipoProductosNombre[$k]; ?></label>
-               </div>
+                 <div class="funkyradio-info text-center">
+                     <input <?php if($k==0) echo "checked"; ?> type="radio" name="radio" id="radio<?php echo $k; ?>" value="<?php echo $tipoProductosId[$k]; ?>"/>
+                     <label for="radio<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $tipoProductosNombre[$k]; ?></label>
+                 </div>
 
 
-             <?php
-               $k++;
-               }
-           ?>
-         </div>
+               <?php
+                 $k++;
+                 }
+             ?>
+           </div>
 
          <br>
 
@@ -95,6 +110,38 @@
           <div class="text-center">
             <h1>Insumos</h1>
           </div>
+
+          <div style="height:500px; overflow-y: scroll;">
+
+          <div class="funkyradio">
+
+
+            <?php
+            $k=0;
+            while($k<count($insumosId))
+                {
+                ?>
+
+               <div class="funkyradio-info text-center">
+                   <input type="checkbox" name="insumos" id="insumo<?php echo $k; ?>" value="<?php echo $insumosId[$k]; ?>"/>
+                   <label for="insumo<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $insumosNombre[$k]; ?></label>
+               </div>
+
+
+             <?php
+               $k++;
+               }
+           ?>
+
+
+
+            <br>
+            <br>
+
+          </div>
+        </div>
+
+
 
           <br>
           <br>
