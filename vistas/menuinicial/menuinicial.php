@@ -55,7 +55,17 @@ session_start();
   </div>
   <a href="../mapas/mapa/mapa.php">Mapas</a>
   <a href="../productos/productos.php">Productos</a>
+  <div class="dropdown">
+    <button class="dropbtn">Acuerdos
+      <i class="fa fa-caret-down"></i>
+    </button>
 
+    <div class="dropdown-content">
+      <a href="../acuerdos/comercios/comercios.php">Comercios</a>
+      <a href="../acuerdos/alquilerescomodatos/alquilerescomodatos.php">Alquileres/Comodatos</a>
+      <a href="../acuerdos/bonificaciones/bonificaciones.php">Bonificaciones</a>
+    </div>
+  </div>
   <a href="../pruebas/prueba.php">Pruebas</a>
   <a href="#about">About</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">☰</a>

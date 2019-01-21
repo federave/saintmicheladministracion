@@ -1,0 +1,196 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.regFormAcuerdoBonificacionesNuevo {
+  background-color: #ffffff;
+  margin: 50px auto;
+  font-family: Raleway;
+  padding: 5%;
+  width: 60%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;
+  color:black;
+}
+
+h4 {
+  text-align: center;
+  color:black;
+  font-size: 28px;
+}
+
+.tabAcuerdoBonificacionesNuevo h5{
+  text-align: left;
+  color:black;
+  font-size: 22px;
+}
+
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+  color:black;
+
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tabAcuerdoBonificacionesNuevo {
+  display: none;
+  color:black;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtnAcuerdoBonificacionesNuevo {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.stepAcuerdoBonificacionesNuevo {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.stepAcuerdoBonificacionesNuevo.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.stepAcuerdoBonificacionesNuevo.finish {
+  background-color: #4CAF50;
+}
+
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+
+}
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+
+}
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+.col-40 {
+  float: left;
+  width: 40%;
+  margin-top: 6px;
+}
+.col-35 {
+  float: left;
+  width: 35%;
+  margin-top: 6px;
+}
+.col-30 {
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.contenedoracuerdobonificacionesnuevo {
+  width: 80%;
+  margin:auto;
+  background-color: black;
+  padding: 2%;
+}
+
+
+
+
+  @media only screen and (max-width: 600px) {
+  .contenedoracuerdobonificacionesnuevo {
+    width: 100%;
+  }
+
+   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-75{
+     width: 80%;
+     margin-top:20px;
+     margin-left: 10%;
+   }
+
+}
+
+
+
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+  .contenedoracuerdobonificacionesnuevo {
+    width: 90%;
+
+  }
+
+
+}
+
+
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+  .contenedoracuerdobonificacionesnuevo {
+    width: 80%;
+
+  }
+
+
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px){
+  .contenedoracuerdobonificacionesnuevo {
+    width: 70%;
+
+  }
+
+}
+
+@media only screen  and (min-width: 1300px) {
+  .contenedoracuerdobonificacionesnuevo {
+    width: 60%;
+  }
+
+}

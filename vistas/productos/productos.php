@@ -49,7 +49,7 @@ session_start();
 
       <br>
 
-      <div name="tabProductos" class="row divTab" style="display:block">
+      <div name="tabProductos" class="row divTabProductos" style="display:block">
 
         <?php require('verproductos/verproductos.php'); ?>
 

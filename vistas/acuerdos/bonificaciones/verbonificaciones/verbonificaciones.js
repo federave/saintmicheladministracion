@@ -4,22 +4,22 @@
 //////////////Ver Producto
 
 
-function verProducto(id)
+function verBonificacion(id)
 {
 
-if(document.getElementById("divProducto"+id).style.display=="block")
+if(document.getElementById("divBonificacion"+id).style.display=="block")
   {
-  document.getElementById("divProducto"+id).style.display="none";
-  document.getElementById("buttonVerProducto"+id).innerHTML="Ver";
+  document.getElementById("divBonificacion"+id).style.display="none";
+  document.getElementById("buttonVerBonificacion"+id).innerHTML="Ver";
   }
 else
   {
 
 
   var requerimiento = new RequerimientoGet();
-  requerimiento.setURL("verproductos/ajax/datosProducto.php");
+  requerimiento.setURL("verbonificaciones/ajax/datosBonificacion.php");
   requerimiento.addParametro("id",id);
-  requerimiento.addListener(respuestaVerDatosProducto);
+  requerimiento.addListener(respuestaVerDatosBonificacion);
   requerimiento.ejecutar();
 
 
@@ -28,21 +28,10 @@ else
 }
 
 
-function respuestaVerDatosProducto(respuesta)
+function respuestaVerDatosBonificacion(respuesta)
 {
+xmlDoc = crearXML(respuesta.target.responseText);
 
-
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 if(estado)
@@ -50,29 +39,35 @@ if(estado)
 
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-  var litros = xmlDoc.getElementsByTagName("Litros")[0].childNodes[0].nodeValue;
-  var nombreTipoProducto = xmlDoc.getElementsByTagName("NombreTipoProducto")[0].childNodes[0].nodeValue;
+  var cantidadMinima = xmlDoc.getElementsByTagName("CantidadMinima")[0].childNodes[0].nodeValue;
+  var cantidadMaxima = xmlDoc.getElementsByTagName("CantidadMaxima")[0].childNodes[0].nodeValue;
+  var porcentaje = xmlDoc.getElementsByTagName("Porcentaje")[0].childNodes[0].nodeValue;
 
-  document.getElementById("nombreProducto"+id).innerHTML = "Nombre: " + nombre;
-  document.getElementById("litrosProducto"+id).innerHTML = "Litros: " + litros;
-  document.getElementById("tipoProducto"+id).innerHTML = "Tipo Producto: " + nombreTipoProducto;
+  document.getElementById("nombreBonificacion"+id).innerHTML = "Nombre: " + nombre;
+  document.getElementById("cantidadMinimaBonificacion"+id).innerHTML = "Cantidad Minima: " + cantidadMinima;
+  if(cantidadMaxima>0)
+    document.getElementById("cantidadMaximaBonificacion"+id).innerHTML = "Cantidad Maxima: " + cantidadMaxima;
+  else
+    document.getElementById("cantidadMaximaBonificacion"+id).innerHTML = "Cantidad Maxima: No Tiene";
+
+  document.getElementById("porcentajeBonificacion"+id).innerHTML = "Porcentaje: " + (porcentaje*100)+"%";
 
 
-  var numero = xmlDoc.getElementsByTagName("NumeroInsumos")[0].childNodes[0].nodeValue;
-  document.getElementById("insumosProducto"+id).innerHTML="Insumos:";
+  var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
+  document.getElementById("productosBonificacion"+id).innerHTML="Productos:";
   for(i=0;i<numero;i++)
   {
-  var nombreInsumo=xmlDoc.getElementsByTagName("NombreInsumo")[i].childNodes[0].nodeValue;
-  document.getElementById("insumosProducto"+id).innerHTML += " " + nombreInsumo;
+  var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
+  document.getElementById("productosBonificacion"+id).innerHTML += " " + nombreProducto;
   }
 
 
-  document.getElementById("divProducto"+id).style.display="block";
-  document.getElementById("buttonVerProducto"+id).innerHTML="Ocultar";
+  document.getElementById("divBonificacion"+id).style.display="block";
+  document.getElementById("buttonVerBonificacion"+id).innerHTML="Ocultar";
   }
 else
   {
-  alert("Error al cargar datos del producto");
+  alert("Error al cargar datos de la bonificacion");
   }
 
 }
@@ -88,7 +83,7 @@ function modificarProducto(id)
 {
 
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("verproductos/ajax/datosProducto.php");
+requerimiento.setURL("verbonificaciones/ajax/datosBonificacion.php");
 requerimiento.addParametro("id",id);
 requerimiento.addListener(respuestaDatosProducto);
 requerimiento.ejecutar();

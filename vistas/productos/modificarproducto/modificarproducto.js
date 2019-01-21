@@ -10,21 +10,23 @@
 //////////////Nuevo nombre
 
 
-function nuevoNombre()
+function nombreProductoNuevo()
 {
-var id = document.getElementById("idcliente").value;
-var nombreNuevo = document.getElementById("nombreNuevo").value;
+var id = document.getElementById("idProducto").value;
+var nombreNuevo = document.getElementById("nombreProductoNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoNombre.php");
+requerimiento.setURL("modificarproducto/ajax/nombreNuevo.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("nombre",nombreNuevo);
-requerimiento.addListener(respuestaNuevoNombre);
+requerimiento.addListener(respuestaNombreNuevo);
 requerimiento.ejecutar();
 }
 
 
-function respuestaNuevoNombre(respuesta)
+function respuestaNombreNuevo(respuesta)
 {
+
+
 if (window.DOMParser)
   {
   parser = new DOMParser();
@@ -39,10 +41,10 @@ else // Internet Explorer
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  var nuevoNombre = document.getElementById("nombreNuevo").value;
-  document.getElementById("nombre").innerHTML = "Nombre: " + nuevoNombre;
-  document.getElementById("nombreNuevo").value = "";
-
+  var nombreProductoNuevo = document.getElementById("nombreProductoNuevo").value;
+  document.getElementById("nombreProducto").innerHTML = "Nombre: " + nombreProductoNuevo;
+  document.getElementById("alertaNombreProductoNuevo").style.display = "block";
+  
   }
 else
   {

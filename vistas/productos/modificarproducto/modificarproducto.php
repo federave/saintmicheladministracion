@@ -36,7 +36,7 @@
 
   ?>
 
-  <input type="hidden" name="idproducto" id="idproducto" value="">
+  <input type="hidden" name="idProducto" id="idProducto" value="">
 
   <div class="contenedormp">
     <br>
@@ -59,6 +59,13 @@
         <input type="button" class="boton btn btn-primary" id="" name="" onclick="nombreProductoNuevo()" style="height:50px;font-size:18px" value="Modificar">
       </div>
     </div>
+    <br>
+
+    <div style="display:none" class="text-center alerta alert alert-success alert-dismissible" id="alertaNombreProductoNuevo">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Nombre Modificado!</strong>
+    </div>
+
     <br>
 
     <!-- Litros -->
@@ -98,7 +105,7 @@
           while($k<count($tipoProductosId))
               {
               ?>
-              <option value="<?php echo $tipoProductosId[$k];?>" style="color:black;font-size:20px;">
+              <option id="idTipoProductoNuevo<?php echo $tipoProductosId[$k];?>" value="<?php echo $tipoProductosId[$k];?>" style="color:black;font-size:20px;">
                 <?php echo $tipoProductosNombre[$k];?>
               </option>
             <?php

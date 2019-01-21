@@ -18,7 +18,7 @@
 
   ?>
 
-  <div class="contenedorvp borde">
+  <div class="contenedorvp">
     <br>
     <br>
     <div class="row text-center">
@@ -55,10 +55,21 @@
                 </div>
               </div>
 
-               <div class="rowvp" id="divProducto<?php echo $productosId[$k];?>" style="display:none">
+               <div class="rowvp text-center" id="divProducto<?php echo $productosId[$k];?>" style="display:none">
 
-                 <label style="font-size:20px;color:black">Nombre: <?php echo $productosNombre[$k];?></label>
-                 <label style="font-size:20px;color:black">Litros: "5"</label>
+                 <style media="screen">
+                   .etiqueta{font-size:20px;color:black;}
+                 </style>
+                 <label id="nombreProducto<?php echo $productosId[$k];?>" class="etiqueta">Nombre: </label>
+                 <br>
+                 <label id="litrosProducto<?php echo $productosId[$k];?>" class="etiqueta">Litros: </label>
+                 <br>
+                 <label id="tipoProducto<?php echo $productosId[$k];?>" class="etiqueta">TipoProducto: </label>
+                 <br>
+                 <label id="insumosProducto<?php echo $productosId[$k];?>" class="etiqueta">Insumos: </label>
+
+
+
 
 
 
@@ -74,7 +85,6 @@
      </ul>
 
 
-     <!-- Ver Producto -->
 
 
 

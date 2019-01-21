@@ -52,7 +52,23 @@ class RequerimientoGet {
 
 
 
+function crearXML(dato)
+{
 
+  if (window.DOMParser)
+    {
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(dato, "text/xml");
+    }
+  else // Internet Explorer
+    {
+    xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+    xmlDoc.async = false;
+    xmlDoc.loadXML(dato);
+    }
+
+    return xmlDoc;
+}
 
 
 
