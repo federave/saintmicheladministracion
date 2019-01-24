@@ -135,8 +135,5 @@ document.getElementById("divProductosAcuerdoPreciosProductos").innerHTML += div;
 
 function quitarModificarProducto(idProducto)
 {
-
-
-
-
+document.getElementById("divAgregarProducto"+idProducto).style.display = "none";
 }

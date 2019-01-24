@@ -55,6 +55,8 @@ session_start();
   </div>
   <a href="../mapas/mapa/mapa.php">Mapas</a>
   <a href="../productos/productos.php">Productos</a>
+  <a href="../maquinas/maquinas.php">Maquinas</a>
+
   <div class="dropdown">
     <button class="dropbtn">Acuerdos
       <i class="fa fa-caret-down"></i>
