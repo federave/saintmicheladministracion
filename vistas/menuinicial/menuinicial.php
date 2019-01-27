@@ -64,7 +64,8 @@ session_start();
 
     <div class="dropdown-content">
       <a href="../acuerdos/preciosproductos/preciosproductos.php">Precios Productos</a>
-      <a href="../acuerdos/alquilerescomodatos/alquilerescomodatos.php">Alquileres/Comodatos</a>
+      <a href="../acuerdos/alquileres/alquileres.php">Alquileres</a>
+      <a href="../acuerdos/comodatos/comodatos.php">Comodatos</a>
       <a href="../acuerdos/bonificaciones/bonificaciones.php">Bonificaciones</a>
     </div>
   </div>

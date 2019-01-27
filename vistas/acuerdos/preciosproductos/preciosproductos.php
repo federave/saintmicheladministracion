@@ -42,8 +42,8 @@ session_start();
       <div class="row" style="width:90%;margin-left:5%" >
         <ul class="nav nav-tabs">
           <li name="liPreciosProductos" class="active"><a class="items" href="#" onclick="seleccionarTabPreciosProductos(0)">Ver Acuerdos</a></li>
-          <li name="liPreciosProductos" class="li"><a class="items" href="#" onclick="seleccionarTabPreciosProductos(1)">Modificar Acuerdo</a></li>
-          <li name="liPreciosProductos" class="li"><a class="items" href="#" onclick="seleccionarTabPreciosProductos(2)">Nuevo Acuerdo</a></li>
+          <li name="liPreciosProductos" class="li"><a class="items" href="#" onclick="seleccionarTabPreciosProductos(1)">Nuevo Acuerdo</a></li>
+          <li name="liPreciosProductos" class="li"><a class="items" href="#" onclick="seleccionarTabPreciosProductos(2)">Modificar Acuerdo</a></li>
         </ul>
       </div>
 
@@ -52,14 +52,11 @@ session_start();
       <div name="tabPreciosProductos" class="row divTabPreciosProductos" style="display:block">
         <?php require('veracuerdos/veracuerdos.php'); ?>
       </div>
-
-      <div name="tabPreciosProductos" class="row divTabPreciosProductos">
-        <?php  require('modificaracuerdo/modificaracuerdo.php'); ?>
-      </div>
-
-
       <div name="tabPreciosProductos" class="row divTabPreciosProductos">
         <?php  require('nuevoacuerdo/nuevoacuerdo.php'); ?>
+      </div>
+      <div name="tabPreciosProductos" class="row divTabPreciosProductos">
+        <?php  require('modificaracuerdo/modificaracuerdo.php'); ?>
       </div>
 
       <footer style="height:500px"></footer>

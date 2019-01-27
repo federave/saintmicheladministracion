@@ -93,7 +93,7 @@
                <input name="precioProducto<?php echo $k;?>AcuerdoPreciosProductosNuevo" id="precioProducto<?php echo $k; ?>AcuerdoPreciosProductosNuevo" class="text-center" style="color:black;display:none" type="number" min="0" value="0" step="0.1" placeholder="Precio" oninput="this.className = ''" >
 
                <div class="div">
-                 
+
                </div>
 
 
@@ -147,3 +147,4 @@
 
 
   </div>
+</div>

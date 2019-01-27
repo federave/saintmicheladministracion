@@ -25,11 +25,11 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $xml->addTag("Id",$id);
     $xml->addTag("Nombre","Dispenser Frio Calor");
+    $xml->addTag("Marca","Ushuaia");
     $xml->addTag("Capacidad",0);
     $xml->addTag("IdTipoMaquina",1);
     $xml->addTag("TipoMaquina","Dispenser Frio Calor");
 
-    $xml->addTag("Marca","Ushuaia");
 
 
 

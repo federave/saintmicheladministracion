@@ -4,10 +4,11 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["acuerdoNuevo"]))
+if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["marca"]))
   {
   $aux=false;
 
@@ -16,25 +17,16 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     {
     $conexion = $conector->getConexion();
 
-
     /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
+    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
     $aux = $conexion->query($sql);
     */
-
-    $acuerdoNuevo=$_GET["acuerdoNuevo"];
-    echo "<script>alert('$acuerdoNuevo')</script>";
-
-    redirect('../../../vistas/acuerdos/preciosproductos/preciosproductos.php');
-
-
-
-
     $aux = true;
 
     $conector->cerrarConexion();
     }
 
+  $xml->addTag("Estado",$aux);
 
   }
 else
@@ -42,7 +34,8 @@ else
   redirect($_SESSION["raiz"] . '/vistas/errores/errorusuario.php');
   }
 
-
+$xml->closeTag("Respuesta");
+echo $xml->toString();
 
 
 

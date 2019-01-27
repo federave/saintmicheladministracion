@@ -7,7 +7,7 @@ include_once($_SESSION["raiz"] . '/modelo/conector.php');
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["acuerdoNuevo"]))
+if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["alquilerNuevo"]))
   {
   $aux=false;
 
@@ -22,12 +22,12 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     $aux = $conexion->query($sql);
     */
 
-    $acuerdoNuevo=$_GET["acuerdoNuevo"];
-    echo "<script>alert('$acuerdoNuevo')</script>";
-
-    redirect('../../../vistas/acuerdos/preciosproductos/preciosproductos.php');
+    $alquilerNuevo=$_GET["alquilerNuevo"];
+    echo "<script>alert('$alquilerNuevo')</script>";
 
 
+
+    redirect('../../../vistas/acuerdos/alquileres/alquileres.php');
 
 
     $aux = true;

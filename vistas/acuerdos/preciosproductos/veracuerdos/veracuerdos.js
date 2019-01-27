@@ -104,7 +104,7 @@ if(estado)
 
   }
 
-  seleccionarTabPreciosProductos(1);
+  seleccionarTabPreciosProductos(2);
 
   }
 else

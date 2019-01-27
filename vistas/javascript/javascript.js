@@ -1,4 +1,41 @@
 
+
+
+
+/////////////////////////////////
+
+
+
+function crearAlerta(texto,tipoalerta)
+{
+var a = "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
+var strong = "<strong>" + texto + "</strong>";
+var alerta = "<div class=\"text-center alerta alert alert-"+tipoalerta+" alert-dismissible\">"+a+strong+"</div>";
+return alerta;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+
+
+
+
 class RequerimientoGet {
 
 

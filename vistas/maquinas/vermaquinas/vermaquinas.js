@@ -91,20 +91,19 @@ var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
 
+  var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
+  var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
+  var marca = xmlDoc.getElementsByTagName("Marca")[0].childNodes[0].nodeValue;
+  var capacidad = xmlDoc.getElementsByTagName("Capacidad")[0].childNodes[0].nodeValue;
+  var tipoMaquina = xmlDoc.getElementsByTagName("TipoMaquina")[0].childNodes[0].nodeValue;
+  var idTipoMaquina = xmlDoc.getElementsByTagName("IdTipoMaquina")[0].childNodes[0].nodeValue;
 
-      var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
-      var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-      var marca = xmlDoc.getElementsByTagName("Marca")[0].childNodes[0].nodeValue;
-      var capacidad = xmlDoc.getElementsByTagName("Capacidad")[0].childNodes[0].nodeValue;
-      var tipoMaquina = xmlDoc.getElementsByTagName("TipoMaquina")[0].childNodes[0].nodeValue;
+  document.getElementById("nombreMaquina").innerHTML = "Nombre: " + nombre;
+  document.getElementById("marcaMaquina").innerHTML = "Marca: " + marca;
+  document.getElementById("capacidadMaquina").innerHTML = "Capacidad: " + capacidad;
+  document.getElementById("tipoMaquina").innerHTML = "Tipo Maquina: " + tipoMaquina;
 
-      document.getElementById("nombreMaquina"+id).innerHTML = "Nombre: " + nombre;
-      document.getElementById("marcaMaquina"+id).innerHTML = "Marca: " + marca;
-      document.getElementById("capacidadMaquina"+id).innerHTML = "Capacidad: " + capacidad;
-      document.getElementById("tipoMaquina"+id).innerHTML = "Tipo Maquina: " + tipoMaquina;
-
-
-  document.getElementById("idTipoProductoNuevo"+id).selected=true;
+  document.getElementById("idMaquina").value = id;
 
 
 
