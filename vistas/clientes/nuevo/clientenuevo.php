@@ -54,7 +54,37 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
 
 
     <div class="tab">
-      <h5>Dirección</h5>
+
+      <div class="text-center">
+        <h1 style="color:black">Sede</h1>
+      </div>
+
+      <br>
+
+      <div class="row text-center">
+        <label for="nombreSede" style="color:black;font-size:18px">Nombre Sede</label>
+        <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreSede" id="nombreSede">
+      </div>
+      <br>
+      <div class="text-center">
+        <h2 style="color:black">Responsable Sede</h2>
+      </div>
+      <br>
+      <div class="row text-center">
+        <label for="nombreResponsableSede" style="color:black;font-size:18px">Nombre</label>
+        <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreResponsableSede" id="nombreResponsableSede">
+      </div>
+      <br>
+      <div class="row text-center">
+        <label for="apellidoResponsableSede" style="color:black;font-size:18px">Apellido</label>
+        <input style="color:black" placeholder="Apellido" type="text" oninput="this.className = ''" name="apellidoResponsableSede" id="apellidoResponsableSede">
+      </div>
+
+
+      <br>
+      <div class="text-center">
+        <h2 style="color:black">Dirección Sede</h2>
+      </div>
 
       <?php require 'buscador/buscador.php'; ?>
       <br>
