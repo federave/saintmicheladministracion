@@ -16,6 +16,8 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
 
   <link rel="stylesheet" href="clientenuevo.css">
   <script src="clientenuevo.js"></script>
+  <script src="../../javascript/javascript.js"></script>
+
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 </head>
@@ -38,6 +40,10 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
     <br>
 
 
+    <input type="hidden" name="clienteNuevo" id="clienteNuevo" value="">
+
+
+
     <?php require('datosbasicos/datosbasicos.php'); ?>
     <?php require('sede/sede.php'); ?>
     <?php require('asignacion/asignacion.php'); ?>
@@ -56,7 +62,9 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
       <span class="stepClienteNuevo"></span>
       <span class="stepClienteNuevo"></span>
       <span class="stepClienteNuevo"></span>
+      <span class="stepClienteNuevo"></span>
     </div>
+
   </form>
 </div>
 

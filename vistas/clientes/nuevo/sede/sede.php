@@ -39,6 +39,22 @@ $partidosNombre[4] = "City Bell";
     <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreSede" id="nombreSede">
   </div>
   <br>
+  <div class="row text-center">
+    <label for="telefonoSede" style="color:black;font-size:18px">Telefono</label>
+    <input style="color:black" placeholder="Telefono" type="text" oninput="this.className = ''" name="telefonoSede" id="telefonoSede">
+  </div>
+  <br>
+  <div class="row text-center">
+    <label for="emailSede" style="color:black;font-size:18px">Email</label>
+    <input style="color:black" placeholder="Email" type="text" oninput="this.className = ''" name="emailSede" id="emailSede">
+  </div>
+  <br>
+  <div class="row text-center">
+    <label for="observacionSede" style="color:black;font-size:18px">Observacion</label>
+    <input style="color:black" placeholder="Observacion" type="text" oninput="this.className = ''" name="observacionSede" id="observacionSede">
+  </div>
+  <br>
+
   <div class="text-center">
     <h2 style="color:black">Responsable Sede</h2>
   </div>
@@ -53,6 +69,15 @@ $partidosNombre[4] = "City Bell";
     <input style="color:black" placeholder="Apellido" type="text" oninput="this.className = ''" name="apellidoResponsableSede" id="apellidoResponsableSede">
   </div>
 
+  <br>
+  <br>
+
+</div>
+
+
+
+
+<div class="tabClienteNuevo">
 
   <br>
   <div class="text-center">
@@ -62,12 +87,12 @@ $partidosNombre[4] = "City Bell";
   <br>
   <div class="row text-center">
     <label for="calleSede" style="color:black;font-size:18px">Calle</label>
-    <input style="color:black" placeholder="Calle" type="text" oninput="this.className = ''" name="calleSede" id="calleSede">
+    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Calle" type="text" oninput="this.className = ''" name="calleSede" id="calleSede">
   </div>
   <br>
   <div class="row text-center">
-    <label for="numeroSede" style="color:black;font-size:18px">Calle</label>
-    <input style="color:black" placeholder="Numero" type="text" oninput="this.className = ''" name="numeroSede" id="numeroSede">
+    <label for="numeroSede" style="color:black;font-size:18px">Numero</label>
+    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Numero" type="text" oninput="this.className = ''" name="numeroSede" id="numeroSede">
   </div>
   <br>
   <div class="row text-center">
@@ -92,14 +117,14 @@ $partidosNombre[4] = "City Bell";
   <br>
   <div class="row text-center">
     <label for="partido" style="color:black;font-size:18px">Partido</label>
-    <select class="form-control text-center" id="partido" name="partido" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+    <select class="form-control text-center" id="partidoSede" name="partidoSede" style="height:50px;width:100%;font-size:20px;text-align-last:center">
       <?php
 
       $k=0;
       while($k<count($partidosId))
           {
           ?>
-          <option value="<?php echo $partidosId[$k];?>" style="color:black;font-size:20px;">
+          <option id="partido<?php echo $partidosId[$k];?>" value="<?php echo $partidosId[$k];?>" style="color:black;font-size:20px;">
             <?php echo $partidosNombre[$k];?>
           </option>
         <?php
@@ -117,16 +142,16 @@ $partidosNombre[4] = "City Bell";
     <button style="height:50px;font-size:18px;width:80%;margin:auto"type="button" class="boton btn btn-primary" id="" name="" onclick="localizar()" >Localizar</button>
     <br>
     <br>
-    <label id="localizacion" class="etiqueta">Estado: </label>
-    <input type="hidden" name="estadoLocalización" id="estadoLocalización" value="0">
+    <label id="localizacionSede" class="etiqueta">Estado: </label>
+    <input type="hidden" name="estadoLocalizacionSede" id="estadoLocalizacionSede" value="0">
     <br>
     <br>
-    <label id="etiquetaLatitud" class="etiqueta">Latitud: </label>
-    <input type="hidden" name="latitud" id="latitud" value="">
+    <label id="etiquetaLatitudSede" class="etiqueta">Latitud: </label>
+    <input type="hidden" name="latitudSede" id="latitudSede" value="">
     <br>
     <br>
-    <label id="etiquetaLongitud" class="etiqueta">Longitud: </label>
-    <input type="hidden" name="longitud" id="longitud" value="">
+    <label id="etiquetaLongitudSede" class="etiqueta">Longitud: </label>
+    <input type="hidden" name="longitudSede" id="longitudSede" value="">
   </div>
 
   <br>

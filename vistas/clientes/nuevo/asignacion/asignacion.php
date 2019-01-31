@@ -46,12 +46,12 @@ $asignacionesNombre[2] = "Vendedor";
 
   <div class="funkyradio">
    <div class="funkyradio-info">
-       <input checked type="radio" name="asignaciones" id="asignacion1" value="1" onclick="mostrarDiv(asignacion1.value)"/>
-       <label for="asignacion1" style="color:black">Empresa</label>
+       <input checked type="radio" name="asignaciones" id="asignacionEmpresa" value="1" onclick="mostrarDiv(asignacionEmpresa.value)"/>
+       <label for="asignacionEmpresa" style="color:black">Empresa</label>
    </div>
    <div class="funkyradio-info">
-       <input type="radio" name="asignaciones" id="asignacion2" value="2" onclick="mostrarDiv(asignacion2.value)"/>
-       <label for="asignacion2" style="color:black">Repartidor</label>
+       <input type="radio" name="asignaciones" id="asignacionRepartidor" value="2" onclick="mostrarDiv(asignacionRepartidor.value)"/>
+       <label for="asignacionRepartidor" style="color:black">Repartidor</label>
 
        <div class="form-group" id="divRepartidores" style="margin-top:10px;display:none">
          <label for="repartidores" style="color:black">Seleccionar</label>
@@ -72,8 +72,8 @@ $asignacionesNombre[2] = "Vendedor";
        </div>
    </div>
    <div class="funkyradio-info" >
-       <input type="radio" name="asignaciones" id="asignacion3" value="3" onclick="mostrarDiv(asignacion3.value)"/>
-       <label for="asignacion3" style="color:black">Vendedor</label>
+       <input type="radio" name="asignaciones" id="asignacionVendedor" value="3" onclick="mostrarDiv(asignacionVendedor.value)"/>
+       <label for="asignacionVendedor" style="color:black">Vendedor</label>
        <div class="form-group" id="divVendedores" style="margin-top:10px;display:none">
          <label for="sel1" style="color:black">Seleccionar</label>
          <select class="form-control text-center" id="vendedores" name="vendedores" style="height:50px;width:100%;font-size:20px;text-align-last:center">

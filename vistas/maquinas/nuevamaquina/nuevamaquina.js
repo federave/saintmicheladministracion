@@ -60,8 +60,7 @@ function nextPrevMaquina(n) {
         document.getElementById("maquinaNueva").value=xml.toString();
 
 
-        alert(xml.toString());
-
+      
 
 
 

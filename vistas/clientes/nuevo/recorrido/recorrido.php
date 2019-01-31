@@ -35,10 +35,13 @@ $diasNombre[5] = "Sabados";
     <script type="text/javascript">
     function mostrarDivRepartidoresDia(n)
     {
-    if(document.getElementById("divRepartidoresDia"+n).style.display == "none")
-      document.getElementById("divRepartidoresDia"+n).style.display = "block";
-    else
-      document.getElementById("divRepartidoresDia"+n).style.display = "none";
+    if(document.getElementById("estadoDivRepartidoresDia").value == "1")
+      {
+      if(document.getElementById("divRepartidoresDia"+n).style.display == "none")
+        document.getElementById("divRepartidoresDia"+n).style.display = "block";
+      else
+        document.getElementById("divRepartidoresDia"+n).style.display = "none";
+      }
     }
     </script>
 
@@ -48,6 +51,8 @@ $diasNombre[5] = "Sabados";
         {
         ?>
         <div class="funkyradio-info">
+
+            <input type="hidden" name="estadoDivRepartidoresDia" id="estadoDivRepartidoresDia" value="">
 
             <input onchange="mostrarDivRepartidoresDia(<?php echo $diasId[$k];?>)" type="checkbox" name="dias" id="dia<?php echo $diasId[$k];?>"/>
             <label for="dia<?php echo $diasId[$k];?>" style="color:black"><?php echo $diasNombre[$k];?></label>
