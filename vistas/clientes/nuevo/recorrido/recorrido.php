@@ -22,10 +22,7 @@ $diasNombre[4] = "Viernes";
 $diasNombre[5] = "Sabados";
 
 
-
-
-
- ?>
+?>
 
 
 
@@ -38,8 +35,6 @@ $diasNombre[5] = "Sabados";
     <script type="text/javascript">
     function mostrarDivRepartidoresDia(n)
     {
-    
-
     if(document.getElementById("divRepartidoresDia"+n).style.display == "none")
       document.getElementById("divRepartidoresDia"+n).style.display = "block";
     else

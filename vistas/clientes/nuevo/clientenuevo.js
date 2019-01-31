@@ -23,7 +23,7 @@ function nextPrevClienteNuevo(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tabClienteNuevo");
   // Exit the function if any field in the current tab is invalid:
-//  if (n == 1 && !validateFormClienteNuevo()) return false;
+  if (n == 1 && !validateFormClienteNuevo()) return false;
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
@@ -47,69 +47,50 @@ function validateFormClienteNuevo() {
   y = x[currentTab].getElementsByTagName("input");
 
 
-  // Validacion del Tab 1 (Nombre, Apellido, Telefono)
+  // Validacion del Tab 1 (Nombre)
 
   if(currentTab == 0)
   {
-    for (i = 0; i < y.length; i++) {
-      // If a field is empty...
-
-
-        if (y[i].value == "" && y[i].name == "nombre") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-
+  if(document.getElementById("nombre").value == "")
+    {
+    valid = false;
+    document.getElementById("nombre").className += " invalid";
     }
 
   }
 
-  // Validacion del Tab 2 (Localizacion)
+  // Validacion del Tab 2 (Calle,Numero)
 
 
   if(currentTab == 1)
   {
-    for (i = 0; i < y.length; i++) {
-      // If a field is empty...
-
-        if (y[i].value == "0" && y[i].name == "estadodireccion") {
-          // and set the current valid status to false
-          valid = false;
-
-          document.getElementById("direccion").className += " invalid";
-
-        }
-
+  if(document.getElementById("calleSede").value == "")
+    {
+    valid = false;
+    document.getElementById("calleSede").className += " invalid";
+    }
+  if(document.getElementById("numeroSede").value == "")
+    {
+    valid = false;
+    document.getElementById("numeroSede").className += " invalid";
     }
 
   }
 
 
 
-    // Validacion del Tab 5 (Recorrido)
+  // Validacion del Tab 3 (Asignacion)
+
+  if(currentTab == 2){}
 
 
+  // Validacion del Tab 4 (Recorrido)
 
-      if(currentTab == 4)
-      {
-
-        valid = false;
-
-        for (i = 0; i < y.length; i++) {
-          // If a field is empty...
-
-            if (y[i].name == "checkbox" && y[i].checked) {
-              // and set the current valid status to false
-              valid = true;
-
-
-            }
-
-        }
-
-      }
+  if(currentTab == 3)
+    {
+    valid = false;
+    for (i = 0; i < 6; i++){if(document.getElementById("dia"+i).checked){valid = true;}}
+    }
 
 
 
