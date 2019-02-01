@@ -37,37 +37,35 @@ session_start();
 
       <div class="row" style="width:90%;margin-left:5%" >
         <ul class="nav nav-tabs">
-          <li class="active"><a class="items" href="#" onclick="seleccionarTab(0)">Datos Principales</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(1)">Dirección</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(2)">Asignación</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(3)">Acuerdos</a></li>
-          <li class="li"><a class="items" href="#" onclick="seleccionarTab(4)">Seguimiento</a></li>
+          <li name="liModificarCliente" class="active"><a class="items" href="#" onclick="seleccionarTabModificarCliente(0)">Datos Principales</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(1)">Sedes</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Asignación</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Acuerdos</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(4)">Seguimiento</a></li>
         </ul>
       </div>
 
       <br>
 
-      <div class="row divTab " style="display:block">
-
+      <div name="divTabModificarCliente" class="row divTabModificarCliente " style="display:block">
         <?php require('datosprincipales/datosprincipales.php'); ?>
-
       </div>
 
 
 
-      <div class="row divTab">
-        <?php require('direccion/direccion.php'); ?>
+      <div name="divTabModificarCliente" class="row divTabModificarCliente">
+        <?php  require('sedes/sedes.php'); ?>
       </div>
 
 
-      <div  class="row divTab">
+      <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <?php require('asignacion/asignacion.php'); ?>
       </div>
-      <div  class="row divTab">
+      <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <p><strong>Note:</strong>Acuerdos</p>
       </div>
 
-      <div  class="row divTab">
+      <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <p><strong>Note:</strong>Seguimiento</p>
       </div>
 

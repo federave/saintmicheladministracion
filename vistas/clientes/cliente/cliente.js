@@ -1,8 +1,13 @@
 
-function seleccionarTab(n)
+function seleccionarTabModificarCliente(n)
 {
-  var x = document.getElementsByTagName("li");
-  var y = document.getElementsByClassName("divTab");
+
+
+  var x = document.getElementsByName("liModificarCliente");
+  var y = document.getElementsByName("divTabModificarCliente");
+
+
+
 
 
   for (i = 0; i < x.length; i++) {

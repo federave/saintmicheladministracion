@@ -68,6 +68,7 @@ if (currentTab >= x.length)
     xml.addTag("Cuit",document.getElementById("cuit").value);
     xml.addTag("IdCondicionIva",document.getElementById("condicion").value);
     xml.addTag("IdTipoCliente",document.getElementById("tipoCliente").value);
+    xml.addTag("IdRazonDeCompra",document.getElementById("razonDeCompra").value);
 
 
     ///Sede

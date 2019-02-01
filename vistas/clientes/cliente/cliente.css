@@ -1,6 +1,6 @@
 
 
-.li
+.liModificarCliente
 {
 margin-left: 10px;
 }
@@ -11,29 +11,9 @@ color:white;
 font-size:22px;
 }
 
-.divTab
+.divTabModificarCliente
 {
 width:90%;
 margin-left:5%;
 display:none;
-}
-
-
-
-/* Datos Principales */
-
-
-.horizontalDP
-{
-display:none;
-}
-
-
-
-
-
-@media screen and (max-width: 600px) {
-  .horizontalDP{
-    display:none;
-  }
 }

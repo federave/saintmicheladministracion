@@ -27,6 +27,21 @@ $tiposClienteNombre[4] = "Almacen";
 $tiposClienteNombre[5] = "Verduleria";
 
 
+$razonesDeCompraId = array();
+$razonesDeCompraId[0] = 1;
+$razonesDeCompraId[1] = 2;
+$razonesDeCompraId[2] = 3;
+$razonesDeCompraId[3] = 4;
+$razonesDeCompraId[4] = 5;
+$razonesDeCompraId[5] = 6;
+
+$razonesDeCompraNombre = array();
+$razonesDeCompraNombre[0] = "Pagina Web";
+$razonesDeCompraNombre[1] = "Facebook";
+$razonesDeCompraNombre[2] = "Instagram";
+$razonesDeCompraNombre[3] = "Por Recomendacion";
+$razonesDeCompraNombre[4] = "Por Ver Los Camiones,Camionetas";
+$razonesDeCompraNombre[5] = "Ninguno";
 
 
 
@@ -69,7 +84,7 @@ $tiposClienteNombre[5] = "Verduleria";
   </div>
   <br>
   <div class="row text-center">
-    <label for="condicion" style="color:black;font-size:18px">Condicion</label>
+    <label for="condicion" style="color:black;font-size:18px">Condición</label>
     <select class="form-control text-center" id="condicion" name="condicion" style="height:50px;width:100%;font-size:20px;text-align-last:center">
       <?php
       $k=0;
@@ -96,6 +111,24 @@ $tiposClienteNombre[5] = "Verduleria";
           ?>
           <option value="<?php echo $tiposClienteId[$k];?>" style="color:black;font-size:20px;">
             <?php echo $tiposClienteNombre[$k];?>
+          </option>
+        <?php
+          $k++;
+          }
+      ?>
+    </select>
+  </div>
+  <br>
+  <div class="row text-center">
+    <label for="razonDeCompra" style="color:black;font-size:18px">Razón de Compra</label>
+    <select class="form-control text-center" id="razonDeCompra" name="razonDeCompra" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+      <?php
+      $k=0;
+      while($k<count($razonesDeCompraId))
+          {
+          ?>
+          <option value="<?php echo $razonesDeCompraId[$k];?>" style="color:black;font-size:20px;">
+            <?php echo $razonesDeCompraNombre[$k];?>
           </option>
         <?php
           $k++;
