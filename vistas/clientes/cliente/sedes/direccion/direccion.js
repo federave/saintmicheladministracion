@@ -1,112 +1,4 @@
 
-
-
-function seleccionarTabModificarSede(n)
-{
-var x = document.getElementsByName("liModificarSede");
-var y = document.getElementsByName("divTabModificarSede");
-
-for (i = 0; i < x.length; i++)
-  {
-  x[i].className -= " active";
-  y[i].style.display = "none";
-  }
-
-x[n].className += " active";
-y[n].style.display = "block";
-}
-
-
-///////////////////////////////////////////////////////////////
-//////////////Go to Modificar Maquina
-
-
-function modificarSede(idCliente,idSede)
-{
-
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/datosSede.php");
-requerimiento.addParametro("idCliente",idCliente);
-requerimiento.addParametro("idSede",idSede);
-
-requerimiento.addListener(respuestaDatosSede);
-requerimiento.ejecutar();
-
-}
-
-
-
-function respuestaDatosSede(respuesta)
-{
-
-xmlDoc = crearXML(respuesta.target.responseText);
-
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-
-if(estado)
-  {
-
-  var idCliente = xmlDoc.getElementsByTagName("IdCliente")[0].childNodes[0].nodeValue;
-  var idSede = xmlDoc.getElementsByTagName("IdSede")[0].childNodes[0].nodeValue;
-  var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-  var telefono = xmlDoc.getElementsByTagName("Telefono")[0].childNodes[0].nodeValue;
-  var email = xmlDoc.getElementsByTagName("Email")[0].childNodes[0].nodeValue;
-  var observacion = xmlDoc.getElementsByTagName("Observacion")[0].childNodes[0].nodeValue;
-  var nombreResponsable = xmlDoc.getElementsByTagName("NombreResponsable")[0].childNodes[0].nodeValue;
-  var apellidoResponsable = xmlDoc.getElementsByTagName("ApellidoResponsable")[0].childNodes[0].nodeValue;
-
-/*
-  var calle = xmlDoc.getElementsByTagName("Calle")[0].childNodes[0].nodeValue;
-  var numero = xmlDoc.getElementsByTagName("Numero")[0].childNodes[0].nodeValue;
-  var entre1 = xmlDoc.getElementsByTagName("Entre1")[0].childNodes[0].nodeValue;
-  var entre2 = xmlDoc.getElementsByTagName("Entre2")[0].childNodes[0].nodeValue;
-  var departamento = xmlDoc.getElementsByTagName("Departamento")[0].childNodes[0].nodeValue;
-  var piso = xmlDoc.getElementsByTagName("Piso")[0].childNodes[0].nodeValue;
-  var estadoLocalizacion = xmlDoc.getElementsByTagName("EstadoLocalizacion")[0].childNodes[0].nodeValue;
-  var latitud = xmlDoc.getElementsByTagName("Latitud")[0].childNodes[0].nodeValue;
-  var longitud = xmlDoc.getElementsByTagName("Longitud")[0].childNodes[0].nodeValue;
-*/
-
-  document.getElementById("idSede").value = idSede;
-  document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
-  document.getElementById("telefono").innerHTML = "Telefono: " + telefono;
-  document.getElementById("email").innerHTML = "Email: " + email;
-  document.getElementById("observacion").innerHTML = "Observacion: " + observacion;
-  document.getElementById("nombreResponsable").innerHTML = "Nombre Responsable: " + nombreResponsable;
-  document.getElementById("apellidoResponsable").innerHTML = "Apellido Responsable: " + apellidoResponsable;
-
-/*
-  document.getElementById("calle").innerHTML = "Calle: " + calle;
-  document.getElementById("numero").innerHTML = "Numero: " + numero;
-  document.getElementById("entre1").innerHTML = "Entre 1: " + entre1;
-  document.getElementById("entre2").innerHTML = "Entre 2: " + entre2;
-  document.getElementById("departamento").innerHTML = "Departamento: " + departamento;
-  document.getElementById("piso").innerHTML = "Piso: " + piso;
-*/
-
-  document.getElementById("tituloSede").innerHTML= "Sede: "+nombre;
-
-  document.getElementById("divSede").style.display = "block";
-
-
-
-
-
-  }
-else
-  {
-  alert("Error al cargar datos de la maquina");
-  }
-
-}
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////
 //////////////Nuevo Calle
 
@@ -116,7 +8,7 @@ function nuevaCalle()
   var id = document.getElementById("idDireccion").value;
 var calleNueva = document.getElementById("calleNueva").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevaCalle.php");
+requerimiento.setURL("direccion/ajax/nuevaCalle.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("calle",calleNueva);
 requerimiento.addListener(respuestaNuevaCalle);
@@ -166,7 +58,7 @@ function nuevoNumero()
   var id = document.getElementById("idDireccion").value;
 var numeroNuevo = document.getElementById("numeroNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoNumero.php");
+requerimiento.setURL("direccion/ajax/nuevoNumero.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("numero",numeroNuevo);
 requerimiento.addListener(respuestaNuevoNumero);
@@ -216,7 +108,7 @@ function nuevoEntre1()
   var id = document.getElementById("idDireccion").value;
 var entre1Nuevo = document.getElementById("entre1Nuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoEntre1.php");
+requerimiento.setURL("direccion/ajax/nuevoEntre1.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("entre1",entre1Nuevo);
 requerimiento.addListener(respuestaNuevoEntre1);
@@ -262,7 +154,7 @@ function nuevoEntre2()
   var id = document.getElementById("idDireccion").value;
 var entre1Nuevo = document.getElementById("entre2Nuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoEntre2.php");
+requerimiento.setURL("direccion/ajax/nuevoEntre2.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("entre2",entre2Nuevo);
 requerimiento.addListener(respuestaNuevoEntre2);
@@ -309,7 +201,7 @@ function nuevoDepartamento()
   var id = document.getElementById("idDireccion").value;
 var departamentoNuevo = document.getElementById("departamentoNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoDepartamento.php");
+requerimiento.setURL("direccion/ajax/nuevoDepartamento.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("departamento",departamentoNuevo);
 requerimiento.addListener(respuestaNuevoDepartamento);
@@ -354,7 +246,7 @@ function nuevoPiso()
   var id = document.getElementById("idDireccion").value;
 var pisoNuevo = document.getElementById("pisoNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoPiso.php");
+requerimiento.setURL("direccion/ajax/nuevoPiso.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("piso",pisoNuevo);
 requerimiento.addListener(respuestaNuevoPiso);
@@ -401,7 +293,7 @@ function nuevoPartido()
 var id = document.getElementById("idDireccion").value;
 var partidoNuevo = document.getElementById("partidoNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("sedes/ajax/nuevoPartido.php");
+requerimiento.setURL("direccion/ajax/nuevoPartido.php");
 requerimiento.addParametro("id",id);
 requerimiento.addParametro("partido",partidoNuevo);
 requerimiento.addListener(respuestaNuevoPartido);

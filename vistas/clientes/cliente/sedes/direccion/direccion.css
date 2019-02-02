@@ -15,23 +15,7 @@ input[type=text], select, textarea {
 }
 
 
-.liModificarSede
-{
-margin-left: 10px;
-}
 
-.items
-{
-color:white;
-font-size:22px;
-}
-
-.divTabModificarSede
-{
-width:90%;
-margin-left:5%;
-display:none;
-}
 
 label {
   padding: 12px 12px 12px 0;
@@ -71,11 +55,7 @@ input[type=submit]:hover {
   margin-top: 6px;
 
 }
-.col-60 {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-}
+
 .col-50 {
   float: left;
   width: 50%;
@@ -96,20 +76,15 @@ input[type=submit]:hover {
   width: 30%;
   margin-top: 6px;
 }
-.col-20 {
-  float: left;
-  width: 20%;
-  margin-top: 6px;
-}
 /* Clear floats after the columns */
-.row:after {
+.rowdp:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.contenedorsedes {
-  width: 50%;
+.contenedordp {
+  width: 80%;
   margin:auto;
 }
 
@@ -133,79 +108,55 @@ input[type=submit]:hover {
 
 
 
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25,.col-30,.col-35, .col-40,.col-50,.col-75, input[type=submit] {
+    width: 80%;
+    margin-top:20px;
+    margin-left: 10%;
+  }
+  .contenedordp {
+    width: 90%;
+  }
 
+  .rowloc1 {
+    width: 90%;
+  }
 
-
-  @media only screen and (max-width: 600px) {
-  .contenedorsedes {
+  .rowloc2 {
     width: 100%;
   }
 
-   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-60,.col-75{
-     width: 80%;
-     margin-top:20px;
-     margin-left: 10%;
-   }
-
-     .rowloc1 {
-       width: 90%;
-     }
-
-     .rowloc2 {
-       width: 100%;
-     }
-
-     .mapa{
-       height:300px;
-     }
-
-
-
-}
-
-
-
-
-@media only screen and (min-width: 600px) and (max-width: 800px){
-  .contenedorsedes {
-    width: 90%;
-
+  .mapa{
+    height:300px;
   }
 
 
-    .rowloc1 {
-      width: 80%;
-    }
-
-    .rowloc2 {
-      width: 80%;
-    }
-
-    .mapa{
-      height:400px;
-    }
-
-
 }
 
-
-
-@media only screen and (min-width: 800px) and (max-width: 1000px){
-  .contenedorsedes {
+@media screen and (max-width: 1000px) {
+  .dpcontainer {
     width: 80%;
-
   }
 
+  .rowloc1 {
+    width: 80%;
+  }
 
+  .rowloc2 {
+    width: 80%;
+  }
+
+  .mapa{
+    height:400px;
+  }
+
+}
+
+@media screen and (max-width: 1300px) {
+  .dpcontainer {
+    width: 70%;
+  }
   .rowloc1 {
     width: 60%;
   }
@@ -216,35 +167,12 @@ input[type=submit]:hover {
     height:500px;
   }
 
-
 }
 
-@media only screen  and (min-width: 1000px) and (max-width: 1300px){
-  .contenedorsedes {
-    width: 70%;
-
-  }
-
-
-  .rowloc1 {
-    width: 50%;
-  }
-
-  .rowloc2 {
+@media screen and (max-width: 1500px) {
+  .dpcontainer {
     width: 60%;
   }
-  .mapa{
-    height:500px;
-  }
-}
-
-@media only screen  and (min-width: 1300px) {
-  .contenedorsedes {
-    width: 60%;
-  }
-
-
-
   .rowloc1 {
     width: 50%;
   }
