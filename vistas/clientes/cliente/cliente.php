@@ -39,9 +39,8 @@ session_start();
         <ul class="nav nav-tabs">
           <li name="liModificarCliente" class="active"><a class="items" href="#" onclick="seleccionarTabModificarCliente(0)">Datos Principales</a></li>
           <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(1)">Sedes</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Asignación</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Acuerdos</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(4)">Seguimiento</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Acuerdo Precios Productos</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Seguimiento</a></li>
         </ul>
       </div>
 
@@ -58,9 +57,7 @@ session_start();
       </div>
 
 
-      <div name="divTabModificarCliente" class="row divTabModificarCliente">
-        <?php require('asignacion/asignacion.php'); ?>
-      </div>
+    
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <p><strong>Note:</strong>Acuerdos</p>
       </div>

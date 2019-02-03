@@ -107,7 +107,7 @@ $idCliente=1;
   </div>
 
   <div name="divTabModificarSede" class="row divTabModificarSede">
-    <?php //require('asignacion/asignacion.php'); ?>
+    <?php require('asignacion/asignacion.php'); ?>
   </div>
 
   <div name="divTabModificarSede" class="row divTabModificarSede">
