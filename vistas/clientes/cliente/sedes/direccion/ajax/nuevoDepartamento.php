@@ -6,7 +6,7 @@ include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
 
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["departamento"]))
+if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["idCliente"]) && isset($_GET["idSede"]) && isset($_GET["departamento"]))
   {
   $xml = new XML();
   $aux=false;

@@ -14,6 +14,11 @@ for (i = 0; i < x.length; i++)
 
 x[n].className += " active";
 y[n].style.display = "block";
+
+/*
+alert(2);
+window.scrollTo(0,1000);
+*/
 }
 
 
@@ -31,6 +36,7 @@ requerimiento.addParametro("idSede",idSede);
 
 requerimiento.addListener(respuestaDatosSede);
 requerimiento.ejecutar();
+
 
 }
 

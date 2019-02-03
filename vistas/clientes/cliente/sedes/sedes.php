@@ -83,12 +83,16 @@ $idCliente=1;
 
 
   <div class="row" style="width:90%;margin-left:5%" >
+
+
     <ul class="nav nav-tabs">
-      <li name="liModificarSede" class="active"><a class="items" href="#" onclick="seleccionarTabModificarSede(0)">Datos</a></li>
-      <li name="liModificarSede" class="li"><a class="items" href="#" onclick="seleccionarTabModificarSede(1)">Direccion</a></li>
-      <li name="liModificarSede" class="li"><a class="items" href="#" onclick="seleccionarTabModificarSede(2)">Asignación</a></li>
-      <li name="liModificarSede" class="li"><a class="items" href="#" onclick="seleccionarTabModificarSede(3)">Acuerdos</a></li>
+      <li name="liModificarSede" class="active"><a class="items" onclick="seleccionarTabModificarSede(0)">Datos</a></li>
+      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(1)">Direccion</a></li>
+      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(2)">Asignación</a></li>
+      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(3)">Acuerdos</a></li>
     </ul>
+
+
   </div>
 
   <br>
@@ -98,9 +102,8 @@ $idCliente=1;
   <div name="divTabModificarSede" class="row divTabModificarSede" style="display:block">
     <?php require('datossede/datossede.php'); ?>
   </div>
-
   <div name="divTabModificarSede" class="row divTabModificarSede">
-    <?php  //require('direccion/direccion.php'); ?>
+    <?php require('direccion/direccion.php'); ?>
   </div>
 
   <div name="divTabModificarSede" class="row divTabModificarSede">

@@ -77,110 +77,106 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 /* Clear floats after the columns */
-.rowdp:after {
+.row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.contenedordp {
-  width: 80%;
+.contenedordireccion {
+  width: 75%;
   margin:auto;
 }
-
-.rowloc1 {
-  width: 50%;
-  margin:auto;
-}
-
-.rowloc2 {
-  width: 80%;
-  margin:auto;
-}
-
 
 .mapa{
   width:100%;
   height:500px;
 }
 
+.botonLocalizar{
+  height:50px;
+  font-size:18px;
+  width:80%;
+  margin:auto;
+}
+
+.contenedorlocalizacion{
+  width:50%;
+  margin:auto;
+}
 
 
 
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25,.col-30,.col-35, .col-40,.col-50,.col-75, input[type=submit] {
+
+
+
+
+/*Media Querie*/
+@media only screen and (min-width : 150px) and (max-width : 730px){
+  .col-25,.col-30,.col-35, .col-40,.col-50,.col-75, input{
     width: 80%;
     margin-top:20px;
     margin-left: 10%;
   }
-  .contenedordp {
-    width: 90%;
-  }
-
-  .rowloc1 {
-    width: 90%;
-  }
-
-  .rowloc2 {
-    width: 100%;
-  }
 
   .mapa{
+    width:100%;
     height:300px;
   }
 
 
+  .contenedordireccion {
+    width: 100%;
+  }
+
+  .contenedorlocalizacion{
+    width:100%;
+  }
+
+
 }
 
-@media screen and (max-width: 1000px) {
-  .dpcontainer {
-    width: 80%;
-  }
-
-  .rowloc1 {
-    width: 80%;
-  }
-
-  .rowloc2 {
-    width: 80%;
-  }
-
+@media only screen and (min-width : 730px) and (max-width : 1200px){
   .mapa{
+    width:100%;
     height:400px;
   }
 
-}
+  .contenedordireccion {
+    width: 90%;
+  }
 
-@media screen and (max-width: 1300px) {
-  .dpcontainer {
-    width: 70%;
-  }
-  .rowloc1 {
-    width: 60%;
-  }
-  .rowloc2 {
-    width: 70%;
-  }
-  .mapa{
-    height:500px;
-  }
+    .contenedorlocalizacion{
+      width:80%;
+    }
 
 }
 
-@media screen and (max-width: 1500px) {
-  .dpcontainer {
-    width: 60%;
+@media only screen and (min-width : 1200px) and (max-width : 1600px){
+  .mapa{
+    width:100%;
+    height:500px;
   }
-  .rowloc1 {
-    width: 50%;
+  .contenedordireccion {
+    width: 85%;
   }
 
-  .rowloc2 {
-    width: 60%;
+  .contenedorlocalizacion{
+    width:70%;
   }
+}
+
+
+@media only screen and (min-width : 1600px) and (max-width : 2000px){
   .mapa{
+    width:100%;
     height:500px;
+  }
+  .contenedordireccion {
+    width: 80%;
+  }
+  .contenedorlocalizacion{
+    width:50%;
   }
 }
