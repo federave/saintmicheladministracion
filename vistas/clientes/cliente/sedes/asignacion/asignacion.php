@@ -5,43 +5,79 @@
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/asignacion/asignacion.js"></script>
 
   <?php
-  $idCliente=1;
+
   $idAsignacion=1;
-  $idRepartidorAsignado=-1;
-  $estadoLunes=false;
-  $idRepartidorLunes=-1;
-  $estadoMartes=false;
-  $idRepartidorMartes=-1;
-  $estadoMiercoles=false;
-  $idRepartidorMiercoles=-1;
-  $estadoJueves=false;
-  $idRepartidorJueves=-1;
-  $estadoViernes=false;
-  $idRepartidorViernes=-1;
-  $estadoSabado=false;
-  $idRepartidorSabado=-1;
+  $idRepartidorAsignado=2;
+  $idVendedorAsignado=2;
 
-  $repartidoresVendedores = array();
-  $repartidoresVendedores[0] = "Narciso";
-  $repartidoresVendedores[1] = "Javier";
-  $repartidoresVendedores[2] = "Mariano";
-  $repartidoresVendedores[3] = "Gustavo";
+  $estadoDia = array();
+  $estadoDia[0] = true;
+  $estadoDia[1] = false;
+  $estadoDia[2] = false;
+  $estadoDia[3] = true;
+  $estadoDia[4] = false;
+  $estadoDia[5] = false;
 
-  $repartidoresEmpresa = array();
-  $repartidoresEmpresa[0] = "Emanuel";
-  $repartidoresEmpresa[1] = "Osmar";
-  $repartidoresEmpresa[2] = "Matias";
+  $idRepartidorDia = array();
+  $idRepartidorDia[0] = 2;
+  $idRepartidorDia[1] = 2;
+  $idRepartidorDia[2] = -1;
+  $idRepartidorDia[3] = 2;
+  $idRepartidorDia[4] = -1;
+  $idRepartidorDia[5] = -1;
 
 
-  $vendedores = array();
-  $vendedores[0] = "Ricardo";
-  $vendedores[1] = "Marilina";
+  $repartidoresVendedoresId = array();
+  $repartidoresVendedoresId[0] = 1;
+  $repartidoresVendedoresId[1] = 2;
+  $repartidoresVendedoresId[2] = 3;
+  $repartidoresVendedoresId[3] = 4;
+  $repartidoresVendedoresNombre = array();
+  $repartidoresVendedoresNombre[0] = "Narciso";
+  $repartidoresVendedoresNombre[1] = "Javier";
+  $repartidoresVendedoresNombre[2] = "Mariano";
+  $repartidoresVendedoresNombre[3] = "Gustavo";
+
+  $repartidoresId = array();
+  $repartidoresId[0] = 1;
+  $repartidoresId[1] = 2;
+  $repartidoresId[2] = 3;
+  $repartidoresNombre = array();
+  $repartidoresNombre[0] = "Emanuel";
+  $repartidoresNombre[1] = "Osmar";
+  $repartidoresNombre[2] = "Matias";
+
+
+  $vendedoresId = array();
+  $vendedoresId[0] = 1;
+  $vendedoresId[1] = 2;
+  $vendedoresNombre = array();
+  $vendedoresNombre[0] = "Ricardo";
+  $vendedoresNombre[1] = "Marilina";
+
+
+  $diasId = array();
+  $diasId[0] = 1;
+  $diasId[1] = 2;
+  $diasId[2] = 3;
+  $diasId[3] = 4;
+  $diasId[4] = 5;
+  $diasId[5] = 6;
+
+  $diasNombre = array();
+  $diasNombre[0] = "Lunes";
+  $diasNombre[1] = "Martes";
+  $diasNombre[2] = "Miercoles";
+  $diasNombre[3] = "Jueves";
+  $diasNombre[4] = "Viernes";
+  $diasNombre[5] = "Sabados";
+
   ?>
 
 
   <input type="hidden" name="idAsignacion" id="idAsignacion" value="<?php echo $idAsignacion; ?>">
 
-  <div class="contenedorA borde">
+  <div class="contenedorasignacion">
     <br>
     <br>
 
@@ -62,39 +98,39 @@
      <div class="funkyradio-info">
          <input <?php if($idAsignacion==2) echo "checked"; ?> type="radio" name="asignacion" id="repartidor" value="2" onclick="mostrarDiv(repartidor.value)"/>
          <label for="repartidor" style="color:black">Repartidor</label>
-
-         <div class="form-group" id="divRepartidores" style="margin-top:10px;display:none">
+         <?php  if($idAsignacion==2) $display="block";else $display="none";?>
+         <div class="form-group" id="divRepartidores" style="margin-top:10px;display:<?php echo $display; ?>">
            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
            <select placeholder="" class="form-control" id="repartidorSeleccionado" style="height:50px;width:100%;font-size:20px;text-align-last:center">
              <?php
              $k=0;
-             while($k<count($repartidoresVendedores))
+             while($k<count($repartidoresVendedoresId))
                  {
                  ?>
-                 <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                   <?php echo $repartidoresVendedores[$k];?>
+                 <option value="<?php echo $repartidoresVendedoresId[$k];?>" <?php if($idRepartidorAsignado == $repartidoresVendedoresId[$k]) echo "selected";?> style="color:black;font-size:20px;text-align-last:center">
+                   <?php echo $repartidoresVendedoresNombre[$k];?>
                  </option>
                <?php
                  $k++;
                  }
              ?>
            </select>
-
          </div>
      </div>
      <div class="funkyradio-info" >
          <input <?php if($idAsignacion==3) echo "checked"; ?> type="radio" name="asignacion" id="vendedor" value="3" onclick="mostrarDiv(vendedor.value)"/>
          <label for="vendedor" style="color:black">Vendedor</label>
-         <div class="form-group" id="divVendedores" style="margin-top:10px;display:none">
+         <?php  if($idAsignacion==3) $display="block";else $display="none";?>
+         <div class="form-group" id="divVendedores" style="margin-top:10px;display:<?php echo $display;?>">
            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
            <select placeholder="" class="form-control" id="vendedorSeleccionado" style="height:50px;width:100%;font-size:20px;text-align-last:center">
              <?php
              $k=0;
-             while($k<count($vendedores))
+             while($k<count($vendedoresId))
                  {
                  ?>
-                 <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                   <?php echo $vendedores[$k];?>
+                 <option value="<?php echo $vendedoresId[$k];?>" <?php if($idVendedorAsignado == $vendedoresId[$k]) echo "selected";?> style="color:black;font-size:20px;text-align-last:center">
+                   <?php echo $vendedoresNombre[$k];?>
                  </option>
                <?php
                  $k++;
@@ -114,16 +150,26 @@
      {
      document.getElementById("divRepartidores").style.display = "none";
      document.getElementById("divVendedores").style.display = "none";
+     document.getElementById("estadoDivRepartidoresDia").value = "1";
+     for(i=1;i<7;i++)
+       {
+       if(document.getElementById("dia"+i).checked)
+        document.getElementById("divRepartidoresDia"+i).style.display="block";
+       }
      }
    else if(valor == 2)
      {
      document.getElementById("divRepartidores").style.display = "block";
      document.getElementById("divVendedores").style.display = "none";
+     document.getElementById("estadoDivRepartidoresDia").value = "0";
+     for(i=1;i<7;i++){document.getElementById("divRepartidoresDia"+i).style.display="none";}
      }
     else if(valor == 3)
      {
      document.getElementById("divRepartidores").style.display = "none";
      document.getElementById("divVendedores").style.display = "block";
+     document.getElementById("estadoDivRepartidoresDia").value = "0";
+     for(i=1;i<7;i++){document.getElementById("divRepartidoresDia"+i).style.display="none";}
      }
     else{}
     }
@@ -138,241 +184,53 @@
 
 
       <script type="text/javascript">
-        function mostrarDivLunes()
+      function mostrarDivRepartidoresDia(n)
+      {
+      if(document.getElementById("estadoDivRepartidoresDia").value == "1")
         {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-          if(document.getElementById("divLunesEmpresa").style.display=="block")
-            document.getElementById("divLunesEmpresa").style.display="none";
-          else
-            document.getElementById("divLunesEmpresa").style.display="block";
-          }
+        if(document.getElementById("divRepartidoresDia"+n).style.display == "none")
+          document.getElementById("divRepartidoresDia"+n).style.display = "block";
+        else
+          document.getElementById("divRepartidoresDia"+n).style.display = "none";
         }
-        function mostrarDivMartes()
-        {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-            if(document.getElementById("divMartesEmpresa").style.display=="block")
-              document.getElementById("divMartesEmpresa").style.display="none";
-            else
-              document.getElementById("divMartesEmpresa").style.display="block";            }
-        }
-        function mostrarDivMiercoles()
-        {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-            if(document.getElementById("divMiercolesEmpresa").style.display=="block")
-              document.getElementById("divMiercolesEmpresa").style.display="none";
-            else
-              document.getElementById("divMiercolesEmpresa").style.display="block";            }
-        }
-        function mostrarDivJueves()
-        {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-            if(document.getElementById("divJuevesEmpresa").style.display=="block")
-              document.getElementById("divJuevesEmpresa").style.display="none";
-            else
-              document.getElementById("divJuevesEmpresa").style.display="block";            }
-        }
-        function mostrarDivViernes()
-        {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-            if(document.getElementById("divViernesEmpresa").style.display=="block")
-              document.getElementById("divViernesEmpresa").style.display="none";
-            else
-              document.getElementById("divViernesEmpresa").style.display="block";            }
-        }
-        function mostrarDivSabado()
-        {
-        if(document.getElementById("idAsignacion").value == 1)
-          {
-            if(document.getElementById("divSabadoEmpresa").style.display=="block")
-              document.getElementById("divSabadoEmpresa").style.display="none";
-            else
-              document.getElementById("divSabadoEmpresa").style.display="block";
-                        }
-        }
+      }
       </script>
 
+      <?php
+      $k=0;
+      while($k<count($diasId))
+          {
+          ?>
+          <div class="funkyradio-info">
 
+              <input type="hidden" name="estadoDivRepartidoresDia" id="estadoDivRepartidoresDia" value="">
 
-      <div class="funkyradio-info">
-
-          <input type="checkbox" name="dias" id="lunes" onclick="mostrarDivLunes()" />
-          <label for="lunes" style="color:black">Lunes</label>
-          <br>
-          <div class="form-group" id="divLunesEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="lunesEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
+              <input <?php if($estadoDia[$k]) echo "checked";?> onchange="mostrarDivRepartidoresDia(<?php echo $diasId[$k];?>)" type="checkbox" name="dias" id="dia<?php echo $diasId[$k];?>"/>
+              <label for="dia<?php echo $diasId[$k];?>" style="color:black"><?php echo $diasNombre[$k];?></label>
+              <?php  if($estadoDia[$k] && $idAsignacion==1) $display="block";else $display="none";?>
+              <div class="form-group" id="divRepartidoresDia<?php echo $diasId[$k];?>" style="margin-top:10px;display:<?php echo $display ?>">
+              <label for="repartidoresDia<?php echo $diasId[$k];?>" style="color:black">Seleccionar</label>
+              <select class="form-control text-center" id="repartidoresDia<?php echo $diasId[$k];?>" name="repartidoresDia<?php echo $diasId[$k];?>" style="height:50px;width:100%;font-size:20px;text-align-last:center">
                 <?php
-                  $k++;
-                  }
-              ?>
-            </select>
-          </div>
-      </div>
-      <div class="funkyradio-info">
-          <input type="checkbox" name="dias" id="martes" onclick="mostrarDivMartes()"/>
-          <label for="martes" style="color:black">Martes</label>
-
-          <div class="form-group" id="divMartesEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="martesEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-              $repartidoresEmpresa = array();
-              $repartidoresEmpresa[0] = "Emanuel";
-              $repartidoresEmpresa[1] = "Osmar";
-              $repartidoresEmpresa[2] = "Matias";
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
-                <?php
-                  $k++;
-                  }
-              ?>
-            </select>
+                $k2=0;
+                while($k2<count($repartidoresId))
+                    {
+                    ?>
+                    <option <?php if($idRepartidorDia[$k] == $repartidoresId[$k2]) echo "selected"; ?> value="<?php echo $repartidoresId[$k2];?>" style="color:black;font-size:20px;">
+                      <?php echo $repartidoresNombre[$k2];?>
+                    </option>
+                  <?php
+                    $k2++;
+                    }
+                ?>
+              </select>
+            </div>
           </div>
 
-
-      </div>
-      <div class="funkyradio-info">
-          <input type="checkbox" name="dias" id="miercoles" onclick="mostrarDivMiercoles()"/>
-          <label for="miercoles" style="color:black">Miercoles</label>
-
-          <div class="form-group" id="divMiercolesEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="miercolesEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-              $repartidoresEmpresa = array();
-              $repartidoresEmpresa[0] = "Emanuel";
-              $repartidoresEmpresa[1] = "Osmar";
-              $repartidoresEmpresa[2] = "Matias";
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
-                <?php
-                  $k++;
-                  }
-              ?>
-            </select>
-          </div>
-
-
-
-
-
-      </div>
-      <div class="funkyradio-info">
-          <input type="checkbox" name="dias" id="jueves" onclick="mostrarDivJueves()"/>
-          <label for="jueves" style="color:black">Jueves</label>
-
-          <div class="form-group" id="divJuevesEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="juevesEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-              $repartidoresEmpresa = array();
-              $repartidoresEmpresa[0] = "Emanuel";
-              $repartidoresEmpresa[1] = "Osmar";
-              $repartidoresEmpresa[2] = "Matias";
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
-                <?php
-                  $k++;
-                  }
-              ?>
-            </select>
-          </div>
-
-
-
-
-      </div>
-      <div class="funkyradio-info">
-          <input type="checkbox" name="dias" id="viernes" onclick="mostrarDivViernes()"/>
-          <label for="viernes" style="color:black">Viernes</label>
-
-          <div class="form-group" id="divViernesEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="viernesEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-              $repartidoresEmpresa = array();
-              $repartidoresEmpresa[0] = "Emanuel";
-              $repartidoresEmpresa[1] = "Osmar";
-              $repartidoresEmpresa[2] = "Matias";
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
-                <?php
-                  $k++;
-                  }
-              ?>
-            </select>
-          </div>
-
-
-
-
-      </div>
-      <div class="funkyradio-info">
-          <input type="checkbox" name="dias" id="sabado" onclick="mostrarDivSabado()"/>
-          <label for="sabado" style="color:black">Sábado</label>
-
-
-          <div class="form-group" id="divSabadoEmpresa" style="display:none">
-            <label style="text-align:center;font-size:20px;color:black">Seleccionar Repartidor</label>
-            <select placeholder="" class="form-control" id="sabadoEmpresa" style="height:50px;width:100%;font-size:20px;text-align-last:center">
-              <?php
-              $repartidoresEmpresa = array();
-              $repartidoresEmpresa[0] = "Emanuel";
-              $repartidoresEmpresa[1] = "Osmar";
-              $repartidoresEmpresa[2] = "Matias";
-              $k=0;
-              while($k<count($repartidoresEmpresa))
-                  {
-                  ?>
-                  <option value="<?php echo $k;?>" style="color:black;font-size:20px;text-align-last:center">
-                    <?php echo $repartidoresEmpresa[$k];?>
-                  </option>
-                <?php
-                  $k++;
-                  }
-              ?>
-            </select>
-          </div>
-
-
-
-
-      </div>
-
+        <?php
+          $k++;
+          }
+      ?>
       <br>
       <br>
 
@@ -382,8 +240,13 @@
     <div class="row text-center">
       <button style="font-size:20px; width:50%;height:50px" type="button" class="btn btn-success" onclick="nuevaAsignacion()" >Guardar</button>
     </div>
+    <br>
+    <br>
+    <div id="alertaAsignacionNueva">
 
-
+    </div>
+    <br>
+    <br>
     </div>
 
 

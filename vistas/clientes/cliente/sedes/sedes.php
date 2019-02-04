@@ -29,6 +29,7 @@ $partidosNombre[3] = "Gonnet";
 $partidosNombre[4] = "City Bell";
 
 $idCliente=1;
+
 ?>
 
 <div class="contenedorsedes">

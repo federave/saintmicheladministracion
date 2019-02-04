@@ -15,7 +15,10 @@ session_start();
         <link rel="stylesheet" href="cliente.css">
         <script src="cliente.js"></script>
         <script src="../../javascript/javascript.js"></script>
-
+        <!-- Para las alertas  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!--        -->
     </head>
 
     <body>
@@ -28,6 +31,11 @@ session_start();
       <br>
       <br>
 
+
+
+      <input type="hidden" name="idCliente" id="idCliente" value="1">
+
+
       <div class="row">
         <div class="text-center">
           <h1>Cliente ... </h1>
@@ -39,8 +47,9 @@ session_start();
         <ul class="nav nav-tabs">
           <li name="liModificarCliente" class="active"><a class="items" href="#" onclick="seleccionarTabModificarCliente(0)">Datos Principales</a></li>
           <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(1)">Sedes</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Acuerdo Precios Productos</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Seguimiento</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Nueva Sede</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Acuerdo Precios Productos</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(4)">Seguimiento</a></li>
         </ul>
       </div>
 
@@ -50,14 +59,15 @@ session_start();
         <?php require('datosprincipales/datosprincipales.php'); ?>
       </div>
 
-
-
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <?php  require('sedes/sedes.php'); ?>
       </div>
 
+      <div name="divTabModificarCliente" class="row divTabModificarCliente">
+        <?php  require('nuevasede/nuevasede.php'); ?>
+      </div>
 
-    
+
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <p><strong>Note:</strong>Acuerdos</p>
       </div>
