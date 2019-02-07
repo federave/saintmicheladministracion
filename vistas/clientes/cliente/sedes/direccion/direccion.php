@@ -172,11 +172,25 @@ $partidosNombre[4] = "City Bell";
     <br>
     <br>
     <br>
-    <div class="mapa" id="mapa" ></div>
+    <div class="row" style="margin:auto;width:90%;">
+      <div class="mapaSede" id="mapaSede" >
+      </div>
+    </div>
+
+
+
+    <script >
+
+    function cargarMapaSede()
+      {
+      document.getElementById("mapaSede").appendChild(document.getElementById("mapa"));
+      }
+
+
+    </script>
+
   </div>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb-EOuDpEW26-ToL5tD55CsLhSmI9y7ig&callback=initMap">
-  </script>
+
 
 
   <br>

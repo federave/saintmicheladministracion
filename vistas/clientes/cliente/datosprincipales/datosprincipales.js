@@ -25,23 +25,15 @@ requerimiento.ejecutar();
 
 function respuestaNuevoNombre(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+xmlDoc = crearXML(respuesta.target.responseText);
+
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
   var nuevoNombre = document.getElementById("nombreNuevo").value;
   document.getElementById("nombre").innerHTML = "Nombre: " + nuevoNombre;
   document.getElementById("nombreNuevo").value = "";
+  document.getElementById("alertaNombreNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
 
   }
 else
@@ -50,51 +42,6 @@ else
   }
 }
 
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Apellido
-
-
-function nuevoApellido()
-{
-var id = document.getElementById("idcliente").value;
-var apellidoNuevo = document.getElementById("apellidoNuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoApellido.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("apellido",apellidoNuevo);
-requerimiento.addListener(respuestaNuevoApellido);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoApellido(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoApellido = document.getElementById("apellidoNuevo").value;
-  document.getElementById("apellido").innerHTML = "Apellido: " + nuevoApellido;
-  document.getElementById("apellidoNuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Apellido");
-  }
-}
 
 
 
@@ -118,23 +65,15 @@ requerimiento.ejecutar();
 
 function respuestaNuevoEmail(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+  xmlDoc = crearXML(respuesta.target.responseText);
+
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
   var nuevoEmail = document.getElementById("emailNuevo").value;
   document.getElementById("email").innerHTML = "Email: " + nuevoEmail;
   document.getElementById("emailNuevo").value = "";
+  document.getElementById("alertaEmailNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
 
   }
 else
@@ -149,89 +88,35 @@ else
 //////////////Nuevo Telefono 1
 
 
-function nuevoTelefono1()
+function nuevoTelefono()
 {
 var id = document.getElementById("idcliente").value;
-var telefono1Nuevo = document.getElementById("telefono1Nuevo").value;
+var telefonoNuevo = document.getElementById("telefonoNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoTelefono1.php");
+requerimiento.setURL("datosprincipales/ajax/nuevoTelefono.php");
 requerimiento.addParametro("id",id);
-requerimiento.addParametro("telefono1",telefono1Nuevo);
-requerimiento.addListener(respuestaNuevoTelefono1);
+requerimiento.addParametro("telefono",telefonoNuevo);
+requerimiento.addListener(respuestaNuevoTelefono);
 requerimiento.ejecutar();
 }
 
 
-function respuestaNuevoTelefono1(respuesta)
+function respuestaNuevoTelefono(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+xmlDoc = crearXML(respuesta.target.responseText);
+
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  var nuevoTelefono1 = document.getElementById("telefono1Nuevo").value;
-  document.getElementById("telefono1").innerHTML = "Telefono 1: " + nuevoTelefono1;
-  document.getElementById("telefono1Nuevo").value = "";
+  var nuevoTelefono = document.getElementById("telefonoNuevo").value;
+  document.getElementById("telefono").innerHTML = "Telefono: " + nuevoTelefono;
+  document.getElementById("telefonoNuevo").value = "";
+  document.getElementById("alertaTelefonoNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
 
   }
 else
   {
   alert("Error al modificar el Telefono 1");
-  }
-}
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Telefono 2
-
-
-function nuevoTelefono2()
-{
-var id = document.getElementById("idcliente").value;
-var telefono2Nuevo = document.getElementById("telefono2Nuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoTelefono2.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("telefono2",telefono2Nuevo);
-requerimiento.addListener(respuestaNuevoTelefono2);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoTelefono2(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoTelefono2 = document.getElementById("telefono2Nuevo").value;
-  document.getElementById("telefono2").innerHTML = "Telefono 2: " + nuevoTelefono2;
-  document.getElementById("telefono2Nuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Telefono 2");
   }
 }
 
@@ -259,23 +144,15 @@ requerimiento.ejecutar();
 
 function respuestaNuevaRazonSocial(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+  xmlDoc = crearXML(respuesta.target.responseText);
+
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
   var nuevaRazonSocial = document.getElementById("razonsocialNueva").value;
   document.getElementById("razonsocial").innerHTML = "Razon Social: " + nuevaRazonSocial;
   document.getElementById("razonsocialNueva").value = "";
+  document.getElementById("alertaRazonSocialNueva").innerHTML = crearAlerta("Nombre Modificado!","success");
 
   }
 else
@@ -305,23 +182,16 @@ requerimiento.ejecutar();
 
 function respuestaNuevoCUIT(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+  xmlDoc = crearXML(respuesta.target.responseText);
+
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
   var nuevoCUIT = document.getElementById("cuitNuevo").value;
   document.getElementById("cuit").innerHTML = "CUIT: " + nuevoCUIT;
   document.getElementById("cuitNuevo").value = "";
+  document.getElementById("alertaCuitNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+
   }
 else
   {
@@ -347,7 +217,7 @@ var condicionNueva = document.getElementById("condicionNueva").value;
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("datosprincipales/ajax/nuevaCondicion.php");
 requerimiento.addParametro("id",id);
-requerimiento.addParametro("condicion",condicionNueva);
+requerimiento.addParametro("idCondicionIVA",condicionNueva);
 requerimiento.addListener(respuestaNuevaCondicion);
 requerimiento.ejecutar();
 }
@@ -355,18 +225,8 @@ requerimiento.ejecutar();
 
 function respuestaNuevaCondicion(respuesta)
 {
+  xmlDoc = crearXML(respuesta.target.responseText);
 
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 
@@ -374,9 +234,96 @@ if(estado)
   {
   var nuevaCondicion = document.getElementById("condicionNueva").value;
   document.getElementById("condicion").innerHTML = "Condicion: " + nuevaCondicion;
+  document.getElementById("alertaCondicionIVANueva").innerHTML = crearAlerta("Nombre Modificado!","success");
+
   }
 else
   {
   alert("Error al modificar la Condicion");
+  }
+}
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Tipo Cliente Nuevo
+
+
+
+function tipoClienteNuevo()
+{
+var id = document.getElementById("idcliente").value;
+var tipoClienteNuevo = document.getElementById("tipoClienteNuevo").value;
+
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("datosprincipales/ajax/tipoClienteNuevo.php");
+requerimiento.addParametro("id",id);
+requerimiento.addParametro("idTipoCliente",tipoClienteNuevo);
+requerimiento.addListener(respuestaTipoClienteNuevo);
+requerimiento.ejecutar();
+}
+
+
+function respuestaTipoClienteNuevo(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+
+
+if(estado)
+  {
+  var tipoClienteNuevo = document.getElementById("tipoClienteNuevo").value;
+  document.getElementById("tipoCliente").innerHTML = "Tipo Cliente: " + tipoClienteNuevo;
+  document.getElementById("alertaTipoClienteNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+  }
+else
+  {
+  alert("Error al modificar el Tipo Cliente");
+  }
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Razon De Compra Nueva
+
+
+
+function razonDeCompraNueva()
+{
+var id = document.getElementById("idcliente").value;
+var razonDeCompraNueva = document.getElementById("razonDeCompraNueva").value;
+
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("datosprincipales/ajax/razonDeCompraNueva.php");
+requerimiento.addParametro("id",id);
+requerimiento.addParametro("idRazonDeCompra",razonDeCompraNueva);
+requerimiento.addListener(respuestaRazonDeCompraNueva);
+requerimiento.ejecutar();
+}
+
+
+function respuestaRazonDeCompraNueva(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+
+
+if(estado)
+  {
+  var razonDeCompraNueva = document.getElementById("razonDeCompraNueva").value;
+  document.getElementById("razonDeCompra").innerHTML = "Razon De Compra: " + razonDeCompraNueva;
+  document.getElementById("alertaRazonDeCompraNueva").innerHTML = crearAlerta("Nombre Modificado!","success");
+  }
+else
+  {
+  alert("Error al modificar la Razon De Compra");
   }
 }

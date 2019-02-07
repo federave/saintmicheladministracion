@@ -14,5 +14,9 @@ function seleccionarTabModificarCliente(n)
   x[n].className += " active";
   y[n].style.display = "block";
 
+  if(n==2)
+    {
+      cargarMapaSedeNueva();
+    }
 
 }

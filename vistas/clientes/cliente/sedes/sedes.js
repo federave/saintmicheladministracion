@@ -19,6 +19,13 @@ y[n].style.display = "block";
 alert(2);
 window.scrollTo(0,1000);
 */
+
+if(n==1)
+  {
+  cargarMapaSede();
+  }
+
+
 }
 
 

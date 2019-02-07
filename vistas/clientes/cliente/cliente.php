@@ -25,6 +25,8 @@ session_start();
 
 
       <?php require '../../header/header.php' ?>
+      <?php require '../../mapas/mapa/mapa.php' ?>
+
       <!-- Tabs -->
 
 

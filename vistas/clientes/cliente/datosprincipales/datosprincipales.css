@@ -77,44 +77,101 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 /* Clear floats after the columns */
-.rowdp:after {
+.row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.contenedordp {
-  width: 80%;
+.contenedordatosprincipales {
+  width:60%;
+  margin:auto;
+}
+
+.alerta
+{
+/* background-color: green; */
+width:50%;
+margin:auto;
+}
+
+.botonmodificar {
+  width: 60%;
   margin:auto;
 }
 
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25,.col-30,.col-35, .col-40,.col-50,.col-75, input[type=submit] {
-    width: 80%;
-    margin-top:20px;
-    margin-left: 10%;
-  }
-  .contenedordp {
-    width: 90%;
-  }
+  @media only screen and (max-width: 600px) {
+  .contenedordatosprincipales {width: 100%;}
+
+
+
+   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-75{
+     width: 80%;
+     margin-top:20px;
+     margin-left: 10%;
+   }
+
+
+   .botonmodificar {
+     width: 100%;
+     margin:auto;
+   }
+
+   .alerta
+   {
+   width:80%
+   }
+
+
 }
 
-@media screen and (max-width: 1000px) {
-  .dpcontainer {
-    width: 80%;
-  }
+
+
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+  .contenedordatosprincipales {width: 90%;}
+
+.alerta
+{
+width:80%
 }
 
-@media screen and (max-width: 1300px) {
-  .dpcontainer {
-    width: 70%;
-  }
+
 }
 
-@media screen and (max-width: 1500px) {
-  .dpcontainer {
-    width: 60%;
-  }
+
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+  .contenedordatosprincipales {width: 80%;}
+
+.alerta
+{
+width:70%
+}
+
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px){
+  .contenedordatosprincipales {width: 70%;}
+
+
+.alerta
+{
+width:50%
+}
+
+
+}
+
+@media only screen  and (min-width: 1300px) {
+  .contenedordatosprincipales {width: 60%;}
+
+.alerta
+{
+width:50%
+}
+
+
+
 }

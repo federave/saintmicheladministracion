@@ -170,7 +170,6 @@ $partidosNombre[4] = "City Bell";
     {
     document.getElementById("mapaSedeNueva").appendChild(document.getElementById("mapa"));
     }
-    cargarMapaSedeNueva();
 
 
   </script>
