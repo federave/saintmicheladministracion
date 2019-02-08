@@ -80,6 +80,24 @@ if (currentTab >= x.length)
     xml.addTag("NombreResponsableSede",document.getElementById("nombreResponsableSede").value);
     xml.addTag("ApellidoResponsableSede",document.getElementById("apellidoResponsableSede").value);
 
+    var numeroHorarios = document.getElementById("numeroHorarios").value;
+
+    for (i = 1; i <= numeroHorarios; i++)
+      {
+      xml.startTag("Horario");
+        xml.addTag("HoraInicio",document.getElementById("horaInicio"+i).value);
+        xml.addTag("HoraFin",document.getElementById("horaFin"+i).value);
+      xml.closeTag("Horario");
+      }
+
+
+
+
+
+
+
+
+
     ///Direccion
     xml.addTag("CalleSede",document.getElementById("calleSede").value);
     xml.addTag("NumeroSede",document.getElementById("numeroSede").value);
@@ -121,7 +139,6 @@ if (currentTab >= x.length)
       }
    xml.closeTag("ClienteNuevo");
    document.getElementById("clienteNuevo").value = xml.toString();
-
     // ... the form gets submitted:
     document.getElementById("formularioClienteNuevo").submit();
     return false;
@@ -167,6 +184,13 @@ function validateFormClienteNuevo() {
     {
     valid = false;
     document.getElementById("nombreResponsableSede").className += " invalid";
+    }
+  if(document.getElementById("numeroHorarios").value == "0")
+    {
+    valid = false;
+    document.getElementById("horaInicio").className += " invalid";
+    document.getElementById("horaFin").className += " invalid";
+
     }
   }
 

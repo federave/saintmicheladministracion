@@ -72,6 +72,42 @@ $partidosNombre[4] = "City Bell";
   <br>
   <br>
 
+  <div class="text-center">
+    <h2 style="color:black">Horarios Sede</h2>
+  </div>
+  <br>
+  <div class="row">
+    <h4 style="color:black">Lista de Horarios</h4>
+    <input type="hidden" name="numeroHorarios" id="numeroHorarios" value="0">
+    <ul id="listaHorarios" class="list-group">
+
+    </ul>
+  </div>
+  <br>
+  <div class="row text-center">
+    <h4 style="color:black">Nuevo Horario</h4>
+    <br>
+    <label for="horaInicio" style="color:black;font-size:18px">Hora de Inicio</label>
+    <input style="color:black" placeholder="Hora de Inicio" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaInicio" id="horaInicio">
+    <br>
+    <label for="horaFin" style="color:black;font-size:18px">Hora de Fin</label>
+    <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
+    <br>
+    <br>
+    <input type="button" class="boton btn btn-primary" id="" name="" onclick="nuevoHorario()" style="height:50px;font-size:18px;width:80%;margin:auto" value="Agregar">
+    <br>
+    <br>
+    <input type="button" class="boton btn btn-primary" id="" name="" onclick="borrarHorarios()" style="height:50px;font-size:18px;width:80%;margin:auto" value="Borrar Horarios">
+    <br>
+    <br>
+    <br>
+
+  </div>
+
+
+
+
+
 </div>
 
 
