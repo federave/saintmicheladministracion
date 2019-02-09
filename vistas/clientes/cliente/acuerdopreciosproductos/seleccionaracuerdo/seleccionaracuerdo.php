@@ -104,7 +104,7 @@
                    <button class="btn btn-primary botonlista" id="buttonVerDatosAcuerdoEspecialPreciosProductos<?php echo $acuerdosespecialespreciosproductosId[$k];?>" onclick="verAcuerdoEspecialPreciosProductos(<?php echo $acuerdosespecialespreciosproductosId[$k];?>)">Ver</button>
                  </div>
                  <div class="col-25">
-                   <button class="btn btn-success botonlista" onclick="seleccionarAcuerdoEspecialPreciosProductos(<?php echo $acuerdosespecialespreciosproductosId[$k];?>)" >Seleccionar</button>
+                   <button class="btn btn-success botonlista" onclick="seleccionarAcuerdoPreciosProductos(<?php echo $acuerdosespecialespreciosproductosId[$k];?>)" >Seleccionar</button>
                  </div>
                </div>
 

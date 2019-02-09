@@ -25,7 +25,6 @@ else
 
 function respuestaVerDatosAcuerdoBonificaciones(respuesta)
 {
-
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -36,22 +35,19 @@ if(estado)
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
 
-  var divDescripcion = document.getElementById("divDatosAcuerdoPreciosProductos"+id);
-  var labelNombre = "<label class=\"labelDatosAcuerdoLista\" >" + nombre + "</label>";
+  var labelNombre = "<label class=\"labelDatosAcuerdoLista\" >" +nombre + "</label>";
+
+  var divDescripcion = document.getElementById("divDatosAcuerdoBonificaciones"+id);
+
   divDescripcion.innerHTML +=labelNombre+br;
   var br = "<br>";
 
-
-  var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
+  var numero = xmlDoc.getElementsByTagName("NumeroBonificaciones")[0].childNodes[0].nodeValue;
   for(i=0;i<numero;i++)
   {
-  var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
-  var precioProducto=xmlDoc.getElementsByTagName("PrecioProducto")[i].childNodes[0].nodeValue;
-
-  var labelNombreProducto = "<label class=\"labelDatosAcuerdoLista\" >" + "Producto: " + nombreProducto + "</label>";
-  var labelPrecioProducto = "<label class=\"labelDatosAcuerdoLista\" >" + " Precio: " + precioProducto + "</label>";
-
-  divDescripcion.innerHTML += br + labelNombreProducto + br + labelPrecioProducto;
+  var nombreBonificacion=xmlDoc.getElementsByTagName("NombreBonificacion")[i].childNodes[0].nodeValue;
+  var labelNombreBonificacion = "<label class=\"labelDatosAcuerdoLista\" >" +nombreBonificacion + "</label>";
+  divDescripcion.innerHTML += br + labelNombreBonificacion;
   }
 
 
@@ -107,27 +103,23 @@ var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
 
-  var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
-  var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
+    var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
+    var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
 
-  var divDescripcion = document.getElementById("divDatosAcuerdoEspecialPreciosProductos"+id);
-  var labelNombre = "<label class=\"labelDatosAcuerdoLista\" >" + nombre + "</label>";
-  divDescripcion.innerHTML +=labelNombre+br;
-  var br = "<br>";
+    var labelNombre = "<label class=\"labelDatosAcuerdoLista\" >" +nombre + "</label>";
 
+    var divDescripcion = document.getElementById("divDatosAcuerdoEspecialBonificaciones"+id);
 
-  var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
-  for(i=0;i<numero;i++)
-  {
-  var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
-  var precioProducto=xmlDoc.getElementsByTagName("PrecioProducto")[i].childNodes[0].nodeValue;
+    divDescripcion.innerHTML +=labelNombre+br;
+    var br = "<br>";
 
-  var labelNombreProducto = "<label class=\"labelDatosAcuerdoLista\" >" + "Producto: " + nombreProducto + "</label>";
-  var labelPrecioProducto = "<label class=\"labelDatosAcuerdoLista\" >" + " Precio: " + precioProducto + "</label>";
-
-  divDescripcion.innerHTML += br + labelNombreProducto + br + labelPrecioProducto;
-  }
-
+    var numero = xmlDoc.getElementsByTagName("NumeroBonificaciones")[0].childNodes[0].nodeValue;
+    for(i=0;i<numero;i++)
+    {
+    var nombreBonificacion=xmlDoc.getElementsByTagName("NombreBonificacion")[i].childNodes[0].nodeValue;
+    var labelNombreBonificacion = "<label class=\"labelDatosAcuerdoLista\" >" +nombreBonificacion + "</label>";
+    divDescripcion.innerHTML += br + labelNombreBonificacion;
+    }
 
 
 
@@ -161,10 +153,8 @@ var requerimiento = new RequerimientoGet();
 requerimiento.setURL("acuerdobonificaciones/seleccionaracuerdo/ajax/seleccionarAcuerdoBonificaciones.php");
 requerimiento.addParametro("idCliente",idCliente);
 requerimiento.addParametro("idAcuerdo",idAcuerdo);
-
 requerimiento.addListener(respuestaSeleccionarAcuerdoBonificaciones);
 requerimiento.ejecutar();
-
 }
 
 
@@ -212,23 +202,20 @@ if(estado)
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
 
-  document.getElementById("nombreAcuerdoActualPreciosProductos").innerHTML = nombre;
-  var divDescripcion = document.getElementById("divDatosAcuerdoActual");
+  document.getElementById("nombreAcuerdoActualBonificaciones").innerHTML = nombre;
+  var divDescripcion = document.getElementById("divDatosAcuerdoActualBonificaciones");
   var br = "<br>";
 
- divDescripcion.innerHTML="";
+  divDescripcion.innerHTML="";
 
-  var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
+
+  var numero = xmlDoc.getElementsByTagName("NumeroBonificaciones")[0].childNodes[0].nodeValue;
   for(i=0;i<numero;i++)
   {
-  var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
-  var precioProducto=xmlDoc.getElementsByTagName("PrecioProducto")[i].childNodes[0].nodeValue;
-
-  var labelProducto = "<label class=\"labelAcuerdoActual\" >" + nombreProducto + ": " + precioProducto + " $"+"</label>";
-
-  divDescripcion.innerHTML += labelProducto + br;
+  var nombreBonificacion=xmlDoc.getElementsByTagName("NombreBonificacion")[i].childNodes[0].nodeValue;
+  var labelNombreBonificacion = "<label class=\"labelAcuerdoActual\" >" +nombreBonificacion + "</label>";
+  divDescripcion.innerHTML += br + labelNombreBonificacion;
   }
-
 
   }
 else

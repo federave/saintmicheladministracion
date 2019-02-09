@@ -57,7 +57,7 @@
                   <button class="btn btn-success botonlista" onclick="seleccionarAcuerdoBonificaciones(<?php echo $acuerdosbonificacionesId[$k];?>)" >Seleccionar</button>
                 </div>
               </div>
-
+              <br>
              <div class="row text-center" id="divDatosAcuerdoBonificaciones<?php echo $acuerdosbonificacionesId[$k];?>" style="display:none">
 
              </div>
@@ -104,7 +104,7 @@
                    <button class="btn btn-primary botonlista" id="buttonVerDatosAcuerdoEspecialBonificaciones<?php echo $acuerdosespecialesbonificacionesId[$k];?>" onclick="verAcuerdoEspecialBonificaciones(<?php echo $acuerdosespecialesbonificacionesId[$k];?>)">Ver</button>
                  </div>
                  <div class="col-25">
-                   <button class="btn btn-success botonlista" onclick="seleccionarAcuerdoEspecialBonificaciones(<?php echo $acuerdosespecialesbonificacionesId[$k];?>)" >Seleccionar</button>
+                   <button class="btn btn-success botonlista" onclick="seleccionarAcuerdoBonificaciones(<?php echo $acuerdosespecialesbonificacionesId[$k];?>)" >Seleccionar</button>
                  </div>
                </div>
 
