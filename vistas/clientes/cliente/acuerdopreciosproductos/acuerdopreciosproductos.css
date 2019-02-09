@@ -1,0 +1,86 @@
+
+
+.liAcuerdoPreciosProductos
+{
+margin-left: 10px;
+}
+
+.items
+{
+color:white;
+font-size:22px;
+}
+
+.divTabAcuerdoPreciosProductos
+{
+width:90%;
+margin-left:5%;
+display:none;
+}
+
+.labelAcuerdoActual
+{
+color:white;
+font-size:22px;
+}
+
+
+
+.contenedoracuerdopreciosproductos {
+  width: 60%;
+  margin:auto;
+}
+
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+
+
+  @media only screen and (max-width: 600px) {
+  .contenedoracuerdopreciosproductos {
+    width: 100%;
+  }
+
+
+
+
+}
+
+
+
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+  .contenedoracuerdopreciosproductos {
+    width: 90%;
+
+  }
+
+
+}
+
+
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+  .contenedoracuerdopreciosproductos {
+    width: 80%;
+
+  }
+
+
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px){
+  .contenedoracuerdopreciosproductos {
+    width: 70%;
+
+  }
+
+}
+
+@media only screen  and (min-width: 1300px) {
+  .contenedoracuerdopreciosproductos {
+    width: 60%;
+  }
+
+}

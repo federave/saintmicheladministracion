@@ -71,7 +71,7 @@ session_start();
 
 
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
-        <p><strong>Note:</strong>Acuerdos</p>
+        <?php  require('acuerdopreciosproductos/acuerdopreciosproductos.php'); ?>
       </div>
 
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
