@@ -60,18 +60,18 @@ session_start();
 
 
       <div name="tabBonificaciones" class="row divTabBonificaciones">
-        <?php   require('nuevoacuerdo/nuevoacuerdo.php'); ?>
+        <?php require('nuevoacuerdo/nuevoacuerdo.php'); ?>
       </div>
 
 
 
       <div name="tabBonificaciones" class="row divTabBonificaciones">
-        <?php    require('verbonificaciones/verbonificaciones.php'); ?>
+        <?php require('verbonificaciones/verbonificaciones.php'); ?>
       </div>
 
 
       <div name="tabBonificaciones" class="row divTabBonificaciones">
-        <?php    require('nuevabonificacion/nuevabonificacion.php'); ?>
+        <?php require('nuevabonificacion/nuevabonificacion.php'); ?>
       </div>
 
 

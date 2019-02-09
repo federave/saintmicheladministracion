@@ -51,7 +51,7 @@ session_start();
           <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(1)">Sedes</a></li>
           <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(2)">Nueva Sede</a></li>
           <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(3)">Acuerdo Precios Productos</a></li>
-          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(4)">Seguimiento</a></li>
+          <li name="liModificarCliente" class="li"><a class="items" href="#" onclick="seleccionarTabModificarCliente(4)">Acuerdo Bonificaciones</a></li>
         </ul>
       </div>
 
@@ -60,22 +60,17 @@ session_start();
       <div name="divTabModificarCliente" class="row divTabModificarCliente " style="display:block">
         <?php require('datosprincipales/datosprincipales.php'); ?>
       </div>
-
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <?php  require('sedes/sedes.php'); ?>
       </div>
-
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <?php  require('nuevasede/nuevasede.php'); ?>
       </div>
-
-
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
         <?php  require('acuerdopreciosproductos/acuerdopreciosproductos.php'); ?>
       </div>
-
       <div name="divTabModificarCliente" class="row divTabModificarCliente">
-        <p><strong>Note:</strong>Seguimiento</p>
+        <?php  require('acuerdobonificaciones/acuerdobonificaciones.php'); ?>
       </div>
 
 

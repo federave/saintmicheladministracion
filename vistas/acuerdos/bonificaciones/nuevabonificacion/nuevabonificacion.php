@@ -59,7 +59,7 @@
           <br>
           <br>
           <div class="row text-center">
-            <label for="cantidadMinimaBonificacionNueva" style="color:black;font-size:18px">Ingresar Nombre</label>
+            <label for="cantidadMinimaBonificacionNueva" style="color:black;font-size:18px">Cantidad Minima</label>
             <input class="text-center" style="color:black" type="number" min="1" value="1" step="1" placeholder="Cantidad Minima" oninput="this.className = ''" name="cantidadMinimaBonificacionNueva" id="cantidadMinimaBonificacionNueva">
           </div>
           <br>

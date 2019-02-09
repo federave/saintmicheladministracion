@@ -93,12 +93,26 @@ input[type=submit]:hover {
   clear: both;
 }
 
-.contenedoracuerdosbonificaciones {
-  width: 50%;
+.contenedorseleccionaracuerdobonificaciones {
+  width: 80%;
   margin:auto;
   padding: 5%;
 }
 
+.labelDatosAcuerdoLista
+{
+color:black;
+font-size:20px;
+}
+
+
+.botonlista
+{
+height:50px;
+font-size:20px;
+margin:auto;
+width:90%;
+}
 
 
 .row:after {
@@ -113,7 +127,7 @@ input[type=submit]:hover {
 
 
   @media only screen and (max-width: 600px) {
-  .contenedoracuerdosbonificaciones {
+  .contenedorseleccionaracuerdobonificaciones {
     width: 100%;
   }
 
@@ -129,7 +143,7 @@ input[type=submit]:hover {
 
 
 @media only screen and (min-width: 600px) and (max-width: 800px){
-  .contenedoracuerdosbonificaciones {
+  .contenedorseleccionaracuerdobonificaciones {
     width: 90%;
 
   }
@@ -140,7 +154,7 @@ input[type=submit]:hover {
 
 
 @media only screen and (min-width: 800px) and (max-width: 1000px){
-  .contenedoracuerdosbonificaciones {
+  .contenedorseleccionaracuerdobonificaciones {
     width: 80%;
 
   }
@@ -149,16 +163,16 @@ input[type=submit]:hover {
 }
 
 @media only screen  and (min-width: 1000px) and (max-width: 1300px){
-  .contenedoracuerdosbonificaciones {
-    width: 70%;
+  .contenedorseleccionaracuerdobonificaciones {
+    width: 80%;
 
   }
 
 }
 
 @media only screen  and (min-width: 1300px) {
-  .contenedoracuerdosbonificaciones {
-    width: 60%;
+  .contenedorseleccionaracuerdobonificaciones {
+    width: 80%;
   }
 
 }
