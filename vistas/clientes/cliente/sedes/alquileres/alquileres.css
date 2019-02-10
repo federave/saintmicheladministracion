@@ -1,0 +1,86 @@
+
+
+.liAlquileres
+{
+margin-left: 10px;
+}
+
+.items
+{
+color:white;
+font-size:22px;
+}
+
+.divTabAlquileres
+{
+width:90%;
+margin-left:5%;
+display:none;
+}
+
+.labelAlquilerActual
+{
+color:white;
+font-size:22px;
+}
+
+
+
+.contenedoralquileres{
+  width: 60%;
+  margin:auto;
+}
+
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+
+
+  @media only screen and (max-width: 600px) {
+  .contenedoralquileres {
+    width: 100%;
+  }
+
+
+
+
+}
+
+
+
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+  .contenedoralquileres {
+    width: 90%;
+
+  }
+
+
+}
+
+
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+  .contenedoralquileres {
+    width: 80%;
+
+  }
+
+
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px){
+  .contenedoralquileres {
+    width: 70%;
+
+  }
+
+}
+
+@media only screen  and (min-width: 1300px) {
+  .contenedoralquileres {
+    width: 60%;
+  }
+
+}

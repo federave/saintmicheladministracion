@@ -90,7 +90,9 @@ $idCliente=1;
       <li name="liModificarSede" class="active"><a class="items" onclick="seleccionarTabModificarSede(0)">Datos</a></li>
       <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(1)">Direccion</a></li>
       <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(2)">Asignación</a></li>
-      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(3)">Acuerdos</a></li>
+      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(3)">Alquileres</a></li>
+      <li name="liModificarSede" class="li"><a class="items" onclick="seleccionarTabModificarSede(4)">Comodatos</a></li>
+
     </ul>
 
 
@@ -112,7 +114,12 @@ $idCliente=1;
   </div>
 
   <div name="divTabModificarSede" class="row divTabModificarSede">
-    <?php //require('acuerdos/acuerdos.php'); ?>
+    <?php require('alquileres/alquileres.php'); ?>
   </div>
+
+  <div name="divTabModificarSede" class="row divTabModificarSede">
+    <?php require('comodatos/comodatos.php'); ?>
+  </div>
+
 
 </div>
