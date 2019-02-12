@@ -1,5 +1,7 @@
 <?php
 
+include_once($_SESSION["raiz"] . '/modelo/conector.php');
+
 
 function redirect($url, $statusCode = 303)
 {
@@ -15,6 +17,33 @@ function boolToString($valor)
     return "false";
 }
 
+/*
+function blockSQLInjection($str)
+{
+return str_replace(array("'",""","'",'"'),array("'","&quot;"'","&quot;",$str));
+}
+*/
+
+function verificarPalabraClave($palabraclave)
+{
+$conector = new Conector();
+if($conector->abrirConexion())
+  {
+  $conexion = $conector->getConexion();
+  $sql = "SELECT * FROM palabrasclaves WHERE palabra = '$palabraclave'";
+  $tabla = $conexion->query($sql);
+  if($tabla->num_rows>0)
+    {
+    return true;
+    }
+  else
+    {
+    return false;
+    }
+  }
+else
+  return false;
+}
 
 
 

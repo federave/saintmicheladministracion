@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 include_once('modelo/basededatos.php');
 $bd = new BaseDeDatos();
@@ -9,7 +11,6 @@ if(!$bd->existe())
 
 
 
-session_start();
 $_SESSION["carpeta"] = '';
 $_SESSION["carpeta"] = '/saintmicheladministracion';
 $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
@@ -45,7 +46,7 @@ else
 }
 else
   {
-  redirect('vistas/login/login.php');
+  redirect('vistas/palabraclave/palabraclave.php');
   }
 
 ?>

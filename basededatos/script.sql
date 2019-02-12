@@ -7,6 +7,11 @@ use u291888960_smadm;
 
 
 
+create table palabrasclaves(
+id int auto_increment,
+palabra varchar(50),
+constraint pk primary key(id)
+);
 
 
 create table tipousuarios(

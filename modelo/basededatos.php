@@ -60,6 +60,20 @@ class BaseDeDatos
       {
       $aux = true;
 
+
+      // Tabla Palabras Claves
+
+      $sql = "create table if not exists palabrasclaves(
+      id int auto_increment,
+      palabra varchar(50),
+      constraint pk primary key(id)
+      );
+      ";
+
+      $sql = "insert into palabrasclaves(palabra)values('puelche2010');";
+      $aux &= $this->conexion->query($sql);
+
+
       // Tabla TipoUsuarios
 
       $sql = "create table if not exists tipousuarios(
