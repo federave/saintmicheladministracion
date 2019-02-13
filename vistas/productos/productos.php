@@ -10,7 +10,7 @@ session_start();
     <head>
         <title>Productos</title>
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../general.css">
+        <link rel="stylesheet" href="../estilos/general.css">
 
         <link rel="stylesheet" href="productos.css">
         <script src="productos.js"></script>

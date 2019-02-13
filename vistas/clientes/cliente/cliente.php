@@ -10,7 +10,7 @@ session_start();
     <head>
         <title>Cliente ...</title>
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../general.css">
+        <link rel="stylesheet" href="../../estilos/general.css">
 
         <link rel="stylesheet" href="cliente.css">
         <script src="cliente.js"></script>

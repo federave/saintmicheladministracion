@@ -10,7 +10,7 @@ session_start();
     <head>
         <title>Bonificaciones</title>
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../general.css">
+        <link rel="stylesheet" href="../../estilos/general.css">
 
         <link rel="stylesheet" href="bonificaciones.css">
         <script src="bonificaciones.js"></script>

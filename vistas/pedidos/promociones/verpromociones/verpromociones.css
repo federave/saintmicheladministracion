@@ -1,0 +1,27 @@
+
+.contenedorverpromociones {width: 50%;}
+
+@media only screen and (max-width: 600px)
+{
+.contenedorverpromociones {width: 100%;}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px)
+{
+.contenedorverpromociones{width: 90%;}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px)
+{
+.contenedorverpromociones{width: 80%;}
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px)
+{
+.contenedorverpromociones{width: 70%;}
+}
+
+@media only screen  and (min-width: 1300px)
+{
+.contenedorverpromociones{width: 60%;}
+}

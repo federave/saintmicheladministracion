@@ -10,7 +10,7 @@ session_start();
     <head>
         <title>Alquileres</title>
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../general.css">
+        <link rel="stylesheet" href="../../estilos/general.css">
 
         <link rel="stylesheet" href="alquileres.css">
         <script src="alquileres.js"></script>

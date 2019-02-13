@@ -8,7 +8,7 @@
     <head>
         <title>Maquinas</title>
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../general.css">
+        <link rel="stylesheet" href="../estilos/general.css">
 
         <link rel="stylesheet" href="maquinas.css">
         <script src="maquinas.js"></script>

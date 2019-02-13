@@ -17,7 +17,7 @@ session_start();
   <script src="menuinicial.js"></script>
 
   <link rel="stylesheet" href="../header/header.css">
-  <link rel="stylesheet" href="../general.css">
+  <link rel="stylesheet" href="../estilos/general.css">
 
 
 
@@ -66,6 +66,17 @@ session_start();
       <a href="../acuerdos/alquileres/alquileres.php">Alquileres</a>
       <a href="../acuerdos/comodatos/comodatos.php">Comodatos</a>
       <a href="../acuerdos/bonificaciones/bonificaciones.php">Bonificaciones</a>
+      <a href="../acuerdos/promociones/promociones.php">Promociones</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Pedidos
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="../pedidos/nuevopedido/nuevopedido.php">Nuevo Pedido</a>
+      <a href="../pedidos/promociones/promociones.php">Promociones</a>
+      <a href="../pedidos/tiposrechazos/tiposrechazos.php">Tipos Rechazos</a>
     </div>
   </div>
   <a href="../pruebas/prueba.php">Pruebas</a>

@@ -5,7 +5,7 @@
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../general.css">
+        <link rel="stylesheet" href="../estilos/general.css">
         <link rel="stylesheet" href="login.css">
 
         <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>

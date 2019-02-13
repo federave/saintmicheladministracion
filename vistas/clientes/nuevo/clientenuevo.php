@@ -10,7 +10,7 @@ $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . '/saintmicheladministracion';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../header/header.css">
-  <link rel="stylesheet" href="../../general.css">
+  <link rel="stylesheet" href="../../estilos/general.css">
   <link rel="stylesheet" href="../../estilos/radiobutton.css">
   <link rel="stylesheet" href="../../estilos/checkbox.css">
 
