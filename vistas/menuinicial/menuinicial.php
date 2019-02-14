@@ -86,17 +86,6 @@ session_start();
 
 
 
-
-
-
-<div class="container" style="margin-top:30px">
-  <div class="row">
-
-
-
-  </div>
-</div>
-
 <div class="text-center" style="margin-bottom:0;height:2000px;padding:20px;">
   <p></p>
 </div>
