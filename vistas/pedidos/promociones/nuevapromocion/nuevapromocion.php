@@ -2,9 +2,8 @@
 
 
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/estilos/radiobutton.css">
-
-<link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/nuevoacuerdo/nuevoacuerdo.css">
-<script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/nuevoacuerdo/nuevoacuerdo.js"></script>
+<link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/pedidos/promociones/nuevapromocion/nuevapromocion.css">
+<script src="<?php echo $_SESSION["carpeta"] ?>/vistas/pedidos/promociones/nuevapromocion/nuevapromocion.js"></script>
 
   <?php
 
@@ -12,7 +11,6 @@
   $productosId[0] = 1;
   $productosId[1] = 5;
   $productosId[2] = 3;
-
 
   $productosNombre = array();
   $productosNombre[0] = "Bidon 10L";
@@ -25,11 +23,11 @@
 
 
 
-  <div class="contenedoracuerdopreciosproductosnuevo">
+  <div class="contenedornuevapromocion">
     <br>
     <br>
     <div class="row text-center">
-      <h1 style="color:white">Nuevo Acuerdo Precios Productos</h1>
+      <h1 style="color:white">Nueva Promocion</h1>
     </div>
     <br>
     <br>

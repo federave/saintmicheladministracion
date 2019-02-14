@@ -92,7 +92,7 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+input{
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
