@@ -36,6 +36,7 @@ insert into tipousuarios(tipo)values("vendedor");
 insert into tipousuarios(tipo)values("oficina");
 
 select * from TipoUsuarios;
+select * from palabrasclaves;
 
 truncate TipoUsuarios;
 

@@ -36,20 +36,28 @@ if(estado)
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
 
+  var br="<br>";
   var divPromocion = document.getElementById("divPromocion"+id);
-  /*
-  var labelNombre =
 
-  document.getElementById("nombreAcuerdoPreciosProductos"+id).innerHTML=nombre;
+  var labelNombre = "<label class=\"labelLista\" >" +nombre + "</label>";
+
+  divPromocion.innerHTML += labelNombre +br;
 
   var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
   for(i=0;i<numero;i++)
   {
   var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
-  var precioProducto=xmlDoc.getElementsByTagName("PrecioProducto")[i].childNodes[0].nodeValue;
-  divDescripcion.innerHTML += "<label class=\"etiqueta\" >" + "Producto: " + nombreProducto +  "</label><br>" +"<label class=\"etiqueta\" >" + " Precio: " + precioProducto +" $"+  "</label><br><br>";
+  var cantidadProducto=xmlDoc.getElementsByTagName("CantidadProducto")[i].childNodes[0].nodeValue;
+  var bonificadosProducto=xmlDoc.getElementsByTagName("BonificadosProducto")[i].childNodes[0].nodeValue;
+
+
+  var labelNombreProducto = "<label class=\"labelLista\" >" +nombreProducto + "</label>";
+  var labelCantidadProducto = "<label class=\"labelLista\" >" +"Cantidad: "+cantidadProducto + "</label>";
+  var labelBonificadosProducto = "<label class=\"labelLista\" >" +"Bonificados: "+bonificadosProducto + "</label>";
+
+  divPromocion.innerHTML += labelNombreProducto + br + labelCantidadProducto + br + labelBonificadosProducto;
   }
-  */
+
 
   divPromocion.style.display="block";
   document.getElementById("buttonVerPromocion"+id).innerHTML="Ocultar";

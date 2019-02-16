@@ -6,7 +6,7 @@
   <a href="<?php echo $_SESSION["carpeta"] ?>/index.php" class="logo">Menu Inicial</a>
   <div class="header-right">
     <p>Usuario: <?php echo $_SESSION["usuario"];?></p>
-    <a class="active" href="<?php echo $_SESSION["carpeta"] ?>/controladores/login/salir.php">Cerrar Seción</a>
+    <a class="logo" href="<?php echo $_SESSION["carpeta"] ?>/controladores/login/salir.php">Cerrar Seción</a>
   </div>
 </div>
 

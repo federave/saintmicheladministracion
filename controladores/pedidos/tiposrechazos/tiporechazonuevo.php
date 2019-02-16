@@ -7,7 +7,7 @@ include_once($_SESSION["raiz"] . '/modelo/conector.php');
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarPalabraClave($_SESSION["palabraclave"]) && verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["promocionNueva"]))
+if(verificarPalabraClave($_SESSION["palabraclave"]) && verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["nombre"]))
   {
   $aux=false;
 
@@ -22,9 +22,9 @@ if(verificarPalabraClave($_SESSION["palabraclave"]) && verificarUsuario($_SESSIO
     $aux = $conexion->query($sql);
     */
 
-    $promocionNueva=$_GET["promocionNueva"];
+    $nombre=$_GET["nombre"];
 
-    redirect('../../../vistas/pedidos/promociones/promociones.php');
+    redirect('../../../vistas/pedidos/tiposrechazos/tiposrechazos.php');
 
 
 

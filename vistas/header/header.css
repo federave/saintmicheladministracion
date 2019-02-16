@@ -27,7 +27,9 @@
 }
 
 
-
+a.logo {
+  background-color: #333;
+}
 
 .header a.logo {
   font-size: 22px;

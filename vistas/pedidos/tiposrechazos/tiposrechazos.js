@@ -1,9 +1,9 @@
 
-function seleccionarTabComodatos(n)
+function seleccionarTabTiposRechazos(n)
 {
 
-  var x = document.getElementsByName("liComodatos");
-  var y = document.getElementsByName("tabComodatos");
+  var x = document.getElementsByName("liTiposRechazos");
+  var y = document.getElementsByName("tabTiposRechazos");
 
 
   for (i = 0; i < x.length; i++) {

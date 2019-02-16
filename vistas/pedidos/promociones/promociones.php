@@ -15,6 +15,10 @@ session_start();
         <link rel="stylesheet" href="promociones.css">
         <script src="promociones.js"></script>
         <script src="../../javascript/javascript.js"></script>
+        <!-- Para las alertas  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!--        -->
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

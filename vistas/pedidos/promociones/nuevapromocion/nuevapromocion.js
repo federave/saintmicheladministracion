@@ -35,7 +35,7 @@ function nextTabPromocionNueva(n) {
   var x = document.getElementsByName("tabPromocionNueva");
   // Exit the function if any field in the current tab is invalid:
 
-  // if (n == 1 && !validateFormPromocionNueva()) return false;
+  if (n == 1 && !validateFormPromocionNueva()) return false;
 
   // Hide the current tab:
   x[currentTab].style.display = "none";
@@ -46,42 +46,38 @@ function nextTabPromocionNueva(n) {
   if (currentTab >= x.length) {
 
 
-    /*
-    //alert(x.length);
 
 
     var xml=new XML();
 
-    xml.startTag("AcuerdoPreciosProductos");
+    xml.startTag("Promocion");
 
-    xml.addTag("Nombre",document.getElementById("nombreAcuerdoPreciosProductosNuevo").value);
+    xml.addTag("Nombre",document.getElementById("nombrePromocionNueva").value);
 
     var numero = document.getElementById("numeroProductos").value;
 
     for(i=0;i<numero;i++)
     {
-
-    if(document.getElementById("producto"+i+"AcuerdoPreciosProductosNuevo").checked)
+    if(document.getElementById("producto"+i+"PromocionNueva").checked)
       {
-        xml.startTag("Producto");
-          xml.addTag("IdProducto",document.getElementById("producto"+i+"AcuerdoPreciosProductosNuevo").value);
-          xml.addTag("Precio",document.getElementById("precioProducto"+i+"AcuerdoPreciosProductosNuevo").value);
-        xml.closeTag("Producto");
+      xml.startTag("Producto");
+        xml.addTag("IdProducto",document.getElementById("producto"+i+"PromocionNueva").value);
+        xml.addTag("Cantidad",document.getElementById("cantidadProducto"+i+"PromocionNueva").value);
+        xml.addTag("Bonificados",document.getElementById("bonificadosProducto"+i+"PromocionNueva").value);
+      xml.closeTag("Producto");
       }
-
-
     }
 
 
-    xml.closeTag("AcuerdoPreciosProductos");
+
+    xml.closeTag("Promocion");
 
 
-    document.getElementById("acuerdoNuevo").value=xml.toString();
+    document.getElementById("promocionNueva").value=xml.toString();
 
 
     alert(xml.toString());
 
-    */
 
 
     // ... the form gets submitted:
@@ -107,20 +103,28 @@ function validateFormPromocionNueva() {
 
   if(currentTab == 0)
   {
-    for (i = 0; i < y.length; i++) {
-      // If a field is empty...
+  if(document.getElementById("nombrePromocionNueva").value=="")
+    {
+    valid=false;
+    document.getElementById("nombrePromocionNueva").className += " invalid";
+    }
+  var n = document.getElementById("numeroProductos").value;
 
-
-        if (y[i].value == "" && y[i].name == "nombre") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-
+  var aux = false;
+  for(i=0;i<n;i++)
+    {
+    if(document.getElementById("producto"+i+"PromocionNueva").checked)
+      aux=true;
     }
 
-}
+  if(aux==false)
+    {
+    document.getElementById("alertaPromocionNueva").innerHTML = crearAlerta("Debe Seleccionar al menos un producto!","success");
+    }
+
+  valid&=aux;
+
+  }
 
 
 

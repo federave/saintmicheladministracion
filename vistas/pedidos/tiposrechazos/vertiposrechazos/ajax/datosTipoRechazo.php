@@ -24,23 +24,8 @@ if(verificarPalabraClave($_SESSION["palabraclave"]) && verificarUsuario($_SESSIO
     */
 
     $xml->addTag("Id",$id);
-    $xml->addTag("Nombre","10*2");
+    $xml->addTag("Nombre","No tenia dinero");
 
-
-    $xml->addTag("NumeroProductos",2);
-
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",1);
-      $xml->addTag("NombreProducto","Bidon 20L");
-      $xml->addTag("CantidadProducto",3);
-      $xml->addTag("BonificadosProducto",1);
-    $xml->closeTag("Producto");
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",2);
-      $xml->addTag("NombreProducto","Bidon 12L");
-      $xml->addTag("CantidadProducto",3);
-      $xml->addTag("BonificadosProducto",1);
-    $xml->closeTag("Producto");
 
     $aux = true;
 
