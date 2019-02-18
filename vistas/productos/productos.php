@@ -1,5 +1,15 @@
 <?php
 session_start();
+if(isset($_SESSION["raiz"]))
+  {
+  include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+  verificarAcceso();
+  }
+else
+  {
+  include_once('../../modelo/otros.php');
+  redirect('../../vistas/errores/errordeacceso.php');
+  }
 ?>
 
 

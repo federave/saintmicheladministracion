@@ -1,6 +1,16 @@
 
 <?php
 session_start();
+if(isset($_SESSION["raiz"]))
+  {
+  include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+  verificarAcceso();
+  }
+else
+  {
+  include_once('../../modelo/otros.php');
+  redirect('../../vistas/errores/errordeacceso.php');
+  }
 ?>
 
 
@@ -79,6 +89,7 @@ session_start();
       <a href="../pedidos/tiposrechazos/tiposrechazos.php">Tipos Rechazos</a>
     </div>
   </div>
+  <a href="../configuracion/configuracion.php">Configuración</a>
   <a href="../pruebas/prueba.php">Pruebas</a>
   <a href="#about">About</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">☰</a>

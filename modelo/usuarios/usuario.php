@@ -17,34 +17,6 @@ else
   return false;
   }
 }
-/*
-function verificarUsuario()
-{
-
-  session_start();
-
-
-  if(isset($_SESSION["usuario"]) && isset($_SESSION["password"]))
-  {
-  $usuario = new Usuario($_SESSION["usuario"],$_SESSION["password"]);
-  if($usuario->esValido())
-    {
-    return true;
-    }
-  else
-    {
-    return false;
-    }
-  }
-  else
-    {
-    return false;
-    }
-
-
-
-}
-*/
 
 
 class Usuario extends Generico
@@ -69,6 +41,7 @@ class Usuario extends Generico
                 $this->usuario = $usuario;
                 $this->password = $password;
                 $this->id = $row["id"];
+                $this->idTipoUsuario = $row["idtipousuario"];
                 $this->estado = true;
                 $this->oficina = true;
                 $this->vendedor = false;
@@ -85,6 +58,7 @@ class Usuario extends Generico
 
     private $vendedor;
     private $oficina;
+    private $idTipoUsuario;
 
 
 
@@ -124,7 +98,10 @@ class Usuario extends Generico
     }
 
 
-
+    public function getIdTipoUsuario()
+    {
+    return $this->idTipoUsuario;
+    }
 
 
 

@@ -1,0 +1,55 @@
+
+
+
+
+.contenedormenu
+{
+background-color: white;
+border-radius: 3px;
+border: 1px solid #aaaaaa;
+width: 60%;
+padding: 5%;
+margin: auto;
+}
+
+.botonmenu
+{
+background: linear-gradient(to right, #3399ff 0%, #ccccff 100%);
+height: 60px;
+}
+
+
+
+
+
+
+.contenedorbasededatos {width: 50%;}
+
+@media only screen and (max-width: 600px)
+{
+.contenedorbasededatos {width: 100%;}
+.contenedormenu {width: 100%;}
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px)
+{
+.contenedorbasededatos{width: 90%;}
+.contenedormenu {width: 90%;}
+
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px)
+{
+.contenedorbasededatos{width: 80%;}
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px)
+{
+.contenedorbasededatos{width: 70%;}
+}
+
+@media only screen  and (min-width: 1300px)
+{
+.contenedorbasededatos{width: 60%;}
+}

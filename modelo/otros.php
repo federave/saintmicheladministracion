@@ -17,12 +17,7 @@ function boolToString($valor)
     return "false";
 }
 
-/*
-function blockSQLInjection($str)
-{
-return str_replace(array("'",""","'",'"'),array("'","&quot;"'","&quot;",$str));
-}
-*/
+
 
 function verificarPalabraClave($palabraclave)
 {
@@ -44,8 +39,6 @@ if($conector->abrirConexion())
 else
   return false;
 }
-
-
 
 
 

@@ -1,8 +1,22 @@
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
+
+function seleccionarTabConfiguracion(n)
+{
+
+  var x = document.getElementsByName("liConfiguracion");
+  var y = document.getElementsByName("tabConfiguracion");
+
+
+  for (i = 0; i < x.length; i++) {
+    x[i].className -= " active";
+    y[i].style.display = "none";
+  }
+
+  x[n].className += " active";
+  y[n].style.display = "block";
+
+
+
+
+
+
 }

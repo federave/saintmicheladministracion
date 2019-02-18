@@ -15,6 +15,13 @@ return alerta;
 }
 
 
+function insertarAlerta(nombre,texto,tipoalerta)
+{
+document.getElementById(nombre).innerHTML = "<br>";
+document.getElementById(nombre).innerHTML += crearAlerta(texto,tipoalerta);
+document.getElementById(nombre).innerHTML += "<br>";
+
+}
 
 
 

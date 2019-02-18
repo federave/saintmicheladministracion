@@ -1,49 +1,39 @@
 <?php
 session_start();
 
-
-include_once('modelo/basededatos.php');
-$bd = new BaseDeDatos();
-if(!$bd->existe())
+if(!isset($_SESSION["raiz"]))
   {
-  $bd->crear();
+  $_SESSION["carpeta"] = '';
+  $_SESSION["carpeta"] = '/saintmicheladministracion';
+  $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
+  }
+
+include_once($_SESSION["raiz"] . '/modelo/otros.php');
+include_once($_SESSION["raiz"] . '/modelo/basededatos.php');
+include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
+
+$bd = new BaseDeDatos();
+if(!$bd->hayUsuarios())
+  {
+  $bd->crearTablasIniciales();
   }
 
 
-
-$_SESSION["carpeta"] = '';
-$_SESSION["carpeta"] = '/saintmicheladministracion';
-$_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
-
-include_once('modelo/otros.php');
-include_once('modelo/conector.php');
-include_once('modelo/usuarios/usuario.php');
-
-if(isset($_SESSION["usuario"]) && isset($_SESSION["password"]))
-{
-$usuario = new Usuario($_SESSION["usuario"],$_SESSION["password"]);
-if($usuario->esValido())
+if(isset($_SESSION["usuario"]) && isset($_SESSION["password"]) && isset($_SESSION["palabraclave"]))
   {
-
-  if($usuario->deOficina())
+  if(verificarPalabraClave($_SESSION["palabraclave"]))
     {
-
-    }
-  else if($usuario->esVendedor())
-    {
-
+    if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]))
+      redirect('vistas/menuinicial/menuinicial.php');
+    else
+      redirect('vistas/login/login.php');
     }
   else
     {
-
+    redirect('vistas/palabraclave/palabraclave.php');
     }
-  redirect('vistas/menuinicial/menuinicial.php');
   }
-else
-  {
-  redirect('vistas/login/login.php');
-  }
-}
 else
   {
   redirect('vistas/palabraclave/palabraclave.php');

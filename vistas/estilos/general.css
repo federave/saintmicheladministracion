@@ -96,6 +96,17 @@ text-align: center;
 width: 100%;
 }
 
+button
+{
+color:black;
+padding: 12px;
+border: 1px solid #aaaaaa;
+border-radius: 3px;
+font-family: Raleway;
+font-size: 20px;
+text-align: center;
+width: 100%;
+}
 
 
 

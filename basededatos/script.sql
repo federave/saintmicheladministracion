@@ -31,6 +31,31 @@ foreign key(idTipoUsuario) REFERENCES TipoUsuarios(id)
 );
 
 
+insert into tipousuarios(tipo)values("administrador")
+SELECT 'Pontevedra'
+FROM dual
+WHERE NOT EXISTS (SELECT * FROM tipousuarios WHERE tipo = "administrador")
+
+
+INSERT INTO tipousuarios (tipo)
+SELECT * FROM (SELECT 'produccion') AS tmp
+WHERE NOT EXISTS (
+    SELECT tipo FROM tipousuarios WHERE tipo = 'produccion'
+) LIMIT 1;
+
+
+
+drop table palabrasclaves;
+drop table usuarios;
+drop table tipousuarios;
+
+INSERT INTO usuarios (usuario,password,idtipousuario)
+      SELECT * FROM (SELECT 'federave','mpkfa26',1) as u
+      WHERE NOT EXISTS (
+          SELECT usuario FROM usuarios WHERE usuario = 'federave'
+      ) LIMIT 1
+
+
 insert into tipousuarios(tipo)values("administrador");
 insert into tipousuarios(tipo)values("vendedor");
 insert into tipousuarios(tipo)values("oficina");
