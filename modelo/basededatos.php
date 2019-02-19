@@ -108,11 +108,101 @@ class BaseDeDatos
     $aux &= $this->crearTablaPalabrasClaves();
     $aux &= $this->crearTablasUsuarios();
     $aux &= $this->crearTablasProductos();
-    
+    $aux &= $this->crearTablasInsumos();
+    $aux &= $this->crearTablaProductos_Insumos();
+
 
     return $aux;
     }
 
+
+
+    function crearTablaProductos_Insumos()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+
+      // Tabla Insumos
+
+      $sql = "CREATE TABLE IF NOT EXISTS productos_insumos(
+      idproducto int not null,
+      idinsumo int not null,
+      primary key(idproducto,idinsumo),
+      foreign key(idproducto) REFERENCES productos(id),
+      foreign key(idinsumo) REFERENCES insumos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+    function crearTablasInsumos()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+
+      // Tabla Insumos
+
+      $sql = "CREATE TABLE IF NOT EXISTS insumos(
+      id int auto_increment,
+      nombre varchar(50),
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO insumos (nombre)
+      SELECT * FROM (SELECT 'Tapa Bidón Retornable') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM insumos WHERE nombre = 'Tapa Bidón Retornable'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO insumos (nombre)
+        SELECT * FROM (SELECT 'Tapa Bidón Descartable') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM insumos WHERE nombre = 'Tapa Bidón Descartable'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO insumos (nombre)
+      SELECT * FROM (SELECT 'Etiqueta Bidón 20L') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM insumos WHERE nombre = 'Etiqueta Bidón 20L'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO insumos (nombre)
+      SELECT * FROM (SELECT 'Etiqueta Bidón 12L') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM insumos WHERE nombre = 'Etiqueta Bidón 12L'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
 
     function crearTablasProductos()
     {
@@ -123,7 +213,7 @@ class BaseDeDatos
 
       // Tabla TipoProductos
 
-      $sql = "CREATE TABLE IF NOT EXISTS tipoproductos(
+      $sql = "CREATE TABLE IF NOT EXISTS tiposproducto(
       id int auto_increment,
       tipo varchar(50),
       constraint pk primary key(id)
@@ -132,17 +222,17 @@ class BaseDeDatos
       $aux &= $this->conexion->query($sql);
 
 
-      $sql = "INSERT INTO tipoproductos (tipo)
+      $sql = "INSERT INTO tiposproducto (tipo)
       SELECT * FROM (SELECT 'Retornable') AS tp
       WHERE NOT EXISTS (
-          SELECT tipo FROM tipoproductos WHERE tipo = 'Retornable'
+          SELECT tipo FROM tiposproducto WHERE tipo = 'Retornable'
       ) LIMIT 1";
       $aux &= $this->conexion->query($sql);
 
-      $sql = "INSERT INTO tipoproductos (tipo)
+      $sql = "INSERT INTO tiposproducto (tipo)
       SELECT * FROM (SELECT 'Descartable') AS tp
       WHERE NOT EXISTS (
-          SELECT tipo FROM tipoproductos WHERE tipo = 'Descartable'
+          SELECT tipo FROM tiposproducto WHERE tipo = 'Descartable'
       ) LIMIT 1";
       $aux &= $this->conexion->query($sql);
 
@@ -156,7 +246,7 @@ class BaseDeDatos
       litros real,
       idtipoproducto int not null,
       primary key(id),
-      foreign key(idtipoproducto) REFERENCES tipoproductos(id)
+      foreign key(idtipoproducto) REFERENCES tiposproducto(id)
       );
       ";
       $aux &= $this->conexion->query($sql);

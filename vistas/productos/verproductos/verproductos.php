@@ -3,20 +3,8 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/verproductos/verproductos.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/verproductos/verproductos.js"></script>
 
-  <?php
+<?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
 
-  $productosId = array();
-  $productosId[0] = 1;
-  $productosId[1] = 2;
-  $productosId[2] = 3;
-
-  $productosNombre = array();
-  $productosNombre[0] = "Bidón de 20L";
-  $productosNombre[1] = "Bidón de 12L";
-  $productosNombre[2] = "Bidón de 10L";
-
-
-  ?>
 
   <div class="contenedorvp">
     <br>

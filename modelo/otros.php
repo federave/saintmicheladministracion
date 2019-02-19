@@ -19,6 +19,18 @@ function boolToString($valor)
 
 
 
+function escribir($texto)
+{
+$conector = new Conector();
+if($conector->abrirConexion())
+  {
+  $conexion = $conector->getConexion();
+  $sql = "INSERT INTO Debug(debug)VALUES('$texto')";
+  $conexion->query($sql);
+  $conector->cerrarConexion();
+  }
+}
+
 function verificarPalabraClave($palabraclave)
 {
 $conector = new Conector();

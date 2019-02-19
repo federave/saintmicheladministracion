@@ -34,6 +34,48 @@ function nextPrev(n) {
   // if you have reached the end of the form...
 
   if (currentTab >= x.length) {
+
+
+
+      var xml=new XML();
+
+      xml.startTag("Producto");
+
+      xml.addTag("Nombre",document.getElementById("nombre").value);
+      xml.addTag("Litros",document.getElementById("litros").value);
+
+
+
+      if(document.getElementById("tipoproducto0").checked)
+        {
+        xml.addTag("IdTipoProducto",document.getElementById("tipoproducto0").value);
+        }
+      else
+        {
+        xml.addTag("IdTipoProducto",document.getElementById("tipoproducto1").value);
+        }
+
+
+      var numero = document.getElementById("numeroInsumos").value;
+      var k = 0;
+
+      for(i=0;i<numero;i++)
+      {
+      if(document.getElementById("insumo"+i).checked)
+        {
+        xml.startTag("Insumo");
+          xml.addTag("IdInsumo",document.getElementById("insumo"+i).value);
+        xml.closeTag("Insumo");
+        }
+      }
+
+
+      xml.closeTag("Producto");
+
+      document.getElementById("productonuevo").value = xml.toString();
+
+      alert(xml.toString());
+
     // ... the form gets submitted:
     document.getElementById("regForm").submit();
     return false;
@@ -54,68 +96,18 @@ function validateForm() {
 
   if(currentTab == 0)
   {
-    for (i = 0; i < y.length; i++) {
-      // If a field is empty...
-
-
-        if (y[i].value == "" && y[i].name == "nombre") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-
+  if(document.getElementById("nombre").value=="")
+    {
+    document.getElementById("nombre").className+=" invalid";
+    valid=false;
+    }
+  if(!(document.getElementById("litros").value>0))
+    {
+    document.getElementById("litros").className+=" invalid";
+    valid=false;
     }
 
   }
-
-  // Validacion del Tab 2 (Localizacion)
-
-
-  if(currentTab == 1)
-  {
-    for (i = 0; i < y.length; i++) {
-      // If a field is empty...
-
-        if (y[i].value == "0" && y[i].name == "estadodireccion") {
-          // and set the current valid status to false
-          valid = false;
-
-          document.getElementById("direccion").className += " invalid";
-
-        }
-
-    }
-
-  }
-
-
-
-    // Validacion del Tab 5 (Recorrido)
-
-
-
-      if(currentTab == 4)
-      {
-
-        valid = false;
-
-        for (i = 0; i < y.length; i++) {
-          // If a field is empty...
-
-            if (y[i].name == "checkbox" && y[i].checked) {
-              // and set the current valid status to false
-              valid = true;
-
-
-            }
-
-        }
-
-      }
-
-
-
 
 
 

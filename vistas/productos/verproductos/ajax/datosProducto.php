@@ -18,16 +18,21 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $id=$_GET["id"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
+    escribir("gggggg");
+    escribir($id);
+
+    $sql = "SELECT P.id,P.nombre,P.litros,P.idtipoproducto,TP.tipo FROM productos as P inner join tiposproducto as TP on P.idtipoproducto=TP.id WHERE P.id='$id'";
+    escribir("'$sql'");
+
+    $tabla = $conexion->query($sql);
+    $row = $tabla->fetch_assoc();
+
 
     $xml->addTag("Id",$id);
-    $xml->addTag("Nombre","Bidon 20L");
-    $xml->addTag("Litros",20);
-    $xml->addTag("IdTipoProducto",0);
-    $xml->addTag("NombreTipoProducto","Retornable");
+    $xml->addTag("Nombre",$row["nombre"]);
+    $xml->addTag("Litros",$row["litros"]);
+    $xml->addTag("IdTipoProducto",$row["idtipoproducto"]);
+    $xml->addTag("NombreTipoProducto",$row["tipo"]);
 
     $xml->addTag("NumeroInsumos",2);
 

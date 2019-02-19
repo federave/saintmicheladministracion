@@ -30,19 +30,10 @@ else
 
 function respuestaVerDatosProducto(respuesta)
 {
+alert(respuesta.target.responseText);
 
+xmlDoc = crearXML(respuesta.target.responseText);
 
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 if(estado)

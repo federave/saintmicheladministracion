@@ -6,6 +6,12 @@ use u291888960_smadm;
 
 
 
+create table Debug(
+id int auto_increment,
+debug varchar(50),
+constraint pk primary key(id)
+);
+
 
 create table palabrasclaves(
 id int auto_increment,
@@ -48,6 +54,11 @@ WHERE NOT EXISTS (
 drop table palabrasclaves;
 drop table usuarios;
 drop table tipousuarios;
+drop table productos;
+
+drop table tipoproductos;
+
+
 
 INSERT INTO usuarios (usuario,password,idtipousuario)
       SELECT * FROM (SELECT 'federave','mpkfa26',1) as u

@@ -1,39 +1,11 @@
 
-
-
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/estilos/radiobutton.css">
-
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/nuevoproducto/nuevoproducto.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/nuevoproducto/nuevoproducto.js"></script>
 
-  <?php
 
-  $tipoProductosId = array();
-  $tipoProductosId[0] = 1;
-  $tipoProductosId[1] = 2;
-
-  $tipoProductosNombre = array();
-  $tipoProductosNombre[0] = "Retornable";
-  $tipoProductosNombre[1] = "Descartable";
-
-  $insumosId = array();
-  $insumosId[0] = 1;
-  $insumosId[1] = 2;
-  $insumosId[2] = 3;
-  $insumosId[3] = 4;
-  $insumosId[4] = 5;
-  $insumosId[5] = 6;
-
-  $insumosNombre = array();
-  $insumosNombre[0] = "Tapa";
-  $insumosNombre[1] = "Etiqueta";
-  $insumosNombre[2] = "Precinto";
-  $insumosNombre[3] = "Manija";
-  $insumosNombre[4] = "sss";
-  $insumosNombre[5] = "sss";
-
-
-  ?>
+<?php require $_SESSION["raiz"] . '/modelo/productos/tiposproductos.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/insumos/insumos.php'?>
 
 
 
@@ -51,7 +23,7 @@
 
     <div class="row" style="width:100%">
 
-      <form class="regForm" id="regForm" action="../../../controladores/productos/productoNuevo.php">
+      <form class="regForm" id="regForm" action="../../controladores/productos/productonuevo.php">
 
 
 
@@ -63,6 +35,8 @@
 
           <br>
           <br>
+          <input type="hidden" name="numeroInsumos" id="numeroInsumos" value=<?php echo $numeroInsumos;?>>
+          <input type="hidden" name="productonuevo" id="productonuevo" value="">
 
           <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombre" id="nombre">
           <br>
@@ -81,13 +55,13 @@
 
               <?php
               $k=0;
-              while($k<count($tipoProductosId))
+              while($k<count($tiposProductoId))
                   {
                   ?>
 
                  <div class="funkyradio-info text-center">
-                     <input <?php if($k==0) echo "checked"; ?> type="radio" name="radio" id="radio<?php echo $k; ?>" value="<?php echo $tipoProductosId[$k]; ?>"/>
-                     <label for="radio<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $tipoProductosNombre[$k]; ?></label>
+                     <input <?php if($k==0) echo "checked"; ?> type="radio" name="tipoproducto" id="tipoproducto<?php echo $k; ?>" value="<?php echo $tiposProductoId[$k]; ?>"/>
+                     <label for="tipoproducto<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $tiposProductoNombre[$k]; ?></label>
                  </div>
 
 
