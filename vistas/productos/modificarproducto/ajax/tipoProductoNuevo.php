@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["id"]) && isset($_GET["nombre"]))
+if(isset($_GET["id"]) && isset($_GET["idtipoproducto"]))
   {
   $aux=false;
 
@@ -19,8 +19,8 @@ if(isset($_GET["id"]) && isset($_GET["nombre"]))
     {
     $conexion = $conector->getConexion();
     $id=$_GET["id"];
-    $nombre=$_GET["nombre"];
-    $sql = "UPDATE productos SET nombre='$nombre' WHERE id='$id'";
+    $idtipoproducto=$_GET["idtipoproducto"];
+    $sql = "UPDATE productos SET idtipoproducto='$idtipoproducto' WHERE id='$id'";
     $aux = $conexion->query($sql);
 
     $conector->cerrarConexion();

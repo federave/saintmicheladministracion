@@ -29,17 +29,14 @@
 
             <li class="list-group-item">
               <div class="rowvp">
-                <div class="col-40 text-center">
+                <div class="col-50 text-center">
                   <label id="productoNombre<?php echo $productosId[$k];?>" style="font-size:20px;color:black">   <?php echo $productosNombre[$k];?></label>
                 </div>
-                <div class="col-20">
-                  <button class="btn btn-success" id="buttonVerProducto<?php echo $productosId[$k];?>" name="" onclick="verProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
+                <div class="col-25">
+                  <button class="btn btn-primary" id="buttonVerProducto<?php echo $productosId[$k];?>" name="" onclick="verProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
-                <div class="col-20">
+                <div class="col-25">
                   <button class="btn btn-primary" id="" name="" onclick="modificarProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
-                </div>
-                <div class="col-20">
-                  <button class="btn btn-danger" id="" name="" onclick="eliminarProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Eliminar</button>
                 </div>
               </div>
 

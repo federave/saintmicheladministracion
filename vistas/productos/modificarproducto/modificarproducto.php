@@ -5,36 +5,11 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/modificarproducto/modificarproducto.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/productos/modificarproducto/modificarproducto.js"></script>
 
-  <?php
+<?php // son llamados en nuevoproducto ?>
+<?php //require $_SESSION["raiz"] . '/modelo/productos/tiposproductos.php'?>
+<?php //require $_SESSION["raiz"] . '/modelo/insumos/insumos.php'?>
 
 
-    $tipoProductosId = array();
-    $tipoProductosId[0] = 1;
-    $tipoProductosId[1] = 2;
-
-    $tipoProductosNombre = array();
-    $tipoProductosNombre[0] = "Retornable";
-    $tipoProductosNombre[1] = "Descartable";
-
-    $insumosId = array();
-    $insumosId[0] = 1;
-    $insumosId[1] = 2;
-    $insumosId[2] = 3;
-    $insumosId[3] = 4;
-    $insumosId[4] = 5;
-    $insumosId[5] = 6;
-
-    $insumosNombre = array();
-    $insumosNombre[0] = "Tapa";
-    $insumosNombre[1] = "Etiqueta";
-    $insumosNombre[2] = "Precinto";
-    $insumosNombre[3] = "Manija";
-    $insumosNombre[4] = "sss";
-    $insumosNombre[5] = "sss";
-
-
-
-  ?>
 
   <input type="hidden" name="idProducto" id="idProducto" value="">
 
@@ -61,11 +36,11 @@
     </div>
     <br>
 
-    <div style="display:none" class="text-center alerta alert alert-success alert-dismissible" id="alertaNombreProductoNuevo">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Nombre Modificado!</strong>
+    <div id="alertaNombreProductoNuevo">
+
     </div>
 
+    <br>
     <br>
 
     <!-- Litros -->
@@ -81,7 +56,10 @@
       </div>
     </div>
     <br>
+    <div id="alertaLitrosProductoNuevo">
 
+    </div>
+    <br>
     <br>
 
     <!-- Tipo de Producto -->
@@ -102,11 +80,11 @@
           <?php
 
           $k=0;
-          while($k<count($tipoProductosId))
+          while($k<count($tiposProductoId))
               {
               ?>
-              <option id="idTipoProductoNuevo<?php echo $tipoProductosId[$k];?>" value="<?php echo $tipoProductosId[$k];?>" style="color:black;font-size:20px;">
-                <?php echo $tipoProductosNombre[$k];?>
+              <option id="idTipoProductoNuevo<?php echo $tiposProductoId[$k];?>" value="<?php echo $tiposProductoId[$k];?>" style="color:black;font-size:20px;">
+                <?php echo $tiposProductoNombre[$k];?>
               </option>
             <?php
               $k++;
@@ -119,7 +97,10 @@
         <input type="button" class="boton btn btn-primary" id="" name="" onclick="tipoProductoNuevo()" style="height:50px;font-size:18px;height:50px;font-size:18px" value="Modificar">
       </div>
     </div>
+    <br>
+    <div id="alertaTipoProductoNuevo">
 
+    </div>
     <br>
     <br>
 
@@ -127,6 +108,7 @@
       <h2>Insumos</h2>
     </div>
 
+    <br>
 
     <div class="contenedorInsumos" style="padding: 5%;height:500px;background-color:white; overflow-y: scroll;">
 
@@ -140,8 +122,11 @@
           ?>
 
          <div class="funkyradio-info text-center">
-             <input type="checkbox" name="insumosNuevo" id="insumoNuevo<?php echo $k; ?>" value="<?php echo $insumosId[$k]; ?>"/>
-             <label for="insumoNuevo<?php echo $k; ?>" style="color:black;font-size:18px"><?php echo $insumosNombre[$k]; ?></label>
+             <input onchange="actualizarInsumo(<?php echo $insumosId[$k]; ?>)" type="checkbox" name="insumosNuevo" id="insumoNuevo<?php echo $insumosId[$k]; ?>" value="<?php echo $insumosId[$k]; ?>"/>
+             <label for="insumoNuevo<?php echo $insumosId[$k]; ?>" style="color:black;font-size:18px"><?php echo $insumosNombre[$k]; ?></label>
+             <div id="alertaInsumo<?php echo $insumosId[$k]; ?>">
+
+             </div>
          </div>
 
 
@@ -151,6 +136,7 @@
      ?>
 
 
+      <br>
       <br>
       <br>
 

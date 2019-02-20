@@ -30,7 +30,6 @@ else
 
 function respuestaVerDatosProducto(respuesta)
 {
-alert(respuesta.target.responseText);
 
 xmlDoc = crearXML(respuesta.target.responseText);
 
@@ -50,11 +49,11 @@ if(estado)
 
 
   var numero = xmlDoc.getElementsByTagName("NumeroInsumos")[0].childNodes[0].nodeValue;
-  document.getElementById("insumosProducto"+id).innerHTML="Insumos:";
+  document.getElementById("insumosProducto"+id).innerHTML="Insumos<br>";
   for(i=0;i<numero;i++)
   {
   var nombreInsumo=xmlDoc.getElementsByTagName("NombreInsumo")[i].childNodes[0].nodeValue;
-  document.getElementById("insumosProducto"+id).innerHTML += " " + nombreInsumo;
+  document.getElementById("insumosProducto"+id).innerHTML += "<br>" + nombreInsumo;
   }
 
 
@@ -90,19 +89,8 @@ requerimiento.ejecutar();
 
 function respuestaDatosProducto(respuesta)
 {
+xmlDoc = crearXML(respuesta.target.responseText);
 
-
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 if(estado)
@@ -119,7 +107,7 @@ if(estado)
   document.getElementById("nombreProductoNuevo").value = nombre;
   document.getElementById("litrosProductoNuevo").value = litros;
 
-  document.getElementById("idTipoProductoNuevo"+id).selected=true;
+  document.getElementById("idTipoProductoNuevo"+idTipoProducto).selected=true;
 
 
   var numero = xmlDoc.getElementsByTagName("NumeroInsumos")[0].childNodes[0].nodeValue;

@@ -18,11 +18,7 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $id=$_GET["id"];
 
-    escribir("gggggg");
-    escribir($id);
-
     $sql = "SELECT P.id,P.nombre,P.litros,P.idtipoproducto,TP.tipo FROM productos as P inner join tiposproducto as TP on P.idtipoproducto=TP.id WHERE P.id='$id'";
-    escribir("'$sql'");
 
     $tabla = $conexion->query($sql);
     $row = $tabla->fetch_assoc();
@@ -34,18 +30,23 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     $xml->addTag("IdTipoProducto",$row["idtipoproducto"]);
     $xml->addTag("NombreTipoProducto",$row["tipo"]);
 
-    $xml->addTag("NumeroInsumos",2);
 
-    $xml->startTag("Insumo");
-      $xml->addTag("IdInsumo",1);
-      $xml->addTag("NombreInsumo","Etiqueta");
-    $xml->closeTag("Insumo");
+    $sql = "SELECT * FROM productos_insumos as p_i inner join insumos as i on p_i.idinsumo=i.id WHERE p_i.idproducto='$id'";
+    $tabla = $conexion->query($sql);
+    $k=0;
+    if($tabla->num_rows>0)
+        {
+        while($row = $tabla->fetch_assoc())
+            {
+            $xml->startTag("Insumo");
+              $xml->addTag("IdInsumo",$row["idinsumo"]);
+              $xml->addTag("NombreInsumo",$row["nombre"]);
+            $xml->closeTag("Insumo");
+            $k++;
+            }
+        }
 
-    $xml->startTag("Insumo");
-      $xml->addTag("IdInsumo",3);
-      $xml->addTag("NombreInsumo","Manija");
-    $xml->closeTag("Insumo");
-
+    $xml->addTag("NumeroInsumos",$k);
 
 
     $aux = true;

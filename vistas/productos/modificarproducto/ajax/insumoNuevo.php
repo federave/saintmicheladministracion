@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["id"]) && isset($_GET["nombre"]))
+if(isset($_GET["id"]) && isset($_GET["idinsumo"]) && isset($_GET["estado"]))
   {
   $aux=false;
 
@@ -19,9 +19,19 @@ if(isset($_GET["id"]) && isset($_GET["nombre"]))
     {
     $conexion = $conector->getConexion();
     $id=$_GET["id"];
-    $nombre=$_GET["nombre"];
-    $sql = "UPDATE productos SET nombre='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
+    $idinsumo=$_GET["idinsumo"];
+    $estado=$_GET["estado"];
+
+    if($estado)
+      {
+      $sql = "INSERT INTO productos_insumos (idproducto,idinsumo) VALUES('$id','$idinsumo')";
+      $aux = $conexion->query($sql);
+      }
+    else
+      {
+      $sql = "DELETE FROM productos_insumos WHERE idproducto = '$id' AND idinsumo = '$idinsumo'";
+      $aux = $conexion->query($sql);
+      }
 
     $conector->cerrarConexion();
     }

@@ -4,7 +4,13 @@
 
 /////////////////////////////////
 
-
+function phpBoolean(valor)
+{
+if(valor)
+  return 1;
+else
+  return 0;
+}
 
 function crearAlerta(texto,tipoalerta)
 {
