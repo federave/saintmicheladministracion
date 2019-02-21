@@ -44,14 +44,19 @@ function nextPrevMaquina(n) {
 
         xml.startTag("Maquina");
 
-        xml.addTag("Nombre",document.getElementById("nombreMaquinaNueva").value);
-        xml.addTag("Marca",document.getElementById("marcaMaquinaNueva").value);
-        xml.addTag("Capacidad",document.getElementById("capacidadMaquinaNueva").value);
-      //  xml.addTag("IdTipoMaquina",document.getElementById("tipoMaquina").value);
+        xml.addTag("Nombre",document.getElementById("nombre").value);
+        xml.addTag("Marca",document.getElementById("marca").value);
+        xml.addTag("Capacidad",document.getElementById("capacidad").value);
 
-        xml.addTag("IdTipoMaquina",1);
-
-
+        var numero = document.getElementById("numeroTiposMaquina").value;
+        for(i=0;i<numero;i++)
+        {
+        if(document.getElementById("tipomaquina"+i).checked)
+          {
+          xml.addTag("IdTipoMaquina",document.getElementById("tipomaquina"+i).value);
+          break;
+          }
+        }
 
 
         xml.closeTag("Maquina");
@@ -60,7 +65,7 @@ function nextPrevMaquina(n) {
         document.getElementById("maquinaNueva").value=xml.toString();
 
 
-      
+
 
 
 

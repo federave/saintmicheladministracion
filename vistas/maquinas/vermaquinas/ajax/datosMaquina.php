@@ -4,10 +4,13 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
+
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]))
+if(isset($_GET["id"]))
   {
   $aux=false;
 
@@ -18,17 +21,18 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $id=$_GET["id"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
+    $sql = "SELECT m.id,m.nombre,m.marca,m.capacidad,m.idtipomaquina,tm.tipo FROM maquinas as m inner join tiposmaquina as tm on m.idtipomaquina=tm.id WHERE m.id='$id'";
+
+    $tabla = $conexion->query($sql);
+    $row = $tabla->fetch_assoc();
 
     $xml->addTag("Id",$id);
-    $xml->addTag("Nombre","Dispenser Frio Calor");
-    $xml->addTag("Marca","Ushuaia");
-    $xml->addTag("Capacidad",0);
-    $xml->addTag("IdTipoMaquina",1);
-    $xml->addTag("TipoMaquina","Dispenser Frio Calor");
+    $xml->addTag("Nombre",$row["nombre"]);
+    $xml->addTag("Marca",$row["marca"]);
+    $xml->addTag("Capacidad",$row["capacidad"]);
+    $xml->addTag("IdTipoMaquina",$row["idtipomaquina"]);
+    $xml->addTag("TipoMaquina",$row["tipo"]);
+
 
 
 

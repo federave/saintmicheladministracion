@@ -29,15 +29,14 @@ function respuestaNombreMaquinaNuevo(respuesta)
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+var id = document.getElementById("idMaquina").value;
+
 if(estado)
   {
   var nombreNuevo = document.getElementById("nombreMaquinaNuevo").value;
   document.getElementById("nombreMaquina").innerHTML = "Nombre: " + nombreNuevo;
+  document.getElementById("maquinaNombre"+id).innerHTML = "Nombre: " + nombreNuevo;
   document.getElementById("alertaNombreMaquinaNuevo").innerHTML = crearAlerta("Nombre Maquina Modificado!","success");
-
-
-
-
   }
 else
   {
@@ -59,6 +58,7 @@ function marcaMaquinaNueva()
 {
 var id = document.getElementById("idMaquina").value;
 var marcaNueva = document.getElementById("marcaMaquinaNueva").value;
+alert(document.getElementById("marcaMaquinaNueva").value);
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("modificarmaquina/ajax/marcaNueva.php");
 requerimiento.addParametro("id",id);
@@ -74,10 +74,12 @@ function respuestaMarcaMaquinaNueva(respuesta)
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+
 if(estado)
   {
   var marcaNueva = document.getElementById("marcaMaquinaNueva").value;
   document.getElementById("marcaMaquina").innerHTML = "Marca: " + marcaNueva;
+
   document.getElementById("alertaMarcaMaquinaNueva").innerHTML = crearAlerta("Marca Maquina Modificada!","success");
 
   }
@@ -111,7 +113,7 @@ requerimiento.ejecutar();
 
 function respuestaCapacidadMaquinaNueva(respuesta)
 {
-
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -152,10 +154,8 @@ function respuestaTipoMaquinaNuevo(respuesta)
 {
 xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  document.getElementById("tipoMaquina").innerHTML = "Tipo Maquina: " + nombre;
   document.getElementById("alertaTipoMaquinaNuevo").innerHTML = crearAlerta("Tipo Maquina Modificado!","success");
   }
 else

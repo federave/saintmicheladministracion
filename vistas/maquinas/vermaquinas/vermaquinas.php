@@ -3,18 +3,7 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/maquinas/vermaquinas/vermaquinas.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/maquinas/vermaquinas/vermaquinas.js"></script>
 
-  <?php
-
-  $maquinasId = array();
-  $maquinasId[0] = 1;
-  $maquinasId[1] = 2;
-
-  $maquinasNombre = array();
-  $maquinasNombre[0] = "Heladera";
-  $maquinasNombre[1] = "Dispenser";
-
-
-  ?>
+<?php require $_SESSION["raiz"] . '/modelo/maquinas/maquinas.php'?>
 
   <div class="contenedorvermaquinas">
     <br>

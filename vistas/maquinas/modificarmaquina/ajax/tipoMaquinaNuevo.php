@@ -4,11 +4,13 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["idTipoMaquina"]))
+if(isset($_GET["id"]) && isset($_GET["idTipoMaquina"]))
   {
   $aux=false;
 
@@ -17,14 +19,11 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     {
     $conexion = $conector->getConexion();
 
-    /*
-    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
+    $idTipoMaquina = $_GET["idTipoMaquina"];
+    $id = $_GET["id"];
+
+    $sql = "UPDATE maquinas SET idtipomaquina='$idTipoMaquina' WHERE id='$id'";
     $aux = $conexion->query($sql);
-    */
-    $aux = true;
-
-    $xml->addTag("Nombre","Heladera");
-
 
 
     $conector->cerrarConexion();

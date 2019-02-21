@@ -33,7 +33,7 @@
                   <label id="productoNombre<?php echo $productosId[$k];?>" style="font-size:20px;color:black">   <?php echo $productosNombre[$k];?></label>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-primary" id="buttonVerProducto<?php echo $productosId[$k];?>" name="" onclick="verProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
+                  <button class="btn btn-success" id="buttonVerProducto<?php echo $productosId[$k];?>" name="" onclick="verProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
                 <div class="col-25">
                   <button class="btn btn-primary" id="" name="" onclick="modificarProducto(<?php echo $productosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>

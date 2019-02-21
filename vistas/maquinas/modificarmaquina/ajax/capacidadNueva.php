@@ -4,11 +4,13 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["capacidad"]))
+if(isset($_GET["id"]) && isset($_GET["capacidad"]))
   {
   $aux=false;
 
@@ -17,11 +19,12 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     {
     $conexion = $conector->getConexion();
 
-    /*
-    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
+    $capacidad = $_GET["capacidad"];
+    $id = $_GET["id"];
+
+    $sql = "UPDATE maquinas SET capacidad='$capacidad' WHERE id='$id'";
     $aux = $conexion->query($sql);
-    */
-    $aux = true;
+
 
     $conector->cerrarConexion();
     }

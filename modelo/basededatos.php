@@ -110,10 +110,91 @@ class BaseDeDatos
     $aux &= $this->crearTablasProductos();
     $aux &= $this->crearTablasInsumos();
     $aux &= $this->crearTablaProductos_Insumos();
+    $aux &= $this->crearTablaMaquinas();
 
 
     return $aux;
     }
+
+
+
+    function crearTablaMaquinas()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      // Tabla Tipo Maquinas
+
+      $sql = "CREATE TABLE IF NOT EXISTS tiposmaquina(
+      id int auto_increment,
+      tipo varchar(50),
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO tiposmaquina (tipo)
+      SELECT * FROM (SELECT 'Dispenser Frio Calor') AS tm
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposmaquina WHERE tipo = 'Dispenser Frio Calor'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tiposmaquina (tipo)
+      SELECT * FROM (SELECT 'Heladera') AS tm
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposmaquina WHERE tipo = 'Heladera'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+      // Tabla Insumos
+
+      $sql = "CREATE TABLE IF NOT EXISTS maquinas(
+      id int auto_increment,
+      nombre varchar(50),
+      marca varchar(50),
+      capacidad real,
+      idtipomaquina int not null,
+      constraint pk primary key(id),
+      foreign key(idtipomaquina) REFERENCES tiposmaquina(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO maquinas (nombre,marca,capacidad,idtipomaquina)
+      SELECT * FROM (SELECT 'Dispenser Frio Calor Ushuaia','Ushuaia',0,1) AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM maquinas WHERE nombre = 'Dispenser Frio Calor Ushuaia'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO maquinas (nombre,marca,capacidad,idtipomaquina)
+      SELECT * FROM (SELECT 'Heladera Briket 3200','Briket',3200,2) AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM maquinas WHERE nombre = 'Heladera Briket 3200'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+
+
+
 
 
 

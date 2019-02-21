@@ -4,24 +4,29 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["marca"]))
+if(isset($_GET["id"]) && isset($_GET["marca"]))
   {
   $aux=false;
-
+  escribir("1");
   $conector = new Conector();
   if($conector->abrirConexion())
     {
     $conexion = $conector->getConexion();
 
-    /*
-    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
+    $marca = $_GET["marca"];
+    $id = $_GET["id"];
+    escribir($marca);
+
+    $sql = "UPDATE maquinas SET marca='$marca' WHERE id='$id'";
     $aux = $conexion->query($sql);
-    */
-    $aux = true;
+
+    escribir("3");
 
     $conector->cerrarConexion();
     }

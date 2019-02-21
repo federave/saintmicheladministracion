@@ -5,21 +5,10 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/maquinas/modificarmaquina/modificarmaquina.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/maquinas/modificarmaquina/modificarmaquina.js"></script>
 
-  <?php
-
-
-  $tipoMaquinasId = array();
-  $tipoMaquinasId[0] = 1;
-  $tipoMaquinasId[1] = 2;
-
-  $tipoMaquinasNombre = array();
-  $tipoMaquinasNombre[0] = "Dispenser Frio Calor";
-  $tipoMaquinasNombre[1] = "Heladera";
+<?php //require $_SESSION["raiz"] . '/modelo/maquinas/tiposmaquina.php'?>
 
 
 
-
-  ?>
 
   <input type="hidden" name="idMaquina" id="idMaquina" value="">
 
@@ -101,11 +90,11 @@
           <?php
 
           $k=0;
-          while($k<count($tipoMaquinasId))
+          while($k<count($tiposMaquinaId))
               {
               ?>
-              <option value="<?php echo $tipoMaquinasId[$k];?>" style="color:black;font-size:20px;">
-                <?php echo $tipoMaquinasNombre[$k];?>
+              <option id="tipoMaquinaNuevo<?php echo $tiposMaquinaId[$k];?>" value="<?php echo $tiposMaquinaId[$k];?>" style="color:black;font-size:20px;">
+                <?php echo $tiposMaquinaNombre[$k];?>
               </option>
             <?php
               $k++;

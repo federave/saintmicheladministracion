@@ -101,7 +101,8 @@ if(estado)
   document.getElementById("nombreMaquina").innerHTML = "Nombre: " + nombre;
   document.getElementById("marcaMaquina").innerHTML = "Marca: " + marca;
   document.getElementById("capacidadMaquina").innerHTML = "Capacidad: " + capacidad;
-  document.getElementById("tipoMaquina").innerHTML = "Tipo Maquina: " + tipoMaquina;
+  document.getElementById("tipoMaquina").innerHTML = "Tipo Maquina";
+  document.getElementById("tipoMaquinaNuevo"+idTipoMaquina).selected=true;
 
   document.getElementById("idMaquina").value = id;
 
