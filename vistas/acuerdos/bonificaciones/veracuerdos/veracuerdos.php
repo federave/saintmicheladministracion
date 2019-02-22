@@ -3,20 +3,7 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/veracuerdos/veracuerdos.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/veracuerdos/veracuerdos.js"></script>
 
-  <?php
-
-  $acuerdosbonificacionesId = array();
-  $acuerdosbonificacionesId[0] = 1;
-  $acuerdosbonificacionesId[1] = 2;
-  $acuerdosbonificacionesId[2] = 3;
-
-  $acuerdosbonificacionesNombre = array();
-  $acuerdosbonificacionesNombre[0] = "Supermercados Chinos";
-  $acuerdosbonificacionesNombre[1] = "Buffets Universitarios";
-  $acuerdosbonificacionesNombre[2] = "Autoservicios";
-
-
-  ?>
+<?php require $_SESSION["raiz"] . '/modelo/acuerdos/bonificaciones/acuerdosbonificaciones.php'?>
 
   <div class="contenedoracuerdosbonificaciones">
     <br>
@@ -41,13 +28,15 @@
 
             <li class="list-group-item">
               <div class="row">
-                <div class="col-60 text-center">
+                <div class="col-50 text-center">
                   <label id="" style="font-size:20px;color:black">   <?php echo $acuerdosbonificacionesNombre[$k];?></label>
                 </div>
-                <div class="col-40">
+                <div class="col-25">
                   <button class="btn btn-success" id="buttonVerAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" name="" onclick="verAcuerdoBonificacion(<?php echo $acuerdosbonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
-              
+                <div class="col-25">
+                  <button class="btn btn-primary" id="buttonModificarAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" name="" onclick="modificarAcuerdoBonificacion(<?php echo $acuerdosbonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
+                </div>
               </div>
 
                <div class="row text-center" id="divAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" style="display:none">

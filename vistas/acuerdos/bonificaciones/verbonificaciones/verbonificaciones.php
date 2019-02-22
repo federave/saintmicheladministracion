@@ -3,20 +3,7 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/verbonificaciones/verbonificaciones.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/verbonificaciones/verbonificaciones.js"></script>
 
-  <?php
-
-  $bonificacionesId = array();
-  $bonificacionesId[0] = 1;
-  $bonificacionesId[1] = 2;
-  $bonificacionesId[2] = 3;
-
-  $bonificacionesNombre = array();
-  $bonificacionesNombre[0] = "10% Bidones";
-  $bonificacionesNombre[1] = "10% Botellas";
-  $bonificacionesNombre[2] = "10% Retornables";
-
-
-  ?>
+<?php require $_SESSION["raiz"] . '/modelo/acuerdos/bonificaciones/bonificaciones.php'?>
 
   <div class="contenedorbonificaciones">
     <br>
@@ -47,7 +34,7 @@
                 <div class="col-40">
                   <button class="btn btn-success" id="buttonVerBonificacion<?php echo $bonificacionesId[$k];?>" name="" onclick="verBonificacion(<?php echo $bonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
-              
+
               </div>
 
                <div class="row text-center" id="divBonificacion<?php echo $bonificacionesId[$k];?>" style="display:none">

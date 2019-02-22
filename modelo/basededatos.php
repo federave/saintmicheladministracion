@@ -111,10 +111,152 @@ class BaseDeDatos
     $aux &= $this->crearTablasInsumos();
     $aux &= $this->crearTablaProductos_Insumos();
     $aux &= $this->crearTablaMaquinas();
+    $aux &= $this->crearTablasAcuerdos();
 
 
     return $aux;
     }
+
+
+
+    function crearTablasAcuerdos()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+
+      //////////////////////////////////////////////////////////////////////
+      ////////////////PRECIOS PRODUCTOS
+
+      // Tabla Acuerdos
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdospreciosproductos(
+      id int auto_increment,
+      nombre varchar(50),
+      especial boolean,
+      fechacreacion date,
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      // Tabla Actual
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdospreciosproductos_productos_actual(
+      idacuerdo int not null,
+      idproducto int not null,
+      precio real,
+      fechainicio datetime,
+      primary key(idacuerdo,idproducto),
+      foreign key(idacuerdo) REFERENCES acuerdospreciosproductos(id),
+      foreign key(idproducto) REFERENCES productos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      // Tabla Historico
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdospreciosproductos_productos_historico(
+      idacuerdo int not null,
+      idproducto int not null,
+      precio real,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idacuerdo,idproducto),
+      foreign key(idacuerdo) REFERENCES acuerdospreciosproductos(id),
+      foreign key(idproducto) REFERENCES productos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      //////////////////////////////////////////////////////////////////////
+      //////////////// BONIFICACIONES
+
+      // Tabla Bonificaciones
+
+      $sql = "CREATE TABLE IF NOT EXISTS bonificaciones(
+      id int auto_increment,
+      nombre varchar(50),
+      cantidadminima int,
+      cantidadmaxima int,
+      porcentaje real,
+      fechacreacion date,
+      primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Bonificaciones Productos
+
+      $sql = "CREATE TABLE IF NOT EXISTS bonificaciones_productos(
+      idbonificacion int not null,
+      idproducto int not null,
+      primary key(idbonificacion,idproducto),
+      foreign key(idbonificacion) REFERENCES bonificaciones(id),
+      foreign key(idproducto) REFERENCES productos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Acuerdos
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdosbonificaciones(
+      id int auto_increment,
+      nombre varchar(50),
+      especial boolean,
+      fechacreacion date,
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Actual
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdosbonificaciones_bonificaciones_actual(
+      idacuerdo int not null,
+      idbonificacion int not null,
+      fechainicio datetime,
+      primary key(idacuerdo,idbonificacion),
+      foreign key(idacuerdo) REFERENCES acuerdosbonificaciones(id),
+      foreign key(idbonificacion) REFERENCES bonificaciones(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      // Tabla Historico
+
+      $sql = "CREATE TABLE IF NOT EXISTS acuerdosbonificaciones_bonificaciones_historico(
+      idacuerdo int not null,
+      idbonificacion int not null,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idacuerdo,idbonificacion),
+      foreign key(idacuerdo) REFERENCES acuerdosbonificaciones(id),
+      foreign key(idbonificacion) REFERENCES bonificaciones(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
 
 
 

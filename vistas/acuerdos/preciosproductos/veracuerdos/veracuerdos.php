@@ -3,18 +3,8 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/veracuerdos/veracuerdos.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/veracuerdos/veracuerdos.js"></script>
 
-  <?php
+<?php require $_SESSION["raiz"] . '/modelo/acuerdos/preciosproductos/acuerdospreciosproductos.php'?>
 
-  $acuerdospreciosproductosId = array();
-  $acuerdospreciosproductosId[0] = 1;
-  $acuerdospreciosproductosId[1] = 2;
-
-  $acuerdospreciosproductosNombre = array();
-  $acuerdospreciosproductosNombre[0] = "Domicilios";
-  $acuerdospreciosproductosNombre[1] = "Comercios";
-
-
-  ?>
 
   <div class="contenedoracuerdospreciosproductos">
     <br>
@@ -40,7 +30,7 @@
             <li class="list-group-item">
               <div class="row">
                 <div class="col-60 text-center">
-                  <label id="" style="font-size:20px;color:black">   <?php echo $acuerdospreciosproductosNombre[$k];?></label>
+                  <label id="nombreAcuerdoPreciosProductos<?php echo $acuerdospreciosproductosId[$k];?>" style="font-size:20px;color:black">   <?php echo $acuerdospreciosproductosNombre[$k];?></label>
                 </div>
                 <div class="col-20">
                   <button class="btn btn-success" id="buttonVerAcuerdoPreciosProductos<?php echo $acuerdospreciosproductosId[$k];?>" name="" onclick="verAcuerdoPreciosProductos(<?php echo $acuerdospreciosproductosId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
@@ -55,7 +45,9 @@
                  <style media="screen">
                    .etiqueta{font-size:20px;color:black;}
                  </style>
-                 <label id="nombreAcuerdoPreciosProductos<?php echo $acuerdospreciosproductosId[$k];?>" class="etiqueta">Nombre: </label>
+                 <label id="nombreAcuerdoPreciosProductosDatos<?php echo $acuerdospreciosproductosId[$k];?>" class="etiqueta">Nombre: </label>
+                 <br>
+                 <label id="fechaCreacionAcuerdoPreciosProductos<?php echo $acuerdospreciosproductosId[$k];?>" class="etiqueta">Nombre: </label>
                  <br>
                  <div id="preciosAcuerdoPreciosProductos<?php echo $acuerdospreciosproductosId[$k];?>" class="row text-center"></div>
 

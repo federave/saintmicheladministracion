@@ -44,11 +44,11 @@ if(estado)
 
 
   var numero = xmlDoc.getElementsByTagName("NumeroBonificaciones")[0].childNodes[0].nodeValue;
-  document.getElementById("bonificacionesAcuerdoBonificacion"+id).innerHTML="Bonificaciones:";
+  document.getElementById("bonificacionesAcuerdoBonificacion"+id).innerHTML="Bonificaciones<br>";
   for(i=0;i<numero;i++)
   {
   var nombreBonificacion=xmlDoc.getElementsByTagName("NombreBonificacion")[i].childNodes[0].nodeValue;
-  document.getElementById("bonificacionesAcuerdoBonificacion"+id).innerHTML += " " + nombreBonificacion;
+  document.getElementById("bonificacionesAcuerdoBonificacion"+id).innerHTML += "<br>" + nombreBonificacion;
   }
 
   document.getElementById("divAcuerdoBonificacion"+id).style.display="block";

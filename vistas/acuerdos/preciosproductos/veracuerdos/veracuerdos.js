@@ -14,7 +14,7 @@ if(document.getElementById("divAcuerdoPreciosProductos"+id).style.display=="bloc
 else
   {
   var requerimiento = new RequerimientoGet();
-  requerimiento.setURL("veracuerdos/ajax/datosAcuerdoPreciosProductos.php");
+  requerimiento.setURL("veracuerdos/ajax/datosAcuerdoPreciosProductosActual.php");
   requerimiento.addParametro("id",id);
   requerimiento.addListener(respuestaVerDatosAcuerdoPreciosProductos);
   requerimiento.ejecutar();
@@ -35,15 +35,27 @@ if(estado)
 
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-  document.getElementById("nombreAcuerdoPreciosProductos"+id).innerHTML=nombre;
+  var fechacreacion = xmlDoc.getElementsByTagName("FechaCreacion")[0].childNodes[0].nodeValue;
+
+  document.getElementById("nombreAcuerdoPreciosProductosDatos"+id).innerHTML=nombre;
+  document.getElementById("fechaCreacionAcuerdoPreciosProductos"+id).innerHTML="Fecha de Creción: " + fechacreacion;
 
   var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
   var divDescripcion = document.getElementById("preciosAcuerdoPreciosProductos"+id);
+  var br = "<br>";
+  divDescripcion.innerHTML = "<label class=\"etiqueta\" >" + "Datos Actuales" + "</label>" + br;
+
+
   for(i=0;i<numero;i++)
   {
   var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
   var precioProducto=xmlDoc.getElementsByTagName("PrecioProducto")[i].childNodes[0].nodeValue;
-  divDescripcion.innerHTML += "<label class=\"etiqueta\" >" + "Producto: " + nombreProducto +  "</label><br>" +"<label class=\"etiqueta\" >" + " Precio: " + precioProducto +" $"+  "</label><br><br>";
+  var fechaInicioProducto=xmlDoc.getElementsByTagName("FechaInicioProducto")[i].childNodes[0].nodeValue;
+
+  var labelProducto = "<label class=\"etiqueta\" >" + nombreProducto +  "</label>";
+  var labelPrecio = "<label class=\"etiqueta\" >" + " Precio: " + precioProducto +" $"+  "</label>";
+  var labelFechaInicio = "<label class=\"etiqueta\" >" + " Fecha de Inicio: " + fechaInicioProducto+  "</label>";
+  divDescripcion.innerHTML += br + labelProducto+br+labelPrecio+br+labelFechaInicio+br;
   }
 
   document.getElementById("divAcuerdoPreciosProductos"+id).style.display="block";
@@ -66,7 +78,7 @@ function modificarAcuerdoPreciosProductos(id)
 {
 
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("veracuerdos/ajax/datosAcuerdoPreciosProductos.php");
+requerimiento.setURL("veracuerdos/ajax/datosAcuerdoPreciosProductosActual.php");
 requerimiento.addParametro("id",id);
 requerimiento.addListener(respuestaDatosAcuerdoPreciosProductos);
 requerimiento.ejecutar();
@@ -89,6 +101,7 @@ if(estado)
 
   document.getElementById("idAcuerdoPreciosProductos").value = id;
   document.getElementById("nombreAcuerdoPreciosProductos").innerHTML = "Nombre: " + nombre;
+  document.getElementById("divProductosAcuerdoPreciosProductos").innerHTML = "";
 
   var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
 
@@ -120,12 +133,12 @@ function mostrarModificarProducto(idProducto,nombreProducto,precioProducto)
 
 
 var labelNombre="<label class=\"etiquetaBlanca\">"+"Nombre: "+nombreProducto+"</label>";
-var labelPrecio="<label class=\"etiquetaBlanca\">"+"Precio: "+precioProducto+" $"+"</label>";
+var labelPrecio="<label id=\"precioProducto"+idProducto+"\" class=\"etiquetaBlanca\">"+"Precio: "+precioProducto+" $"+"</label>";
 
 var input="<input id=\"precioProducto" + idProducto +"Nuevo\" class=\"text-center\" style=\"color:black;width:60%;\" type=\"number\" min=\"0\" value=\"\" step=\"0.1\" placeholder=\"Precio Nuevo\" >"
 var button = "<button class=\"btn btn-primary\" onclick=\"modificarPrecioProducto("+idProducto+")\" style=\"height:50px;font-size:18px;width:60%;\">Modificar</button>";
-
-var div = "<div class=\"row text-center\">"+labelNombre+"<br>"+labelPrecio+"<br>"+input+"<br>"+"<br>"+button+"<br>"+"</div>"+"<br>"+"<br>";
+var divAlerta = "<div id=\"alertaPrecioProducto"+idProducto+"Nuevo\"></div>";
+var div = "<div class=\"row text-center\">"+labelNombre+"<br>"+labelPrecio+"<br>"+input+"<br>"+"<br>"+button+"<br>"+"<br>"+divAlerta+"</div>"+"<br>"+"<br>";
 
 document.getElementById("divProductosAcuerdoPreciosProductos").innerHTML += div;
 

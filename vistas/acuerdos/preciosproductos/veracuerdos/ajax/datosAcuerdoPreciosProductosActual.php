@@ -21,20 +21,18 @@ if(isset($_GET["id"]))
 
     $id=$_GET["id"];
 
-    $sql = "SELECT * FROM bonificaciones WHERE id = '$id'";
+    $sql = "SELECT * FROM acuerdospreciosproductos WHERE id = '$id'";
     $tabla = $conexion->query($sql);
     if($tabla->num_rows>0)
       {
       $row = $tabla->fetch_assoc();
+      $idacuerdo = $row["id"];
+      $xml->addTag("Id", $row["id"]);
+      $xml->addTag("Nombre", $row["nombre"]);
+      $xml->addTag("Especial", $row["especial"]);
+      $xml->addTag("FechaCreacion", $row["fechacreacion"]);
 
-      $xml->addTag("Id",$id);
-      $xml->addTag("Nombre",$row["nombre"]);
-      $xml->addTag("CantidadMinima",$row["cantidadminima"]);
-      $xml->addTag("CantidadMaxima",$row["cantidadmaxima"]);
-      $xml->addTag("Porcentaje",$row["porcentaje"]);
-      $xml->addTag("FechaCreacion",$row["fechacreacion"]);
-
-      $sql = "SELECT b_p.idproducto,p.nombre FROM bonificaciones_productos as b_p inner join productos as p on b_p.idproducto=p.id WHERE b_p.idbonificacion='$id'";
+      $sql = "SELECT app_p_a.idproducto,app_p_a.precio,app_p_a.fechainicio,p.nombre FROM acuerdospreciosproductos_productos_actual as app_p_a inner join productos as p on app_p_a.idproducto=p.id WHERE app_p_a.idacuerdo='$idacuerdo'";
       $tabla = $conexion->query($sql);
       $k=0;
       if($tabla->num_rows>0)
@@ -44,15 +42,20 @@ if(isset($_GET["id"]))
           $xml->startTag("Producto");
             $xml->addTag("IdProducto",$row["idproducto"]);
             $xml->addTag("NombreProducto",$row["nombre"]);
+            $xml->addTag("PrecioProducto",$row["precio"]);
+            $fechaaux = new DateTime($row["fechainicio"]);
+            $fechainicio = $fechaaux->format('Y-m-d');
+            $xml->addTag("FechaInicioProducto",$fechainicio);
           $xml->closeTag("Producto");
           $k++;
           }
         }
-
       $xml->addTag("NumeroProductos",$k);
 
-
       }
+
+
+
 
 
     $aux = true;

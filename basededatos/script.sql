@@ -89,3 +89,35 @@ CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'usuario1351';
 
 
 GRANT select on *.* TO 'usuario'@'localhost';
+
+
+
+
+select * from TipoUsuarios;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

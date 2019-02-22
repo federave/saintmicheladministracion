@@ -14,15 +14,11 @@ if(document.getElementById("divBonificacion"+id).style.display=="block")
   }
 else
   {
-
-
   var requerimiento = new RequerimientoGet();
   requerimiento.setURL("verbonificaciones/ajax/datosBonificacion.php");
   requerimiento.addParametro("id",id);
   requerimiento.addListener(respuestaVerDatosBonificacion);
   requerimiento.ejecutar();
-
-
   }
 
 }
@@ -30,6 +26,7 @@ else
 
 function respuestaVerDatosBonificacion(respuesta)
 {
+
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -54,11 +51,11 @@ if(estado)
 
 
   var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
-  document.getElementById("productosBonificacion"+id).innerHTML="Productos:";
+  document.getElementById("productosBonificacion"+id).innerHTML="Productos<br>";
   for(i=0;i<numero;i++)
   {
   var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
-  document.getElementById("productosBonificacion"+id).innerHTML += " " + nombreProducto;
+  document.getElementById("productosBonificacion"+id).innerHTML += "<br>" + nombreProducto;
   }
 
 

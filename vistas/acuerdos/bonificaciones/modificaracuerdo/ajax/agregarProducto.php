@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["id"]) && isset($_GET["nombre"]))
+if(isset($_GET["idAcuerdo"]) && isset($_GET["idProducto"]) && isset($_GET["precio"]))
   {
   $aux=false;
 
@@ -19,14 +19,24 @@ if(isset($_GET["id"]) && isset($_GET["nombre"]))
     {
     $conexion = $conector->getConexion();
 
-    $id=$_GET["id"];
-    $nombre=$_GET["nombre"];
-    $sql = "UPDATE acuerdospreciosproductos SET nombre='$nombre' WHERE id='$id'";
+    $idacuerdo = $_GET["idAcuerdo"];
+    $idproducto = $_GET["idProducto"];
+    $precio = $_GET["precio"];
+
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $date = new DateTime();
+    $fechainicio = $date->format('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO acuerdospreciosproductos_productos_actual (idacuerdo,idproducto,precio,fechainicio) VALUES ('$idacuerdo','$idproducto','$precio','$fechainicio')";
     $aux = $conexion->query($sql);
-    
+
+
     $conector->cerrarConexion();
     }
 
+  if($aux==false)
+    $aux=0;
+    
   $xml->addTag("Estado",$aux);
 
   }

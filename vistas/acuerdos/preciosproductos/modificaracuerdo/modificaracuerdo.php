@@ -4,26 +4,10 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/modificaracuerdo/modificaracuerdo.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/preciosproductos/modificaracuerdo/modificaracuerdo.js"></script>
 
-  <?php
+
+<?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
 
 
-
-    $productosId = array();
-    $productosId[0] = 1;
-    $productosId[1] = 2;
-    $productosId[2] = 3;
-
-
-    $productosNombre = array();
-    $productosNombre[0] = "Bidon 10L";
-    $productosNombre[1] = "Bidon 8L";
-    $productosNombre[2] = "Bidon 5L";
-
-    $numeroProductos = 3;
-
-
-
-  ?>
 
   <input type="hidden" name="idAcuerdoPreciosProductos" id="idAcuerdoPreciosProductos" value="">
 
@@ -45,6 +29,11 @@
           <br>
           <button class="boton btn btn-primary" id="" name="" onclick="nombreNuevoAcuerdoPreciosProductos()" style="height:50px;font-size:18px;width:60%">Modificar</button>
         </div>
+        <br>
+        <div id="alertaNombreAcuerdoPreciosProductosNuevo">
+
+        </div>
+
 
         <br>
         <br>
@@ -98,11 +87,12 @@
                  </div>
                  <br>
                  <div class="text-center"style="display:none" id="divPrecioProducto<?php echo $k;?>AcuerdoPreciosProductosAgregar" >
-                   <input name="precioProducto<?php echo $k;?>AcuerdoPreciosProductosAgregar" id="precioProducto<?php echo $k; ?>AcuerdoPreciosProductosAgregar" class="text-center" style="color:black" type="number" min="0" value="0" step="0.1" placeholder="Precio">
+                   <input name="precioProducto<?php echo $productosId[$k];?>Agregar" id="precioProducto<?php echo $productosId[$k]; ?>Agregar" class="text-center" style="color:black" type="number" min="0" value="0" step="0.1" placeholder="Precio">
                    <br>
                    <br>
                    <button class="btn btn-primary" onclick="agregarProducto(<?php echo $productosId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Agregar</button>;
                  </div>
+                 <input type="hidden" id="nombreProducto<?php echo $productosId[$k];?>Agregar" value="<?php echo $productosNombre[$k];?>">
 
                 </div>
 
@@ -113,6 +103,13 @@
 
           </div>
         </div>
+
+
+        <br>
+        <div id="alertaProductoAgregado">
+
+        </div>
+
 
 
 

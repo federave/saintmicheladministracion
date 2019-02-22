@@ -14,7 +14,12 @@ input[type=text], select, textarea {
 
 }
 
-
+.alerta
+{
+/* background-color: green; */
+width:50%;
+margin:auto;
+}
 
 
 label {
@@ -76,16 +81,6 @@ input[type=submit]:hover {
   width: 30%;
   margin-top: 6px;
 }
-.col-20 {
-  float: left;
-  width: 20%;
-  margin-top: 6px;
-}
-.col-60 {
-  float: left;
-  width: 60%;
-  margin-top: 6px;
-}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -93,35 +88,43 @@ input[type=submit]:hover {
   clear: both;
 }
 
-.contenedoracuerdospreciosproductos {
-  width: 50%;
+.contenedormodificaracuerdo {
+  width: 80%;
   margin:auto;
-  padding: 5%;
+  background-color: black;
 }
 
 
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.boton {
+  width: 90%;
+  margin:auto;
 }
-
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-
 
 
   @media only screen and (max-width: 600px) {
-  .contenedoracuerdospreciosproductos {
+  .contenedormodificaracuerdo {
     width: 100%;
   }
 
-   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-60,.col-75{
+
+
+   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-75{
      width: 80%;
      margin-top:20px;
      margin-left: 10%;
    }
+
+
+   .boton {
+     width: 100%;
+     margin:auto;
+   }
+
+   .alerta
+   {
+   width:80%
+   }
+
 
 }
 
@@ -129,10 +132,15 @@ input[type=submit]:hover {
 
 
 @media only screen and (min-width: 600px) and (max-width: 800px){
-  .contenedoracuerdospreciosproductos {
+  .contenedormodificaracuerdo {
     width: 90%;
 
   }
+
+.alerta
+{
+width:80%
+}
 
 
 }
@@ -140,25 +148,42 @@ input[type=submit]:hover {
 
 
 @media only screen and (min-width: 800px) and (max-width: 1000px){
-  .contenedoracuerdospreciosproductos {
+  .contenedormodificaracuerdo {
     width: 80%;
 
   }
 
+.alerta
+{
+width:70%
+}
 
 }
 
 @media only screen  and (min-width: 1000px) and (max-width: 1300px){
-  .contenedoracuerdospreciosproductos {
+  .contenedormodificaracuerdo {
     width: 70%;
 
   }
 
+.alerta
+{
+width:50%
+}
+
+
 }
 
 @media only screen  and (min-width: 1300px) {
-  .contenedoracuerdospreciosproductos {
+  .contenedormodificaracuerdo {
     width: 60%;
   }
+
+.alerta
+{
+width:50%
+}
+
+
 
 }

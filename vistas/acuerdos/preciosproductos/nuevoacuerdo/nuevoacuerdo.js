@@ -68,10 +68,10 @@ function nextPrevAcuerdoPreciosProductosNuevo(n) {
     xml.closeTag("AcuerdoPreciosProductos");
 
 
+
     document.getElementById("acuerdoNuevo").value=xml.toString();
 
-
-    alert(xml.toString());
+    //alert(xml.toString());
 
 
 

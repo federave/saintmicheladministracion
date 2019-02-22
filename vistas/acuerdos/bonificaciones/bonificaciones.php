@@ -32,7 +32,7 @@ session_start();
 
       <div class="row">
         <div class="text-center">
-          <h1>Menu Bonificaciones</h1>
+          <h1>Menú Bonificaciones</h1>
         </div>
       </div>
       <br>
@@ -43,24 +43,24 @@ session_start();
         <ul class="nav nav-tabs">
           <li name="liBonificaciones" class="active"><a class="items" href="#" onclick="seleccionarTabBonificaciones(0)">Ver Acuerdos</a></li>
           <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(1)">Nuevo Acuerdo</a></li>
-          <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(2)">Ver Bonificaciones</a></li>
-          <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(3)">Nueva Bonificacion</a></li>
-
+          <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(2)">Modificar Acuerdo</a></li>
+          <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(3)">Ver Bonificaciones</a></li>
+          <li name="liBonificaciones" class="li"><a class="items" href="#" onclick="seleccionarTabBonificaciones(4)">Nueva Bonificación</a></li>
         </ul>
       </div>
 
       <br>
 
       <div name="tabBonificaciones" class="row divTabBonificaciones" style="display:block">
-
         <?php require('veracuerdos/veracuerdos.php'); ?>
-
       </div>
-
-
 
       <div name="tabBonificaciones" class="row divTabBonificaciones">
         <?php require('nuevoacuerdo/nuevoacuerdo.php'); ?>
+      </div>
+
+      <div name="tabBonificaciones" class="row divTabBonificaciones">
+        <?php require('modificaracuerdo/modificaracuerdo.php'); ?>
       </div>
 
 

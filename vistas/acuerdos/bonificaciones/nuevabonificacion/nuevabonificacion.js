@@ -74,8 +74,10 @@ function nextPrevNuevaBonificacion(n) {
 
     }
 
+    xml.addTag("NumeroProductos",numero);
 
-    //xml.closeTag("Bonificacion");
+
+    xml.closeTag("Bonificacion");
 
 
     document.getElementById("bonificacionNueva").value=xml.toString();

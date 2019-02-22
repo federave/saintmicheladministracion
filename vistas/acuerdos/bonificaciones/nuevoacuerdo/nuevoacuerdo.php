@@ -6,21 +6,8 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/nuevoacuerdo/nuevoacuerdo.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/bonificaciones/nuevoacuerdo/nuevoacuerdo.js"></script>
 
-  <?php
+<?php require $_SESSION["raiz"] . '/modelo/acuerdos/bonificaciones/bonificaciones.php'?>
 
-  $bonificacionesId = array();
-  $bonificacionesId[0] = 1;
-  $bonificacionesId[1] = 2;
-
-  $bonificacionesNombre = array();
-  $bonificacionesNombre[0] = "Bidones 10%";
-  $bonificacionesNombre[1] = "Bidones 15%";
-
-  $numeroBonificaciones = 2;
-
-
-
-  ?>
 
 
 

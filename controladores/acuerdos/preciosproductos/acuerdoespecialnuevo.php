@@ -25,7 +25,7 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     $acuerdoNuevo=$_GET["acuerdoNuevo"];
     echo "<script>alert('$acuerdoNuevo')</script>";
 
-    redirect('../../../vistas/acuerdos/preciosproductos/preciosproductos.php');
+    redirect('../../../vistas/clientes/cliente/cliente.php');
 
 
 
