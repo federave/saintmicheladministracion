@@ -109,6 +109,8 @@ width: 100%;
 }
 
 
+input[type=submit]{
+height: 50px;}
 
 input[type=submit]:hover {
   background-color: #45a049;

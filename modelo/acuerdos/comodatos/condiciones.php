@@ -1,6 +1,8 @@
 <?php
 
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 
 $condicionesId = array();

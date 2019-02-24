@@ -3,38 +3,6 @@
 
 
 
-function showTabCondicionNueva(n) {
-  // This function will display the specified tab of the form...
-  var x = document.getElementsByName("tabCondicionNueva");
-  x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtnCondicionNueva").style.display = "none";
-  } else {
-    document.getElementById("prevBtnCondicionNueva").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtnCondicionNueva").innerHTML = "Guardar";
-  } else {
-    document.getElementById("nextBtnCondicionNueva").innerHTML = "Siguiente";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixSteps(n)
-}
-
-
-
-function fixSteps(n)
-{
-// This function removes the "active" class of all steps...
-var i, x = document.getElementsByName("stepCondicionNueva");
-for (i = 0; i < x.length; i++) {x[i].className = x[i].className.replace(" active", "");}
-//... and adds the "active" class on the current step:
-x[n].className += " active";
-}
-
-
-
 
 
 function nextTabCondicionNueva(n) {
@@ -88,10 +56,6 @@ function nextTabCondicionNueva(n) {
     document.getElementById("condicionNueva").value=xml.toString();
 
 
-    alert(xml.toString());
-
-
-
 
     // ... the form gets submitted:
     document.getElementById("formularioCondicionNueva").submit();
@@ -99,7 +63,7 @@ function nextTabCondicionNueva(n) {
   }
 
   // Otherwise, display the correct tab:
-  showTabCondicionNueva(currentTab);
+  showTab(currentTab,"CondicionNueva");
 }
 
 function validateFormCondicionNueva() {
@@ -108,16 +72,41 @@ function validateFormCondicionNueva() {
   x = document.getElementsByName("tabCondicionNueva");
   y = x[currentTab].getElementsByTagName("input");
 
+  var numeroProductos = document.getElementById("numeroProductos").value;
+  var estadoProductos = false;
+  var minimototalproductos=0;
+  for(i=0;i<numeroProductos;i++)
+  {
+  if(document.getElementById("producto"+i+"CondicionNueva").checked)
+    {
+    estadoProductos = true;
+    minimototalproductos=document.getElementById("cantidadMinimaProducto"+i+"CondicionNueva").value;
+    }
+  }
 
-
-
-
-
-
-
-
-
-
+  if(document.getElementById("nombreCondicionNueva").value=="")
+    {
+    valid=false;
+    document.getElementById("nombreCondicionNueva").className+=" invalid";
+    }
+  if(!(document.getElementById("minimoTotalCondicionNueva").value>0))
+    {
+    valid=false;
+    document.getElementById("minimoTotalCondicionNueva").className+=" invalid";
+    }
+  if(estadoProductos==false)
+    {
+    valid=false;
+    document.getElementById("alertaCondicionNueva").innerHTML = crearAlerta("Debe Seleccionar Productos!","success");
+    }
+  else
+    {
+    if(document.getElementById("minimoTotalCondicionNueva").value < minimototalproductos)
+      {
+      valid=false;
+      document.getElementById("alertaCondicionNueva").innerHTML = crearAlerta("La suma de las cantidades mínimas de los productos <br> no puede ser mayor que el mínimo total","success");
+      }
+    }
 
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {

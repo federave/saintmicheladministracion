@@ -27,7 +27,7 @@
         <div class="login-form">
           <form class="" action="../../controladores/palabraclave/ingresar.php" method="post">
             <h3>Palabra Clave:</h3>
-            <input id="palabraclave" name="palabraclave" type="text" placeholder="Palabra Clave"/><br>
+            <input value="puelche2010" id="palabraclave" name="palabraclave" type="text" placeholder="Palabra Clave"/><br>
             <br>
             <input type="submit" value="Ingresar" class="login-button "/>
             <br>

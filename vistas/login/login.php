@@ -60,9 +60,9 @@ if(isset($_SESSION["errorlogin"]))
         <div class="login-form">
           <form class="" action="../../controladores/login/ingresar.php" method="post">
             <h3>Usuario:</h3>
-            <input id="usuario" name="usuario" type="text" placeholder="Usuario"/><br>
+            <input id="usuario" name="usuario" type="text" placeholder="Usuario" value="federave"/><br>
             <h3>Contraseña:</h3>
-            <input id="password" name="password" type="password" placeholder="Contraseña"/>
+            <input id="password" name="password" type="password" placeholder="Contraseña" value="mpkfa26"/>
             <br>
             <div id="alertaerrorlogin">
             <?php if($errorlogin!="") echo "<script>insertarAlerta('alertaerrorlogin','$errorlogin','danger');</script>"; ?>

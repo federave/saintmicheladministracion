@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/estilos/formulario.css">
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/comodatos/nuevacondicion/nuevacondicion.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/comodatos/nuevacondicion/nuevacondicion.js"></script>
+<script src="<?php echo $_SESSION["carpeta"] ?>/vistas/javascript/formulario.js"></script>
 
 
 <?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
@@ -52,6 +53,10 @@
 
           <br>
           <br>
+          <div id="alertaCondicionNueva">
+            
+          </div>
+
           <br>
 
           <div class="text-center">
@@ -137,7 +142,7 @@
 
     <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTabCondicionNueva(currentTab); // Display the crurrent tab
+    showTab(currentTab,"CondicionNueva"); // Display the crurrent tab
     </script>
 
 

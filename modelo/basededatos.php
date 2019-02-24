@@ -151,7 +151,7 @@ class BaseDeDatos
       ";
       $aux &= $this->conexion->query($sql);
 
-      
+
 
 
       ////////////////COMODATOS
@@ -171,9 +171,10 @@ class BaseDeDatos
 
       // Tabla Relacion Comodatos Productos
 
-      $sql = "CREATE TABLE IF NOT EXISTS comodatos_condicionescomodatos(
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_condicionescomodatos_actual(
       idcomodato int not null,
       idcondicion int not null,
+      fechainicio datetime,
       primary key(idcomodato,idcondicion),
       foreign key(idcomodato) REFERENCES comodatos(id),
       foreign key(idcondicion) REFERENCES condicionescomodatos(id)
@@ -181,12 +182,29 @@ class BaseDeDatos
       ";
       $aux &= $this->conexion->query($sql);
 
+      // Tabla Relacion Comodatos Productos
+
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_condicionescomodatos_historico(
+      idcomodato int not null,
+      idcondicion int not null,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idcomodato,idcondicion),
+      foreign key(idcomodato) REFERENCES comodatos(id),
+      foreign key(idcondicion) REFERENCES condicionescomodatos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+
       // Tabla Relacion Comodatos Maquinas
 
-      $sql = "CREATE TABLE IF NOT EXISTS comodatos_maquinas(
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_maquinas_actual(
       idcomodato int not null,
       idmaquina int not null,
       cantidad int,
+      fechainicio datetime,
       primary key(idcomodato,idmaquina),
       foreign key(idcomodato) REFERENCES comodatos(id),
       foreign key(idmaquina) REFERENCES maquinas(id)
@@ -194,6 +212,19 @@ class BaseDeDatos
       ";
       $aux &= $this->conexion->query($sql);
 
+
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_maquinas_historico(
+      idcomodato int not null,
+      idmaquina int not null,
+      cantidad int,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idcomodato,idmaquina),
+      foreign key(idcomodato) REFERENCES comodatos(id),
+      foreign key(idmaquina) REFERENCES maquinas(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
 
 
 

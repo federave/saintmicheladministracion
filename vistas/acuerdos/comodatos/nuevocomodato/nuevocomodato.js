@@ -1,33 +1,12 @@
 
 
 
-
-
-function showTabComodatoNuevo(n) {
-  // This function will display the specified tab of the form...
-  var x = document.getElementsByClassName("tabComodatoNuevo");
-  x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtnComodatoNuevo").style.display = "none";
-  } else {
-    document.getElementById("prevBtnComodatoNuevo").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtnComodatoNuevo").innerHTML = "Guardar";
-  } else {
-    document.getElementById("nextBtnComodatoNuevo").innerHTML = "Siguiente";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixStepIndicatorComodatoNuevo(n)
-}
-
-function nextPrevComodatoNuevo(n) {
+function nextTabComodatoNuevo(n) {
   // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tabComodatoNuevo");
+  var x = document.getElementsByName("tabComodatoNuevo");
   // Exit the function if any field in the current tab is invalid:
 
-  // if (n == 1 && !validateFormComodatoNuevo()) return false;
+  if (n == 1 && !validateFormComodatoNuevo()) return false;
 
   // Hide the current tab:
   x[currentTab].style.display = "none";
@@ -48,22 +27,21 @@ function nextPrevComodatoNuevo(n) {
 
     xml.addTag("Nombre",document.getElementById("nombreComodatoNuevo").value);
 
-    var numeroProductos = document.getElementById("numeroProductos").value;
+    var numeroCondiciones = document.getElementById("numeroCondiciones").value;
 
-    for(i=0;i<numeroProductos;i++)
+    for(i=0;i<numeroCondiciones;i++)
     {
-    if(document.getElementById("producto"+i+"ComodatoNuevo").checked)
+    if(document.getElementById("condicion"+i+"ComodatoNuevo").checked)
       {
-      xml.startTag("Producto");
-        xml.addTag("IdProducto",document.getElementById("producto"+i+"ComodatoNuevo").value);
-        xml.addTag("CantidadMinimaProducto",document.getElementById("cantidadMinimaProducto"+i+"ComodatoNuevo").value);
-      xml.closeTag("Producto");
+      xml.startTag("Condicion");
+        xml.addTag("IdCondicion",document.getElementById("condicion"+i+"ComodatoNuevo").value);
+      xml.closeTag("Condicion");
       }
     }
 
     var numeroMaquinas = document.getElementById("numeroMaquinas").value;
 
-    for(i=0;i<numeroProductos;i++)
+    for(i=0;i<numeroMaquinas;i++)
     {
     if(document.getElementById("maquina"+i+"ComodatoNuevo").checked)
       {
@@ -94,39 +72,19 @@ function nextPrevComodatoNuevo(n) {
   }
 
   // Otherwise, display the correct tab:
-  showTabComodatoNuevo(currentTab);
+  showTab(currentTab,"ComodatoNuevo");
 }
 
 function validateFormComodatoNuevo() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
-  x = document.getElementsByClassName("tabComodatoNuevo");
+  x = document.getElementsByName("tabComodatoNuevo");
   y = x[currentTab].getElementsByTagName("input");
-
-
-
-
-
-
-
-
-
-
 
 
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
-    document.getElementsByClassName("stepComodatoNuevo")[currentTab].className += " finish";
+    document.getElementsByName("stepComodatoNuevo")[currentTab].className += " finish";
   }
   return valid; // return the valid status
-}
-
-function fixStepIndicatorComodatoNuevo(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("stepComodatoNuevo");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class on the current step:
-  x[n].className += " active";
 }
