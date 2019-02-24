@@ -4,35 +4,35 @@
 //////////////Nuevo Nombre
 
 
-function nombreNuevoAcuerdoPreciosProductos(idProducto)
+function nombreNuevoAcuerdoBonificaciones(idProducto)
 {
-var idAcuerdo = document.getElementById("idAcuerdoPreciosProductos").value;
-var nombreNuevo = document.getElementById("nombreNuevoAcuerdoPreciosProductos").value;
+var idAcuerdo = document.getElementById("idAcuerdoBonificaciones").value;
+var nombreNuevo = document.getElementById("nombreNuevoAcuerdoBonificaciones").value;
 
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("modificaracuerdo/ajax/nombreNuevo.php");
 requerimiento.addParametro("id",idAcuerdo);
 requerimiento.addParametro("nombre",nombreNuevo);
-requerimiento.addListener(respuestaNombreNuevoAcuerdoPreciosProductos);
+requerimiento.addListener(respuestaNombreNuevoAcuerdoBonificaciones);
 requerimiento.ejecutar();
 
 }
 
 
-function respuestaNombreNuevoAcuerdoPreciosProductos(respuesta)
+function respuestaNombreNuevoAcuerdoBonificaciones(respuesta)
 {
 
 xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-var idAcuerdo = document.getElementById("idAcuerdoPreciosProductos").value;
+var idAcuerdo = document.getElementById("idAcuerdoBonificaciones").value;
 
 if(estado)
   {
-  var nombreNuevo = document.getElementById("nombreNuevoAcuerdoPreciosProductos").value;
-  document.getElementById("nombreAcuerdoPreciosProductos").innerHTML = "Nombre: " + nombreNuevo;
-  document.getElementById("nombreAcuerdoPreciosProductos"+idAcuerdo).innerHTML = nombreNuevo;
-  document.getElementById("nombreNuevoAcuerdoPreciosProductos").value = "";
-  document.getElementById("alertaNombreAcuerdoPreciosProductosNuevo").innerHTML = crearAlerta("Nombre Acuerdo Modificado!","success");
+  var nombreNuevo = document.getElementById("nombreNuevoAcuerdoBonificaciones").value;
+  document.getElementById("nombreAcuerdoBonificaciones").innerHTML = "Nombre: " + nombreNuevo;
+  document.getElementById("nombreAcuerdoBonificaciones"+idAcuerdo).innerHTML = nombreNuevo;
+  document.getElementById("nombreNuevoAcuerdoBonificaciones").value = "";
+  document.getElementById("alertaNombreAcuerdoBonificacionesNuevo").innerHTML = crearAlerta("Nombre Acuerdo Modificado!","success");
 
   }
 else
@@ -46,41 +46,39 @@ else
 
 
 ///////////////////////////////////////////////////////////////
-//////////////Nuevo Precio
+//////////////Quitar Bonificacion
 
 
-function modificarPrecioProducto(idProducto)
+function quitarBonificacionAcuerdo(idBonificacion)
 {
-var idAcuerdo = document.getElementById("idAcuerdoPreciosProductos").value;
-var precioProductoNuevo = document.getElementById("precioProducto" + idProducto +"Nuevo").value;
-idProductoModificado = idProducto;
+var idAcuerdo = document.getElementById("idAcuerdoBonificaciones").value;
+idBonificacionQuitada = idBonificacion;
 
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("modificaracuerdo/ajax/precioProductoNuevo.php");
+requerimiento.setURL("modificaracuerdo/ajax/quitarBonificacion.php");
 requerimiento.addParametro("id",idAcuerdo);
-requerimiento.addParametro("idProducto",idProducto);
-requerimiento.addParametro("precio",precioProductoNuevo);
-requerimiento.addListener(respuestaPrecioProductoNuevo);
+requerimiento.addParametro("idbonificacion",idBonificacion);
+requerimiento.addListener(respuestaQuitarBonificacion);
 requerimiento.ejecutar();
 
 }
 
-var idProductoModificado;
+var idBonificacionQuitada;
 
-function respuestaPrecioProductoNuevo(respuesta)
+function respuestaQuitarBonificacion(respuesta)
 {
 
 xmlDoc = crearXML(respuesta.target.responseText);
 
-
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
+  document.getElementById("divBonificacionAcuerdo"+idBonificacionQuitada).innerHTML = "";
+  document.getElementById("divAgregarBonificacion"+idBonificacionQuitada).style.display = "block";
+  document.getElementById("alertaBonificacion"+idBonificacionQuitada).innerHTML = crearAlerta("Bonificacion Quitada!","success");
+  document.getElementById("bonificacion"+idBonificacionQuitada+"AcuerdoBonificacionesAgregar").checked = false;
+  document.getElementById("divBonificacion"+idBonificacionQuitada+"AcuerdoBonificacionesAgregar").style.display = "none";
 
-  var precioProductoNuevo = document.getElementById("precioProducto"+idProductoModificado+"Nuevo").value;
-  document.getElementById("precioProducto"+idProductoModificado).innerHTML = "Precio: " + precioProductoNuevo;
-  document.getElementById("precioProducto"+idProductoModificado+"Nuevo").value="";
-  document.getElementById("alertaPrecioProducto"+idProductoModificado+"Nuevo").innerHTML = crearAlerta("Precio Producto Modificado!","success");
   }
 else
   {
@@ -93,36 +91,31 @@ else
 
 
 ///////////////////////////////////////////////////////////////
-//////////////Agregar Producto
+//////////////Agregar Bonificacion
 
-function agregarProducto(idProducto)
+function agregarBonificacion(idBonificacion)
 {
-var idAcuerdo = document.getElementById("idAcuerdoPreciosProductos").value;
-var precioProducto = document.getElementById("precioProducto" + idProducto +"Agregar").value;
-idProductoAgregado = idProducto;
-precioProductoAgregado = precioProducto;
-nombreProductoAgregado = document.getElementById("nombreProducto" + idProducto +"Agregar").value;
+var idAcuerdo = document.getElementById("idAcuerdoBonificaciones").value;
+idBonificacionAgregada = idBonificacion;
+nombreBonificacionAgregada = document.getElementById("nombreBonificacion" + idBonificacion +"Agregar").value;
 
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("modificaracuerdo/ajax/agregarProducto.php");
+requerimiento.setURL("modificaracuerdo/ajax/agregarBonificacion.php");
 requerimiento.addParametro("idAcuerdo",idAcuerdo);
-requerimiento.addParametro("idProducto",idProducto);
-requerimiento.addParametro("precio",precioProducto);
-requerimiento.addListener(respuestaAgregarProducto);
+requerimiento.addParametro("idBonificacion",idBonificacion);
+requerimiento.addListener(respuestaAgregarBonificacion);
 requerimiento.ejecutar();
 
 }
 
-var idProductoAgregado;
-var precioProductoAgregado;
-var nombreProductoAgregado;
+var idBonificacionAgregada;
+var nombreBonificacionAgregada;
 
 
 
-function respuestaAgregarProducto(respuesta)
+function respuestaAgregarBonificacion(respuesta)
 {
 
-alert(respuesta.target.responseText);
 
 xmlDoc = crearXML(respuesta.target.responseText);
 
@@ -130,9 +123,11 @@ xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  document.getElementById("divAgregarProducto"+idProductoAgregado).style.display="none";
-  document.getElementById("alertaProductoAgregado").innerHTML = crearAlerta("Producto Agregado!","success");
-  mostrarModificarProducto(idProductoAgregado,nombreProductoAgregado,precioProductoAgregado);
+  document.getElementById("divAgregarBonificacion"+idBonificacionAgregada).style.display="none";
+  document.getElementById("alertaBonificacionAgregada").innerHTML = crearAlerta("Bonificacion Agregada!","success");
+  mostrarBonificacion(idBonificacionAgregada,nombreBonificacionAgregada);
+  document.getElementById("bonificacion"+idBonificacionAgregada+"AcuerdoBonificacionesAgregar").checked = false;
+  document.getElementById("divBonificacion"+idBonificacionAgregada+"AcuerdoBonificacionesAgregar").style.display = "none";
 
   }
 else

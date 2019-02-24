@@ -125,6 +125,79 @@ class BaseDeDatos
       {
       $aux = true;
 
+      //////////////////////////////////////////////////////////////////////
+      ////////////////CONDICIONES COMODATOS
+
+      $sql = "CREATE TABLE IF NOT EXISTS condicionescomodatos(
+      id int auto_increment,
+      nombre varchar(50),
+      minimototal int,
+      fechacreacion date,
+      primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      // Tabla Relacion Condiciones Comodatos Productos
+
+      $sql = "CREATE TABLE IF NOT EXISTS condicionescomodatos_productos(
+      idcondicion int not null,
+      idproducto int not null,
+      minimo int,
+      primary key(idcondicion,idproducto),
+      foreign key(idcondicion) REFERENCES condicionescomodatos(id),
+      foreign key(idproducto) REFERENCES productos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      
+
+
+      ////////////////COMODATOS
+
+      // Tabla Comodatos
+
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos(
+      id int auto_increment,
+      nombre varchar(50),
+      especial boolean,
+      fechacreacion date,
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Comodatos Productos
+
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_condicionescomodatos(
+      idcomodato int not null,
+      idcondicion int not null,
+      primary key(idcomodato,idcondicion),
+      foreign key(idcomodato) REFERENCES comodatos(id),
+      foreign key(idcondicion) REFERENCES condicionescomodatos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      // Tabla Relacion Comodatos Maquinas
+
+      $sql = "CREATE TABLE IF NOT EXISTS comodatos_maquinas(
+      idcomodato int not null,
+      idmaquina int not null,
+      cantidad int,
+      primary key(idcomodato,idmaquina),
+      foreign key(idcomodato) REFERENCES comodatos(id),
+      foreign key(idmaquina) REFERENCES maquinas(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+
 
       //////////////////////////////////////////////////////////////////////
       ////////////////PRECIOS PRODUCTOS

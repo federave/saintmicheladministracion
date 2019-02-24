@@ -21,9 +21,9 @@ if(isset($_GET["id"]) && isset($_GET["nombre"]))
 
     $id=$_GET["id"];
     $nombre=$_GET["nombre"];
-    $sql = "UPDATE acuerdospreciosproductos SET nombre='$nombre' WHERE id='$id'";
+    $sql = "UPDATE acuerdosbonificaciones SET nombre='$nombre' WHERE id='$id'";
     $aux = $conexion->query($sql);
-    
+
     $conector->cerrarConexion();
     }
 

@@ -29,13 +29,13 @@
             <li class="list-group-item">
               <div class="row">
                 <div class="col-50 text-center">
-                  <label id="" style="font-size:20px;color:black">   <?php echo $acuerdosbonificacionesNombre[$k];?></label>
+                  <label id="nombreAcuerdoBonificaciones<?php echo $acuerdosbonificacionesId[$k];?>" style="font-size:20px;color:black">   <?php echo $acuerdosbonificacionesNombre[$k];?></label>
                 </div>
                 <div class="col-25">
                   <button class="btn btn-success" id="buttonVerAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" name="" onclick="verAcuerdoBonificacion(<?php echo $acuerdosbonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-primary" id="buttonModificarAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" name="" onclick="modificarAcuerdoBonificacion(<?php echo $acuerdosbonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
+                  <button class="btn btn-primary" id="buttonModificarAcuerdoBonificacion<?php echo $acuerdosbonificacionesId[$k];?>" name="" onclick="modificarAcuerdoBonificaciones(<?php echo $acuerdosbonificacionesId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
                 </div>
               </div>
 

@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["id"]) && isset($_GET["idProducto"]) && isset($_GET["precio"]))
+if(isset($_GET["id"]) && isset($_GET["idbonificacion"]))
   {
   $aux=false;
 
@@ -20,33 +20,27 @@ if(isset($_GET["id"]) && isset($_GET["idProducto"]) && isset($_GET["precio"]))
     $conexion = $conector->getConexion();
 
     $idacuerdo = $_GET["id"];
-    $idproducto = $_GET["idProducto"];
-    $precionuevo = $_GET["precio"];
+    $idbonificacion = $_GET["idbonificacion"];
 
-
-    $sql = "SELECT * FROM acuerdospreciosproductos_productos_actual WHERE idacuerdo = '$idacuerdo' AND idproducto = '$idproducto'";
+    $sql = "SELECT * FROM acuerdosbonificaciones_bonificaciones_actual WHERE idacuerdo = '$idacuerdo' AND idbonificacion = '$idbonificacion'";
     $tabla = $conexion->query($sql);
     if($tabla->num_rows>0)
       {
       $row = $tabla->fetch_assoc();
 
       $aux = true;
-      $precioviejo = $row["precio"];
-      $fechainiciovieja = $row["fechainicio"];
+      $fechainicio = $row["fechainicio"];
 
       date_default_timezone_set("America/Argentina/Buenos_Aires");
       $date = new DateTime();
       $fechafin = $date->format('Y-m-d H:i:s');
-      $fechainicio = $fechafin;
 
-      $sql = "INSERT INTO acuerdospreciosproductos_productos_historico (idacuerdo,idproducto,precio,fechainicio,fechafin) VALUES ('$idacuerdo','$idproducto','$precioviejo','$fechainiciovieja','$fechafin')";
+      $sql = "INSERT INTO acuerdosbonificaciones_bonificaciones_historico (idacuerdo,idbonificacion,fechainicio,fechafin) VALUES ('$idacuerdo','$idbonificacion','$fechainicio','$fechafin')";
       $aux &= $conexion->query($sql);
 
-      $sql = "DELETE FROM acuerdospreciosproductos_productos_actual WHERE idacuerdo = '$idacuerdo' AND idproducto = '$idproducto' ";
+      $sql = "DELETE FROM acuerdosbonificaciones_bonificaciones_actual WHERE idacuerdo = '$idacuerdo' AND idbonificacion = '$idbonificacion' ";
       $aux &= $conexion->query($sql);
 
-      $sql = "INSERT INTO acuerdospreciosproductos_productos_actual (idacuerdo,idproducto,precio,fechainicio) VALUES ('$idacuerdo','$idproducto','$precionuevo','$fechainicio')";
-      $aux &= $conexion->query($sql);
 
       }
 

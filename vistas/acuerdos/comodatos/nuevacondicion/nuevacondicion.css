@@ -1,0 +1,53 @@
+
+
+.contenedornuevacondicion {
+  width: 80%;
+  margin:auto;
+  background-color: black;
+  padding: 2%;
+}
+
+
+  @media only screen and (max-width: 600px) {
+  .contenedornuevacondicion {
+    width: 100%;
+  }
+}
+
+
+
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+  .contenedornuevacondicion {
+    width: 90%;
+
+  }
+
+
+}
+
+
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+  .contenedornuevacondicion {
+    width: 80%;
+
+  }
+
+
+}
+
+@media only screen  and (min-width: 1000px) and (max-width: 1300px){
+  .contenedornuevacondicion {
+    width: 70%;
+
+  }
+
+}
+
+@media only screen  and (min-width: 1300px) {
+  .contenedornuevacondicion {
+    width: 60%;
+  }
+
+}

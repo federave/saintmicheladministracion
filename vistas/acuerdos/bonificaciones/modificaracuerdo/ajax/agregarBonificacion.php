@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["idAcuerdo"]) && isset($_GET["idProducto"]) && isset($_GET["precio"]))
+if(isset($_GET["idAcuerdo"]) && isset($_GET["idBonificacion"]))
   {
   $aux=false;
 
@@ -20,14 +20,13 @@ if(isset($_GET["idAcuerdo"]) && isset($_GET["idProducto"]) && isset($_GET["preci
     $conexion = $conector->getConexion();
 
     $idacuerdo = $_GET["idAcuerdo"];
-    $idproducto = $_GET["idProducto"];
-    $precio = $_GET["precio"];
+    $idbonificacion = $_GET["idBonificacion"];
 
     date_default_timezone_set("America/Argentina/Buenos_Aires");
     $date = new DateTime();
     $fechainicio = $date->format('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO acuerdospreciosproductos_productos_actual (idacuerdo,idproducto,precio,fechainicio) VALUES ('$idacuerdo','$idproducto','$precio','$fechainicio')";
+    $sql = "INSERT INTO acuerdosbonificaciones_bonificaciones_actual (idacuerdo,idbonificacion,fechainicio) VALUES ('$idacuerdo','$idbonificacion','$fechainicio')";
     $aux = $conexion->query($sql);
 
 
@@ -36,7 +35,7 @@ if(isset($_GET["idAcuerdo"]) && isset($_GET["idProducto"]) && isset($_GET["preci
 
   if($aux==false)
     $aux=0;
-    
+
   $xml->addTag("Estado",$aux);
 
   }

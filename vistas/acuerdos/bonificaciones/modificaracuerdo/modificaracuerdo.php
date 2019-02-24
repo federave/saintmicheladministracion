@@ -81,11 +81,11 @@
                 ?>
                 <div id="divAgregarBonificacion<?php echo $bonificacionesId[$k];?>" name="divAgregarBonificacion<?php echo $bonificacionesId[$k];?>">
                    <div class="funkyradio-info text-center">
-                       <input onchange="mostrarInputBonificacionAgregar(<?php echo $k;?>)" type="checkbox" name="bonificacionesAcuerdoAgregar" id="bonificacion<?php echo $k; ?>AcuerdoBonificacionesAgregar" value="<?php echo $bonificacionesId[$k]; ?>"/>
-                       <label for="bonificacion<?php echo $k; ?>AcuerdoBonificacionesAgregar" style="color:black;font-size:18px"><?php echo $bonificacionesNombre[$k]; ?></label>
+                       <input onchange="mostrarInputBonificacionAgregar(<?php echo $bonificacionesId[$k];?>)" type="checkbox" name="bonificacionesAcuerdoAgregar" id="bonificacion<?php echo $bonificacionesId[$k]; ?>AcuerdoBonificacionesAgregar" value="<?php echo $bonificacionesId[$k]; ?>"/>
+                       <label for="bonificacion<?php echo $bonificacionesId[$k]; ?>AcuerdoBonificacionesAgregar" style="color:black;font-size:18px"><?php echo $bonificacionesNombre[$k]; ?></label>
                    </div>
                    <br>
-                   <div class="text-center"style="display:none" id="divBonificacion<?php echo $k;?>AcuerdoBonificacionesAgregar" >
+                   <div class="text-center"style="display:none" id="divBonificacion<?php echo $bonificacionesId[$k];?>AcuerdoBonificacionesAgregar" >
                      <button class="btn btn-primary" onclick="agregarBonificacion(<?php echo $bonificacionesId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Agregar</button>;
                    </div>
                    <input type="hidden" id="nombreBonificacion<?php echo $bonificacionesId[$k];?>Agregar" value="<?php echo $bonificacionesNombre[$k];?>">

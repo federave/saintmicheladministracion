@@ -5,20 +5,9 @@
 
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/comodatos/nuevocomodato/nuevocomodato.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/comodatos/nuevocomodato/nuevocomodato.js"></script>
+<?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
 
   <?php
-
-  $productosId = array();
-  $productosId[0] = 1;
-  $productosId[1] = 5;
-  $productosId[2] = 3;
-
-  $productosNombre = array();
-  $productosNombre[0] = "Bidon 10L";
-  $productosNombre[1] = "Bidon 8L";
-  $productosNombre[2] = "Bidon 5L";
-
-  $numeroProductos = 3;
 
 
 

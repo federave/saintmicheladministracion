@@ -47,6 +47,9 @@ session_start();
           <li name="liComodatos" class="active"><a class="items" href="#" onclick="seleccionarTabComodatos(0)">Ver Comodatos</a></li>
           <li name="liComodatos" class="li"><a class="items" href="#" onclick="seleccionarTabComodatos(1)">Nuevo Comodato</a></li>
           <li name="liComodatos" class="li"><a class="items" href="#" onclick="seleccionarTabComodatos(2)">Modificar Comodato</a></li>
+          <li name="liComodatos" class="li"><a class="items" href="#" onclick="seleccionarTabComodatos(3)">Ver Condiciones</a></li>
+          <li name="liComodatos" class="li"><a class="items" href="#" onclick="seleccionarTabComodatos(4)">Nueva Condicion</a></li>
+
         </ul>
       </div>
 
@@ -64,6 +67,12 @@ session_start();
       </div>
       <div name="tabComodatos" class="row divTabComodatos"  >
         <?php  require('modificarcomodato/modificarcomodato.php'); ?>
+      </div>
+      <div name="tabComodatos" class="row divTabComodatos"  >
+        <?php  require('vercondiciones/vercondiciones.php'); ?>
+      </div>
+      <div name="tabComodatos" class="row divTabComodatos"  >
+        <?php  require('nuevacondicion/nuevacondicion.php'); ?>
       </div>
       <footer style="height:500px"></footer>
 
