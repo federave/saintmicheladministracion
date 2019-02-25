@@ -49,9 +49,44 @@
         </div>
         <br>
         <br>
-        <div id="divCondicionesComodatoActuales" class="contenedoritems actuales">
+        <div class="contenedoritems actuales">
+          <script type="text/javascript">
+            function mostrarInputQuitarCondicion(n)
+            {
+            if(document.getElementById("condicion"+n+"ComodatoQuitar").checked)
+              document.getElementById("divCondicion"+n+"ComodatoQuitar").style.display="block";
+            else
+              document.getElementById("divCondicion"+n+"ComodatoQuitar").style.display="none";
+            }
+          </script>
+          <div class="funkyradio">
+            <?php
+            $k=0;
+            while($k<count($condicionesId))
+                {
+                ?>
+               <div id="divCondicion<?php echo $k; ?>Quitar">
+                 <input type="hidden" id="numeroCondicion<?php echo $condicionesId[$k]; ?>Quitar" value="<?php echo $k; ?>">
+                 <div  class="funkyradio-info text-center">
+                   <input onchange="mostrarInputQuitarCondicion(<?php echo $condicionesId[$k];?>)" type="checkbox" name="condicionesComodatoQuitar" id="condicion<?php echo $condicionesId[$k]; ?>ComodatoQuitar" value="<?php echo $condicionesId[$k]; ?>"/>
+                   <label style="background-color:white;color:black"  for="condicion<?php echo $condicionesId[$k]; ?>ComodatoQuitar" style="color:black;font-size:18px"><?php echo $condicionesNombre[$k]; ?></label>
+                 </div>
+                 <br>
+                 <div class="text-center"style="display:none" id="divCondicion<?php echo $condicionesId[$k];?>ComodatoQuitar" >
+                   <button class="btn btn-primary" onclick="quitarCondicion(<?php echo $condicionesId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Quitar</button>;
+                 </div>
+               </div>
 
+
+               <br>
+             <?php
+               $k++;
+               }
+             ?>
         </div>
+      </div>
+      <br>
+      <br>
 
 
         <br>
@@ -64,9 +99,53 @@
         </div>
         <br>
         <br>
-        <div id="divMaquinasComodatoActuales" class="contenedoritems actuales">
+        <div class="contenedoritems actuales">
 
+          <script type="text/javascript">
+            function mostrarInputModificarMaquina(n)
+            {
+            if(document.getElementById("maquina"+n+"ComodatoModificar").checked)
+              document.getElementById("divMaquina"+n+"ComodatoModificar").style.display="block";
+            else
+              document.getElementById("divMaquina"+n+"ComodatoModificar").style.display="none";
+            }
+          </script>
+
+
+          <div class="funkyradio">
+
+            <?php
+            $k=0;
+            while($k<count($maquinasId))
+                {
+                ?>
+               <div id="divMaquina<?php echo $k; ?>Modificar">
+                 <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>" value="<?php echo $k; ?>">
+                 <div class="funkyradio-info text-center">
+                     <input onchange="mostrarInputModificarMaquina(<?php echo $maquinasId[$k];?>)" type="checkbox" name="maquinasComodatoModificar" id="maquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" value="<?php echo $maquinasId[$k]; ?>"/>
+                     <label style="background-color:white;color:black" for="maquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" style="color:black;font-size:18px"><?php echo $maquinasNombre[$k]; ?></label>
+                 </div>
+                 <br>
+                 <div class="text-center "style="display:none" id="divMaquina<?php echo $maquinasId[$k];?>ComodatoModificar">
+                   <p class="etiqueta ">Ingrese Cantidad</p>
+                   <input name="cantidadMaquina<?php echo $maquinasId[$k];;?>ComodatoModificar" id="cantidadMaquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" class="text-center" style="color:black" type="number" min="1" value="" step="1" placeholder="Cantidad" oninput="this.className = ''" >
+                   <br>
+                   <br>
+                   <button class="btn btn-primary" onclick="modificarCantidadMaquina(<?php echo $maquinasId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Modificar</button>;
+                   <br>
+                   <br>
+                   <button class="btn btn-primary" onclick="quitarMaquina(<?php echo $maquinasId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Quitar</button>;
+                 </div>
+               </div>
+
+             <?php
+               $k++;
+               }
+             ?>
+          </div>
         </div>
+
+
 
 
         <br>
@@ -98,8 +177,8 @@
             while($k<count($condicionesId))
                 {
                 ?>
-               <div id="divCondicion<?php echo $k; ?>">
-                 <input type="hidden" id="numeroCondicion<?php echo $condicionesId[$k]; ?>" value="<?php echo $k; ?>">
+               <div id="divCondicion<?php echo $k; ?>Agregar">
+                 <input type="hidden" id="numeroCondicion<?php echo $condicionesId[$k]; ?>Agregar" value="<?php echo $k; ?>">
                  <div class="funkyradio-info text-center">
                    <input onchange="mostrarInputAgregarCondicion(<?php echo $condicionesId[$k];?>)" type="checkbox" name="condicionesComodatoAgregar" id="condicion<?php echo $condicionesId[$k]; ?>ComodatoAgregar" value="<?php echo $condicionesId[$k]; ?>"/>
                    <label for="condicion<?php echo $condicionesId[$k]; ?>ComodatoAgregar" style="color:black;font-size:18px"><?php echo $condicionesNombre[$k]; ?></label>
@@ -149,7 +228,7 @@
             while($k<count($maquinasId))
                 {
                 ?>
-               <div id="divMaquina<?php echo $k; ?>">
+               <div id="divMaquina<?php echo $k; ?>Agregar">
                  <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>" value="<?php echo $k; ?>">
                  <div class="funkyradio-info text-center">
                      <input onchange="mostrarInputCantidadMaquinasAgregar(<?php echo $maquinasId[$k];?>)" type="checkbox" name="maquinasComodatoAgregar" id="maquina<?php echo $maquinasId[$k]; ?>ComodatoAgregar" value="<?php echo $maquinasId[$k]; ?>"/>

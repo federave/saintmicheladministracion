@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(isset($_GET["id"]) && isset($_GET["nombre"]))
+if(isset($_GET["id"]) && isset($_GET["idCondicion"]))
   {
   $aux=false;
 
@@ -19,12 +19,17 @@ if(isset($_GET["id"]) && isset($_GET["nombre"]))
     {
     $conexion = $conector->getConexion();
 
-    $id=$_GET["id"];
-    $nombre=$_GET["nombre"];
-    $sql = "UPDATE comodatos SET nombre='$nombre' WHERE id='$id'";
+    $idComodato=$_GET["id"];
+    $idCondicion=$_GET["idCondicion"];
+
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $date = new DateTime();
+    $fechainicio = $date->format('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO comodatos_condicionescomodatos_actual (idcomodato,idcondicion,fechainicio) VALUES ('$idComodato','$idCondicion','$fechainicio')";
     $aux = $conexion->query($sql);
 
-    $aux = true;
+
 
     $conector->cerrarConexion();
     }

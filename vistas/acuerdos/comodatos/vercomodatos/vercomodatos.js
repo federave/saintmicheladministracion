@@ -106,12 +106,15 @@ if(estado)
   var numeroCondiciones = document.getElementById("numeroCondiciones").value;
   for(i=0;i<numeroCondiciones;i++)
   {
-  document.getElementById("divCondicion"+i).style.display="block";
+  document.getElementById("divCondicion"+i+"Quitar").style.display="none";
+  document.getElementById("divCondicion"+i+"Agregar").style.display="block";
   }
+
   var numeroMaquinas = document.getElementById("numeroMaquinas").value;
   for(i=0;i<numeroMaquinas;i++)
   {
-  document.getElementById("divMaquina"+i).style.display="block";
+  document.getElementById("divMaquina"+i+"Agregar").style.display="block";
+  document.getElementById("divMaquina"+i+"Modificar").style.display="none";
   }
 
 
@@ -121,9 +124,11 @@ if(estado)
   {
   var nombre=xmlDoc.getElementsByTagName("NombreCondicion")[i].childNodes[0].nodeValue;
   var idcondicion=xmlDoc.getElementsByTagName("IdCondicion")[i].childNodes[0].nodeValue;
-  mostrarCondicion(idcondicion,nombre);
-  quitarCondicion(document.getElementById("numeroCondicion"+idcondicion).value);
+  mostrarCondicion(document.getElementById("numeroCondicion"+idcondicion+"Quitar").value);
+  var n = document.getElementById("numeroCondicion"+idcondicion+"Agregar").value;
+  quitarVistaCondicion(n);
   }
+
 
 
   var numeroMaquinas = xmlDoc.getElementsByTagName("NumeroMaquinas")[0].childNodes[0].nodeValue;
@@ -132,16 +137,9 @@ if(estado)
   {
   var nombre=xmlDoc.getElementsByTagName("NombreMaquina")[i].childNodes[0].nodeValue;
   var idmaquina=xmlDoc.getElementsByTagName("IdMaquina")[i].childNodes[0].nodeValue;
-  mostrarMaquina(idmaquina,nombre);
+  mostrarMaquina(document.getElementById("numeroMaquina"+idmaquina).value);
   quitarMaquina(document.getElementById("numeroMaquina"+idmaquina).value);
   }
-
-
-
-
-
-
-
 
 
 
@@ -157,25 +155,15 @@ else
 
 
 
-function mostrarCondicion(idcondicion,nombre)
+function mostrarCondicion(numero)
 {
-
-/*
-var labelNombre="<label class=\"etiquetaBlanca\">"+nombreBonificacion+"</label>";
-
-var button = "<button class=\"btn btn-primary\" onclick=\"quitarBonificacionAcuerdo("+idBonificacion+")\" style=\"height:50px;font-size:18px;width:60%;\">Quitar</button>";
-var divAlerta = "<div id=\"alertaBonificacion"+idBonificacion+"\"></div>";
-var div = "<div id=\"divBonificacionAcuerdo"+idBonificacion+"\" class=\"row text-center\">"+labelNombre+"<br>"+"<br>"+button+"<br>"+"<br>"+"<br>"+"</div>"+"<br>"+"<br>";
-
-document.getElementById("divBonificacionesAcuerdo").innerHTML += div + divAlerta;
-*/
-
+document.getElementById("divCondicion"+numero+"Quitar").style.display = "block";
 }
 
 
-function quitarCondicion(numero)
+function quitarVistaCondicion(numero)
 {
-document.getElementById("divCondicion"+numero).style.display = "none";
+document.getElementById("divCondicion"+numero+"Agregar").style.display = "none";
 }
 
 
@@ -183,23 +171,15 @@ document.getElementById("divCondicion"+numero).style.display = "none";
 
 
 
-function mostrarMaquina(idmaquina,nombre)
+function mostrarMaquina(numero)
 {
 
-/*
-var labelNombre="<label class=\"etiquetaBlanca\">"+nombreBonificacion+"</label>";
-
-var button = "<button class=\"btn btn-primary\" onclick=\"quitarBonificacionAcuerdo("+idBonificacion+")\" style=\"height:50px;font-size:18px;width:60%;\">Quitar</button>";
-var divAlerta = "<div id=\"alertaBonificacion"+idBonificacion+"\"></div>";
-var div = "<div id=\"divBonificacionAcuerdo"+idBonificacion+"\" class=\"row text-center\">"+labelNombre+"<br>"+"<br>"+button+"<br>"+"<br>"+"<br>"+"</div>"+"<br>"+"<br>";
-
-document.getElementById("divBonificacionesAcuerdo").innerHTML += div + divAlerta;
-*/
+  document.getElementById("divMaquina"+numero+"Modificar").style.display = "block";
 
 }
 
 
 function quitarMaquina(numero)
 {
-document.getElementById("divMaquina"+numero).style.display = "none";
+document.getElementById("divMaquina"+numero+"Agregar").style.display = "none";
 }
