@@ -76,7 +76,6 @@ else
       <a href="../acuerdos/alquileres/alquileres.php">Alquileres</a>
       <a href="../acuerdos/comodatos/comodatos.php">Comodatos</a>
       <a href="../acuerdos/bonificaciones/bonificaciones.php">Bonificaciones</a>
-      <a href="../acuerdos/promociones/promociones.php">Promociones</a>
     </div>
   </div>
   <div class="dropdown">

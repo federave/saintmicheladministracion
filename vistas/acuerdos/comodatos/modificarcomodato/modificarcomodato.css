@@ -1,8 +1,12 @@
 
 
 .contenedormodificarcomodato {
-  width: 80%;
+  width: 100%;
   margin:auto;
+  padding: 5%;
+  background: linear-gradient(to bottom, #000066 0%, #666699 100%);
+  border-radius: 5px;
+
 }
 
 .contenedoritems{

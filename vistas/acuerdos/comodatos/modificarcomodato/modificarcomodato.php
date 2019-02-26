@@ -12,11 +12,10 @@
   <input type="hidden" name="idComodato" id="idComodato" value="">
 
   <div class="contenedormodificarcomodato">
-        <br>
-        <br>
         <div class="row text-center">
-          <h2>Datos Del Comodato</h2>
+          <h1 style="color:white">Datos Del Comodato</h1>
         </div>
+        <br>
         <br>
         <br>
 
@@ -120,15 +119,15 @@
                 {
                 ?>
                <div id="divMaquina<?php echo $k; ?>Modificar">
-                 <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>" value="<?php echo $k; ?>">
+                 <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>Quitar" value="<?php echo $k; ?>">
                  <div class="funkyradio-info text-center">
                      <input onchange="mostrarInputModificarMaquina(<?php echo $maquinasId[$k];?>)" type="checkbox" name="maquinasComodatoModificar" id="maquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" value="<?php echo $maquinasId[$k]; ?>"/>
                      <label style="background-color:white;color:black" for="maquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" style="color:black;font-size:18px"><?php echo $maquinasNombre[$k]; ?></label>
                  </div>
                  <br>
                  <div class="text-center "style="display:none" id="divMaquina<?php echo $maquinasId[$k];?>ComodatoModificar">
-                   <p class="etiqueta ">Ingrese Cantidad</p>
-                   <input name="cantidadMaquina<?php echo $maquinasId[$k];;?>ComodatoModificar" id="cantidadMaquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" class="text-center" style="color:black" type="number" min="1" value="" step="1" placeholder="Cantidad" oninput="this.className = ''" >
+                   <p id="labelCantidadMaquina<?php echo $maquinasId[$k];;?>ComodatoModificar" class="etiqueta ">Cantidad Actual: </p>
+                   <input name="cantidadMaquina<?php echo $maquinasId[$k];;?>ComodatoModificar" id="cantidadMaquina<?php echo $maquinasId[$k]; ?>ComodatoModificar" class="text-center" style="color:black" type="number" min="1" value="" step="1" placeholder="Nueva Cantidad" oninput="this.className = ''" >
                    <br>
                    <br>
                    <button class="btn btn-primary" onclick="modificarCantidadMaquina(<?php echo $maquinasId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Modificar</button>;
@@ -147,12 +146,15 @@
 
 
 
-
         <br>
         <br>
         <br>
         <br>
-
+        <br>
+        <div class="borde" style="width:100%"></div>
+        <br>
+        <br>
+        <br>
 
 
 
@@ -229,7 +231,7 @@
                 {
                 ?>
                <div id="divMaquina<?php echo $k; ?>Agregar">
-                 <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>" value="<?php echo $k; ?>">
+                 <input type="hidden" id="numeroMaquina<?php echo $maquinasId[$k]; ?>Agregar" value="<?php echo $k; ?>">
                  <div class="funkyradio-info text-center">
                      <input onchange="mostrarInputCantidadMaquinasAgregar(<?php echo $maquinasId[$k];?>)" type="checkbox" name="maquinasComodatoAgregar" id="maquina<?php echo $maquinasId[$k]; ?>ComodatoAgregar" value="<?php echo $maquinasId[$k]; ?>"/>
                      <label for="maquina<?php echo $maquinasId[$k]; ?>ComodatoAgregar" style="color:black;font-size:18px"><?php echo $maquinasNombre[$k]; ?></label>
@@ -240,7 +242,6 @@
                    <input name="cantidadMaquina<?php echo $maquinasId[$k];;?>ComodatoAgregar" id="cantidadMaquina<?php echo $maquinasId[$k]; ?>ComodatoAgregar" class="text-center" style="color:black" type="number" min="1" value="" step="1" placeholder="Cantidad" oninput="this.className = ''" >
                    <br>
                    <br>
-
                    <button class="btn btn-primary" onclick="agregarMaquina(<?php echo $maquinasId[$k]; ?>)" style="height:50px;font-size:18px;width:60%;">Agregar</button>;
                    <br>
                  </div>

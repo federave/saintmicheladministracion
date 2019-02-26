@@ -136,9 +136,10 @@ if(estado)
   for(i=0;i<numeroMaquinas;i++)
   {
   var nombre=xmlDoc.getElementsByTagName("NombreMaquina")[i].childNodes[0].nodeValue;
+  var cantidad=xmlDoc.getElementsByTagName("CantidadMaquina")[i].childNodes[0].nodeValue;
   var idmaquina=xmlDoc.getElementsByTagName("IdMaquina")[i].childNodes[0].nodeValue;
-  mostrarMaquina(document.getElementById("numeroMaquina"+idmaquina).value);
-  quitarMaquina(document.getElementById("numeroMaquina"+idmaquina).value);
+  mostrarMaquina(document.getElementById("numeroMaquina"+idmaquina+"Quitar").value,idmaquina,cantidad);
+  quitarVistaMaquina(document.getElementById("numeroMaquina"+idmaquina+"Agregar").value);
   }
 
 
@@ -171,15 +172,16 @@ document.getElementById("divCondicion"+numero+"Agregar").style.display = "none";
 
 
 
-function mostrarMaquina(numero)
+function mostrarMaquina(numero,idmaquina,cantidad)
 {
-
-  document.getElementById("divMaquina"+numero+"Modificar").style.display = "block";
-
+document.getElementById("divMaquina"+numero+"Modificar").style.display = "block";
+document.getElementById("labelCantidadMaquina"+idmaquina+"ComodatoModificar").innerHTML ="Cantidad Actual: " + cantidad;
 }
 
 
-function quitarMaquina(numero)
+
+
+function quitarVistaMaquina(numero)
 {
 document.getElementById("divMaquina"+numero+"Agregar").style.display = "none";
 }
