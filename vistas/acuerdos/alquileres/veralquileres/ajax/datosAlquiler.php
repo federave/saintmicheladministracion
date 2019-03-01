@@ -4,10 +4,14 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+
+verificarAcceso();
+
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]))
+if(isset($_GET["id"]))
   {
   $aux=false;
 
@@ -18,60 +22,86 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $id=$_GET["id"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
+    $sql = "SELECT * FROM alquileres WHERE id = '$id'";
+    $tabla = $conexion->query($sql);
+    if($tabla->num_rows>0)
+      {
+      $row = $tabla->fetch_assoc();
+      $idalquiler = $row["id"];
+      $xml->addTag("Id", $row["id"]);
+      $xml->addTag("Nombre", $row["nombre"]);
+      $xml->addTag("FechaCreacion", $row["fechacreacion"]);
 
-    $xml->addTag("Id",$id);
-    $xml->addTag("Nombre","6 Bidones de 20L");
-    $xml->addTag("PrecioActual",100);
-
-
-    $xml->addTag("NumeroProductos",2);
-
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",1);
-      $xml->addTag("NombreProducto","Bidon 10L");
-      $xml->addTag("CantidadProducto",10);
-    $xml->closeTag("Producto");
-
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",2);
-      $xml->addTag("NombreProducto","Bidon 12L");
-      $xml->addTag("CantidadProducto",12);
-    $xml->closeTag("Producto");
-
-    $xml->addTag("NumeroMaquinas",2);
-
-    $xml->startTag("Maquina");
-      $xml->addTag("IdMaquina",1);
-      $xml->addTag("NombreMaquina","Dispenser Ushuaia");
-      $xml->addTag("CantidadMaquina",1);
-    $xml->closeTag("Maquina");
+      $sql = "SELECT a_p_a.precio,a_p_a.fechainicio FROM alquileres_precios_actual as a_p_a WHERE a_p_a.idalquiler='$idalquiler'";
+      $tabla = $conexion->query($sql);
+      if($tabla->num_rows>0)
+        {
+        $row = $tabla->fetch_assoc();
+        $xml->addTag("PrecioActual",$row["precio"]);
+        $xml->addTag("FechaInicioPrecioActual",$row["fechainicio"]);
+        }
 
 
-    $xml->startTag("Maquina");
-      $xml->addTag("IdMaquina",2);
-      $xml->addTag("NombreMaquina","Heladera Briket");
-      $xml->addTag("CantidadMaquina",2);
-    $xml->closeTag("Maquina");
+      $sql = "SELECT a_p_a.precio,a_p_a.fechainicio,a_p_a.fechafin FROM alquileres_precios_historico as a_p_a WHERE a_p_a.idalquiler='$idalquiler'";
+      $tabla = $conexion->query($sql);
+      $k=0;
+      if($tabla->num_rows>0)
+        {
+        while($row = $tabla->fetch_assoc())
+          {
+          $xml->startTag("PrecioHistorico");
+            $xml->addTag("Precio",$row["precio"]);
+            $xml->addTag("FechaInicio",$row["fechainicio"]);
+            $xml->addTag("FechaFin",$row["fechafin"]);
+          $xml->closeTag("PrecioHistorico");
+          $k++;
+          }
+        }
+      $xml->addTag("NumeroPreciosHistoricos",$k);
 
 
 
-    $xml->addTag("NumeroPreciosHistoricos",2);
+      $sql = "SELECT a_m.idmaquina,a_m.cantidad,m.nombre FROM alquileres_maquinas as a_m inner join maquinas as m on a_m.idmaquina=m.id WHERE a_m.idalquiler='$idalquiler'";
+      $tabla = $conexion->query($sql);
+      $k=0;
+      if($tabla->num_rows>0)
+        {
+        while($row = $tabla->fetch_assoc())
+          {
+          $xml->startTag("Maquina");
+            $xml->addTag("IdMaquina",$row["idmaquina"]);
+            $xml->addTag("NombreMaquina",$row["nombre"]);
+            $xml->addTag("CantidadMaquina",$row["cantidad"]);
+          $xml->closeTag("Maquina");
+          $k++;
+          }
+        }
+      $xml->addTag("NumeroMaquinas",$k);
 
-    $xml->startTag("PrecioHistorico");
-      $xml->addTag("FechaInicio","2018-5-1");
-      $xml->addTag("FechaFin","2018-6-1");
-      $xml->addTag("Precio",140);
-    $xml->closeTag("PrecioHistorico");
 
-    $xml->startTag("PrecioHistorico");
-      $xml->addTag("FechaInicio","2018-6-1");
-      $xml->addTag("FechaFin","2018-7-1");
-      $xml->addTag("Precio",160);
-    $xml->closeTag("PrecioHistorico");
+
+      $sql = "SELECT a_p.idproducto,a_p.cantidad,p.nombre FROM alquileres_productos as a_p inner join productos as p on a_p.idproducto=p.id WHERE a_p.idalquiler='$idalquiler'";
+      $tabla = $conexion->query($sql);
+      $k=0;
+      if($tabla->num_rows>0)
+        {
+        while($row = $tabla->fetch_assoc())
+          {
+          $xml->startTag("Producto");
+            $xml->addTag("IdProducto",$row["idproducto"]);
+            $xml->addTag("NombreProducto",$row["nombre"]);
+            $xml->addTag("CantidadProducto",$row["cantidad"]);
+          $xml->closeTag("Producto");
+          $k++;
+          }
+        }
+      $xml->addTag("NumeroProductos",$k);
+
+
+
+
+      }
+
 
     $aux = true;
 

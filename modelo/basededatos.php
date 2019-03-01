@@ -112,9 +112,510 @@ class BaseDeDatos
     $aux &= $this->crearTablaProductos_Insumos();
     $aux &= $this->crearTablaMaquinas();
     $aux &= $this->crearTablasAcuerdos();
+    $aux &= $this->crearTablasAlquileres();
+
+    $aux &= $this->crearTablaTiposCliente();
+    $aux &= $this->crearTablaTiposSede();
+    $aux &= $this->crearTablasRazonesDeCompra();
+    $aux &= $this->crearTablaCondicionesIva();
 
 
     return $aux;
+    }
+
+
+    function crearTablasCliente()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      $sql = "CREATE TABLE IF NOT EXISTS clientes(
+      id int auto_increment,
+      nombre varchar(50),
+      email varchar(50),
+      razonsocial varchar(50),
+      cuit varchar(50),
+      idcondicioniva int not null,
+      idtipocliente int not null,
+      idrazondecompra int not null,
+      idpublicidad int,
+      primary key(id),
+      foreign key(idcondicioniva) REFERENCES condicionesiva(id),
+      foreign key(idtipocliente) REFERENCES tiposcliente(id),
+      foreign key(idrazondecompra) REFERENCES razonesdecompra(id),
+      foreign key(idpublicidad) REFERENCES publicidades(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS clientes_telefonos(
+      idcliente int not null,
+      numero int not null,
+      telefono varchar(50),
+      primary key(idcliente,numero),
+      foreign key(idcliente) REFERENCES clientes(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+    function crearTablaCondicionesIva()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      $sql = "CREATE TABLE IF NOT EXISTS condicionesiva(
+      id int auto_increment,
+      nombre varchar(50),
+      primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO condicionesiva (nombre)
+      SELECT * FROM (SELECT 'Consumidor Final') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM condicionesiva WHERE nombre = 'Consumidor Final'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO condicionesiva (nombre)
+      SELECT * FROM (SELECT 'Monotributista') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM condicionesiva WHERE nombre = 'Monotributista'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO condicionesiva (nombre)
+      SELECT * FROM (SELECT 'Responsable Inscripto') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM condicionesiva WHERE nombre = 'Responsable Inscripto'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+    function crearTablasRazonesDeCompra()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      $sql = "CREATE TABLE IF NOT EXISTS mediospublicitarios(
+      id int auto_increment,
+      medio varchar(50),
+      primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO mediospublicitarios (medio)
+      SELECT * FROM (SELECT 'Facebook') AS tp
+      WHERE NOT EXISTS (
+          SELECT medio FROM mediospublicitarios WHERE medio = 'Facebook'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO mediospublicitarios (medio)
+      SELECT * FROM (SELECT 'Instagram') AS tp
+      WHERE NOT EXISTS (
+          SELECT medio FROM mediospublicitarios WHERE medio = 'Instagram'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO mediospublicitarios (medio)
+      SELECT * FROM (SELECT 'Google') AS tp
+      WHERE NOT EXISTS (
+          SELECT medio FROM mediospublicitarios WHERE medio = 'Google'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "CREATE TABLE IF NOT EXISTS publicidades(
+      id int auto_increment,
+      nombre varchar(50),
+      idmedio int not null,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(id),
+      foreign key(idmedio) REFERENCES mediospublicitarios(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "CREATE TABLE IF NOT EXISTS razonesdecompra(
+      id int auto_increment,
+      nombre varchar(50),
+      primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Publicidad') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Publicidad'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Pagina Web') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Pagina Web'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Redes Sociales') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Redes Sociales'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Por Recomendacion') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Por Recomendacion'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Por Ver Los Camiones,Camionetas') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Por Ver Los Camiones,Camionetas'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO razonesdecompra (nombre)
+      SELECT * FROM (SELECT 'Ninguna') AS tp
+      WHERE NOT EXISTS (
+          SELECT nombre FROM razonesdecompra WHERE nombre = 'Ninguna'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+
+    function crearTablaTiposCliente()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+
+      // Tabla Tipos Cliente
+
+      $sql = "CREATE TABLE IF NOT EXISTS tiposcliente(
+      id int auto_increment,
+      tipo varchar(50),
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tiposcliente (tipo)
+      SELECT * FROM (SELECT 'Particular') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposcliente WHERE tipo = 'Particular'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tiposcliente (tipo)
+      SELECT * FROM (SELECT 'Estudiante') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposcliente WHERE tipo = 'Estudiante'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO tiposcliente (tipo)
+      SELECT * FROM (SELECT 'Comercio') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposcliente WHERE tipo = 'Comercio'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tiposcliente (tipo)
+      SELECT * FROM (SELECT 'Empresa') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposcliente WHERE tipo = 'Empresa'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO tiposcliente (tipo)
+      SELECT * FROM (SELECT 'Institucion') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tiposcliente WHERE tipo = 'Institucion'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $aux &= $this->conexion->query($sql);
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+
+    function crearTablaTiposSede()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+
+      // Tabla Tipos
+
+      $sql = "CREATE TABLE IF NOT EXISTS tipossede(
+      id int auto_increment,
+      tipo varchar(50),
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Casa') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Casa'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Departamento') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Departamento'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Oficina') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Oficina'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Supermercado') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Supermercado'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Supermercado Chino') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Supermercado Chino'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Almacen') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Almacen'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Autoservicio') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Autoservicio'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Verduleria') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Verduleria'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Kiosco') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Kiosco'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Buffet') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Buffet'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Restaurante') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Restaurante'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Bar') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Bar'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "INSERT INTO tipossede (tipo)
+      SELECT * FROM (SELECT 'Gymnasio') AS tp
+      WHERE NOT EXISTS (
+          SELECT tipo FROM tipossede WHERE tipo = 'Gymnasio'
+      ) LIMIT 1";
+      $aux &= $this->conexion->query($sql);
+
+
+
+      $aux &= $this->conexion->query($sql);
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
+    }
+
+
+
+
+
+
+
+    function crearTablasAlquileres()
+    {
+    if($this->abrirConexion())
+      {
+      $aux = true;
+
+      ////////////////ALQUILERES
+
+      // Tabla Alquileres
+
+      $sql = "CREATE TABLE IF NOT EXISTS alquileres(
+      id int auto_increment,
+      nombre varchar(50),
+      fechacreacion date,
+      constraint pk primary key(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Alquileres Maquinas
+
+      $sql = "CREATE TABLE IF NOT EXISTS alquileres_precios_actual(
+      idalquiler int not null,
+      precio real,
+      fechainicio datetime,
+      primary key(idalquiler,fechainicio),
+      foreign key(idalquiler) REFERENCES alquileres(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS alquileres_precios_historico(
+      idalquiler int not null,
+      precio real,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idalquiler,fechainicio),
+      foreign key(idalquiler) REFERENCES alquileres(id)
+      );
+      ";
+
+      $aux &= $this->conexion->query($sql);
+
+
+
+      // Tabla Relacion Alquileres Maquinas
+
+      $sql = "CREATE TABLE IF NOT EXISTS alquileres_maquinas(
+      idalquiler int not null,
+      idmaquina int not null,
+      cantidad int,
+      primary key(idalquiler,idmaquina),
+      foreign key(idalquiler) REFERENCES alquileres(id),
+      foreign key(idmaquina) REFERENCES maquinas(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Alquileres Productos
+
+      $sql = "CREATE TABLE IF NOT EXISTS alquileres_productos(
+      idalquiler int not null,
+      idproducto int not null,
+      cantidad int,
+      primary key(idalquiler,idproducto),
+      foreign key(idalquiler) REFERENCES alquileres(id),
+      foreign key(idproducto) REFERENCES productos(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+
+
+      $this->cerrarConexion();
+      return $aux;
+      }
+    else
+      {
+      return false;
+      }
+
     }
 
 
@@ -124,6 +625,8 @@ class BaseDeDatos
     if($this->abrirConexion())
       {
       $aux = true;
+
+
 
       //////////////////////////////////////////////////////////////////////
       ////////////////CONDICIONES COMODATOS
@@ -150,7 +653,6 @@ class BaseDeDatos
       );
       ";
       $aux &= $this->conexion->query($sql);
-
 
 
 

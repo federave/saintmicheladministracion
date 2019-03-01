@@ -1,53 +1,10 @@
 
 
+<?php require $_SESSION["raiz"] . '/modelo/clientes/tiposcliente.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/tipossede.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/razonesdecompra.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/condicionesiva.php'?>
 
-
-<?php
-
-
-$condiciones = array();
-$condiciones[0] = "Responsable Inscripto";
-$condiciones[1] = "Monotributista";
-$condiciones[2] = "Consumidor Final";
-
-$tiposClienteId = array();
-$tiposClienteId[0] = 1;
-$tiposClienteId[1] = 2;
-$tiposClienteId[2] = 3;
-$tiposClienteId[3] = 4;
-$tiposClienteId[4] = 5;
-$tiposClienteId[5] = 6;
-
-$tiposClienteNombre = array();
-$tiposClienteNombre[0] = "Domicilio";
-$tiposClienteNombre[1] = "Supermercado";
-$tiposClienteNombre[2] = "Supermercado Chino";
-$tiposClienteNombre[3] = "Autoservicio";
-$tiposClienteNombre[4] = "Almacen";
-$tiposClienteNombre[5] = "Verduleria";
-
-
-$razonesDeCompraId = array();
-$razonesDeCompraId[0] = 1;
-$razonesDeCompraId[1] = 2;
-$razonesDeCompraId[2] = 3;
-$razonesDeCompraId[3] = 4;
-$razonesDeCompraId[4] = 5;
-$razonesDeCompraId[5] = 6;
-
-$razonesDeCompraNombre = array();
-$razonesDeCompraNombre[0] = "Pagina Web";
-$razonesDeCompraNombre[1] = "Facebook";
-$razonesDeCompraNombre[2] = "Instagram";
-$razonesDeCompraNombre[3] = "Por Recomendacion";
-$razonesDeCompraNombre[4] = "Por Ver Los Camiones,Camionetas";
-$razonesDeCompraNombre[5] = "Ninguno";
-
-
-
-
-
-?>
 
 
 <!-- One "tab" for each step in the form: -->
@@ -57,7 +14,7 @@ $razonesDeCompraNombre[5] = "Ninguno";
   <br>
   <div class="row text-center">
     <label for="nombre" style="color:black;font-size:18px">Nombre</label>
-    <input name="nombre" id="nombre" style="color:black" placeholder="Telefono" type="text" oninput="this.className = ''" >
+    <input name="nombre" id="nombre" style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" >
   </div>
   <br>
 
@@ -85,14 +42,14 @@ $razonesDeCompraNombre[5] = "Ninguno";
   <br>
   <div class="row text-center">
     <label for="condicion" style="color:black;font-size:18px">Condición</label>
-    <select class="form-control text-center" id="condicion" name="condicion" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+    <select class="form-control text-center" id="condicioniva" name="condicioniva" style="height:50px;width:100%;font-size:20px;text-align-last:center">
       <?php
       $k=0;
-      while($k<count($condiciones))
+      while($k<count($condicionesIvaId))
           {
           ?>
-          <option value="<?php echo $condiciones[$k];?>" style="color:black;font-size:20px;">
-            <?php echo $condiciones[$k];?>
+          <option value="<?php echo $condicionesIvaId[$k];?>" style="color:black;font-size:20px;">
+            <?php echo $condicionesIvaNombre[$k];?>
           </option>
         <?php
           $k++;

@@ -38,7 +38,7 @@ session_start();
 
       <div class="row">
         <div class="text-center">
-          <h1>Menu Alquileres</h1>
+          <h1>Menú Alquileres</h1>
         </div>
       </div>
       <br>
@@ -47,11 +47,19 @@ session_start();
       <?php $nombre="Alquileres";?>
       <div class="row" style="width:90%;margin-left:5%" >
         <ul class="nav nav-tabs">
-          <li name="liAlquileres" class="active"><a class="items" href="#" onclick="seleccionarTab(0,'<?php echo $nombre;?>')">Ver Alquileres</a></li>
-          <li name="liAlquileres" class="li"><a class="items" href="#" onclick="seleccionarTab(1,'<?php echo $nombre;?>')">Nuevo Alquiler</a></li>
+          <li name="liAlquileres" class="active"><a class="items" href="#" onclick="ocultarModificarAlquiler();seleccionarTab(0,'<?php echo $nombre;?>')">Ver Alquileres</a></li>
+          <li name="liAlquileres" class="li"><a class="items" href="#" onclick="ocultarModificarAlquiler();seleccionarTab(1,'<?php echo $nombre;?>')">Nuevo Alquiler</a></li>
           <li name="liAlquileres" class="li"><a class="items" href="#" onclick="seleccionarTab(2,'<?php echo $nombre;?>')">Modificar Alquiler</a></li>
         </ul>
       </div>
+
+      <script type="text/javascript">
+      function ocultarModificarAlquiler()
+      {
+      document.getElementById("contenedormodificaralquiler").style.display = "none";
+      }
+      </script>
+
 
       <br>
 

@@ -66,7 +66,7 @@ if (currentTab >= x.length)
     xml.addTag("Email",document.getElementById("email").value);
     xml.addTag("RazonSocial",document.getElementById("razonsocial").value);
     xml.addTag("Cuit",document.getElementById("cuit").value);
-    xml.addTag("IdCondicionIva",document.getElementById("condicion").value);
+    xml.addTag("IdCondicionIva",document.getElementById("condicioniva").value);
     xml.addTag("IdTipoCliente",document.getElementById("tipoCliente").value);
     xml.addTag("IdRazonDeCompra",document.getElementById("razonDeCompra").value);
 

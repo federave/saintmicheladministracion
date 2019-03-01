@@ -5,43 +5,12 @@
 
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/alquileres/nuevoalquiler/nuevoalquiler.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/acuerdos/alquileres/nuevoalquiler/nuevoalquiler.js"></script>
-
-  <?php
-
-  $productosId = array();
-  $productosId[0] = 1;
-  $productosId[1] = 5;
-  $productosId[2] = 3;
-
-  $productosNombre = array();
-  $productosNombre[0] = "Bidon 10L";
-  $productosNombre[1] = "Bidon 8L";
-  $productosNombre[2] = "Bidon 5L";
-
-  $numeroProductos = 3;
+<link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/estilos/formulario.css">
+<script src="<?php echo $_SESSION["carpeta"] ?>/vistas/javascript/formulario.js"></script>
 
 
-
-  $maquinasId = array();
-  $maquinasId[0] = 1;
-  $maquinasId[1] = 2;
-  $maquinasId[2] = 3;
-
-  $maquinasNombre = array();
-  $maquinasNombre[0] = "Dispenser Frio Calor Ushuaia";
-  $maquinasNombre[1] = "Heladera Briket 3500";
-  $maquinasNombre[2] = "Heladera Briket 4500";
-
-  $numeroMaquinas = 3;
-
-
-
-
-
-
-
-
-  ?>
+<?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/maquinas/maquinas.php'?>
 
 
 
@@ -58,13 +27,13 @@
 
 
 
-      <form id="formularioAlquilerNuevo" class="formularioAlquilerNuevo"  action="../../../controladores/acuerdos/alquileres/alquilernuevo.php">
+      <form id="formularioAlquilerNuevo" class="formulario"  action="../../../controladores/acuerdos/alquileres/alquilernuevo.php">
 
         <input type="hidden" name="numeroProductos" id="numeroProductos" value=<?php echo $numeroProductos; ?>>
         <input type="hidden" name="numeroMaquinas" id="numeroMaquinas" value=<?php echo $numeroMaquinas; ?>>
         <input type="hidden" name="alquilerNuevo" id="alquilerNuevo" value="">
 
-        <div class="tabAlquilerNuevo">
+        <div class="tabFormulario" name="tabAlquilerNuevo">
 
           <div class="text-center">
             <h1 style="color:black">Datos Del Alquiler</h1>
@@ -218,13 +187,13 @@
 
         <div style="overflow:auto;">
           <div style="float:right;">
-            <button type="button" id="prevBtnAlquilerNuevo" onclick="nextPrevAlquilerNuevo(-1)">Siguiente</button>
-            <button type="button" id="nextBtnAlquilerNuevo" onclick="nextPrevAlquilerNuevo(1)">Anterior</button>
+            <button type="button" class="previousbutton" id="prevBtnAlquilerNuevo" onclick="nextTabAlquilerNuevo(-1)">Siguiente</button>
+            <button type="button" id="nextBtnAlquilerNuevo" onclick="nextTabAlquilerNuevo(1)">Anterior</button>
           </div>
         </div>
         <!-- Circles which indicates the steps of the form: -->
         <div style="text-align:center;margin-top:40px;">
-          <span class="stepAlquilerNuevo"></span>
+          <span class="step" name="stepAlquilerNuevo"></span>
         </div>
       </form>
 
@@ -232,7 +201,7 @@
 
     <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTabAlquilerNuevo(currentTab); // Display the crurrent tab
+    showTab(currentTab,"AlquilerNuevo"); // Display the crurrent tab
     </script>
 
 

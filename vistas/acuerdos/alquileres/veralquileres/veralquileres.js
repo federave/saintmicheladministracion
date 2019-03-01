@@ -25,7 +25,6 @@ else
 
 function respuestaVerDatosAlquiler(respuesta)
 {
-
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -37,6 +36,7 @@ if(estado)
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
   var precio = xmlDoc.getElementsByTagName("PrecioActual")[0].childNodes[0].nodeValue;
+  var fechainicioprecioactual = xmlDoc.getElementsByTagName("FechaInicioPrecioActual")[0].childNodes[0].nodeValue;
 
   document.getElementById("nombreAlquiler"+id).innerHTML="Nombre: "+nombre;
   document.getElementById("precioAlquiler"+id).innerHTML="Precio Actual: "+precio;
@@ -45,7 +45,9 @@ if(estado)
 
   var numeroProductos = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
   var divProductos = document.getElementById("divProductosAlquiler"+id);
-
+  var labelTitulo="<label class=\"etiqueta\" >Productos</label>";
+  var br="<br>";
+  divProductos.innerHTML=br+labelTitulo+br+br;
   for(i=0;i<numeroProductos;i++)
   {
   var nombre=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
@@ -58,6 +60,8 @@ if(estado)
 
   var numeroMaquinas = xmlDoc.getElementsByTagName("NumeroMaquinas")[0].childNodes[0].nodeValue;
   var divMaquinas = document.getElementById("divMaquinasAlquiler"+id);
+  var labelTitulo="<label class=\"etiqueta\" >Maquinas</label>";
+  divMaquinas.innerHTML=br+labelTitulo+br+br;
 
   for(i=0;i<numeroMaquinas;i++)
   {
@@ -79,6 +83,9 @@ if(estado)
 
   var numero = xmlDoc.getElementsByTagName("NumeroPreciosHistoricos")[0].childNodes[0].nodeValue;
   var divPreciosHistoricos = document.getElementById("divPreciosHistoricosAlquiler"+id);
+  var labelTitulo="<label class=\"etiqueta\" >Precios Históricos</label>";
+  divPreciosHistoricos.innerHTML=br+labelTitulo+br+br;
+
   for(i=0;i<numero;i++)
   {
   var fechaInicio=xmlDoc.getElementsByTagName("FechaInicio")[i].childNodes[0].nodeValue;
@@ -153,11 +160,12 @@ if(estado)
   {
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-  var precio = xmlDoc.getElementsByTagName("Precio")[0].childNodes[0].nodeValue;
+  var precio = xmlDoc.getElementsByTagName("PrecioActual")[0].childNodes[0].nodeValue;
   document.getElementById("idAlquiler").value = id;
   document.getElementById("nombreAlquiler").innerHTML = "Nombre: " + nombre;
   document.getElementById("precioAlquiler").innerHTML = "Precio: " + precio;
-  seleccionarTabAlquileres(2);
+  document.getElementById("contenedormodificaralquiler").style.display = "block";
+  seleccionarTab(2,"Alquileres");
   }
 else
   {

@@ -22,6 +22,7 @@ requerimiento.ejecutar();
 
 function respuestaNombreNuevoAlquiler(respuesta)
 {
+  alert(respuesta.target.responseText);
 
 xmlDoc = crearXML(respuesta.target.responseText);
 
@@ -65,7 +66,7 @@ requerimiento.ejecutar();
 
 function respuestaPrecioNuevoAlquiler(respuesta)
 {
-
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 
