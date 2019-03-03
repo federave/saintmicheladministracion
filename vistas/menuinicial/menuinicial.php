@@ -59,7 +59,7 @@ else
     <div class="dropdown-content">
       <a href="../clientes/nuevo/clientenuevo.php">Nuevo</a>
       <a href="../clientes/cliente/cliente.php">Modificar</a>
-      <a href="#l3">Buscar</a>
+      <a href="../clientes/buscador/buscador.php">Buscar</a>
     </div>
   </div>
   <a href="../mapas/mapa/mapa.php">Mapas</a>

@@ -22,14 +22,11 @@ if(isset($_GET["clienteNuevo"]))
 
     $cliente = new SimpleXMLElement($_GET["clienteNuevo"]);
     $nombre = $cliente->Nombre;
-    escribir("0");
 
     $sql = "SELECT id FROM clientes WHERE nombre = '$nombre'";
     $tabla = $conexion->query($sql);
     if(!($tabla->num_rows>0))
       {
-        escribir("1");
-
       $telefono = $cliente->Telefono;
       $email = $cliente->Email;
       $razonsocial = $cliente->RazonSocial;
@@ -37,9 +34,6 @@ if(isset($_GET["clienteNuevo"]))
       $idcondicioniva = $cliente->IdCondicionIva;
       $idtipocliente = $cliente->IdTipoCliente;
       $idrazondecompra = $cliente->IdRazonDeCompra;
-
-      escribir("2");
-
 
       $sql = "INSERT INTO clientes (nombre,telefono,email,razonsocial,cuit,idcondicioniva,idtipocliente,idrazondecompra)
       VALUES ('$nombre','$telefono','$email','$razonsocial','$cuit','$idcondicioniva','$idtipocliente','$idrazondecompra')";
@@ -66,7 +60,7 @@ if(isset($_GET["clienteNuevo"]))
         //Asignacion Sede
         if($idasignacion == 1)
           {
-          $idtrabajador = 0;
+          $idtrabajador = NULL;
           }
         else if($idasignacion == 2)
           {
@@ -79,15 +73,18 @@ if(isset($_GET["clienteNuevo"]))
 
 
 
-
-
-          escribir("4");
-
-        $sql = "INSERT INTO sedes (idcliente,nombre,telefono,email,observacion,nombreresponsable,apellidoresponsable,idtiposede,idasignacion,idtrabajador)
-        VALUES('$idcliente','$nombre','$telefono','$email','$observacion','$nombreresponsable','$apellidoresponsable','$idtiposede','$idasignacion','$idtrabajador')";
-        $aux = $conexion->query($sql);
-
-        escribir("5");
+        if($idtrabajador!=NULL)
+          {
+          $sql = "INSERT INTO sedes (idcliente,nombre,telefono,email,observacion,nombreresponsable,apellidoresponsable,idtiposede,idasignacion,idtrabajador)
+          VALUES('$idcliente','$nombre','$telefono','$email','$observacion','$nombreresponsable','$apellidoresponsable','$idtiposede','$idasignacion','$idtrabajador')";
+          $aux = $conexion->query($sql);
+          }
+        else
+          {
+          $sql = "INSERT INTO sedes (idcliente,nombre,telefono,email,observacion,nombreresponsable,apellidoresponsable,idtiposede,idasignacion)
+          VALUES('$idcliente','$nombre','$telefono','$email','$observacion','$nombreresponsable','$apellidoresponsable','$idtiposede','$idasignacion')";
+          $aux = $conexion->query($sql);
+          }
 
         $sql = "SELECT id FROM sedes WHERE idcliente = '$idcliente'";
         $tabla = $conexion->query($sql);
@@ -122,7 +119,7 @@ if(isset($_GET["clienteNuevo"]))
           $longitud = $cliente->LongitudSede;
           $estadolocalizacion = $cliente->EstadoLocalizacionSede;
 
-        
+
 
           $sql = "INSERT INTO direcciones_sedes (idsede,calle,numero,entre1,entre2,departamento,piso,idpartido,latitud,longitud,estadolocalizacion,idzona)
           VALUES('$idsede','$calle','$numero','$entre1','$entre2','$departamento','$piso','$idpartido','$latitud','$longitud','$estadolocalizacion','$idzona')";
@@ -144,9 +141,9 @@ if(isset($_GET["clienteNuevo"]))
             $aux &= $conexion->query($sql);
             $k++;
             }
-
           }
         }
+      
       }
     else
       {
