@@ -1,7 +1,6 @@
 
 
 <?php require $_SESSION["raiz"] . '/modelo/clientes/tiposcliente.php'?>
-<?php require $_SESSION["raiz"] . '/modelo/clientes/tipossede.php'?>
 <?php require $_SESSION["raiz"] . '/modelo/clientes/razonesdecompra.php'?>
 <?php require $_SESSION["raiz"] . '/modelo/clientes/condicionesiva.php'?>
 
@@ -14,7 +13,7 @@
   <br>
   <div class="row text-center">
     <label for="nombre" style="color:black;font-size:18px">Nombre</label>
-    <input name="nombre" id="nombre" style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" >
+    <input name="nombre" id="nombre" style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" value="a">
   </div>
   <br>
 

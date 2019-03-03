@@ -4,25 +4,9 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/nuevo/sede/sede.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/nuevo/sede/sede.js"></script>
 
-
-<?php
-
-$partidosId = array();
-$partidosId[0] = 1;
-$partidosId[1] = 2;
-$partidosId[2] = 3;
-$partidosId[3] = 4;
-$partidosId[4] = 5;
-
-$partidosNombre = array();
-$partidosNombre[0] = "La Plata";
-$partidosNombre[1] = "Berisso";
-$partidosNombre[2] = "Ensenada";
-$partidosNombre[3] = "Gonnet";
-$partidosNombre[4] = "City Bell";
-
-
-?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/partidos.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/tipossede.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/zonas.php'?>
 
 
 
@@ -36,7 +20,7 @@ $partidosNombre[4] = "City Bell";
 
   <div class="row text-center">
     <label for="nombreSede" style="color:black;font-size:18px">Nombre Sede</label>
-    <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreSede" id="nombreSede">
+    <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreSede" id="nombreSede" value="b">
   </div>
   <br>
   <div class="row text-center">
@@ -53,7 +37,29 @@ $partidosNombre[4] = "City Bell";
     <label for="observacionSede" style="color:black;font-size:18px">Observacion</label>
     <input style="color:black" placeholder="Observacion" type="text" oninput="this.className = ''" name="observacionSede" id="observacionSede">
   </div>
+
   <br>
+  <div class="row text-center">
+    <label for="tipoSede" style="color:black;font-size:18px">Tipo Sede</label>
+    <select class="form-control text-center" id="tipoSede" name="tipoSede" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+      <?php
+
+      $k=0;
+      while($k<count($tiposSedeId))
+          {
+          ?>
+          <option id="tipoSede<?php echo $tiposSedeId[$k];?>" value="<?php echo $tiposSedeId[$k];?>" style="color:black;font-size:20px;">
+            <?php echo $tiposSedeNombre[$k];?>
+          </option>
+        <?php
+          $k++;
+          }
+      ?>
+    </select>
+  </div>
+
+  <br>
+
 
   <div class="text-center">
     <h2 style="color:black">Responsable Sede</h2>
@@ -61,7 +67,7 @@ $partidosNombre[4] = "City Bell";
   <br>
   <div class="row text-center">
     <label for="nombreResponsableSede" style="color:black;font-size:18px">Nombre</label>
-    <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreResponsableSede" id="nombreResponsableSede">
+    <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreResponsableSede" id="nombreResponsableSede" value="c">
   </div>
   <br>
   <div class="row text-center">
@@ -91,7 +97,7 @@ $partidosNombre[4] = "City Bell";
     <input style="color:black" placeholder="Hora de Inicio" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaInicio" id="horaInicio">
     <br>
     <label for="horaFin" style="color:black;font-size:18px">Hora de Fin</label>
-    <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
+    <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="09:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
     <br>
     <br>
     <input type="button" class="boton btn btn-primary" id="" name="" onclick="nuevoHorario()" style="height:50px;font-size:18px;width:80%;margin:auto" value="Agregar">
@@ -123,12 +129,12 @@ $partidosNombre[4] = "City Bell";
   <br>
   <div class="row text-center">
     <label for="calleSede" style="color:black;font-size:18px">Calle</label>
-    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Calle" type="text" oninput="this.className = ''" name="calleSede" id="calleSede">
+    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Calle" type="text" oninput="this.className = ''" name="calleSede" id="calleSede" value="489">
   </div>
   <br>
   <div class="row text-center">
     <label for="numeroSede" style="color:black;font-size:18px">Numero</label>
-    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Numero" type="text" oninput="this.className = ''" name="numeroSede" id="numeroSede">
+    <input onchange="limpiarLocalizacion()" style="color:black" placeholder="Numero" type="text" oninput="this.className = ''" name="numeroSede" id="numeroSede" value="3150">
   </div>
   <br>
   <div class="row text-center">
@@ -152,7 +158,7 @@ $partidosNombre[4] = "City Bell";
   </div>
   <br>
   <div class="row text-center">
-    <label for="partido" style="color:black;font-size:18px">Partido</label>
+    <label for="partidoSede" style="color:black;font-size:18px">Partido</label>
     <select class="form-control text-center" id="partidoSede" name="partidoSede" style="height:50px;width:100%;font-size:20px;text-align-last:center">
       <?php
 
@@ -171,6 +177,33 @@ $partidosNombre[4] = "City Bell";
   </div>
 
   <br>
+
+  <div class="row text-center">
+    <label for="zonaSede" style="color:black;font-size:18px">Zona</label>
+    <select class="form-control text-center" id="zonaSede" name="zonaSede" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+      <?php
+
+      $k=0;
+      while($k<count($zonasId))
+          {
+          ?>
+          <option id="zona<?php echo $zonasId[$k];?>" value="<?php echo $zonasId[$k];?>" style="color:black;font-size:20px;">
+            <?php echo $zonasNombre[$k];?>
+          </option>
+        <?php
+          $k++;
+          }
+      ?>
+    </select>
+  </div>
+
+  <br>
+
+
+
+
+
+
   <div class="row text-center">
     <style media="screen">
       .etiqueta{font-size:20px;color:black}
@@ -183,11 +216,11 @@ $partidosNombre[4] = "City Bell";
     <br>
     <br>
     <label id="etiquetaLatitudSede" class="etiqueta">Latitud: </label>
-    <input type="hidden" name="latitudSede" id="latitudSede" value="">
+    <input type="hidden" name="latitudSede" id="latitudSede" value=0>
     <br>
     <br>
     <label id="etiquetaLongitudSede" class="etiqueta">Longitud: </label>
-    <input type="hidden" name="longitudSede" id="longitudSede" value="">
+    <input type="hidden" name="longitudSede" id="longitudSede" value=0>
   </div>
 
   <br>

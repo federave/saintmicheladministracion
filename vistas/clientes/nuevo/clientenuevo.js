@@ -76,6 +76,7 @@ if (currentTab >= x.length)
     xml.addTag("TelefonoSede",document.getElementById("telefonoSede").value);
     xml.addTag("EmailSede",document.getElementById("emailSede").value);
     xml.addTag("ObservacionSede",document.getElementById("observacionSede").value);
+    xml.addTag("IdTipoSede",document.getElementById("tipoSede").value);
 
     xml.addTag("NombreResponsableSede",document.getElementById("nombreResponsableSede").value);
     xml.addTag("ApellidoResponsableSede",document.getElementById("apellidoResponsableSede").value);
@@ -105,25 +106,28 @@ if (currentTab >= x.length)
     xml.addTag("Entre2Sede",document.getElementById("entre2Sede").value);
     xml.addTag("DepartamentoSede",document.getElementById("departamentoSede").value);
     xml.addTag("PisoSede",document.getElementById("pisoSede").value);
+    xml.addTag("IdPartidoSede",document.getElementById("partidoSede").value);
+    xml.addTag("IdZonaSede",document.getElementById("zonaSede").value);
+
     xml.addTag("EstadoLocalizacionSede",document.getElementById("estadoLocalizacionSede").value);
     xml.addTag("LatitudSede",document.getElementById("latitudSede").value);
     xml.addTag("LongitudSede",document.getElementById("longitudSede").value);
 
     ///Asignacion
 
-    if(document.getElementById("asignacionEmpresa").checked);
+    if(document.getElementById("asignacionEmpresa").checked)
       {
-      xml.addTag("IdAsignacion",1);
+      xml.addTag("IdAsignacionSede",1);
       }
     if(document.getElementById("asignacionRepartidor").checked)
       {
-      xml.addTag("IdAsignacion",2);
-      xml.addTag("IdRepartidorAsignacion",document.getElementById("repartidores").value);
+      xml.addTag("IdAsignacionSede",2);
+      xml.addTag("IdRepartidorAsignado",document.getElementById("repartidores").value);
       }
     if(document.getElementById("asignacionVendedor").checked)
       {
-      xml.addTag("IdAsignacion",3);
-      xml.addTag("IdVendedorAsignacion",document.getElementById("vendedores").value);
+      xml.addTag("IdAsignacionSede",3);
+      xml.addTag("IdVendedorAsignado",document.getElementById("vendedores").value);
       }
 
     for (i = 1; i < 7; i++)
@@ -133,13 +137,16 @@ if (currentTab >= x.length)
         xml.startTag("Dia");
           xml.addTag("IdDia",i);
           if(document.getElementById("asignacionEmpresa").checked)
-            xml.addTag("IdRepartidor",document.getElementById("repartidoresDia"+i).value);
+            xml.addTag("IdRepartidorDia",document.getElementById("repartidoresDia"+i).value);
         xml.closeTag("Dia");
         }
       }
    xml.closeTag("ClienteNuevo");
    document.getElementById("clienteNuevo").value = xml.toString();
     // ... the form gets submitted:
+
+    alert( xml.toString());
+
     document.getElementById("formularioClienteNuevo").submit();
     return false;
   }

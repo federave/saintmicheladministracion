@@ -1,28 +1,9 @@
 
 
 
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/dias.php'?>
 
 
-
-<?php
-$diasId = array();
-$diasId[0] = 1;
-$diasId[1] = 2;
-$diasId[2] = 3;
-$diasId[3] = 4;
-$diasId[4] = 5;
-$diasId[5] = 6;
-
-$diasNombre = array();
-$diasNombre[0] = "Lunes";
-$diasNombre[1] = "Martes";
-$diasNombre[2] = "Miercoles";
-$diasNombre[3] = "Jueves";
-$diasNombre[4] = "Viernes";
-$diasNombre[5] = "Sabados";
-
-
-?>
 
 
 

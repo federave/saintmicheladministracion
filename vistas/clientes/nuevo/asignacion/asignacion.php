@@ -1,44 +1,9 @@
 
-<?php
 
-$repartidoresId = array();
-$repartidoresId[0] = 1;
-$repartidoresId[1] = 2;
-$repartidoresId[2] = 3;
-$repartidoresId[3] = 4;
-$repartidoresId[4] = 5;
+<?php require $_SESSION["raiz"] . '/modelo/trabajadores/repartidores.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/trabajadores/vendedores.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/asignaciones.php'?>
 
-$repartidoresNombre = array();
-$repartidoresNombre[0] = "Narciso";
-$repartidoresNombre[1] = "Gustavo";
-$repartidoresNombre[2] = "Mariano";
-$repartidoresNombre[3] = "Javier";
-$repartidoresNombre[4] = "Emanuel";
-
-$vendedoresId = array();
-$vendedoresId[0] = 1;
-$vendedoresId[1] = 2;
-$vendedoresId[2] = 3;
-
-$vendedoresNombre = array();
-$vendedoresNombre[0] = "Ricardo";
-$vendedoresNombre[1] = "Marilina";
-$vendedoresNombre[2] = "MyM";
-
-$asignacionesId = array();
-$asignacionesId[0] = 1;
-$asignacionesId[1] = 2;
-$asignacionesId[2] = 3;
-
-$asignacionesNombre = array();
-$asignacionesNombre[0] = "Empresa";
-$asignacionesNombre[1] = "Repartidor";
-$asignacionesNombre[2] = "Vendedor";
-
-
-
-
-?>
 
 <div class="tabClienteNuevo">Asignación:
 
