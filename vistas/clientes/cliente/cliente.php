@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+$idcliente = $_GET["idcliente"];
+$idsede = $_GET["idsede"];
+
+
 ?>
 
 

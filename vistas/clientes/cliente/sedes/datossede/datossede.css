@@ -1,90 +1,19 @@
 
 
-* {
-  box-sizing: border-box;
-}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  text-align: center;
-
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-
-}
-
-.col-50 {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-}
-.col-40 {
-  float: left;
-  width: 40%;
-  margin-top: 6px;
-}
-.col-35 {
-  float: left;
-  width: 35%;
-  margin-top: 6px;
-}
-.col-30 {
-  float: left;
-  width: 30%;
-  margin-top: 6px;
-}
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .contenedordatossede {
-  width: 75%;
+  width: 90%;
   margin:auto;
+  background: linear-gradient(to bottom, #000066 0%, #666699 100%);
+  border-radius: 5px;
+  padding: 5%;
 }
 
+
+.contenedorhorariossede {
+  width: 70%;
+  margin:auto;
+
+}
 
 
 @media only screen and (max-width: 600px)
@@ -93,11 +22,14 @@ input[type=submit]:hover {
   .contenedordatossede {
     width: 100%;
   }
-   .col-20,.col-25,.col-30,.col-35, .col-40,.col-50,.col-60,.col-75{
-     width: 80%;
-     margin-top:20px;
-     margin-left: 10%;
-   }
+
+  .contenedorhorariossede {
+    width: 90%;
+  }
+
+
+
+
 }
 
 
@@ -107,24 +39,31 @@ input[type=submit]:hover {
   .contenedordatossede {
     width: 90%;
   }
+  .contenedorhorariossede {
+    width: 90%;
+  }
+
 }
 
 
 
 @media only screen and (min-width: 800px) and (max-width: 1000px){
-  .contenedordatossede {
-    width: 85%;
+  .contenedorhorariossede {
+    width: 80%;
   }
+
 }
 
 @media only screen  and (min-width: 1000px) and (max-width: 1300px){
-  .contenedordatossede {
+  .contenedorhorariossede {
     width: 80%;
   }
+
 }
 
 @media only screen  and (min-width: 1300px) {
-  .contenedordatossede {
-    width:75%;
+  .contenedorhorariossede {
+    width: 80%;
   }
+
 }

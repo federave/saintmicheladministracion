@@ -36,16 +36,22 @@ $horariosHoraFin[1] = "18:00:00";
 
 <div class="contenedordatossede">
 
+  <div class="text-center">
+    <h2 style="color:white">Datos Sede</h2>
+  </div>
+  <br>
+  <br>
+  <br>
   <!-- Nombre -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="nombre" style="font-size:20px">Nombre:</label>
+      <label id="nombreSede" style="font-size:20px">Nombre:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="nombreNuevo" name="nombreNuevo" placeholder="Nuevo Nombre">
+      <input style="color:black" type="text" id="nombreNuevoSede" name="nombreNuevoSede" placeholder="Nuevo Nombre">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nombreNuevo()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nombreNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -53,76 +59,82 @@ $horariosHoraFin[1] = "18:00:00";
   <!-- Telefono -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="telefono" style="font-size:20px">Telefono:</label>
+      <label id="telefonoSede" style="font-size:20px">Telefono:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="telefonoNuevo" name="telefonoNuevo" placeholder="Nuevo Telefono">
+      <input style="color:black" type="text" id="telefonoNuevoSede" name="telefonoNuevoSede" placeholder="Nuevo Telefono">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="telefonoNuevo()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="telefonoNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
   <!-- Email -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="email" style="font-size:20px">Email:</label>
+      <label id="emailSede" style="font-size:20px">Email:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="emailNuevo" name="emailNuevo" placeholder="Nuevo Email">
+      <input style="color:black" type="text" id="emailNuevoSede" name="emailNuevoSede" placeholder="Nuevo Email">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="emailNuevo()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="emailNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
   <!-- Observacion -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="observacion" style="font-size:20px">Observacion:</label>
+      <label id="observacionSede" style="font-size:20px">Observacion:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="observacionNueva" name="observacionNueva" placeholder="Nueva Observacion">
+      <input style="color:black" type="text" id="observacionNuevaSede" name="observacionNuevaSede" placeholder="Nueva Observacion">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="observacionNueva()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="observacionNuevaSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
   <!-- Nombre Responsable -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="nombreResponsable" style="font-size:20px">Nombre Responsable:</label>
+      <label id="nombreResponsableSede" style="font-size:20px">Nombre Responsable:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="nombreResponsableNuevo" name="nombreResponsableNuevo" placeholder="Nuevo Nombre Responsable">
+      <input style="color:black" type="text" id="nombreResponsableNuevoSede" name="nombreResponsableNuevoSede" placeholder="Nuevo Nombre Responsable">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nombreResponsableNuevo()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nombreResponsableNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
   <!-- Apellido Responsable -->
   <div class="row">
     <div class="col-30 text-center">
-      <label id="apellidoResponsable" style="font-size:20px">Apellido Responsable:</label>
+      <label id="apellidoResponsableSede" style="font-size:20px">Apellido Responsable:</label>
     </div>
     <div class="col-40">
-      <input style="color:black" type="text" id="apellidoResponsableNuevo" name="apellidoResponsableNuevo" placeholder="Nuevo Apellido Responsable">
+      <input style="color:black" type="text" id="apellidoResponsableNuevoSede" name="apellidoResponsableNuevoSede" placeholder="Nuevo Apellido Responsable">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="apellidoResponsableNuevo()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="apellidoResponsableNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
 
+
+  <div class="row contenedorhorariossede">
+    <br>
+    <br>
+    <br>
+
   <div class="text-center">
-    <h2 style="color:black">Horarios Sede</h2>
+    <h2 style="color:white">Horarios Sede</h2>
   </div>
   <br>
 
   <div class="row">
-    <h4 style="color:black">Lista de Horarios</h4>
+    <h4 style="color:white">Lista de Horarios</h4>
     <br>
     <input type="hidden" name="numeroHorarios" id="numeroHorarios" value=<?php echo count($horariosId); ?>>
 
@@ -156,13 +168,13 @@ $horariosHoraFin[1] = "18:00:00";
     </ul>
   </div>
   <br>
-  <div class="row text-center">
-    <h4 style="color:black">Nuevo Horario</h4>
+  <div class="row text-center" style="width:90%;margin:auto">
+    <h4 style="color:white">Nuevo Horario</h4>
     <br>
-    <label for="horaInicio" style="color:black;font-size:18px">Hora de Inicio</label>
+    <label for="horaInicio" style="color:white;font-size:18px">Hora de Inicio</label>
     <input style="color:black" placeholder="Hora de Inicio" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaInicio" id="horaInicio">
     <br>
-    <label for="horaFin" style="color:black;font-size:18px">Hora de Fin</label>
+    <label for="horaFin" style="color:white;font-size:18px">Hora de Fin</label>
     <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
     <br>
     <br>
@@ -174,6 +186,7 @@ $horariosHoraFin[1] = "18:00:00";
   </div>
 
 
+</div>
 
 
 

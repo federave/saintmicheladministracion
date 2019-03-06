@@ -66,8 +66,7 @@ session_start();
             </div>
               <br>
             <ul id="listaclientes" class="list-group">
-                <li class="list-group-item">
-                </li>
+              
            </ul>
         </div>
 

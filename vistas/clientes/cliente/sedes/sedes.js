@@ -81,12 +81,12 @@ if(estado)
 */
 
   document.getElementById("idSede").value = idSede;
-  document.getElementById("nombre").innerHTML = "Nombre: " + nombre;
-  document.getElementById("telefono").innerHTML = "Telefono: " + telefono;
-  document.getElementById("email").innerHTML = "Email: " + email;
-  document.getElementById("observacion").innerHTML = "Observacion: " + observacion;
-  document.getElementById("nombreResponsable").innerHTML = "Nombre Responsable: " + nombreResponsable;
-  document.getElementById("apellidoResponsable").innerHTML = "Apellido Responsable: " + apellidoResponsable;
+  document.getElementById("nombreSede").innerHTML = "Nombre: " + nombre;
+  document.getElementById("telefonoSede").innerHTML = "Telefono: " + telefono;
+  document.getElementById("emailSede").innerHTML = "Email: " + email;
+  document.getElementById("observacionSede").innerHTML = "Observacion: " + observacion;
+  document.getElementById("nombreResponsableSede").innerHTML = "Nombre Responsable: " + nombreResponsable;
+  document.getElementById("apellidoResponsableSede").innerHTML = "Apellido Responsable: " + apellidoResponsable;
 
 /*
   document.getElementById("calle").innerHTML = "Calle: " + calle;

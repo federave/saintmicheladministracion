@@ -25,6 +25,8 @@ requerimiento.ejecutar();
 
 function respuestaNuevoNombre(respuesta)
 {
+alert(respuesta.target.responseText);
+
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -73,7 +75,7 @@ if(estado)
   var nuevoEmail = document.getElementById("emailNuevo").value;
   document.getElementById("email").innerHTML = "Email: " + nuevoEmail;
   document.getElementById("emailNuevo").value = "";
-  document.getElementById("alertaEmailNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaEmailNuevo").innerHTML = crearAlerta("Email Modificado!","success");
 
   }
 else
@@ -111,7 +113,7 @@ if(estado)
   var nuevoTelefono = document.getElementById("telefonoNuevo").value;
   document.getElementById("telefono").innerHTML = "Telefono: " + nuevoTelefono;
   document.getElementById("telefonoNuevo").value = "";
-  document.getElementById("alertaTelefonoNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaTelefonoNuevo").innerHTML = crearAlerta("Telefono Modificado!","success");
 
   }
 else
@@ -152,7 +154,7 @@ if(estado)
   var nuevaRazonSocial = document.getElementById("razonsocialNueva").value;
   document.getElementById("razonsocial").innerHTML = "Razon Social: " + nuevaRazonSocial;
   document.getElementById("razonsocialNueva").value = "";
-  document.getElementById("alertaRazonSocialNueva").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaRazonSocialNueva").innerHTML = crearAlerta("Razon Social Modificada!","success");
 
   }
 else
@@ -190,7 +192,7 @@ if(estado)
   var nuevoCUIT = document.getElementById("cuitNuevo").value;
   document.getElementById("cuit").innerHTML = "CUIT: " + nuevoCUIT;
   document.getElementById("cuitNuevo").value = "";
-  document.getElementById("alertaCuitNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaCuitNuevo").innerHTML = crearAlerta("Cuit Modificado!","success");
 
   }
 else
@@ -217,7 +219,7 @@ var condicionNueva = document.getElementById("condicionNueva").value;
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("datosprincipales/ajax/nuevaCondicion.php");
 requerimiento.addParametro("id",id);
-requerimiento.addParametro("idCondicionIVA",condicionNueva);
+requerimiento.addParametro("idcondicioniva",condicionNueva);
 requerimiento.addListener(respuestaNuevaCondicion);
 requerimiento.ejecutar();
 }
@@ -234,7 +236,7 @@ if(estado)
   {
   var nuevaCondicion = document.getElementById("condicionNueva").value;
   document.getElementById("condicion").innerHTML = "Condicion: " + nuevaCondicion;
-  document.getElementById("alertaCondicionIVANueva").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaCondicionNueva").innerHTML = crearAlerta("Condicion Iva Modificada!","success");
 
   }
 else
@@ -261,7 +263,7 @@ var tipoClienteNuevo = document.getElementById("tipoClienteNuevo").value;
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("datosprincipales/ajax/tipoClienteNuevo.php");
 requerimiento.addParametro("id",id);
-requerimiento.addParametro("idTipoCliente",tipoClienteNuevo);
+requerimiento.addParametro("idtipocliente",tipoClienteNuevo);
 requerimiento.addListener(respuestaTipoClienteNuevo);
 requerimiento.ejecutar();
 }
@@ -278,7 +280,7 @@ if(estado)
   {
   var tipoClienteNuevo = document.getElementById("tipoClienteNuevo").value;
   document.getElementById("tipoCliente").innerHTML = "Tipo Cliente: " + tipoClienteNuevo;
-  document.getElementById("alertaTipoClienteNuevo").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaTipoClienteNuevo").innerHTML = crearAlerta("Tipo de Cliente Modificado!","success");
   }
 else
   {
@@ -303,7 +305,7 @@ var razonDeCompraNueva = document.getElementById("razonDeCompraNueva").value;
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("datosprincipales/ajax/razonDeCompraNueva.php");
 requerimiento.addParametro("id",id);
-requerimiento.addParametro("idRazonDeCompra",razonDeCompraNueva);
+requerimiento.addParametro("idrazondecompra",razonDeCompraNueva);
 requerimiento.addListener(respuestaRazonDeCompraNueva);
 requerimiento.ejecutar();
 }
@@ -320,7 +322,7 @@ if(estado)
   {
   var razonDeCompraNueva = document.getElementById("razonDeCompraNueva").value;
   document.getElementById("razonDeCompra").innerHTML = "Razon De Compra: " + razonDeCompraNueva;
-  document.getElementById("alertaRazonDeCompraNueva").innerHTML = crearAlerta("Nombre Modificado!","success");
+  document.getElementById("alertaRazonDeCompraNueva").innerHTML = crearAlerta("Razon de Compra Modificada!","success");
   }
 else
   {
