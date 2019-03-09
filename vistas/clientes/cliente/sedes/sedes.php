@@ -3,34 +3,11 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/sedes.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/sedes.js"></script>
 
-<?php
 
-$sedesId = array();
-$sedesId[0] = 1;
-$sedesId[1] = 2;
-
-$sedesNombre = array();
-$sedesNombre[0] = "Casa";
-$sedesNombre[1] = "Oficina";
+<?php require $_SESSION["raiz"] . '/modelo/clientes/cliente/sedes.php'?>
 
 
-$partidosId = array();
-$partidosId[0] = 1;
-$partidosId[1] = 2;
-$partidosId[2] = 3;
-$partidosId[3] = 4;
-$partidosId[4] = 5;
 
-$partidosNombre = array();
-$partidosNombre[0] = "La Plata";
-$partidosNombre[1] = "Berisso";
-$partidosNombre[2] = "Ensenada";
-$partidosNombre[3] = "Gonnet";
-$partidosNombre[4] = "City Bell";
-
-$idCliente=1;
-
-?>
 
 <div class="contenedorsedes">
   <br>
@@ -54,7 +31,7 @@ $idCliente=1;
                 <label id="sedeNombre<?php echo $sedesId[$k];?>" style="font-size:20px;color:black"><?php echo $sedesNombre[$k];?></label>
               </div>
               <div class="col-40">
-                <button class="btn btn-primary" id="" name="" onclick="modificarSede(<?php echo $sedesId[$k];?>,<?php echo $idCliente;?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
+                <button class="btn btn-primary" id="" name="" onclick="modificarSede(<?php echo $sedesId[$k];?>,<?php echo $idcliente;?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
               </div>
             </div>
            </li>

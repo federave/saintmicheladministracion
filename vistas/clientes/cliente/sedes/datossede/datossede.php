@@ -6,33 +6,8 @@
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/datossede/datossede.js"></script>
 
 
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/tipossede.php'?>
 
-<?php
-
-
-$nombreSede="";
-$telefonoSede="";
-$emailSede="";
-// ...
-
-$horariosId = array();
-$horariosId[0] = 1;
-$horariosId[1] = 2;
-
-$horariosHoraInicio = array();
-$horariosHoraInicio[0] = "08:00:00";
-$horariosHoraInicio[1] = "14:00:00";
-
-$horariosHoraFin = array();
-$horariosHoraFin[0] = "13:00:00";
-$horariosHoraFin[1] = "18:00:00";
-
-
-
-
-
-
-?>
 
 <div class="contenedordatossede">
 
@@ -123,6 +98,32 @@ $horariosHoraFin[1] = "18:00:00";
   <br>
 
 
+  <!-- Partido -->
+  <div class="row">
+    <div class="col-30 text-center">
+      <label id="tipoSede" style="font-size:20px">Tipo Sede </label>
+    </div>
+    <div class="col-40 ">
+      <select class="form-control text-center" id="tipoSedeNuevo" name="tipoSedeNuevo" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+        <?php
+        $k=0;
+        while($k<count($tiposSedeId))
+            {
+            ?>
+            <option id="tipoSede<?php echo $tiposSedeId[$k];?>" value="<?php echo $tiposSedeId[$k];?>" style="color:black;font-size:20px;">
+              <?php echo $tiposSedeNombre[$k];?>
+            </option>
+          <?php
+            $k++;
+            }
+        ?>
+      </select>
+    </div>
+    <div class="col-30 text-center">
+      <input type="button" class="btn btn-primary botonmodificar" onclick="nuevoTipoSede()" value="Modificar" style="height:50px;font-size:18px">
+    </div>
+  </div>
+
   <div class="row contenedorhorariossede">
     <br>
     <br>
@@ -136,35 +137,8 @@ $horariosHoraFin[1] = "18:00:00";
   <div class="row">
     <h4 style="color:white">Lista de Horarios</h4>
     <br>
-    <input type="hidden" name="numeroHorarios" id="numeroHorarios" value=<?php echo count($horariosId); ?>>
+    <ul id="listaHorariosSede" class="list-group">
 
-    <ul id="listaHorarios" class="list-group">
-      <?php
-
-      $k=0;
-      while($k<count($horariosId))
-          {
-          ?>
-
-          <li id="horario<?php echo $horariosId[$k];?>" class="list-group-item">
-            <div class="row">
-              <div class="col-60 text-center">
-                <label style="font-size:20px;color:black">Hora Inicio: <?php echo $horariosHoraInicio[$k];?></label>
-                <br>
-                <label style="font-size:20px;color:black">Hora Fin: <?php echo $horariosHoraFin[$k];?></label>
-              </div>
-              <div class="col-40">
-                <br>
-                <button class="btn btn-primary" onclick="darDeBajaHorario(<?php echo $horariosId[$k];?>)" style="height:50px;font-size:18px;margin:auto;width:90%;">Dar de Baja</button>
-              </div>
-            </div>
-          </li>
-
-
-        <?php
-          $k++;
-          }
-      ?>
     </ul>
   </div>
   <br>

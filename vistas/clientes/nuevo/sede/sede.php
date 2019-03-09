@@ -25,17 +25,17 @@
   <br>
   <div class="row text-center">
     <label for="telefonoSede" style="color:black;font-size:18px">Telefono</label>
-    <input style="color:black" placeholder="Telefono" type="text" oninput="this.className = ''" name="telefonoSede" id="telefonoSede">
+    <input style="color:black" placeholder="Telefono" type="text" oninput="this.className = ''" name="telefonoSede" id="telefonoSede" value="">
   </div>
   <br>
   <div class="row text-center">
     <label for="emailSede" style="color:black;font-size:18px">Email</label>
-    <input style="color:black" placeholder="Email" type="text" oninput="this.className = ''" name="emailSede" id="emailSede">
+    <input style="color:black" placeholder="Email" type="text" oninput="this.className = ''" name="emailSede" id="emailSede" value="">
   </div>
   <br>
   <div class="row text-center">
     <label for="observacionSede" style="color:black;font-size:18px">Observacion</label>
-    <input style="color:black" placeholder="Observacion" type="text" oninput="this.className = ''" name="observacionSede" id="observacionSede">
+    <input style="color:black" placeholder="Observacion" type="text" oninput="this.className = ''" name="observacionSede" id="observacionSede" value="">
   </div>
 
   <br>

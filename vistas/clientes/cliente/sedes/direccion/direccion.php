@@ -1,22 +1,10 @@
 
-<?php
-
-$partidosId = array();
-$partidosId[0] = 1;
-$partidosId[1] = 2;
-$partidosId[2] = 3;
-$partidosId[3] = 4;
-$partidosId[4] = 5;
-
-$partidosNombre = array();
-$partidosNombre[0] = "La Plata";
-$partidosNombre[1] = "Berisso";
-$partidosNombre[2] = "Ensenada";
-$partidosNombre[3] = "Gonnet";
-$partidosNombre[4] = "City Bell";
 
 
-?>
+
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/partidos.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/clientes/sedes/zonas.php'?>
+
 
 
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/direccion/direccion.css">
@@ -40,7 +28,7 @@ $partidosNombre[4] = "City Bell";
       <input onchange="limpiarLocalizacionNuevo()" style="color:black" type="text" id="calleNueva" name="calleNueva" placeholder="Nueva Calle">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevaCalle()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevaCalle()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -55,7 +43,7 @@ $partidosNombre[4] = "City Bell";
       <input onchange="limpiarLocalizacionNuevo()" style="color:black" type="text" id="numeroNuevo" name="numeroNuevo" placeholder="Nuevo Numero">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoNumero()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoNumero()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -69,7 +57,7 @@ $partidosNombre[4] = "City Bell";
       <input style="color:black" type="text" id="entre1Nuevo" name="entre1Nuevo" placeholder="Nuevo Entre 1">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoEntre1()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoEntre1()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -84,7 +72,7 @@ $partidosNombre[4] = "City Bell";
       <input style="color:black" type="text" id="entre2Nuevo" name="entre2Nuevo" placeholder="Nuevo Entre 2">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoEntre2()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoEntre2()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -98,7 +86,7 @@ $partidosNombre[4] = "City Bell";
       <input style="color:black" type="text" id="departamentoNuevo" name="departamentoNuevo" placeholder="Nuevo Departamento">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoDepartamento()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoDepartamento()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -113,7 +101,7 @@ $partidosNombre[4] = "City Bell";
       <input style="color:black;height:50px;width:100%;text-align:center" type="number" min="0" max="50" id="pisoNuevo" name="pisoNuevo" placeholder="Nueva Piso">
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoPiso()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoPiso()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
   <br>
@@ -141,12 +129,39 @@ $partidosNombre[4] = "City Bell";
       </select>
     </div>
     <div class="col-30 text-center">
-      <input type="button" class="btn btn-primary" id="" name="" onclick="nuevoPartido()" style="height:50px;font-size:18px" value="Modificar">
+      <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoPartido()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
 
   <br>
   <br>
+
+
+    <!-- Zona -->
+    <div class="row">
+      <div class="col-30 text-center">
+        <label id="partido" style="font-size:20px">Zona </label>
+      </div>
+      <div class="col-40 ">
+        <select class="form-control text-center" id="zonaNueva" name="zonaNueva" style="height:50px;width:100%;font-size:20px;text-align-last:center">
+          <?php
+          $k=0;
+          while($k<count($zonasId))
+              {
+              ?>
+              <option id="zona<?php echo $zonasId[$k];?>" value="<?php echo $zonasId[$k];?>" style="color:black;font-size:20px;">
+                <?php echo $zonasNombre[$k];?>
+              </option>
+            <?php
+              $k++;
+              }
+          ?>
+        </select>
+      </div>
+      <div class="col-30 text-center">
+        <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevaZona()" style="height:50px;font-size:18px" value="Modificar">
+      </div>
+    </div>
 
   <br>
 

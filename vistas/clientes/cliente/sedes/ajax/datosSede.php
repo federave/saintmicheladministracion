@@ -4,10 +4,13 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
+
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["idCliente"]) && isset($_GET["idSede"]))
+if(isset($_GET["idcliente"]) && isset($_GET["idsede"]))
   {
   $aux=false;
 
@@ -16,32 +19,64 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     {
     $conexion = $conector->getConexion();
 
-    $idCliente=$_GET["idCliente"];
-    $idSede=$_GET["idSede"];
+    $idcliente=$_GET["idcliente"];
+    $idsede=$_GET["idsede"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
-    $xml->startTag("Sede");
-      $xml->addTag("IdCliente",$idCliente);
-      $xml->addTag("IdSede",$idSede);
-      $xml->addTag("Nombre","Casa");
-      $xml->addTag("Telefono","2214566585");
-      $xml->addTag("Email","casa@hotmail.com");
-      $xml->addTag("Observacion","...");
-      $xml->addTag("NombreResponsable","Cesar");
-      $xml->addTag("ApellidoResponsable","Castillo");
-      $xml->addTag("Calle","35");
-      $xml->addTag("Numero","754");
-      $xml->addTag("Entre1","10");
-      $xml->addTag("Entre2","11");
-      $xml->addTag("Departamento","2");
-      $xml->addTag("Piso","1");
-      $xml->addTag("EstadoLocalizacion","1");
-      $xml->addTag("Latitud","1");
-      $xml->addTag("Longitud","1");
-    $xml->closeTag("Sede");
+    $sql = "SELECT * FROM sedes AS s INNER JOIN direcciones_sedes AS d_s ON s.id=d_s.idsede WHERE s.id='$idsede' AND s.idcliente='$idcliente'";
+    $tabla = $conexion->query($sql);
+    if($tabla->num_rows>0)
+      {
+      $row = $tabla->fetch_assoc();
+
+      $xml->startTag("Sede");
+        $xml->addTag("IdSede",$idsede);
+        $xml->addTag("Nombre",$row["nombre"]);
+        $xml->addTag("Telefono",$row["telefono"]);
+        $xml->addTag("Observacion",$row["observacion"]);
+        $xml->addTag("Email",$row["email"]);
+        $xml->addTag("NombreResponsable",$row["nombreresponsable"]);
+        $xml->addTag("ApellidoResponsable",$row["apellidoresponsable"]);
+        $xml->addTag("IdTipoSede",$row["idtiposede"]);
+        $xml->addTag("Calle",$row["calle"]);
+        $xml->addTag("Numero",$row["numero"]);
+        $xml->addTag("Entre1",$row["entre1"]);
+        $xml->addTag("Entre2",$row["entre2"]);
+        $xml->addTag("Departamento",$row["departamento"]);
+        $xml->addTag("Piso",$row["piso"]);
+        $xml->addTag("IdPartido",$row["idpartido"]);
+        $xml->addTag("IdZona",$row["idzona"]);
+        $xml->addTag("EstadoLocalizacion",$row["estadolocalizacion"]);
+        $xml->addTag("Latitud",$row["latitud"]);
+        $xml->addTag("Longitud",$row["longitud"]);
+
+        $sql = "SELECT * FROM sedes AS s INNER JOIN horarios_sedes AS h_s ON s.id=h_s.idsede WHERE s.id='$idsede' AND s.idcliente='$idcliente'";
+        $tabla = $conexion->query($sql);
+
+        if($tabla->num_rows>0)
+          {
+          $k=0;
+          while($row = $tabla->fetch_assoc())
+            {
+            $xml->startTag("HorarioSede");
+              $xml->addTag("IdHorario",$row["id"]);
+              $xml->addTag("HoraInicioHorarioSede",$row["horainicio"]);
+              $xml->addTag("HoraFinHorarioSede",$row["horafin"]);
+            $xml->closeTag("HorarioSede");
+            $k++;
+            }
+          $xml->addTag("NumeroHorarios",$k);
+          }
+
+
+
+
+
+
+      $xml->closeTag("Sede");
+
+
+
+      }
 
 
 

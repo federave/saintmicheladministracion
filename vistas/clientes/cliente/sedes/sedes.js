@@ -33,13 +33,13 @@ if(n==1)
 //////////////Go to Modificar Maquina
 
 
-function modificarSede(idCliente,idSede)
+function modificarSede(idSede,idCliente)
 {
 
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("sedes/ajax/datosSede.php");
-requerimiento.addParametro("idCliente",idCliente);
-requerimiento.addParametro("idSede",idSede);
+requerimiento.addParametro("idcliente",idCliente);
+requerimiento.addParametro("idsede",idSede);
 
 requerimiento.addListener(respuestaDatosSede);
 requerimiento.ejecutar();
@@ -51,7 +51,7 @@ requerimiento.ejecutar();
 
 function respuestaDatosSede(respuesta)
 {
-
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -59,26 +59,31 @@ var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
 
-  var idCliente = xmlDoc.getElementsByTagName("IdCliente")[0].childNodes[0].nodeValue;
   var idSede = xmlDoc.getElementsByTagName("IdSede")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
-  var telefono = xmlDoc.getElementsByTagName("Telefono")[0].childNodes[0].nodeValue;
-  var email = xmlDoc.getElementsByTagName("Email")[0].childNodes[0].nodeValue;
-  var observacion = xmlDoc.getElementsByTagName("Observacion")[0].childNodes[0].nodeValue;
-  var nombreResponsable = xmlDoc.getElementsByTagName("NombreResponsable")[0].childNodes[0].nodeValue;
-  var apellidoResponsable = xmlDoc.getElementsByTagName("ApellidoResponsable")[0].childNodes[0].nodeValue;
 
-/*
-  var calle = xmlDoc.getElementsByTagName("Calle")[0].childNodes[0].nodeValue;
-  var numero = xmlDoc.getElementsByTagName("Numero")[0].childNodes[0].nodeValue;
-  var entre1 = xmlDoc.getElementsByTagName("Entre1")[0].childNodes[0].nodeValue;
-  var entre2 = xmlDoc.getElementsByTagName("Entre2")[0].childNodes[0].nodeValue;
-  var departamento = xmlDoc.getElementsByTagName("Departamento")[0].childNodes[0].nodeValue;
-  var piso = xmlDoc.getElementsByTagName("Piso")[0].childNodes[0].nodeValue;
-  var estadoLocalizacion = xmlDoc.getElementsByTagName("EstadoLocalizacion")[0].childNodes[0].nodeValue;
-  var latitud = xmlDoc.getElementsByTagName("Latitud")[0].childNodes[0].nodeValue;
-  var longitud = xmlDoc.getElementsByTagName("Longitud")[0].childNodes[0].nodeValue;
-*/
+  var telefono="";
+  if(xmlDoc.getElementsByTagName("Telefono")[0].childNodes[0]!=null)
+    telefono = xmlDoc.getElementsByTagName("Telefono")[0].childNodes[0].nodeValue;
+
+  var email="";
+  if(xmlDoc.getElementsByTagName("Email")[0].childNodes[0]!=null)
+    email = xmlDoc.getElementsByTagName("Email")[0].childNodes[0].nodeValue;
+
+  var observacion="";
+  if(xmlDoc.getElementsByTagName("Observacion")[0].childNodes[0]!=null)
+    observacion = xmlDoc.getElementsByTagName("Observacion")[0].childNodes[0].nodeValue;
+
+  var nombreResponsable="";
+  if(xmlDoc.getElementsByTagName("NombreResponsable")[0].childNodes[0]!=null)
+    nombreResponsable = xmlDoc.getElementsByTagName("NombreResponsable")[0].childNodes[0].nodeValue;
+
+  var apellidoResponsable="";
+  if(xmlDoc.getElementsByTagName("ApellidoResponsable")[0].childNodes[0]!=null)
+    apellidoResponsable = xmlDoc.getElementsByTagName("ApellidoResponsable")[0].childNodes[0].nodeValue;
+
+  var idtiposede = xmlDoc.getElementsByTagName("IdTipoSede")[0].childNodes[0].nodeValue;
+
 
   document.getElementById("idSede").value = idSede;
   document.getElementById("nombreSede").innerHTML = "Nombre: " + nombre;
@@ -87,19 +92,80 @@ if(estado)
   document.getElementById("observacionSede").innerHTML = "Observacion: " + observacion;
   document.getElementById("nombreResponsableSede").innerHTML = "Nombre Responsable: " + nombreResponsable;
   document.getElementById("apellidoResponsableSede").innerHTML = "Apellido Responsable: " + apellidoResponsable;
+  document.getElementById("tipoSede"+idtiposede).selected = true;
 
-/*
+
+  var calle = xmlDoc.getElementsByTagName("Calle")[0].childNodes[0].nodeValue;
+  var numero = xmlDoc.getElementsByTagName("Numero")[0].childNodes[0].nodeValue;
+
+  var entre1 ="";
+  if(xmlDoc.getElementsByTagName("Entre1")[0].childNodes[0]!=null)
+    var entre1 = xmlDoc.getElementsByTagName("Entre1")[0].childNodes[0].nodeValue;
+
+  var entre2 ="";
+  if(xmlDoc.getElementsByTagName("Entre2")[0].childNodes[0]!=null)
+    var entre2 = xmlDoc.getElementsByTagName("Entre2")[0].childNodes[0].nodeValue;
+
+  var departamento ="";
+  if(xmlDoc.getElementsByTagName("Departamento")[0].childNodes[0]!=null)
+    var departamento = xmlDoc.getElementsByTagName("Departamento")[0].childNodes[0].nodeValue;
+
+  var piso ="";
+  if(xmlDoc.getElementsByTagName("Piso")[0].childNodes[0]!=null)
+    var piso = xmlDoc.getElementsByTagName("Piso")[0].childNodes[0].nodeValue;
+
+  var idpartido = xmlDoc.getElementsByTagName("IdPartido")[0].childNodes[0].nodeValue;
+  var idzona = xmlDoc.getElementsByTagName("IdZona")[0].childNodes[0].nodeValue;
+
+  var estadoLocalizacion = xmlDoc.getElementsByTagName("EstadoLocalizacion")[0].childNodes[0].nodeValue;
+  var latitud = xmlDoc.getElementsByTagName("Latitud")[0].childNodes[0].nodeValue;
+  var longitud = xmlDoc.getElementsByTagName("Longitud")[0].childNodes[0].nodeValue;
+
+
+
   document.getElementById("calle").innerHTML = "Calle: " + calle;
   document.getElementById("numero").innerHTML = "Numero: " + numero;
   document.getElementById("entre1").innerHTML = "Entre 1: " + entre1;
   document.getElementById("entre2").innerHTML = "Entre 2: " + entre2;
   document.getElementById("departamento").innerHTML = "Departamento: " + departamento;
   document.getElementById("piso").innerHTML = "Piso: " + piso;
-*/
+
+  document.getElementById("partido"+idpartido).selected = true;
+  document.getElementById("zona"+idzona).selected = true;
+
+  
 
   document.getElementById("tituloSede").innerHTML= "Sede: "+nombre;
 
   document.getElementById("divSede").style.display = "block";
+
+
+  var numero = xmlDoc.getElementsByTagName("NumeroHorarios")[0].childNodes[0].nodeValue;
+  var listaHorarios = document.getElementById("listaHorariosSede");
+  listaHorarios.innerHTML="";
+
+  for(i=0;i<numero;i++)
+  {
+
+  var idhorario = xmlDoc.getElementsByTagName("IdHorario")[i].childNodes[0].nodeValue;
+  var horainicio = xmlDoc.getElementsByTagName("HoraInicioHorarioSede")[i].childNodes[0].nodeValue;
+  var horafin = xmlDoc.getElementsByTagName("HoraFinHorarioSede")[i].childNodes[0].nodeValue;
+
+  var br="<br>";
+  var labelHoraInicio = "<label class=\"etiqueta\" >"+ "HoraInicio: " + horainicio  +  "</label>";
+  var labelHoraFin = "<label class=\"etiqueta\" >"+ "HoraFin: " + horafin  +  "</label>";
+  var buttonDarDeBaja = "<button class=\"btn btn-primary\" onclick=\"darDeBajaHorario(" + idhorario + ") style=\"height:50px;font-size:18px;margin:auto;width:90%;\">Dar de Baja</button>";
+
+  var columna1 = "<div class=\"col-60 text-center\">" + labelHoraInicio + br + labelHoraFin + "</div>";
+  var columna2 = "<div class=\"col-40 text-center\">" + br + buttonDarDeBaja + "</div>";
+
+  var fila = "<div class=\"row\">" + columna1 + columna2  + "</div>";
+  var item = "<li class=\"list-group-item\">"+fila+"</li>";
+
+  listaHorarios.innerHTML+=item;
+
+  }
+
 
 
 
