@@ -30,6 +30,8 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaNombreNuevoSede"></div>
+  <br>
 
   <!-- Telefono -->
   <div class="row">
@@ -44,6 +46,8 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaTelefonoNuevoSede"></div>
+  <br>
   <!-- Email -->
   <div class="row">
     <div class="col-30 text-center">
@@ -56,6 +60,8 @@
       <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="emailNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaEmailNuevoSede"></div>
   <br>
   <!-- Observacion -->
   <div class="row">
@@ -70,6 +76,8 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaObservacionNuevaSede"></div>
+  <br>
   <!-- Nombre Responsable -->
   <div class="row">
     <div class="col-30 text-center">
@@ -82,6 +90,8 @@
       <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nombreResponsableNuevoSede()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaNombreResponsableNuevo"></div>
   <br>
   <!-- Apellido Responsable -->
   <div class="row">
@@ -96,9 +106,11 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaApellidoResponsableNuevo"></div>
+  <br>
 
 
-  <!-- Partido -->
+  <!-- Tipo Sede -->
   <div class="row">
     <div class="col-30 text-center">
       <label id="tipoSede" style="font-size:20px">Tipo Sede </label>
@@ -123,6 +135,9 @@
       <input type="button" class="btn btn-primary botonmodificar" onclick="nuevoTipoSede()" value="Modificar" style="height:50px;font-size:18px">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaTipoSedeNuevo"></div>
+  <br>
 
   <div class="row contenedorhorariossede">
     <br>
@@ -140,16 +155,19 @@
     <ul id="listaHorariosSede" class="list-group">
 
     </ul>
+
+    <input type="hidden" id="numeroHorarios" value=0>
+
   </div>
   <br>
-  <div class="row text-center" style="width:90%;margin:auto">
+  <div class="row text-center contenedoragregarhorario">
     <h4 style="color:white">Nuevo Horario</h4>
     <br>
     <label for="horaInicio" style="color:white;font-size:18px">Hora de Inicio</label>
     <input style="color:black" placeholder="Hora de Inicio" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaInicio" id="horaInicio">
     <br>
     <label for="horaFin" style="color:white;font-size:18px">Hora de Fin</label>
-    <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="08:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
+    <input style="color:black" placeholder="Hora de Fin" type="time" min="08:00:00" max="21:00:00" step="60" value="09:00:00" oninput="this.className = ''" name="horaFin" id="horaFin">
     <br>
     <br>
     <input type="button" class="boton btn btn-primary" id="" name="" onclick="agregarHorario()" style="height:50px;font-size:18px;width:80%;margin:auto" value="Agregar">

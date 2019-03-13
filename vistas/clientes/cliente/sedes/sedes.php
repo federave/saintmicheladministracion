@@ -7,14 +7,15 @@
 <?php require $_SESSION["raiz"] . '/modelo/clientes/cliente/sedes.php'?>
 
 
-
+<br>
+<br>
 
 <div class="contenedorsedes">
-  <br>
-  <br>
+
   <div class="row text-center">
     <h2>Lista de Sedes</h2>
   </div>
+  <br>
   <br>
   <br>
 

@@ -4,33 +4,37 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["idCliente"]) && isset($_GET["idSede"]) && isset($_GET["idHorario"]))
+$xml = new XML();
+$xml->startTag("Respuesta");
+
+
+if(isset($_GET["idhorario"]))
   {
   $aux=false;
-  $xml = new XML();
-  $xml->startTag("Respuesta");
 
   $conector = new Conector();
   if($conector->abrirConexion())
     {
     $conexion = $conector->getConexion();
+    $id=$_GET["idhorario"];
 
-    /*
-    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
+    $sql = "DELETE FROM horarios_sedes WHERE id='$id'";
     $aux = $conexion->query($sql);
-    */
 
-    $idHorario = $_GET["idHorario"];
+    $idHorario = $id;
+    $xml->addTag("IdHorario",$idHorario);
 
-    $aux = true;
+    if($aux==false)
+      $aux=0;
 
     $conector->cerrarConexion();
     }
 
   $xml->addTag("Estado",$aux);
-  $xml->addTag("IdHorario",$idHorario);
   $xml->closeTag("Respuesta");
 
   echo $xml->toString();

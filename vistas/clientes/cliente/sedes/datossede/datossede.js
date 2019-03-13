@@ -11,10 +11,9 @@ var horaInicio = document.getElementById("horaInicio").value;
 var horaFin = document.getElementById("horaFin").value;
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("sedes/datossede/ajax/nuevoHorario.php");
-requerimiento.addParametro("idCliente",idCliente);
-requerimiento.addParametro("idSede",idSede);
-requerimiento.addParametro("horaInicio",horaInicio);
-requerimiento.addParametro("horaFin",horaFin);
+requerimiento.addParametro("idsede",idSede);
+requerimiento.addParametro("horainicio",horaInicio);
+requerimiento.addParametro("horafin",horaFin);
 requerimiento.addListener(respuestaNuevoHorario);
 requerimiento.ejecutar();
 }
@@ -24,10 +23,12 @@ function respuestaNuevoHorario(respuesta)
 {
 xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-var idHorario = xmlDoc.getElementsByTagName("IdHorario")[0].childNodes[0].nodeValue;
 
-if(estado)
+
+if(estado!=0)
   {
+    var idHorario = xmlDoc.getElementsByTagName("IdHorario")[0].childNodes[0].nodeValue;
+
   document.getElementById("numeroHorarios").value = document.getElementById("numeroHorarios").value +1;
 
 
@@ -44,7 +45,7 @@ if(estado)
   var divRow = "<div class=\"row\">" + divCol60 + divCol40 + "</div>";
   var item = "<li id=\"horario"+idHorario+"\" class=\"list-group-item\">" +divRow+ "</li>";
 
-  document.getElementById("listaHorarios").innerHTML+=item;
+  document.getElementById("listaHorariosSede").innerHTML+=item;
 
 
   }
@@ -71,16 +72,13 @@ else
 
 function darDeBajaHorario(idHorario)
 {
+
 var numeroHorarios = document.getElementById("numeroHorarios").value;
 if(numeroHorarios>1)
   {
-  var idCliente = document.getElementById("idCliente").value;
-  var idSede = document.getElementById("idSede").value;
   var requerimiento = new RequerimientoGet();
   requerimiento.setURL("sedes/datossede/ajax/darDeBajaHorario.php");
-  requerimiento.addParametro("idCliente",idCliente);
-  requerimiento.addParametro("idSede",idSede);
-  requerimiento.addParametro("idHorario",idHorario);
+  requerimiento.addParametro("idhorario",idHorario);
   requerimiento.addListener(respuestaDarDeBajaHorario);
   requerimiento.ejecutar();
   }
@@ -93,7 +91,7 @@ else
 
 function respuestaDarDeBajaHorario(respuesta)
 {
-
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 
@@ -117,37 +115,30 @@ else
 ///////////////////////////////////////////////////////////////
 //////////////Nuevo nombre
 
-function nuevoNombreSede()
+function nombreNuevoSede()
 {
-var id = document.getElementById("idcliente").value;
-var nombreNuevo = document.getElementById("nombreNuevo").value;
+var idsede = document.getElementById("idsede").value;
+var nombreNuevo = document.getElementById("nombreNuevoSede").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoNombre.php");
-requerimiento.addParametro("id",id);
+requerimiento.setURL("sedes/datossede/ajax/nuevoNombre.php");
+requerimiento.addParametro("idsede",idsede);
 requerimiento.addParametro("nombre",nombreNuevo);
-requerimiento.addListener(respuestaNuevoNombreSede);
+requerimiento.addListener(respuestaNombreNuevoSede);
 requerimiento.ejecutar();
 }
 
-function respuestaNuevoNombreSede(respuesta)
+
+
+function respuestaNombreNuevoSede(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  var nuevoNombre = document.getElementById("nombreNuevo").value;
-  document.getElementById("nombre").innerHTML = "Nombre: " + nuevoNombre;
-  document.getElementById("nombreNuevo").value = "";
+  var nuevoNombre = document.getElementById("nombreNuevoSede").value;
+  document.getElementById("nombreSede").innerHTML = "Nombre: " + nuevoNombre;
+  document.getElementById("nombreNuevoSede").value = "";
+  document.getElementById("alertaNombreNuevoSede").innerHTML = crearAlerta("Nombre Modificado!","success");
 
   }
 else
@@ -158,42 +149,187 @@ else
 
 
 
+
 ///////////////////////////////////////////////////////////////
-//////////////Nuevo Apellido
+//////////////Nuevo nombre
 
-
-function nuevoApellidoSede()
+function telefonoNuevoSede()
 {
-var id = document.getElementById("idcliente").value;
-var apellidoNuevo = document.getElementById("apellidoNuevo").value;
+var idsede = document.getElementById("idsede").value;
+var telefonoNuevo = document.getElementById("telefonoNuevoSede").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoApellido.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("apellido",apellidoNuevo);
-requerimiento.addListener(respuestaNuevoApellidoSede);
+requerimiento.setURL("sedes/datossede/ajax/nuevoTelefono.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("telefono",telefonoNuevo);
+requerimiento.addListener(respuestaTelefonoNuevoSede);
 requerimiento.ejecutar();
 }
 
 
-function respuestaNuevoApellidoSede(respuesta)
+
+function respuestaTelefonoNuevoSede(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  var nuevoApellido = document.getElementById("apellidoNuevo").value;
-  document.getElementById("apellido").innerHTML = "Apellido: " + nuevoApellido;
-  document.getElementById("apellidoNuevo").value = "";
+  var nuevoTelefono = document.getElementById("telefonoNuevoSede").value;
+  document.getElementById("telefonoSede").innerHTML = "Telefono: " + nuevoTelefono;
+  document.getElementById("telefonoNuevoSede").value = "";
+  document.getElementById("alertaTelefonoNuevoSede").innerHTML = crearAlerta("Telefono Modificado!","success");
+
+  }
+else
+  {
+  alert("Error al modificar el Telefono");
+  }
+}
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Nuevo nombre
+
+function emailNuevoSede()
+{
+var idsede = document.getElementById("idsede").value;
+var emailNuevo = document.getElementById("emailNuevoSede").value;
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("sedes/datossede/ajax/nuevoEmail.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("email",emailNuevo);
+requerimiento.addListener(respuestaEmailNuevoSede);
+requerimiento.ejecutar();
+}
+
+
+
+function respuestaEmailNuevoSede(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+if(estado)
+  {
+  var nuevoEmail = document.getElementById("emailNuevoSede").value;
+  document.getElementById("emailSede").innerHTML = "Email: " + nuevoEmail;
+  document.getElementById("emailNuevoSede").value = "";
+  document.getElementById("alertaEmailNuevoSede").innerHTML = crearAlerta("Email Modificado!","success");
+
+  }
+else
+  {
+  alert("Error al modificar el Email");
+  }
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Nuevo nombre
+
+function observacionNuevaSede()
+{
+var idsede = document.getElementById("idsede").value;
+var observacionNueva = document.getElementById("observacionNuevaSede").value;
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("sedes/datossede/ajax/nuevaObservacion.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("observacion",observacionNueva);
+requerimiento.addListener(respuestaObservacionNuevaSede);
+requerimiento.ejecutar();
+}
+
+
+
+function respuestaObservacionNuevaSede(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+if(estado)
+  {
+  var nuevaObservacion = document.getElementById("observacionNuevaSede").value;
+  document.getElementById("observacionSede").innerHTML = "Observacion: " + nuevaObservacion;
+  document.getElementById("observacionNuevaSede").value = "";
+  document.getElementById("alertaObservacionNuevaSede").innerHTML = crearAlerta("Observación Modificada!","success");
+
+  }
+else
+  {
+  alert("Error al modificar la Observación");
+  }
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Nuevo nombre
+
+function nombreResponsableNuevoSede()
+{
+var idsede = document.getElementById("idsede").value;
+var nombreResponsableNuevo = document.getElementById("nombreResponsableNuevoSede").value;
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("sedes/datossede/ajax/nuevoNombreResponsable.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("nombre",nombreResponsableNuevo);
+requerimiento.addListener(respuestaNombreResponsableNuevoSede);
+requerimiento.ejecutar();
+}
+
+
+
+function respuestaNombreResponsableNuevoSede(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+if(estado)
+  {
+  var nuevoNombreResponsable = document.getElementById("nombreResponsableNuevoSede").value;
+  document.getElementById("nombreResponsableSede").innerHTML = "Nombre: " + nuevoNombreResponsable;
+  document.getElementById("nombreResponsableNuevoSede").value = "";
+  document.getElementById("alertaNombreResponsableNuevo").innerHTML = crearAlerta("Nombre Responsable Modificado!","success");
+
+  }
+else
+  {
+  alert("Error al modificar el Nombre Responsable");
+  }
+}
+
+
+
+
+///////////////////////////////////////////////////////////////
+//////////////Nuevo nombre
+
+function apellidoResponsableNuevoSede()
+{
+var idsede = document.getElementById("idsede").value;
+var apellidoNuevo = document.getElementById("apellidoResponsableNuevoSede").value;
+var requerimiento = new RequerimientoGet();
+requerimiento.setURL("sedes/datossede/ajax/nuevoApellidoResponsable.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("apellido",apellidoNuevo);
+requerimiento.addListener(respuestaApellidoNuevoSede);
+requerimiento.ejecutar();
+}
+
+
+
+function respuestaApellidoNuevoSede(respuesta)
+{
+xmlDoc = crearXML(respuesta.target.responseText);
+var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
+if(estado)
+  {
+  var nuevoApellido = document.getElementById("apellidoResponsableNuevoSede").value;
+  document.getElementById("apellidoResponsableSede").innerHTML = "Apellido: " + nuevoApellido;
+  document.getElementById("apellidoResponsableNuevoSede").value = "";
+  document.getElementById("alertaApellidoResponsableNuevo").innerHTML = crearAlerta("Apellido Responsable Modificado!","success");
 
   }
 else
@@ -206,91 +342,33 @@ else
 
 
 ///////////////////////////////////////////////////////////////
-//////////////Nuevo Email
+//////////////Nuevo nombre
 
-
-function nuevoEmailSede()
+function nuevoTipoSede()
 {
-var id = document.getElementById("idcliente").value;
-var emailNuevo = document.getElementById("emailNuevo").value;
+var idsede = document.getElementById("idsede").value;
+var tipoSedeNuevo = document.getElementById("tipoSedeNuevo").value;
 var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoEmail.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("email",emailNuevo);
-requerimiento.addListener(respuestaNuevoEmailSede);
+requerimiento.setURL("sedes/datossede/ajax/nuevoTipoSede.php");
+requerimiento.addParametro("idsede",idsede);
+requerimiento.addParametro("idtiposede",tipoSedeNuevo);
+requerimiento.addListener(respuestaNuevoTipoSede);
 requerimiento.ejecutar();
 }
 
 
-function respuestaNuevoEmailSede(respuesta)
+
+function respuestaNuevoTipoSede(respuesta)
 {
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
+xmlDoc = crearXML(respuesta.target.responseText);
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 if(estado)
   {
-  var nuevoEmail = document.getElementById("emailNuevo").value;
-  document.getElementById("email").innerHTML = "Email: " + nuevoEmail;
-  document.getElementById("emailNuevo").value = "";
+    document.getElementById("alertaTipoSedeNuevo").innerHTML = crearAlerta("Tipo Sede Modificado!","success");
 
   }
 else
   {
-  alert("Error al modificar el Email");
-  }
-}
-
-
-
-///////////////////////////////////////////////////////////////
-//////////////Nuevo Telefono 1
-
-
-function nuevoTelefonoSede()
-{
-var id = document.getElementById("idcliente").value;
-var telefono1Nuevo = document.getElementById("telefono1Nuevo").value;
-var requerimiento = new RequerimientoGet();
-requerimiento.setURL("datosprincipales/ajax/nuevoTelefono1.php");
-requerimiento.addParametro("id",id);
-requerimiento.addParametro("telefono",telefono1Nuevo);
-requerimiento.addListener(respuestaNuevoTelefono1);
-requerimiento.ejecutar();
-}
-
-
-function respuestaNuevoTelefonoSede(respuesta)
-{
-if (window.DOMParser)
-  {
-  parser = new DOMParser();
-  xmlDoc = parser.parseFromString(respuesta.target.responseText, "text/xml");
-  }
-else // Internet Explorer
-  {
-  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-  xmlDoc.async = false;
-  xmlDoc.loadXML(respuesta.target.responseText);
-  }
-var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
-if(estado)
-  {
-  var nuevoTelefono1 = document.getElementById("telefono1Nuevo").value;
-  document.getElementById("telefono1").innerHTML = "Telefono 1: " + nuevoTelefono1;
-  document.getElementById("telefono1Nuevo").value = "";
-
-  }
-else
-  {
-  alert("Error al modificar el Telefono 1");
+  alert("Error al modificar el Nombre");
   }
 }

@@ -133,7 +133,7 @@ if(estado)
   document.getElementById("partido"+idpartido).selected = true;
   document.getElementById("zona"+idzona).selected = true;
 
-  
+
 
   document.getElementById("tituloSede").innerHTML= "Sede: "+nombre;
 
@@ -154,17 +154,18 @@ if(estado)
   var br="<br>";
   var labelHoraInicio = "<label class=\"etiqueta\" >"+ "HoraInicio: " + horainicio  +  "</label>";
   var labelHoraFin = "<label class=\"etiqueta\" >"+ "HoraFin: " + horafin  +  "</label>";
-  var buttonDarDeBaja = "<button class=\"btn btn-primary\" onclick=\"darDeBajaHorario(" + idhorario + ") style=\"height:50px;font-size:18px;margin:auto;width:90%;\">Dar de Baja</button>";
+  var buttonDarDeBaja = "<button class=\"btn btn-primary\" onclick=\"darDeBajaHorario(" + idhorario + ")\" style=\"height:50px;font-size:18px;margin:auto;width:90%;\">Dar de Baja</button>";
 
   var columna1 = "<div class=\"col-60 text-center\">" + labelHoraInicio + br + labelHoraFin + "</div>";
   var columna2 = "<div class=\"col-40 text-center\">" + br + buttonDarDeBaja + "</div>";
 
   var fila = "<div class=\"row\">" + columna1 + columna2  + "</div>";
-  var item = "<li class=\"list-group-item\">"+fila+"</li>";
+  var item = "<li id=\"horario"+idhorario+"\" class=\"list-group-item\">"+fila+"</li>";
 
   listaHorarios.innerHTML+=item;
 
   }
+ document.getElementById("numeroHorarios").value=numero;
 
 
 

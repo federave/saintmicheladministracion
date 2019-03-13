@@ -4,9 +4,14 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
 
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]) && isset($_GET["apellido"]))
+$xml = new XML();
+$xml->startTag("Respuesta");
+
+if(isset($_GET["idsede"]) &&  isset($_GET["idtiposede"]))
   {
   $xml = new XML();
   $aux=false;
@@ -16,11 +21,13 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
     {
     $conexion = $conector->getConexion();
 
-    /*
-    $sql = "UPDATE Clientes SET nombre='$nombre' WHERE id='$id'";
+
+    $id=$_GET["idsede"];
+    $idtiposede=$_GET["idtiposede"];
+
+    $sql = "UPDATE sedes SET idtiposede='$idtiposede' WHERE id='$id'";
     $aux = $conexion->query($sql);
-    */
-    $aux = true;
+
 
     $conector->cerrarConexion();
     }
