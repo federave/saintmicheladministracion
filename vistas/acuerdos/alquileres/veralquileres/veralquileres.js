@@ -25,6 +25,7 @@ else
 
 function respuestaVerDatosAlquiler(respuesta)
 {
+
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;

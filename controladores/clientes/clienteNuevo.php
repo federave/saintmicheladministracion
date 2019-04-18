@@ -120,6 +120,8 @@ if(isset($_GET["clienteNuevo"]))
           $estadolocalizacion = $cliente->EstadoLocalizacionSede;
 
 
+          $latitud = floatval(str_replace(',', '.', $latitud));
+          $longitud = floatval(str_replace(',', '.', $longitud));
 
           $sql = "INSERT INTO direcciones_sedes (idsede,calle,numero,entre1,entre2,departamento,piso,idpartido,latitud,longitud,estadolocalizacion,idzona)
           VALUES('$idsede','$calle','$numero','$entre1','$entre2','$departamento','$piso','$idpartido','$latitud','$longitud','$estadolocalizacion','$idzona')";
@@ -137,13 +139,13 @@ if(isset($_GET["clienteNuevo"]))
               {
               $idtrabajador = $cliente->Dia[$k]->IdRepartidorDia;
               }
-            $sql = "INSERT INTO recorridos(idsede,idtrabajador,iddia) VALUES ('$idsede','$idtrabajador','$iddia')";
+            $sql = "INSERT INTO recorridos_sedes(idsede,idtrabajador,iddia) VALUES ('$idsede','$idtrabajador','$iddia')";
             $aux &= $conexion->query($sql);
             $k++;
             }
           }
         }
-      
+
       }
     else
       {

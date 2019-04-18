@@ -44,14 +44,14 @@ session_start();
         <br>
         <div class="row divbuscar">
           <div class="row text-center">
-            <label for="dato" class="etiqueta">Ingresar Dato a Buscar</label>
+            <label for="dato" class="etiqueta" style="color:white">Ingresar Dato a Buscar</label>
             <input onkeyup="buscar()" style="color:black" placeholder=".........." type="text" id="dato">
           </div>
           <br>
           <br>
-
+        
           <div class="row text-center">
-            <button style="width:80%" class="btn btn-primary" id="" name="" onclick="limpiar()">Limpiar Busqueda</button>
+            <button style="width:80%" class="btn btn-primary botontema" id="" name="" onclick="limpiar()">Limpiar Busqueda</button>
           </div>
           <br>
 
@@ -66,7 +66,7 @@ session_start();
             </div>
               <br>
             <ul id="listaclientes" class="list-group">
-              
+
            </ul>
         </div>
 

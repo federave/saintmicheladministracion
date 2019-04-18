@@ -54,7 +54,7 @@ function nextTabAlquilerNuevo(n) {
     if(document.getElementById("maquina"+i+"AlquilerNuevo").checked)
       {
       xml.startTag("Maquina");
-        xml.addTag("IdMaquina",document.getElementById("maquina"+i+"AlquilerNuevo").value);
+        xml.addTag("IdTipoMaquina",document.getElementById("maquina"+i+"AlquilerNuevo").value);
         xml.addTag("CantidadMaquina",document.getElementById("cantidadMaquina"+i+"AlquilerNuevo").value);
       xml.closeTag("Maquina");
       }
@@ -68,7 +68,7 @@ function nextTabAlquilerNuevo(n) {
 
     document.getElementById("alquilerNuevo").value=xml.toString();
 
-
+    alert(xml.toString());
 
 
 

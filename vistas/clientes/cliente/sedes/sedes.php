@@ -32,7 +32,18 @@
                 <label id="sedeNombre<?php echo $sedesId[$k];?>" style="font-size:20px;color:black"><?php echo $sedesNombre[$k];?></label>
               </div>
               <div class="col-40">
-                <button class="btn btn-primary" id="" name="" onclick="modificarSede(<?php echo $sedesId[$k];?>,<?php echo $idcliente;?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
+
+                <style media="screen">
+                  .botonprueba
+                  {
+                    background: linear-gradient(to bottom, #a1c4fd    0%, #c2e9fb 100%);
+                    color:#753a88;
+                    border: 1px solid #ccc;
+                    font-size:20px;
+                  }
+                </style>
+
+                <button class="btn btn-primary botonprueba" id="" name="" onclick="modificarSede(<?php echo $sedesId[$k];?>,<?php echo $idcliente;?>)" style="height:50px;margin-left:5%;width:90%;">Modificar</button>
               </div>
             </div>
            </li>
@@ -50,10 +61,11 @@
 
 
 <br>
-
+<br>
+<br>
 <div id="divSede" class="row" style="display:none">
   <div class="text-center">
-    <h1 id="tituloSede">Sede:  </h1>
+    <h1 id="tituloSede" style="color:white">Sede:  </h1>
   </div>
   <br>
   <br>

@@ -33,10 +33,10 @@
                   <label id="" style="font-size:20px;color:black">   <?php echo $alquileresNombre[$k];?></label>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-success" id="buttonVerAlquiler<?php echo $alquileresId[$k];?>" name="" onclick="verAlquiler(<?php echo $alquileresId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
+                  <button class="btn btn-success botontema" id="buttonVerAlquiler<?php echo $alquileresId[$k];?>" name="" onclick="verAlquiler(<?php echo $alquileresId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Ver</button>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-primary" id="buttonModificarAlquiler<?php echo $alquileresId[$k];?>" name="" onclick="modificarAlquiler(<?php echo $alquileresId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
+                  <button class="btn btn-primary botontema" id="buttonModificarAlquiler<?php echo $alquileresId[$k];?>" name="" onclick="modificarAlquiler(<?php echo $alquileresId[$k];?>)" style="height:50px;font-size:18px;margin-left:5%;width:90%;">Modificar</button>
                 </div>
               </div>
 

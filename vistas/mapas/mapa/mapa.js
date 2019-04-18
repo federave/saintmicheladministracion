@@ -16,12 +16,13 @@ centro = {lat:-34.912185,lng:-57.957313};
 mapa = new google.maps.Map(document.getElementById('mapa'), {zoom: 15, center: centro});
 // The marker, positioned at centro
 //var marker = new google.maps.Marker({position: centro, map: map});
-agregarMarcador(-34.912185,-57.957313);
+//agregarMarcador(-34.912185,-57.957313);
 }
 
 
 function agregarMarcador(latitud,longitud)
 {
+
 var latLng = new google.maps.LatLng(latitud,longitud);
 marcador = new google.maps.Marker({
 position: latLng,
@@ -35,4 +36,10 @@ strokeWeight: 0.4
 },
 });
 marcador.setMap(mapa);
+}
+
+
+function centrarMapa(latitud,longitud)
+{
+mapa.setCenter(new google.maps.LatLng(latitud, longitud));
 }

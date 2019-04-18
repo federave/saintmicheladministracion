@@ -31,7 +31,7 @@
             <input style="color:black" type="text" id="nombreNuevoAlquiler" name="nombreNuevoAlquiler" placeholder="Nuevo Nombre">
           </div>
           <div class="col-30 text-center">
-            <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nombreNuevoAlquiler()" value="Modificar">
+            <input type="button" class="btn btn-primary botonmodificar botontema" id="" name="" onclick="nombreNuevoAlquiler()" value="Modificar">
           </div>
         </div>
         <br>
@@ -51,7 +51,7 @@
             <input style="color:black" type="number" min="1" value="" step="0.1" id="precioNuevoAlquiler" name="precioNuevoAlquiler" placeholder="Nuevo Precio">
           </div>
           <div class="col-30 text-center">
-            <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="precioNuevoAlquiler()"  value="Modificar">
+            <input type="button" class="btn btn-primary botonmodificar botontema" id="" name="" onclick="precioNuevoAlquiler()"  value="Modificar">
           </div>
         </div>
         <br>

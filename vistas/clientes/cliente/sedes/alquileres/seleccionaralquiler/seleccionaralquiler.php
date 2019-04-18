@@ -3,18 +3,13 @@
 <link rel="stylesheet" href="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/alquileres/seleccionaralquiler/seleccionaralquiler.css">
 <script src="<?php echo $_SESSION["carpeta"] ?>/vistas/clientes/cliente/sedes/alquileres/seleccionaralquiler/seleccionaralquiler.js"></script>
 
+
+<?php require $_SESSION["raiz"] . '/modelo/acuerdos/alquileres/alquileres.php'?>
+
+
   <?php
 
-  $alquileresId = array();
-  $alquileresId[0] = 1;
-  $alquileresId[1] = 2;
-
-  $alquileresNombre = array();
-  $alquileresNombre[0] = "6 Bidones de 20L";
-  $alquileresNombre[1] = "8 Bidones de 20L";
-
-
-
+    /*
   $alquileresespecialesId = array();
   $alquileresespecialesId[0] = 1;
   $alquileresespecialesId[1] = 2;
@@ -22,7 +17,7 @@
   $alquileresespecialesNombre = array();
   $alquileresespecialesNombre[0] = "6 Bidones de 20L";
   $alquileresespecialesNombre[1] = "8 Bidones de 20L";
-
+  */
 
 
 
@@ -52,10 +47,10 @@
                   <label id="" style="font-size:20px;color:black">   <?php echo $alquileresNombre[$k];?></label>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-primary botonlista" id="buttonVerDatosAlquiler<?php echo $alquileresId[$k];?>" onclick="verAlquiler(<?php echo $alquileresId[$k];?>)">Ver</button>
+                  <button class="btn btn-primary botonlista botontema" id="buttonVerDatosAlquiler<?php echo $alquileresId[$k];?>" onclick="verAlquiler(<?php echo $alquileresId[$k];?>)">Ver</button>
                 </div>
                 <div class="col-25">
-                  <button class="btn btn-success botonlista" onclick="seleccionarAlquiler(<?php echo $alquileresId[$k];?>)" >Seleccionar</button>
+                  <button class="btn btn-success botonlista botontema" onclick="seleccionarAlquiler(<?php echo $alquileresId[$k];?>)" >Seleccionar</button>
                 </div>
               </div>
               <br>
@@ -78,6 +73,8 @@
    <br>
    <br>
    <br>
+
+   <!--
 
    <div class="row text-center">
      <h1 style="color:white">Alquileres Especiales</h1>
@@ -123,7 +120,7 @@
       </ul>
     </div>
 
-
+  -->
 
 
 

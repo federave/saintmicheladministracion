@@ -61,7 +61,7 @@ if(isset($_GET["id"]))
 
 
 
-      $sql = "SELECT a_m.idmaquina,a_m.cantidad,m.nombre FROM alquileres_maquinas as a_m inner join maquinas as m on a_m.idmaquina=m.id WHERE a_m.idalquiler='$idalquiler'";
+      $sql = "SELECT a_m.idtipomaquina,a_m.cantidad,tm.tipo FROM alquileres_maquinas as a_m inner join tiposmaquina as tm on a_m.idtipomaquina=tm.id WHERE a_m.idalquiler='$idalquiler'";
       $tabla = $conexion->query($sql);
       $k=0;
       if($tabla->num_rows>0)
@@ -69,8 +69,8 @@ if(isset($_GET["id"]))
         while($row = $tabla->fetch_assoc())
           {
           $xml->startTag("Maquina");
-            $xml->addTag("IdMaquina",$row["idmaquina"]);
-            $xml->addTag("NombreMaquina",$row["nombre"]);
+            $xml->addTag("IdTipoMaquina",$row["idtipomaquina"]);
+            $xml->addTag("NombreMaquina",$row["tipo"]);
             $xml->addTag("CantidadMaquina",$row["cantidad"]);
           $xml->closeTag("Maquina");
           $k++;

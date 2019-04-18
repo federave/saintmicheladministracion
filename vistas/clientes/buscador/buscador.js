@@ -58,8 +58,8 @@ if(estado)
     var labelSede = "<label class=\"etiqueta\">" + "Sede: " + nombresede + "</label>";
     var labelDireccion = "<label class=\"etiqueta\">" + "Calle: " + calle +" N°: "+numero + "</label>";
     var br="<br>";
-    var buttonVer = "<button style=\"width:80%;margin:auto;\" class=\"btn btn-success\" onclick=\"verCliente(" +id +","+idsede+")\">"+"Ver"+"</button>";
-    var buttonModificar = "<button role=\"link\" onclick=\"window.location='../cliente/cliente.php?idcliente="+id+"&idsede="+idsede+"'\" style=\"width:80%;margin:auto;\" class=\"btn btn-primary\">"+"Modificar"+"</button>";
+    var buttonVer = "<button style=\"width:80%;margin:auto;\" class=\"btn btn-success botontema\" onclick=\"verCliente(" +id +","+idsede+")\">"+"Ver"+"</button>";
+    var buttonModificar = "<button role=\"link\" onclick=\"window.location='../cliente/cliente.php?idcliente="+id+"&idsede="+idsede+"'\" style=\"width:80%;margin:auto;\" class=\"btn btn-primary botontema\">"+"Modificar"+"</button>";
 //    var buttonModificar = "<button role="link" onclick="window.location='../cliente/cliente.php' style=\"width:80%;margin:auto;\" class=\"btn btn-primary\" onclick=\"modificarCliente(" +id +","+idsede+")\">"+"Modificar"+"</button>";
 
     var divColumnDatos = "<div class=\"text-center col-50\">"+labelNombre+br+labelId+br+labelSede+br+labelDireccion+br+"</div>";

@@ -30,7 +30,7 @@ if(n==1)
 
 
 ///////////////////////////////////////////////////////////////
-//////////////Go to Modificar Maquina
+//////////////Go to Modificar Sede
 
 
 function modificarSede(idSede,idCliente)
@@ -51,7 +51,7 @@ requerimiento.ejecutar();
 
 function respuestaDatosSede(respuesta)
 {
-alert(respuesta.target.responseText);
+//alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -95,6 +95,7 @@ if(estado)
   document.getElementById("tipoSede"+idtiposede).selected = true;
 
 
+
   var calle = xmlDoc.getElementsByTagName("Calle")[0].childNodes[0].nodeValue;
   var numero = xmlDoc.getElementsByTagName("Numero")[0].childNodes[0].nodeValue;
 
@@ -129,9 +130,64 @@ if(estado)
   document.getElementById("entre2").innerHTML = "Entre 2: " + entre2;
   document.getElementById("departamento").innerHTML = "Departamento: " + departamento;
   document.getElementById("piso").innerHTML = "Piso: " + piso;
-
   document.getElementById("partido"+idpartido).selected = true;
   document.getElementById("zona"+idzona).selected = true;
+
+  if(estadoLocalizacion)
+  {
+  document.getElementById("estadoLocalizacionActual").innerHTML = "Estado: dirección localizada";
+  document.getElementById("latitud").innerHTML = "Latitud: " + latitud;
+  document.getElementById("longitud").innerHTML = "Longitud: " + longitud;
+  agregarMarcador(parseFloat(latitud),parseFloat(longitud));
+  centrarMapa(parseFloat(latitud),parseFloat(longitud));
+  }
+  else
+  {
+  document.getElementById("estadoLocalizacionActual").innerHTML = "Estado: dirección no localizada";
+  document.getElementById("latitud").innerHTML = "..."
+  document.getElementById("longitud").innerHTML = "...";
+  }
+
+
+  var idasignacion = xmlDoc.getElementsByTagName("IdAsignacion")[0].childNodes[0].nodeValue;
+  if(idasignacion > 1)
+    {
+    var idtrabajador = xmlDoc.getElementsByTagName("IdTrabajador")[0].childNodes[0].nodeValue;
+    if(idasignacion==2)
+      {
+      document.getElementById("repartidor").checked = true;
+      document.getElementById("repartidorAsignadoId"+idtrabajador).selected = true;
+      document.getElementById("divRepartidores").style.display = "block";
+
+      }
+    else
+      {
+      document.getElementById("vendedor").checked = true;
+      document.getElementById("vendedorAsignadoId"+idtrabajador).selected = true;
+      document.getElementById("divVendedores").style.display = "block";
+
+      }
+    }
+  else
+    {
+    document.getElementById("empresa").checked = true;
+    }
+
+
+  var numero = xmlDoc.getElementsByTagName("NumeroRecorridos")[0].childNodes[0].nodeValue;
+  for(i=0;i<numero;i++)
+  {
+  var iddia = xmlDoc.getElementsByTagName("IdDia")[i].childNodes[0].nodeValue;
+  var idtrabajador = xmlDoc.getElementsByTagName("IdTrabajadorRecorrido")[i].childNodes[0].nodeValue;
+
+  document.getElementById("dia"+iddia).checked = true;
+  if(idasignacion==1)
+    {
+    document.getElementById("divRepartidoresDia"+iddia).style.display = "block";
+    document.getElementById("repartidorId"+idtrabajador+"DiaId"+iddia).selected = true;
+    }
+
+  }
 
 
 
@@ -168,7 +224,7 @@ if(estado)
  document.getElementById("numeroHorarios").value=numero;
 
 
-
+  
 
 
 

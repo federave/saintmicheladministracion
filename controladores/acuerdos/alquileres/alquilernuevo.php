@@ -69,9 +69,9 @@ if(isset($_GET["alquilerNuevo"]))
       $k=0;
       while($k<$numero)
         {
-        $idmaquina = $alquiler->Maquina[$k]->IdMaquina;
+        $idtipomaquina = $alquiler->Maquina[$k]->IdTipoMaquina;
         $cantidad = $alquiler->Maquina[$k]->CantidadMaquina;
-        $sql = "INSERT INTO alquileres_maquinas (idalquiler,idmaquina,cantidad) VALUES ('$idalquiler','$idmaquina','$cantidad')";
+        $sql = "INSERT INTO alquileres_maquinas (idalquiler,idtipomaquina,cantidad) VALUES ('$idalquiler','$idtipomaquina','$cantidad')";
         $aux &= $conexion->query($sql);
         $k++;
         }

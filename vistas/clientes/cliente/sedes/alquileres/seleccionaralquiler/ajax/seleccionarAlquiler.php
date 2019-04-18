@@ -4,29 +4,75 @@ session_start();
 include_once($_SESSION["raiz"] . '/modelo/usuarios/usuario.php');
 include_once($_SESSION["raiz"] . '/modelo/otros.php');
 include_once($_SESSION["raiz"] . '/modelo/conector.php');
+include_once($_SESSION["raiz"] . '/modelo/acceso.php');
+verificarAcceso();
+
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["idCliente"])  && isset($_GET["idSede"])  && isset($_GET["idAlquiler"]))
+if(isset($_GET["idsede"])  && isset($_GET["idalquiler"]))
   {
   $aux=false;
 
   $conector = new Conector();
   if($conector->abrirConexion())
     {
+
+    $aux=true;
+
     $conexion = $conector->getConexion();
 
-    $id=$_GET["idCliente"];
+    $idsede=$_GET["idsede"];
+    $idalquilernuevo=$_GET["idalquiler"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
+    $sql = "SELECT * FROM sedes_alquileres_actual AS s WHERE s.idsede='$idsede'";
+    $tabla = $conexion->query($sql);
 
-    $xml->addTag("Id",$id);
+    if($tabla!=null)
+    {
+    if($tabla->num_rows>0)
+      {
+
+      $row = $tabla->fetch_assoc();
+
+      $idalquiler = $row["idalquiler"];
+      $especial = $row["especial"];
+      $precioespecial = $row["precioespecial"];
+      $fechainicio = $row["fechainicio"];
+
+      date_default_timezone_set("America/Argentina/Buenos_Aires");
+      $date = new DateTime();
+      $fechafin = $date->format('Y-m-d H:i:s');
+
+      if($precioespecial==null)
+        $sql = "INSERT INTO sedes_alquileres_historico (idsede,idalquiler,especial,fechainicio,fechafin) VALUES ('$idsede','$idalquiler','$especial','$fechainicio','$fechafin')";
+      else
+        $sql = "INSERT INTO sedes_alquileres_historico (idsede,idalquiler,especial,precioespecial,fechainicio,fechafin) VALUES ('$idsede','$idalquiler','$especial','$precioespecial','$fechainicio','$fechafin')";
+
+      $aux &= $conexion->query($sql);
+
+      $sql = "DELETE FROM sedes_alquileres_actual WHERE idsede = '$idsede'";
+      $aux &= $conexion->query($sql);
 
 
-    $aux = true;
+      }
+
+    }
+
+
+
+
+      $especial = 0;
+      date_default_timezone_set("America/Argentina/Buenos_Aires");
+      $date = new DateTime();
+      $fechainicio = $date->format('Y-m-d H:i:s');
+      $sql = "INSERT INTO sedes_alquileres_actual (idsede,idalquiler,especial,fechainicio) VALUES ('$idsede','$idalquilernuevo','$especial','$fechainicio')";
+      $aux &= $conexion->query($sql);
+
+
+
+
+
 
     $conector->cerrarConexion();
     }

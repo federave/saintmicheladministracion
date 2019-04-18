@@ -68,7 +68,7 @@ session_start();
       </div>
 
       <div name="tabAlquileres" class="row divTab">
-        <?php  require('nuevoalquiler/nuevoalquiler.php'); ?>
+        <?php require('nuevoalquiler/nuevoalquiler.php'); ?>
       </div>
       <div name="tabAlquileres" class="row divTab"  >
         <?php  require('modificaralquiler/modificaralquiler.php'); ?>

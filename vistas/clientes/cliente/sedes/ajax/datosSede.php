@@ -37,6 +37,9 @@ if(isset($_GET["idcliente"]) && isset($_GET["idsede"]))
         $xml->addTag("NombreResponsable",$row["nombreresponsable"]);
         $xml->addTag("ApellidoResponsable",$row["apellidoresponsable"]);
         $xml->addTag("IdTipoSede",$row["idtiposede"]);
+        $xml->addTag("IdAsignacion",$row["idasignacion"]);
+        $xml->addTag("IdTrabajador",$row["idtrabajador"]);
+
         $xml->addTag("Calle",$row["calle"]);
         $xml->addTag("Numero",$row["numero"]);
         $xml->addTag("Entre1",$row["entre1"]);
@@ -66,6 +69,34 @@ if(isset($_GET["idcliente"]) && isset($_GET["idsede"]))
             }
           $xml->addTag("NumeroHorarios",$k);
           }
+
+
+          $sql = "SELECT * FROM recorridos_sedes as r_s WHERE r_s.idsede='$idsede'";
+          $tabla = $conexion->query($sql);
+
+          if($tabla->num_rows>0)
+            {
+            $k=0;
+            while($row = $tabla->fetch_assoc())
+              {
+              $xml->startTag("RecorridoSede");
+                $xml->addTag("IdDia",$row["iddia"]);
+                $xml->addTag("IdTrabajadorRecorrido",$row["idtrabajador"]);
+              $xml->closeTag("RecorridoSede");
+              $k++;
+              }
+            $xml->addTag("NumeroRecorridos",$k);
+            }
+
+
+
+            //Alquileres
+
+            $sql = "SELECT * FROM alquileres_sedes_actual as r_s WHERE r_s.idsede='$idsede'";
+
+
+
+
 
 
 

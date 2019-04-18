@@ -5,8 +5,7 @@
 
 function nuevaAsignacion()
 {
-var idCliente = document.getElementById("idCliente").value;
-var idSede = document.getElementById("idSede").value;
+var idsede = document.getElementById("idSede").value;
 
 var xml = new XML();
 
@@ -21,15 +20,15 @@ for(i=1;i<7;i++)
     {
     xml.startTag("Dia");
       xml.addTag("IdDia",i);
-      xml.addTag("IdRepartidor",document.getElementById("repartidoresDia"+i).value);
+      xml.addTag("IdRepartidorDia",document.getElementById("repartidoresDia"+i).value);
     xml.closeTag("Dia");
     }
   }
 }
 else if(document.getElementById("repartidor").checked)
   {
-  xml.addTag("IdAsignacion",1);
-  xml.addTag("IdRepartidor",document.getElementById("repartidorSeleccionado").value);
+  xml.addTag("IdAsignacion",2);
+  xml.addTag("IdRepartidorAsignado",document.getElementById("repartidorSeleccionado").value);
   for(i=1;i<7;i++)
     {
     if(document.getElementById("dia"+i).checked)
@@ -42,8 +41,8 @@ else if(document.getElementById("repartidor").checked)
   }
 else
   {
-  xml.addTag("IdAsignacion",1);
-  xml.addTag("IdVendedor",document.getElementById("vendedorSeleccionado").value);
+  xml.addTag("IdAsignacion",3);
+  xml.addTag("IdVendedorAsignado",document.getElementById("vendedorSeleccionado").value);
   for(i=1;i<7;i++)
     {
     if(document.getElementById("dia"+i).checked)
@@ -58,11 +57,11 @@ else
 xml.closeTag("Asignacion");
 
 
+alert(xml.toString());
 
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("sedes/asignacion/ajax/nuevaAsignacion.php");
-requerimiento.addParametro("idCliente",idCliente);
-requerimiento.addParametro("idSede",idCliente);
+requerimiento.addParametro("idsede",idsede);
 requerimiento.addParametro("asignacion",xml.toString());
 requerimiento.addListener(respuestaNuevaAsignacion);
 requerimiento.ejecutar();

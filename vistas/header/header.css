@@ -28,7 +28,7 @@
 
 
 a.logo {
-  background-color: #333;
+  background-color: #bdc3c7;
 }
 
 .header a.logo {
@@ -43,7 +43,8 @@ a.logo {
 
 .header a:hover {
   background-color: #ddd;
-  color: black;
+  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+  color: #09203f;
 }
 
 .header a.active {

@@ -42,59 +42,29 @@ $maquinasCantidadAlquilerActual[1] = 2;
 
       <div class="row">
         <div class="text-center">
-          <h1>Alquiler Actual</h1>
+          <h1 id="labelEstadoAlquiler" style="color:white">Alquiler Actual</h1>
         </div>
       </div>
-
       <br>
       <br>
 
-      <div id="divAlquilerActual" class="row text-center">
-          <?php if($estadoAlquiler){ ?>
+      <div id="divAlquilerActual" class="row text-center borde" style="width:80%;margin:auto">
 
-
-          <div id="divDatosAlquilerActual">
-            <label class="labelAlquilerActual"><?php echo $nombreAlquilerActual?></label>
-            <br>
-            <label class="labelAlquilerActual">Precio: <?php echo $precioAlquilerActual?></label>
-            <br>
-            <label class="labelAlquilerActual">Productos</label>
-            <br>
-            <?php
-            $k=0;
-            while($k<count($productosNombreAlquilerActual))
-              {
-              ?>
-              <label class="labelAlquilerActual"><?php echo $productosNombreAlquilerActual[$k]; ?></label>
-              <label class="labelAlquilerActual">Cantidad: <?php echo $productosCantidadAlquilerActual[$k]; ?></label>
-              <br>
-              <?php
-              $k++;
-              }
-            ?>
-            <br>
-            <label class="labelAlquilerActual">Máquinas</label>
-            <br>
-            <?php
-            $k=0;
-            while($k<count($productosNombreAlquilerActual))
-              {
-              ?>
-              <label class="labelAlquilerActual"><?php echo $maquinasNombreAlquilerActual[$k]; ?></label>
-              <label class="labelAlquilerActual">Cantidad: <?php echo $maquinasCantidadAlquilerActual[$k]; ?></label>
-              <br>
-              <?php
-              $k++;
-              }
-            ?>
-          </div>
-
-        <?php }else { ?>
-          <label class="labelAlquilerActual">El cliente no tiene alquileres</label>
-          <div id="divAlquilerActual">
-
-          </div>
-        <?php } ?>
+        <br>
+        <label class="labelAlquilerActual" id="labelNombreAlquiler">Nombre: </label>
+        <br>
+        <label class="labelAlquilerActual" id="labelPrecioAlquiler">Precio: </label>
+        <br>
+        <br>        
+        <label class="labelAlquilerActual">Productos</label>
+        <br>
+        <div class="row" id="divProductosAlquiler">
+        </div>
+        <br>
+        <label class="labelAlquilerActual">Maquinas</label>
+        <br>
+        <div class="row" id="divMaquinasAlquiler">
+        </div>
 
       </div>
 

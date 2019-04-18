@@ -23,9 +23,9 @@ display:none;
 .contenedorsedes {
   width: 60%;
   margin:auto;
-  background: linear-gradient(to bottom, #006699 0%, #99ccff 100%);
   border-radius: 5px;
   padding: 5%;
+  background: linear-gradient(to bottom, #dd5e89 0%, #f7bb97 100%);
 
 
 }

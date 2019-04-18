@@ -180,14 +180,12 @@ else
 
 function seleccionarAlquiler(idAlquiler)
 {
-var idCliente = document.getElementById("idCliente").value;
 var idSede = document.getElementById("idSede").value;
 
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("sedes/alquileres/seleccionaralquiler/ajax/seleccionarAlquiler.php");
-requerimiento.addParametro("idCliente",idCliente);
-requerimiento.addParametro("idSede",idSede);
-requerimiento.addParametro("idAlquiler",idAlquiler);
+requerimiento.addParametro("idsede",idSede);
+requerimiento.addParametro("idalquiler",idAlquiler);
 requerimiento.addListener(respuestaSeleccionarAlquiler);
 requerimiento.ejecutar();
 }
@@ -195,6 +193,7 @@ requerimiento.ejecutar();
 
 function respuestaSeleccionarAlquiler(respuesta)
 {
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;

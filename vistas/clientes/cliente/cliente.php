@@ -37,6 +37,8 @@ $idsede = $_GET["idsede"];
 
       <br>
       <br>
+      <br>
+      <br>
 
 
 
@@ -45,9 +47,15 @@ $idsede = $_GET["idsede"];
 
       <div class="row">
         <div class="text-center">
-          <h1>Cliente ... </h1>
+          <h1 style="color:white">Cliente ... </h1>
         </div>
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <br>
 
       <div class="row" style="width:90%;margin-left:5%" >

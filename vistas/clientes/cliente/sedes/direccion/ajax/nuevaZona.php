@@ -8,7 +8,7 @@ include_once($_SESSION["raiz"] . '/modelo/acceso.php');
 verificarAcceso();
 
 
-if(isset($_GET["idsede"]) && isset($_GET["idpartido"]))
+if(isset($_GET["idsede"]) && isset($_GET["idzona"]))
   {
   $xml = new XML();
   $aux=false;
@@ -18,10 +18,10 @@ if(isset($_GET["idsede"]) && isset($_GET["idpartido"]))
     {
     $conexion = $conector->getConexion();
 
-    $idpartido=$_GET["idpartido"];
+    $idzona=$_GET["idzona"];
     $idsede=$_GET["idsede"];
 
-    $sql = "UPDATE direcciones_sedes SET idpartido='$idpartido' WHERE idsede='$idsede'";
+    $sql = "UPDATE direcciones_sedes SET idzona='$idzona' WHERE idsede='$idsede'";
     $aux = $conexion->query($sql);
 
 
@@ -36,6 +36,7 @@ else
   {
   redirect($_SESSION["raiz"] . '/vistas/errores/errorusuario.php');
   }
+
 
 
 

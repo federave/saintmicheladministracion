@@ -32,7 +32,8 @@
     </div>
   </div>
   <br>
-
+  <div class="row alerta" id="alertaCalleNuevaSede"></div>
+  <br>
 
   <!-- Numero -->
   <div class="row">
@@ -47,6 +48,8 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaNumeroNuevoSede"></div>
+  <br>
 
   <!-- Entre 1 -->
   <div class="row">
@@ -60,6 +63,8 @@
       <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoEntre1()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaEntre1NuevoSede"></div>
   <br>
 
 
@@ -76,6 +81,8 @@
     </div>
   </div>
   <br>
+  <div class="row alerta" id="alertaEntre2NuevoSede"></div>
+  <br>
 
   <!-- Departamento  -->
   <div class="row">
@@ -89,6 +96,8 @@
       <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoDepartamento()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaDepartamentoNuevoSede"></div>
   <br>
 
 
@@ -104,6 +113,8 @@
       <input type="button" class="btn btn-primary botonmodificar" id="" name="" onclick="nuevoPiso()" style="height:50px;font-size:18px" value="Modificar">
     </div>
   </div>
+  <br>
+  <div class="row alerta" id="alertaPisoNuevoSede"></div>
   <br>
 
 
@@ -134,6 +145,7 @@
   </div>
 
   <br>
+  <div class="row alerta" id="alertaPartidoNuevoSede"></div>
   <br>
 
 
@@ -163,26 +175,39 @@
       </div>
     </div>
 
-  <br>
+    <br>
+    <div class="row alerta" id="alertaZonaNuevaSede"></div>
+    <br>
+
 
   <div class="row contenedorlocalizacion text-center">
-    <style media="screen">
-      .etiqueta{font-size:20px;color:white}
-    </style>
+
+    <label class="fuenteBlanca">Localización Actual</label>
+    <br>
+    <label id="estadoLocalizacionActual" class="fuenteBlanca">Estado: </label>
+    <br>
+    <br>
+    <label id="latitud" class="fuenteBlanca">Latitud: </label>
+    <br>
+    <label id="longitud" class="fuenteBlanca">Longitud: </label>
+    <br>
+    <br>
+    <br>
     <button type="button" class="botonLocalizar btn btn-primary" id="" name="" onclick="localizarNuevo()" >Localizar</button>
     <br>
     <br>
-
     <button type="button" class="botonLocalizar btn btn-success" id="" name="" onclick="guardarLocalizacion()" >Guardar Localización</button>
     <br>
     <br>
-    <label id="localizacionNueva" class="etiqueta">Estado: </label>
+    <label class="fuenteBlanca">Localizacion Nueva</label>
+    <br>
+    <label id="localizacionNueva" class="fuenteBlanca">Estado: </label>
     <input type="hidden" name="estadoLocalizacionNuevo" id="estadoLocalizacionNuevo" value="0">
     <br>
-    <label id="etiquetaLatitudNueva" class="etiqueta">Latitud: </label>
+    <label id="etiquetaLatitudNueva" class="fuenteBlanca">Latitud: </label>
     <input type="hidden" name="latitudNueva" id="latitudNueva" value="">
     <br>
-    <label id="etiquetaLongitudNueva" class="etiqueta">Longitud: </label>
+    <label id="etiquetaLongitudNueva" class="fuenteBlanca">Longitud: </label>
     <input type="hidden" name="longitudNueva" id="longitudNueva" value="">
     <br>
     <br>

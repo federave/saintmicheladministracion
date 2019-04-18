@@ -10,8 +10,9 @@
 
 
 <?php require $_SESSION["raiz"] . '/modelo/productos/productos.php'?>
-<?php require $_SESSION["raiz"] . '/modelo/maquinas/maquinas.php'?>
+<?php require $_SESSION["raiz"] . '/modelo/maquinas/tiposmaquina.php'?>
 
+<?php $numeroMaquinas = $numeroTiposMaquina; ?>
 
 
   <div class="contenedoralquilernuevo">
@@ -42,17 +43,19 @@
           <br>
           <br>
           <br>
+          <div class="row" style="padding:10px;">
+            <div class="row text-center">
+              <label for="nombreAlquilerNuevo" style="color:black;font-size:18px">Ingresar Nombre</label>
+              <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreAlquilerNuevo" id="nombreAlquilerNuevo">
+            </div>
+            <br>
+            <br>
+            <div class="row text-center">
+              <label for="precioAlquilerNuevo" style="color:black;font-size:18px">Ingresar Precio</label>
+              <input name="precioAlquilerNuevo" id="precioAlquilerNuevo" class="text-center" style="color:black" type="number" min="1" value="" step="0.1" placeholder="Precio" oninput="this.className = ''" >
+            </div>
+          </div>
 
-          <div class="row text-center">
-            <label for="nombreAlquilerNuevo" style="color:black;font-size:18px">Ingresar Nombre</label>
-            <input style="color:black" placeholder="Nombre" type="text" oninput="this.className = ''" name="nombreAlquilerNuevo" id="nombreAlquilerNuevo">
-          </div>
-          <br>
-          <br>
-          <div class="row text-center">
-            <label for="precioAlquilerNuevo" style="color:black;font-size:18px">Ingresar Precio</label>
-            <input name="precioAlquilerNuevo" id="precioAlquilerNuevo" class="text-center" style="color:black" type="number" min="1" value="" step="0.1" placeholder="Precio" oninput="this.className = ''" >
-          </div>
 
 
 
@@ -61,10 +64,10 @@
           <br>
 
           <div class="text-center">
-            <h1>Productos</h1>
+            <h1 style="color:black">Productos</h1>
           </div>
 
-          <div style="height:500px; overflow-y: scroll;">
+          <div style="height:400px;padding: 10px;overflow-y: scroll;">
 
             <script type="text/javascript">
               function mostrarInputCantidad(n)
@@ -125,10 +128,10 @@
 
 
           <div class="text-center">
-            <h1>Maquinas</h1>
+            <h1 style="color:black">Maquinas</h1>
           </div>
 
-          <div style="height:500px; overflow-y: scroll;">
+          <div style="height:400px;padding: 10px;overflow-y: scroll;">
 
             <script type="text/javascript">
               function mostrarInputCantidadMaquinas(n)
@@ -145,12 +148,12 @@
 
             <?php
             $k=0;
-            while($k<count($maquinasId))
+            while($k<count($tiposMaquinaId))
                 {
                 ?>
                <div class="funkyradio-info text-center">
-                   <input onchange="mostrarInputCantidadMaquinas(<?php echo $k;?>)" type="checkbox" name="maquinasAlquilerNuevo" id="maquina<?php echo $k; ?>AlquilerNuevo" value="<?php echo $maquinasId[$k]; ?>"/>
-                   <label for="maquina<?php echo $k; ?>AlquilerNuevo" style="color:black;font-size:18px"><?php echo $maquinasNombre[$k]; ?></label>
+                   <input onchange="mostrarInputCantidadMaquinas(<?php echo $k;?>)" type="checkbox" name="maquinasAlquilerNuevo" id="maquina<?php echo $k; ?>AlquilerNuevo" value="<?php echo $tiposMaquinaId[$k]; ?>"/>
+                   <label for="maquina<?php echo $k; ?>AlquilerNuevo" style="color:black;font-size:18px"><?php echo $tiposMaquinaNombre[$k]; ?></label>
                </div>
                <br>
                <div class="text-center "style="display:none" id="divCantidadMaquina<?php echo $k;?>AlquilerNuevo">
@@ -183,7 +186,7 @@
 
           </div>
 
-
+<br>
 
         <div style="overflow:auto;">
           <div style="float:right;">

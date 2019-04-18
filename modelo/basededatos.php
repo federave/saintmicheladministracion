@@ -384,7 +384,7 @@ class BaseDeDatos
       $aux &= $this->conexion->query($sql);
 
 
-      $sql = "CREATE TABLE IF NOT EXISTS recorridos(
+      $sql = "CREATE TABLE IF NOT EXISTS recorridos_sedes(
       idsede int not null,
       idtrabajador int not null,
       iddia int not null,
@@ -395,6 +395,41 @@ class BaseDeDatos
       );
       ";
       $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Sedes Alquileres Actual
+
+      $sql = "CREATE TABLE IF NOT EXISTS sedes_alquileres_actual(
+      idsede int not null,
+      idalquiler int not null,
+      especial boolean,
+      precioespecial real,
+      fechainicio datetime,
+      primary key(idsede,idalquiler,fechainicio),
+      foreign key(idsede) REFERENCES sedes(id),
+      foreign key(idalquiler) REFERENCES alquileres(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
+      // Tabla Relacion Sedes Alquileres Historico
+
+      $sql = "CREATE TABLE IF NOT EXISTS sedes_alquileres_historico(
+      idsede int not null,
+      idalquiler int not null,
+      especial boolean,
+      precioespecial real,
+      fechainicio datetime,
+      fechafin datetime,
+      primary key(idsede,idalquiler,fechainicio),
+      foreign key(idsede) REFERENCES sedes(id),
+      foreign key(idalquiler) REFERENCES alquileres(id)
+      );
+      ";
+      $aux &= $this->conexion->query($sql);
+
+
 
 
 
@@ -927,11 +962,11 @@ class BaseDeDatos
 
       $sql = "CREATE TABLE IF NOT EXISTS alquileres_maquinas(
       idalquiler int not null,
-      idmaquina int not null,
+      idtipomaquina int not null,
       cantidad int,
-      primary key(idalquiler,idmaquina),
+      primary key(idalquiler,idtipomaquina),
       foreign key(idalquiler) REFERENCES alquileres(id),
-      foreign key(idmaquina) REFERENCES maquinas(id)
+      foreign key(idtipomaquina) REFERENCES tiposmaquina(id)
       );
       ";
       $aux &= $this->conexion->query($sql);
