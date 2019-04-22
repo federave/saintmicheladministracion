@@ -13,22 +13,32 @@ font-size:22px;
 
 .divTabAlquileres
 {
-width:90%;
-margin-left:5%;
+width:95%;
+margin:auto;
 display:none;
 }
 
 .labelAlquilerActual
 {
-color:white;
+color:black;
 font-size:22px;
 }
 
+.divalquileractual
+{
+width:70%;
+margin:auto;
+background-color: white;
+border-radius: 5px;
 
+}
 
 .contenedoralquileres{
-  width: 60%;
+  width: 70%;
   margin:auto;
+background: linear-gradient(to bottom, #dd5e89 0%, #f7bb97 100%);
+  border-radius: 5px;
+
 }
 
 
@@ -41,7 +51,9 @@ font-size:22px;
   .contenedoralquileres {
     width: 100%;
   }
-
+  .divalquileractual {
+    width: 90%;
+  }
 
 
 
@@ -80,7 +92,7 @@ font-size:22px;
 
 @media only screen  and (min-width: 1300px) {
   .contenedoralquileres {
-    width: 60%;
+    width: 70%;
   }
 
 }

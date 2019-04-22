@@ -51,7 +51,7 @@ requerimiento.ejecutar();
 
 function respuestaDatosSede(respuesta)
 {
-//alert(respuesta.target.responseText);
+alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
@@ -224,7 +224,82 @@ if(estado)
  document.getElementById("numeroHorarios").value=numero;
 
 
-  
+ var estadoalquiler = xmlDoc.getElementsByTagName("EstadoAlquiler")[0].childNodes[0].nodeValue;
+ if(estadoalquiler==1)
+   {
+
+   document.getElementById("idalquilersede").value = xmlDoc.getElementsByTagName("IdAlquiler")[0].childNodes[0].nodeValue;
+
+
+   var nombre = xmlDoc.getElementsByTagName("NombreAlquiler")[0].childNodes[0].nodeValue;
+   var precio = xmlDoc.getElementsByTagName("PrecioAlquiler")[0].childNodes[0].nodeValue;
+   var fechainicio = xmlDoc.getElementsByTagName("FechaInicioAlquiler")[0].childNodes[0].nodeValue;
+
+   var especial = xmlDoc.getElementsByTagName("EspecialAlquiler")[0].childNodes[0].nodeValue;
+   if(especial==1)
+    {
+    var precioespecial = xmlDoc.getElementsByTagName("PrecioEspecialAlquiler")[0].childNodes[0].nodeValue;
+    document.getElementById("labelEstadoPrecioEspecialAlquiler").innerHTML = "Precio Especial: Si";
+    document.getElementById("labelPrecioAlquiler").innerHTML = "Precio: "+precioespecial;
+    }
+  else
+    {
+    document.getElementById("labelEstadoPrecioEspecialAlquiler").innerHTML = "Precio Especial: No";
+    document.getElementById("labelPrecioAlquiler").innerHTML = "Precio: "+precio;
+    }
+
+
+   document.getElementById("labelNombreAlquiler").innerHTML = "Nombre: "+nombre;
+   document.getElementById("labelFechaInicioAlquiler").innerHTML = "Fecha de Inicio: "+fechainicio;
+
+
+   var divProductos = document.getElementById("divProductosAlquiler");
+   var divMaquinas = document.getElementById("divMaquinasAlquiler");
+
+   var br = "<br>";
+   divProductos.innerHTML="";
+   divMaquinas.innerHTML="";
+
+
+
+   var numero = xmlDoc.getElementsByTagName("NumeroProductosAlquiler")[0].childNodes[0].nodeValue;
+   for(i=0;i<numero;i++)
+   {
+   var nombreProducto=xmlDoc.getElementsByTagName("NombreProductoAlquiler")[i].childNodes[0].nodeValue;
+   var cantidadProducto=xmlDoc.getElementsByTagName("CantidadProductoAlquiler")[i].childNodes[0].nodeValue;
+   var labelProducto = "<label class=\"labelAlquilerActual\" >" +nombreProducto +" Cantidad: "+cantidadProducto + "</label>";
+   divProductos.innerHTML +=  labelProducto + br ;
+   }
+
+
+   var numero = xmlDoc.getElementsByTagName("NumeroMaquinasAlquiler")[0].childNodes[0].nodeValue;
+   for(i=0;i<numero;i++)
+   {
+   var nombreMaquina=xmlDoc.getElementsByTagName("NombreMaquinaAlquiler")[i].childNodes[0].nodeValue;
+   var cantidadMaquina=xmlDoc.getElementsByTagName("CantidadMaquinaAlquiler")[i].childNodes[0].nodeValue;
+
+   var labelMaquina = "<label class=\"labelAlquilerActual\" >" +nombreMaquina +" Cantidad: "+cantidadMaquina + "</label>";
+   divMaquinas.innerHTML += labelMaquina + br;
+   }
+
+
+
+ }
+ else
+ {
+ document.getElementById("labelEstadoAlquiler").innerHTML = "El Cliente No Tiene Alquileres";
+ document.getElementById("divAlquilerActual").style.display = "none";
+
+ }
+
+
+
+
+
+
+
+
+
 
 
 

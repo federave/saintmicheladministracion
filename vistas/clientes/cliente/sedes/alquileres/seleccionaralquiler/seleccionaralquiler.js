@@ -180,8 +180,8 @@ else
 
 function seleccionarAlquiler(idAlquiler)
 {
+idAlquilerSeleccionado = idAlquiler;
 var idSede = document.getElementById("idSede").value;
-
 var requerimiento = new RequerimientoGet();
 requerimiento.setURL("sedes/alquileres/seleccionaralquiler/ajax/seleccionarAlquiler.php");
 requerimiento.addParametro("idsede",idSede);
@@ -190,17 +190,18 @@ requerimiento.addListener(respuestaSeleccionarAlquiler);
 requerimiento.ejecutar();
 }
 
+var idAlquilerSeleccionado;
 
 function respuestaSeleccionarAlquiler(respuesta)
 {
-alert(respuesta.target.responseText);
 xmlDoc = crearXML(respuesta.target.responseText);
 
 var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 if(estado)
   {
-  var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
+  var id = idAlquilerSeleccionado;
+  document.getElementById("idalquilersede").value = id;
 
   var requerimiento = new RequerimientoGet();
   requerimiento.setURL("sedes/alquileres/seleccionaralquiler/ajax/datosAlquiler.php");
@@ -230,22 +231,30 @@ var estado = xmlDoc.getElementsByTagName("Estado")[0].childNodes[0].nodeValue;
 
 if(estado)
   {
+    document.getElementById("labelEstadoAlquiler").innerHTML = "Alquiler Actual";
 
   var id = xmlDoc.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
   var nombre = xmlDoc.getElementsByTagName("Nombre")[0].childNodes[0].nodeValue;
   var precio = xmlDoc.getElementsByTagName("Precio")[0].childNodes[0].nodeValue;
 
-  var divDescripcion = document.getElementById("divDatosAlquilerActual");
+  var f = new Date();
+  fechainicio = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+
+
+  document.getElementById("labelNombreAlquiler").innerHTML = "Nombre: "+nombre;
+  document.getElementById("labelPrecioAlquiler").innerHTML = "Precio: "+precio;
+  document.getElementById("labelEstadoPrecioEspecialAlquiler").innerHTML = "Precio Especial: No";
+
+  document.getElementById("labelFechaInicioAlquiler").innerHTML = "Fecha de Inicio: "+fechainicio;
+
+
+  var divProductos = document.getElementById("divProductosAlquiler");
+  var divMaquinas = document.getElementById("divMaquinasAlquiler");
+
   var br = "<br>";
-  divDescripcion.innerHTML="";
+  divProductos.innerHTML="";
+  divMaquinas.innerHTML="";
 
-
-  var labelNombre = "<label class=\"labelAlquilerActual\" >" +nombre + "</label>";
-  var labelPrecio = "<label class=\"labelAlquilerActual\" >" +"Precio: "+precio +" $"+ "</label>";
-  var labelProductos = "<label class=\"labelAlquilerActual\" >" +"Productos"+"</label>";
-  var labelMaquinas = "<label class=\"labelAlquilerActual\" >" +"Maquinas"+"</label>";
-
-  divDescripcion.innerHTML += labelNombre + br + labelPrecio+br + labelProductos;
 
 
   var numero = xmlDoc.getElementsByTagName("NumeroProductos")[0].childNodes[0].nodeValue;
@@ -254,10 +263,9 @@ if(estado)
   var nombreProducto=xmlDoc.getElementsByTagName("NombreProducto")[i].childNodes[0].nodeValue;
   var cantidadProducto=xmlDoc.getElementsByTagName("CantidadProducto")[i].childNodes[0].nodeValue;
   var labelProducto = "<label class=\"labelAlquilerActual\" >" +nombreProducto +" Cantidad: "+cantidadProducto + "</label>";
-  divDescripcion.innerHTML += br + labelProducto;
+  divProductos.innerHTML +=  labelProducto + br ;
   }
 
-  divDescripcion.innerHTML += br + labelMaquinas + br;
 
   var numero = xmlDoc.getElementsByTagName("NumeroMaquinas")[0].childNodes[0].nodeValue;
   for(i=0;i<numero;i++)
@@ -266,9 +274,10 @@ if(estado)
   var cantidadMaquina=xmlDoc.getElementsByTagName("CantidadMaquina")[i].childNodes[0].nodeValue;
 
   var labelMaquina = "<label class=\"labelAlquilerActual\" >" +nombreMaquina +" Cantidad: "+cantidadMaquina + "</label>";
-  divDescripcion.innerHTML += br + labelMaquina;
+  divMaquinas.innerHTML += labelMaquina + br;
   }
 
+  document.getElementById("divAlquilerActual").style.display = "block";
 
 
   }

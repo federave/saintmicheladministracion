@@ -10,7 +10,7 @@ verificarAcceso();
 $xml = new XML();
 $xml->startTag("Respuesta");
 
-if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["id"]))
+if(isset($_GET["id"]))
   {
   $aux=false;
 
@@ -21,49 +21,58 @@ if(verificarUsuario($_SESSION["usuario"],$_SESSION["password"]) && isset($_GET["
 
     $id=$_GET["id"];
 
-    /*
-    $sql = "UPDATE Direcciones SET calle='$nombre' WHERE id='$id'";
-    $aux = $conexion->query($sql);
-    */
+    $sql = "SELECT * FROM alquileres AS a WHERE a.id='$id'";
+    $tabla = $conexion->query($sql);
 
-    $xml->addTag("Id",$id);
-    $xml->addTag("Nombre","6 Bidones de 20L");
-    $xml->addTag("Precio",100);
-
-
-    $xml->addTag("NumeroProductos",2);
-
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",1);
-      $xml->addTag("NombreProducto","Bidon 10L");
-      $xml->addTag("CantidadProducto",10);
-    $xml->closeTag("Producto");
-
-    $xml->startTag("Producto");
-      $xml->addTag("IdProducto",2);
-      $xml->addTag("NombreProducto","Bidon 12L");
-      $xml->addTag("CantidadProducto",12);
-    $xml->closeTag("Producto");
-
-    $xml->addTag("NumeroMaquinas",2);
-
-    $xml->startTag("Maquina");
-      $xml->addTag("IdMaquina",1);
-      $xml->addTag("NombreMaquina","Dispenser Ushuaia");
-      $xml->addTag("CantidadMaquina",1);
-    $xml->closeTag("Maquina");
+    if($tabla!=null)
+    {
+    if($tabla->num_rows>0)
+      {
+      $row = $tabla->fetch_assoc();
+      $xml->addTag("Id",$id);
+      $xml->addTag("Nombre",$row["nombre"]);
+      $xml->addTag("FechaCreacion",$row["fechacreacion"]);
 
 
-    $xml->startTag("Maquina");
-      $xml->addTag("IdMaquina",2);
-      $xml->addTag("NombreMaquina","Heladera Briket");
-      $xml->addTag("CantidadMaquina",2);
-    $xml->closeTag("Maquina");
+      $sql = "SELECT a.precio FROM alquileres_precios_actual AS a WHERE a.idalquiler='$id'";
+      $tabla = $conexion->query($sql);
+      $row = $tabla->fetch_assoc();
+      $xml->addTag("Precio",$row["precio"]);
 
 
 
+      $sql = "SELECT a_p.idproducto,a_p.cantidad,p.nombre FROM alquileres_productos AS a_p INNER JOIN productos as p ON a_p.idproducto = p.id WHERE a_p.idalquiler='$id'";
+      $tabla = $conexion->query($sql);
 
-    $aux = true;
+      $xml->addTag("NumeroProductos",$tabla->num_rows);
+
+      while($row = $tabla->fetch_assoc())
+        {
+        $xml->addTag("IdProducto",$row["idproducto"]);
+        $xml->addTag("NombreProducto",$row["nombre"]);
+        $xml->addTag("CantidadProducto",$row["cantidad"]);
+        }
+
+      $sql = "SELECT a_m.idtipomaquina,a_m.cantidad,tm.tipo FROM alquileres_maquinas AS a_m INNER JOIN tiposmaquina as tm ON a_m.idtipomaquina = tm.id WHERE a_m.idalquiler='$id'";
+      $tabla = $conexion->query($sql);
+      $xml->addTag("NumeroMaquinas",$tabla->num_rows);
+
+      while($row = $tabla->fetch_assoc())
+        {
+        $xml->addTag("IdTipoMaquina",$row["idtipomaquina"]);
+        $xml->addTag("NombreMaquina",$row["tipo"]);
+        $xml->addTag("CantidadMaquina",$row["cantidad"]);
+        }
+
+      $aux = true;
+
+      }
+    }
+
+
+
+
+
 
     $conector->cerrarConexion();
     }

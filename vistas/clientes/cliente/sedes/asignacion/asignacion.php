@@ -176,7 +176,7 @@
 
 
   <div class="row text-center">
-    <button style="font-size:20px; width:50%;height:50px" type="button" class="btn btn-success" onclick="nuevaAsignacion()" >Guardar</button>
+    <button style="font-size:20px; width:50%;height:50px" type="button" class="btn btn-success botontema" onclick="nuevaAsignacion()" >Guardar</button>
   </div>
   <br>
   <br>

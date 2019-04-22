@@ -91,12 +91,91 @@ if(isset($_GET["idcliente"]) && isset($_GET["idsede"]))
 
 
             //Alquileres
+            escribir($idsede);
+            $sql = "SELECT * FROM sedes_alquileres_actual as a WHERE a.idsede='$idsede'";
+            $tabla = $conexion->query($sql);
 
-            $sql = "SELECT * FROM alquileres_sedes_actual as r_s WHERE r_s.idsede='$idsede'";
+            if($tabla!=null)
+            {
+              if($tabla->num_rows>0)
+                {
+                $xml->addTag("EstadoAlquiler",1);
+
+                $row = $tabla->fetch_assoc();
+                $xml->startTag("Alquiler");
+                  $xml->addTag("IdAlquiler",$row["idalquiler"]);
+                  $xml->addTag("FechaInicioAlquiler",$row["fechainicio"]);
+                  if($row["especial"])
+                    {
+                    $xml->addTag("EspecialAlquiler",$row["especial"]);
+                    $xml->addTag("PrecioEspecialAlquiler",$row["precioespecial"]);
+                    }
+                  else
+                    {
+                    $xml->addTag("EspecialAlquiler",0);
+                    }
 
 
 
+                $id = $row["idalquiler"];
+                $sql = "SELECT * FROM alquileres AS a WHERE a.id='$id'";
+                $tabla = $conexion->query($sql);
 
+                if($tabla->num_rows>0)
+                  {
+                  $row = $tabla->fetch_assoc();
+                  $xml->addTag("NombreAlquiler",$row["nombre"]);
+                  $xml->addTag("FechaCreacionAlquiler",$row["fechacreacion"]);
+
+                  $sql = "SELECT a.precio FROM alquileres_precios_actual AS a WHERE a.idalquiler='$id'";
+                  $tabla = $conexion->query($sql);
+                  $row = $tabla->fetch_assoc();
+                  $xml->addTag("PrecioAlquiler",$row["precio"]);
+
+                  $sql = "SELECT a_p.idproducto,a_p.cantidad,p.nombre FROM alquileres_productos AS a_p INNER JOIN productos as p ON a_p.idproducto = p.id WHERE a_p.idalquiler='$id'";
+                  $tabla = $conexion->query($sql);
+
+                  $xml->addTag("NumeroProductosAlquiler",$tabla->num_rows);
+
+                  while($row = $tabla->fetch_assoc())
+                    {
+                    $xml->addTag("IdProductoAlquiler",$row["idproducto"]);
+                    $xml->addTag("NombreProductoAlquiler",$row["nombre"]);
+                    $xml->addTag("CantidadProductoAlquiler",$row["cantidad"]);
+                    }
+
+                  $sql = "SELECT a_m.idtipomaquina,a_m.cantidad,tm.tipo FROM alquileres_maquinas AS a_m INNER JOIN tiposmaquina as tm ON a_m.idtipomaquina = tm.id WHERE a_m.idalquiler='$id'";
+                  $tabla = $conexion->query($sql);
+                  $xml->addTag("NumeroMaquinasAlquiler",$tabla->num_rows);
+
+                  while($row = $tabla->fetch_assoc())
+                    {
+                    $xml->addTag("IdTipoMaquinaAlquiler",$row["idtipomaquina"]);
+                    $xml->addTag("NombreMaquinaAlquiler",$row["tipo"]);
+                    $xml->addTag("CantidadMaquinaAlquiler",$row["cantidad"]);
+                    }
+
+                  $aux = true;
+
+                  }
+
+
+
+                $xml->closeTag("Alquiler");
+
+                }
+                else
+                {
+                  $xml->addTag("EstadoAlquiler",0);
+
+                }
+
+            }
+            else
+            {
+              $xml->addTag("EstadoAlquiler",0);
+
+            }
 
 
 

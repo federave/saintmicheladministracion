@@ -7,22 +7,6 @@
 <?php require $_SESSION["raiz"] . '/modelo/acuerdos/alquileres/alquileres.php'?>
 
 
-  <?php
-
-    /*
-  $alquileresespecialesId = array();
-  $alquileresespecialesId[0] = 1;
-  $alquileresespecialesId[1] = 2;
-
-  $alquileresespecialesNombre = array();
-  $alquileresespecialesNombre[0] = "6 Bidones de 20L";
-  $alquileresespecialesNombre[1] = "8 Bidones de 20L";
-  */
-
-
-
-  ?>
-
   <div class="contenedorseleccionaralquiler">
     <br>
     <br>
@@ -32,7 +16,7 @@
     <br>
     <br>
 
-    <div style="height:500px; overflow-y: scroll;padding:5%;">
+    <div style="height:400px; overflow-y: scroll;padding:5%;">
       <ul class="list-group">
 
         <?php
@@ -46,10 +30,10 @@
                 <div class="col-50 text-center">
                   <label id="" style="font-size:20px;color:black">   <?php echo $alquileresNombre[$k];?></label>
                 </div>
-                <div class="col-25">
+                <div class="col-20">
                   <button class="btn btn-primary botonlista botontema" id="buttonVerDatosAlquiler<?php echo $alquileresId[$k];?>" onclick="verAlquiler(<?php echo $alquileresId[$k];?>)">Ver</button>
                 </div>
-                <div class="col-25">
+                <div class="col-30">
                   <button class="btn btn-success botonlista botontema" onclick="seleccionarAlquiler(<?php echo $alquileresId[$k];?>)" >Seleccionar</button>
                 </div>
               </div>

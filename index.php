@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION["raiz"]))
   {
   $_SESSION["carpeta"] = '';
-  //$_SESSION["carpeta"] = '/saintmicheladministracion';
+  $_SESSION["carpeta"] = '/saintmicheladministracion';
   $_SESSION["raiz"] = $_SERVER["DOCUMENT_ROOT"] . $_SESSION["carpeta"];
   }
 
